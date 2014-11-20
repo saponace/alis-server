@@ -11,20 +11,22 @@
 #*shading         : 40
 #*fading          : 60
 #*font: xft:erusfont
+
+
 *foreground: #ababab
 *background: #181818
 
 #Couleur du system
 *color0: #1b1b1b
 *color1: #ff6b6b
-*color2: #a3d46e
+*color2: #03d44e
 *color3: #eaca75
 *color4: #435e87
 *color5: #cf8243
 *color6: #789ec6
 *color7: #ffffff
 
-#*color8: #1b1b1b
+*color8: #1b1b1b
 *color9: #ff8d8d
 *color10: #a3d46e
 *color11: #ffc123

@@ -8,7 +8,9 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export GREP_COLOR=31
 export EDITOR=/usr/bin/vim
-export PS1="%n@%M [%~] $ "
+autoload -U colors && colors
+PROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%1~] %{$reset_color%}%#"
+
 
 # Aliases
 alias grep='grep --color=auto'
