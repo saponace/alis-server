@@ -1,0 +1,37 @@
+
+set timeoutlen=1000                  "set change from insert mode to normal mode immediate
+:let g:airline_theme='solarized'     "use murmur as default airline theme
+if $TERM == "xterm-256color"         "if terminal is 256colors ready, use these 256 colors
+  set t_Co=256
+endif
+
+set guifont=Monospace\ 10            "set default font and default fontsize for gvim
+
+"alt+hjkl to switch between windows
+nmap <silent> <leader>k :wincmd k<CR>
+nmap <silent> <leader>j :wincmd j<CR>
+nmap <silent> <leader>h :wincmd h<CR>
+nmap <silent> <leader>l :wincmd l<CR>
+
+"arrow keys do not do anything, use hjkl
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+
+
+"linebreak to adjust window-width
+set wrap "activate function
+set linebreak "only on spaces
+set nolist  " list disables linebreak
+set nolist  " list disables linebreak
+
+
+"move lines up/down with Alt+arrows
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
