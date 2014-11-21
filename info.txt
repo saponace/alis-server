@@ -1,10 +1,11 @@
 ~ 
-.vimrc.cundles.local
+.vimrc.bundles.local
 .vimrc.local.
 .Xdefaults
 .zshrc
 .fehbg
 .i3/
+.xinitrc
 
 .
 skeleton.sh
@@ -12,3 +13,6 @@ wallpaper.jpg
 
 /etc/
 slim.conf
+
+/usr/share/slim/themes/
+slim-minimal/
