@@ -64,10 +64,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+H split h
+bindsym $mod+Shift+h split h
 
 # split in vertical orientation
-bindsym $mod+V split v
+bindsym $mod+shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -151,3 +151,25 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+set $tag1 "1: shell"
+set $tag2 "2:code"
+set $tag3 "3: web"
+set $tag4 "4: ranger"
+set $tag
+set $tag
+set $tag
+set $tag
+set $tag
