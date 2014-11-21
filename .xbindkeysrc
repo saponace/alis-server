@@ -1,0 +1,7 @@
+# Increase volume
+    "amixer sset Master playback 5+"
+    Mod2 + XF86AudioRaiseVolume
+
+# Decrease volume
+    "amixer sset Master playback 5-"
+    Mod2 + XF86AudioLowerVolume
