@@ -1,0 +1,14 @@
+~ 
+.vimrc.cundles.local
+.vimrc.local.
+.Xdefaults
+.zshrc
+.fehbg
+.i3/
+
+.
+skeleton.sh
+wallpaper.jpg
+
+/etc/
+slim.conf
