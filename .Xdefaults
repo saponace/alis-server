@@ -7,8 +7,6 @@
 !*shading         : 40
 !*fading          : 60
 
-Xterm*utf8: 1
-
 *foreground: #ababab
 *background: #181818
 
