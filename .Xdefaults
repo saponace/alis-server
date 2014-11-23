@@ -1,25 +1,18 @@
-#*background:   black
-#*foreground:   white
-#*font            : xft:Bitstream Vera Sans Mono-8.5
 *scrollBar       : false
-*modifier        : mod4
+!*modifier        : mod4
 *urllauncher     : chromium
 *matcher.button  : 3
 *saveLines       : 8192
-#*perl-ext-common : default,matcher
-*transparent     : True
-*shading         : 40
-*fading          : 60
-#*font: xft:erusfont
-Xterm*locale: true
-xterm*termName: xterm-256color
+!*transparent     : True
+!*shading         : 40
+!*fading          : 60
 
-
+Xterm*utf8: 1
 
 *foreground: #ababab
 *background: #181818
 
-#Couleur du system
+!Couleur du system
 *color0: #1b1b1b
 *color1: #ff6b6b
 *color2: #03d44e
@@ -38,12 +31,3 @@ xterm*termName: xterm-256color
 *color14: #46a4ff
 *color15: #ffffff
 
-#Modifie les touches (pour les raccourcis dans vim notamment)
-URxvt.keysym.Control-Up:   \033[1;5A
-URxvt.keysym.Control-Down:    \033[1;5B
-URxvt.keysym.Control-Left:    \033[1;5D
-URxvt.keysym.Control-Right:    \033[1;5C
-URxvt.keysym.M-Down:        \033[1;3B
-URxvt.keysym.M-Up:          \033[1;3A
-URxvt.keysym.M-Left:        \033[1;3D
-URxvt.keysym.M-Right:       \033[1;3C
