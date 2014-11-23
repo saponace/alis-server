@@ -46,7 +46,7 @@ deploy(){
         cp .xinitrc $HOME
 
         cp slim.conf /etc/
-        cp -r slim-minimal/ /usr/share/slim/themes/ 
+        #cp -r slim-minimal/ /usr/share/slim/themes/ 
     fi
     echo "successfully deployed files"
 }
@@ -60,7 +60,7 @@ backup(){
         cp $HOME/.xinitrc .
 
         cp /etc/slim.conf slim.conf
-        cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
+        #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
     echo "successfully backed files in this folder"
 }
 
