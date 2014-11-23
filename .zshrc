@@ -1,7 +1,8 @@
 #!/usr/bin/zsh
-#Général
+#General
 umask 0066
 PATH=$PATH:/home/script:.
+
 # Variables
 export HISTFILE=~/.histfile
 export HISTSIZE=1000
@@ -9,6 +10,10 @@ export SAVEHIST=1000
 export GREP_COLOR=31
 export EDITOR=/usr/bin/vim
 export MANPAGER="/usr/bin/most -s"
+export LC_ALL=en_US.UTF-8
+export LANG="$LC_ALL"
+export LANGUAGE="$LC_ALL"
+
 autoload -U colors && colors
 PROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%1~] %{$reset_color%}%"
 
@@ -24,11 +29,8 @@ alias mv='mv --interactive'
 alias rm='rm --interactive --verbose'
 alias Xrecord='ffmpeg -f x11grab -s 1280x800 -r 25 -i :0.0 -qscale 0 /tmp/out.mkv'
 alias sshr='ssh rsomdecosteles@ssh.enseirb-matmeca.fr'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias .....='cd ../../../../..'
+
+
 
 # Options
 unsetopt beep
