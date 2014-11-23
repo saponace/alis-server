@@ -45,7 +45,7 @@ deploy(){
         cp -r .i3 $HOME
         cp .xinitrc $HOME
 
-        cp slim.conf /etc/
+        #cp slim.conf /etc/
         #cp -r slim-minimal/ /usr/share/slim/themes/ 
     fi
     echo "successfully deployed files"
