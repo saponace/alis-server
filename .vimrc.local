@@ -1,11 +1,11 @@
 
-set timeoutlen=1000                  "set change from insert mode to normal mode immediate
+set timeoutlen=1000                   "set change from insert mode to normal mode immediate
 "if $TERM == "xterm-256color"         "if terminal is 256colors ready, use these 256 colors
-  set t_Co=256
+set t_Co=256
 "endif
 
 colorscheme solarized
-let g:airline_theme='solarized'     "use murmur as default airline theme
+let g:airline_theme='solarized'      "use solarized as default airline theme
 
 set guifont=Monospace\ 10            "set default font and default fontsize for gvim
 
