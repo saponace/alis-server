@@ -52,12 +52,12 @@ deploy(){
 }
 
 backup(){
-        cp $HOME/.vimrc.bundles.local
-        cp $HOME/.vimrc.local
-        cp $HOME/.Xdefaults
-        cp $HOME/.zshrc
-        cp -r $HOME/.i3
-        cp $HOME/.xinitrc
+        cp $HOME/.vimrc.bundles.local .
+        cp $HOME/.vimrc.local .
+        cp $HOME/.Xdefaults .
+        cp $HOME/.zshrc .
+        cp -r $HOME/.i3 .
+        cp $HOME/.xinitrc .
 
         cp /etc/slim.conf slim.conf
         cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
