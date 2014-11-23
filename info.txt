@@ -1,15 +1,15 @@
 ~ 
 .vimrc.bundles.local
-.vimrc.local.
+.vimrc.local
 .Xdefaults
 .zshrc
-.fehbg
 .i3/
 .xinitrc
+.xbindkeysrc
 
 .
 skeleton.sh
-wallpaper.jpg
+copy.sh
 
 /etc/
 slim.conf
