@@ -7,10 +7,13 @@
 *matcher.button  : 3
 *saveLines       : 8192
 #*perl-ext-common : default,matcher
-#*transparent     : True
-#*shading         : 40
-#*fading          : 60
+*transparent     : True
+*shading         : 40
+*fading          : 60
 #*font: xft:erusfont
+Xterm*locale: true
+xterm*termName: xterm-256color
+
 
 
 *foreground: #ababab
