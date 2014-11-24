@@ -38,7 +38,6 @@ usage(){
 deploy(){
     if [ retval != 0 ]
     then
-        cp .vimrc.bundles.local $HOME
         cp .vimrc.local $HOME
         cp .Xdefaults $HOME
         cp .zshrc $HOME
@@ -52,7 +51,6 @@ deploy(){
 }
 
 backup(){
-        cp $HOME/.vimrc.bundles.local .
         cp $HOME/.vimrc.local .
         cp $HOME/.Xdefaults .
         cp $HOME/.zshrc .
