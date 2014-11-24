@@ -39,7 +39,7 @@ deploy(){
     if [ retval != 0 ]
     then
         cp .vimrc.local $HOME
-        cp .Xdefaults $HOME
+        cp .Xresources $HOME
         cp .zshrc $HOME
         cp -r .i3 $HOME
         cp .xinitrc $HOME
@@ -52,7 +52,7 @@ deploy(){
 
 backup(){
         cp $HOME/.vimrc.local .
-        cp $HOME/.Xdefaults .
+        cp $HOME/.Xresources .
         cp $HOME/.zshrc .
         cp -r $HOME/.i3 .
         cp $HOME/.xinitrc .
