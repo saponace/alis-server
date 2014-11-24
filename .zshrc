@@ -7,7 +7,6 @@
 
 
 # Variables
-    export ZSH=$HOME/.oh-my-zsh
     export HISTFILE=~/.histfile
     export HISTSIZE=1000
     export SAVEHIST=1000
@@ -25,16 +24,34 @@
 
 
 # Aliases
-    alias grep='grep --color=auto'
     alias ls='ls --color=auto --human-readable -p --group-directories-first'
     alias l='ls'
     alias ll='ls -lA'
-    alias p='pwd'
+
     alias cp='cp --interactive'
     alias mv='mv --interactive'
     alias rm='rm --interactive --verbose'
-    alias Xrecord='ffmpeg -f x11grab -s 1280x800 -r 25 -i :0.0 -qscale 0 /tmp/out.mkv'
+    
+    alias grep='grep --color=auto'
+    alias p='pwd'
+    alias h='history'
     alias sshr='ssh rsomdecosteles@ssh.enseirb-matmeca.fr'
+
+    # because typing 'cd' is A LOT of work!!
+        alias ..='cd ../'
+        alias ...='cd ../../'
+        alias ....='cd ../../../'
+        alias .....='cd ../../../../'
+
+
+
+# Function duing. First arg: search depth
+    #function dud (){
+    #if[[$# == 0]]; then
+        #echo 1
+    #fi
+    #du -h --max-depth=$1
+#}
 
 
 # Options
@@ -48,7 +65,6 @@
     setopt inc_append_history
     setopt hist_ignore_dups
     setopt hist_ignore_space
-    HIST_STAMPS="dd.mm.yyyy"            # show date in history, OhMyZsh
 
 
 # Correction
@@ -71,35 +87,42 @@
     setopt extendedglob
 
 
-# Bindkey
-    case $TERM in 
-        linux)
-        bindkey "^[[2~" yank # Inser / Insertion
-        bindkey "^[[3~" delete-char # Suppr / Retour arrière
-        bindkey "^[[5~" up-line-or-history # Page Up / Page précédente
-        bindkey "^[[6~" down-line-or-history # Page Down / Page suivante
-        bindkey "^[[1~" beginning-of-line # Home / Début
-        bindkey "^[[4~" end-of-line # End / Fin
-        bindkey "^E" expand-cmd-path
-        bindkey "^[[A" up-line-or-search
-        bindkey "^[[B" down-line-or-search
-    ;;
-        *xterm*|*rxvt*)
-        bindkey "^[[2~" yank # Inser / Insertion
-        bindkey "^[[3~" delete-char # Suppr / Retour arrière
-        bindkey "^[[5~" up-line-or-history # Page Up / Page précédente
-        bindkey "^[[6~" down-line-or-history # Page Down / Page suivante
-        bindkey "^[[7~" beginning-of-line # Home / Début
-        bindkey "^[[8~" end-of-line # End / Fin
-        bindkey "^E" expand-cmd-path
-        bindkey "^[[A" up-line-or-search
-        bindkey "^[[B" down-line-or-search
-    ;;
-    esac
+# Git aliases
+    alias g='git'
+        compdef g=git
+    alias gst='git status'
+        compdef _git gst=git-status
+    alias gco= 'git commit -m'
+        compdef _git gco=git-commit-m
+    alias gd='git diff'
+        compdef _git gd=git-diff
+    alias gl='git pull'
+        compdef _git gl=git-pull
+    alias gup='git pull --rebase'
+        compdef _git gup=git-fetch
+    alias gp='git push'
+        compdef _git gp=git-push
+    alias gd='git diff'
+        gdv() { git diff -w "$@" | view - }
+        compdef _git gdv=git-diff
+    alias gdt='git difftool'
 
 
-#Oh my ZSH
-    export ZSH=$HOME/.oh-my-zsh
-    #ZSH_THEME="robbyrussel"
-    source $ZSH/oh-my-zsh.sh
-    plugins=(git)
+# SVN aliases
+    alias s="svn"
+        compdef s=svn
+    alias sl="svn log"
+        compdef _svn sl=svn-log
+    alias sst="svn status"
+        compdef _svn sst=svn-status
+    alias sc="svn commit -m"
+        compdef _svn sc=svn-commit-m
+    alias sup="svn update"
+        compdef _svn sup=svn-update
+    alias sd="svn diff"
+        compdef _svn sd=svn-diff
+    alias saa="svn status | grep '^?' | sed 's/^? *\(.*\)/\"\1\"/g' | xargs svn add"
+        compdef _svn saa=svn-status-add
+    alias sra="svn status | grep '^!' | sed 's/^! *\(.*\)/\"\1\"/g' | xargs svn rm"
+        compdef _svn sra=svn-status-rm
+
