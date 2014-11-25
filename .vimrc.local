@@ -1,5 +1,5 @@
 set timeoutlen=1000                   " set change from insert mode to normal mode immediate to 1s
-set relativenumber                    " set linenumbering to relative in normal mode
+"set relativenumber                    " set linenumbering to relative in normal mode
 let g:spf13_no_autochdir = 1          " do not change vim working dir when opening a file in  different dir
 map <leader>i ggVG=                   " Indent the whole file
 map <C-l> <C-l>:nohl<CR>              " Remove highlight search
