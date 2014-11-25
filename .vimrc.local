@@ -51,7 +51,7 @@ let g:ctrlp_working_path_mode = 0
     
 
 " Airline
-    let g:airline_theme='solarized'       "use solarized as default airline theme
+    let g:airline_theme='murmur'       "use murmur as default airline theme
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}
 	endif
