@@ -44,6 +44,7 @@ deploy(){
         cp .zshrc $HOME
         cp -r .i3 $HOME
         cp .xinitrc $HOME
+        cp .i3status.conf $HOME
 
         #cp slim.conf /etc/
         #cp -r slim-minimal/ /usr/share/slim/themes/ 
@@ -58,6 +59,7 @@ backup(){
         cp $HOME/.zshrc .
         cp -r $HOME/.i3 .
         cp $HOME/.xinitrc .
+        cp $HOME/.i3status.conf .
 
         cp /etc/slim.conf slim.conf
         #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
