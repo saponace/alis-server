@@ -1,7 +1,6 @@
 set timeoutlen=1000                   " set change from insert mode to normal mode immediate to 1s
 set relativenumber                    " set linenumbering to relative in normal mode
 let g:spf13_no_autochdir = 1          " do not change vim working dir when opening a file in  different dir
-colorscheme solarized                 " set the default colorscheme
 map <leader>i ggVG=                   " Indent the whole file
 map <C-l> <C-l>:nohl<CR>              " Remove highlight search
 cmap cwd lcd %:p:h<CR>                " Change working directory to that of the current file
@@ -44,6 +43,12 @@ let g:ctrlp_working_path_mode = 0
 	nmap <leader>f8 :set foldlevel=8<CR>
 	nmap <leader>f9 :set foldlevel=9<CR>
 
+    
+" Colorscheme
+    colorscheme solarized                 " set the default colorscheme
+    " its normal that the colors do not macth with the real solarized theme.
+    " modify .Xresources to do so
+    
 
 " Airline
     let g:airline_theme='solarized'       "use solarized as default airline theme
@@ -63,10 +68,9 @@ let g:ctrlp_working_path_mode = 0
 	let g:airline_symbols.paste = '∥'
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline_symbols.whitespace = 'Ξ'
-	let g:airline_theme='murmur'
 
 
-"arrow keys do not do anything, use hjkl
+"arrow keys do not do anything in normal mode
     noremap <Up> <NOP>
     noremap <Down> <NOP>
     noremap <Left> <NOP>
