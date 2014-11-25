@@ -20,8 +20,17 @@
 
 # Prompt
     autoload -U colors && colors
-    PROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%1~] %{$reset_color%}%"
+    SHORTPROMPT="%{$fg[green]%}>%{$reset_color%}"
+    MEDIUMPROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%1~] %{$reset_color%}%"
+    LONGPROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%~] %{$reset_color%}#%"
+    RPROMPTDATE="%{$fg[cyan]%}%*%{$reset_color%}"
+    
+    PROMPT=$MEDIUMPROMPT
 
+    alias short='export PROMPT=$SHORTPROMPT && export RPROMPT=""'
+    alias medium='export PROMPT=$MEDIUMPROMPT && export RPROMPT=""'
+    alias long='export PROMPT=$LONGPROMPT && export RPROMPT=$RPROMPTDATE'
+    
 
 # Aliases
     alias ls='ls --color=auto --human-readable -p --group-directories-first'
