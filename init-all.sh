@@ -14,7 +14,8 @@ usage(){
 
 
 intallYaourt(){
-
+    echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+    pacman -Sy yaourt
 }
 
 
@@ -22,16 +23,11 @@ insatllPackages(){
 
 }
 
- # Oh My ZSH, ZSH config and plugin pack
-installOhMyZsh(){
-    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh  # clone Oh my ZSH git repo
-    sudo cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc   # copy .zshrc template file 
-    sudo chsh -s /bin/zsh saponace                           # change default shell to ZSH
-}
+sudo chsh -s /bin/zsh saponace                           # change default shell to ZSH
 
 
 
-installWithCurl(){
+installSpf13(){
     sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 }
 
