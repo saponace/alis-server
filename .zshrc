@@ -12,8 +12,7 @@
     export SAVEHIST=1000
     export GREP_COLOR=31
     export EDITOR=/usr/bin/vim
-    export MANPAGER="/usr/bin/less"
-    export MANPAGER="/usr/bin/most"
+    export MANPAGER="/usr/bin/most -s"
     export LC_ALL=en_US.UTF-8
     export LANG="$LC_ALL"
     export LANGUAGE="$LC_ALL"
