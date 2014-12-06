@@ -77,7 +77,7 @@
 
 
 # Correction
-    setopt correctall
+    #setopt correctall
 
 
 # Auto-completion
