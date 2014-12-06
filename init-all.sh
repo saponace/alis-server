@@ -7,6 +7,8 @@
 
 #!/bin/bash
 
+PA = pacman -S
+
 usage(){
 	echo "Usage: $0 ..."
 }
@@ -29,8 +31,8 @@ intallYaourt(){
 
 
 installSpf13(){
-    sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 }
+sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 
 
 installApache(){
@@ -56,7 +58,7 @@ installNetworkManager(){
 
 
 insatllPackages(){
-
+    PA jdk7-openjdk    # Java
 }
 
 
