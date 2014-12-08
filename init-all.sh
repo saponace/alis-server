@@ -26,7 +26,7 @@ all(){
 
 intallYaourt(){
     echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
-    pacman -Sy yaourt
+    PA yaourt
 }
 
 
@@ -36,9 +36,9 @@ sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin p
 
 
 installApache(){
-    pacman -S apache
-    pacman -S php php-apache
-    pacman -S mysql
+    PA apache
+    PA php-apache
+    PA mysql
     # Allow the use of PHP in apache
     echo -e "# Use for PHP 5.x:\nLoadModule php5_module       modules/libphp5.so\n" >> /etc/httpd/conf/httpd.conf
     ehco -e "AddHandler php5-script php\nInclude conf/extra/php5_module.conf" >> /etc/http/conf/httpd.conf
@@ -48,9 +48,10 @@ installApache(){
 
 # Network manager
 installNetworkManager(){
-    pacman -S networkmanager 
+    PA wpa_supplicant
+    PA networkmanager 
     systemctl enable NetworkManager
-    pacman -S network-manager-applet gnome-keyring gnome-icon-theme
+    PA network-manager-applet gnome-keyring gnome-icon-theme
     #(si marche pas, désactiver ipv6 dans dhcpcp)
 }
 
@@ -58,11 +59,50 @@ installNetworkManager(){
 
 
 insatllPackages(){
-    PA jdk7-openjdk    # Java
+    # X server
+    PA xorg-server xorg-server-utils xorg-xinit xter xorg-xclock xorg-twm
+    # graphic drivers
+    PA mesa xf86-video-vesa xf86-video-ati
+    # touchpad drivers
+    PA xf86-input-synaptics
+    # login manager
+    PA slim
+    # display manager and app launcher
+    PA i3 dmenu
+    # sound server
+    PA alsa-utils
+    # manpager
+    PA most
+    # access X clipboard
+    PA xclip
+    # keybindings
+    PA wkeybindings
+    # file explorer
+    PA ranger
+    # web navigator and flash extension
+    PA chromium chromium-pepper-flash
+    # utils
+    PA zsh wget openssh svn rsync
+    # pimp
+    PA unzip
+
+    # Java
+    PA jdk7-openjdk
 }
 
 
+initSettings(){
+    # add saponace to wheel group (sudoers)
+    useradd -m -G wheel -s /bin/bash saponace
+    sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
+    
+    # use zsh as default shell
+    chsh -s /bin/zsh saponace
 
+    # set locale (not sure if usefull)
+    export LC_ALL=en_US.UTF-8
+    export LANG="$LC_ALL"
+}
 
 
 
