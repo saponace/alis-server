@@ -1,5 +1,4 @@
 set timeoutlen=1000                   " set change from insert mode to normal mode immediate to 1s
-"set relativenumber                    " set linenumbering to relative in normal mode
 let g:spf13_no_autochdir = 1          " do not change vim working dir when opening a file in  different dir
 map <leader>i ggVG=                   " Indent the whole file
 map <C-l> <C-l>:nohl<CR>              " Remove highlight search
@@ -8,6 +7,9 @@ cmap w!! w !sudo tee % >/dev/null     " For when you forget to sudo.. Really Wri
 let g:ctrlp_working_path_mode = 0
 "UnBundle 'scrooloose/syntastic'
 
+
+" Expanding snippets
+    imap <C-o> <Plug>(neosnippet_expand_or_jump)
 
 " line wraping
     set wrap                              " automatic line 'return' when too long
@@ -18,10 +20,10 @@ let g:ctrlp_working_path_mode = 0
 " Maps to make handling windows a bit easier
 	set splitbelow                    " put window created on a split below
 	set splitright                    " put window created on a split on the right
-	noremap <silent> <leader>h :wincmd h<CR> " focus left window
-	noremap <silent> <leader>j :wincmd j<CR> " focus down window
-	noremap <silent> <leader>k :wincmd k<CR> " focus up window
-	noremap <silent> <leader>l :wincmd l<CR> " focus right window
+    noremap <A-h> :wincmd h<CR> " focus left window
+    noremap <A-j> :wincmd j<CR> " focus down window
+    noremap <A-k> :wincmd k<CR> " focus up window
+    noremap <A-l> :wincmd l<CR> " focus right window
 	noremap <silent> <leader>wc :close<CR>
 	noremap <silent> <leader>wo <C-W>o
 	noremap <silent> <leader>ml <C-W>L
@@ -31,18 +33,17 @@ let g:ctrlp_working_path_mode = 0
 
 
 " Code folding options
-    set foldmethod=syntax
-	nmap <leader>f0 :set foldlevel=0<CR>
-	nmap <leader>f1 :set foldlevel=1<CR>
-	nmap <leader>f2 :set foldlevel=2<CR>
-	nmap <leader>f3 :set foldlevel=3<CR>
-	nmap <leader>f4 :set foldlevel=4<CR>
-	nmap <leader>f5 :set foldlevel=5<CR>
-	nmap <leader>f6 :set foldlevel=6<CR>
-	nmap <leader>f7 :set foldlevel=7<CR>
-	nmap <leader>f8 :set foldlevel=8<CR>
-	nmap <leader>f9 :set foldlevel=9<CR>
-    set foldlevel=9
+    "set foldmethod=syntax
+	"nmap <leader>f0 :set foldlevel=0<CR>
+	"nmap <leader>f1 :set foldlevel=1<CR>
+	"nmap <leader>f2 :set foldlevel=2<CR>
+	"nmap <leader>f3 :set foldlevel=3<CR>
+	"nmap <leader>f4 :set foldlevel=4<CR>
+	"nmap <leader>f5 :set foldlevel=5<CR>
+	"nmap <leader>f6 :set foldlevel=6<CR>
+	"nmap <leader>f7 :set foldlevel=7<CR>
+	"nmap <leader>f8 :set foldlevel=8<CR>
+	"nmap <leader>f9 :set foldlevel=9<CR>
 
     
 " Colorscheme
@@ -54,7 +55,7 @@ let g:ctrlp_working_path_mode = 0
 " Airline
     let g:airline_theme='murmur'       "use murmur as default airline theme
 	if !exists('g:airline_symbols')
-		let g:airline_symbols = {}
+        let g:airline_symbols = {}
 	endif
 	let g:airline_left_sep = '»'
 	let g:airline_left_sep = '▶'
