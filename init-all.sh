@@ -17,12 +17,28 @@ usage(){
 all(){
     installYaourt()
     installSpf13()
-    installApache()
+    installLamp()
     installNetworkManager()
     installPackages()
-    sudo chsh -s /bin/zsh saponace                           # change default shell to ZSH
+    initSettings()
 }
 
+
+initSettings(){
+    #  change default shell to ZSH
+    sudo chsh -s /bin/zsh saponace
+
+    # add saponace to wheel group (sudoers)
+    useradd -m -G wheel -s /bin/bash saponace
+    sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
+    
+    # use zsh as default shell
+    chsh -s /bin/zsh saponace
+
+    # set locale (not sure if usefull)
+    export LC_ALL=en_US.UTF-8
+    export LANG="$LC_ALL"
+}
 
 intallYaourt(){
     echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
@@ -31,18 +47,24 @@ intallYaourt(){
 
 
 installSpf13(){
+    sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 }
-sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 
 
-installApache(){
+installlLamp(){
     PA apache
     PA php-apache
     PA mysql
+    PA phpmyadmin php-mcrypt
+
     # Allow the use of PHP in apache
     echo -e "# Use for PHP 5.x:\nLoadModule php5_module       modules/libphp5.so\n" >> /etc/httpd/conf/httpd.conf
     ehco -e "AddHandler php5-script php\nInclude conf/extra/php5_module.conf" >> /etc/http/conf/httpd.conf
     sed -i "s/mpm_event/mpm_prefork/g" /etc/httpd/conf/httpd.conf
+
+    # Combine php and mysql
+    sed -i "s/#extension=pdo_mysql.so/extension=pdo_mysql.so/g" /etc/php/php.ini
+    sed -i "s/#extension=mcrypt.so/extension=mcrypt.so/g" /etc/php/php.ini
 }
 
 
@@ -85,24 +107,16 @@ insatllPackages(){
     PA zsh wget openssh svn rsync
     # pimp
     PA unzip
+    # dejavu font
+    PA ttf-dejavu
 
+
+    
     # Java
     PA jdk7-openjdk
 }
 
 
-initSettings(){
-    # add saponace to wheel group (sudoers)
-    useradd -m -G wheel -s /bin/bash saponace
-    sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
-    
-    # use zsh as default shell
-    chsh -s /bin/zsh saponace
-
-    # set locale (not sure if usefull)
-    export LC_ALL=en_US.UTF-8
-    export LANG="$LC_ALL"
-}
 
 
 
