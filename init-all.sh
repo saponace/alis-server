@@ -59,12 +59,21 @@ installlLamp(){
 
     # Allow the use of PHP in apache
     echo -e "# Use for PHP 5.x:\nLoadModule php5_module       modules/libphp5.so\n" >> /etc/httpd/conf/httpd.conf
-    ehco -e "AddHandler php5-script php\nInclude conf/extra/php5_module.conf" >> /etc/http/conf/httpd.conf
+    echo -e "AddHandler php5-script php\nInclude conf/extra/php5_module.conf" >> /etc/http/conf/httpd.conf
     sed -i "s/mpm_event/mpm_prefork/g" /etc/httpd/conf/httpd.conf
 
     # Combine php and mysql
     sed -i "s/#extension=pdo_mysql.so/extension=pdo_mysql.so/g" /etc/php/php.ini
     sed -i "s/#extension=mcrypt.so/extension=mcrypt.so/g" /etc/php/php.ini
+
+    # phpmyadmin
+    sed -i "s#open_basedir = /#open_basedir = /etc/webapps/:/g" /etc/php/php.ini
+    echo -e 'Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"\n<Directory "/usr/share/webapps/phpMyAdmin/">\n' /etc/httpd/conf/extra/httpd-phpmyadmin.conf
+
+    echo -e "DirectoryIndex index.html index.php\nAllowOverride All\n Options FollowSymlinks\n" /etc/httpd/conf/extra/httpd-phpmyadmin.conf
+
+    echo -e "Require all granted\n</Directory>" /etc/httpd/conf/extra/httpd-phpmyadmin.conf
+    echo -e "Include conf /extra/httpd-phpmyadmin.conf" >> /etc/httpd/conf/httpd.conf
 }
 
 
@@ -110,7 +119,8 @@ insatllPackages(){
     # dejavu font
     PA ttf-dejavu
 
-
+    # texlive-most
+    PA texlive-most
     
     # Java
     PA jdk7-openjdk
