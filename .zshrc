@@ -1,11 +1,16 @@
 
+export LANG=en_US.UTF-8
+export LANGUAGE=${LANG}
+export LC_ALL=${LANG}
+
+
 zmodload zsh/{datetime,stat,zpty,system,clone,zprof,zselect}
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &> /dev/null
 autoload -Uz zargs zcalc
 
 
 
-
+#----- Aliases
 ## ls
     alias ls='ls --color=auto --human-readable -p --group-directories-first'
     alias l='ls'
@@ -21,23 +26,27 @@ autoload -Uz zargs zcalc
     alias mv='mv --interactive'
     alias rm='rm --interactive --verbose'
 
-
 ## because typing 'cd' is A LOT of work!!
     alias ..='cd ../'
     alias ...='cd ../../'
     alias ....='cd ../../../'
     alias .....='cd ../../../../'
 
+# Git and svn aliases at the end becauses need to set completion before 
 
-
+## Misc
 [[ -n ${commands[python2]} ]] && alias py=python2
 [[ -n ${commands[bzip2]} ]] && alias bz=bzip2
 [[ -n ${commands[gzip]} ]] && alias gz=gzip
 alias _=sudo
 
 
+
+
+
 ## Miscellaneous options
     setopt no_beep auto_cd
+
 
 ## try to avoid the 'zsh: no matches found...'
     setopt no_nomatch
@@ -45,6 +54,8 @@ alias _=sudo
 
 ## correction
     setopt correct
+
+    
 
 #----- Signals stuff
 ## do not send the HUP signal to running jobs when the shell exits
@@ -68,24 +79,24 @@ autoload -Uz colors && colors
 
 
 
-## privileged user prompt
+
+#----- Prompts
+## Long prompt
 [[ ${EUID} -ne 0 ]] && EUIDCOLOR=${fg_bold[blue]} || EUIDCOLOR=${fg[red]}
-## determine if the terminal support 256color here
 if [[ ${terminfo[colors]} == 256 ]];then
-    FRAMECOLOR='%F{32}'
+    FRAMECOLOR='%F{247}'
     FRAMECOLOR2='%f'
     if [[ ${EUID} -eq 0 ]];then
         HOSTNAMECOLOR='%B%F{black}'
         HOSTNAMECOLOR2='%F{white}'
     else
-        HOSTNAMECOLOR='%B%F{82}'
+        HOSTNAMECOLOR='%F{82}'
         HOSTNAMECOLOR2='%F{247}'
     fi
-    HOSTNAMECOLOR3='%F{123}'
-    HOSTNAMECOLOR4='%f%b'
+    HOSTNAMECOLOR3='%F{red}' HOSTNAMECOLOR4='%f%b'
     TIMEDATECOLOR='%F{99}'
     TIMEDATECOLOR2='%f'
-    PWDCOLOR=' %F{117}'
+    PWDCOLOR=' %F{250}'
     PWDCOLOR2='%f'
 else
     FRAMECOLOR='%B%F{blue}'
@@ -105,32 +116,11 @@ else
     PWDCOLOR2=''
 fi
 
+[[ ${LANG} =~ UTF-8 ]] && LONGPROMPT=$'\n'"${FRAMECOLOR}┌[${FRAMECOLOR2}%f%b${HOSTNAMECOLOR}%n${HOSTNAMECOLOR2}@${HOSTNAMECOLOR3}%m${HOSTNAMECOLOR4}${FRAMECOLOR}]─[${FRAMECOLOR2}${TIMEDATECOLOR}%D{%F %T}${TIMEDATECOLOR2}${FRAMECOLOR}]${FRAMECOLOR2}%(?..${FRAMECOLOR}─[%B%F{red}%?%f%b${FRAMECOLOR}]${FRAMECOLOR2})${PWDCOLOR}%~${PWDCOLOR2}\$(_-git_ps1)"$'\n'"${FRAMECOLOR}└─>${FRAMECOLOR2}%{${EUIDCOLOR}%} %#%f%b "
 
-
-[[ ${LANG} =~ UTF-8 ]] && PS1="${FRAMECOLOR}┌[${FRAMECOLOR2}%f%b${HOSTNAMECOLOR}%n${HOSTNAMECOLOR2}@${HOSTNAMECOLOR3}%m${HOSTNAMECOLOR4}${FRAMECOLOR}]─[${FRAMECOLOR2}${TIMEDATECOLOR}%D{%F %T}${TIMEDATECOLOR2}${FRAMECOLOR}]${FRAMECOLOR2}%(?..${FRAMECOLOR}─[%B%F{red}%?%f%b${FRAMECOLOR}]${FRAMECOLOR2})${PWDCOLOR}%~${PWDCOLOR2}\$(_-git_ps1)
-${FRAMECOLOR}└─>${FRAMECOLOR2}%{${EUIDCOLOR}%} %#%f%b "
-#RPS1='%(?..%F{red}:(%f)'
 PS2='%F{blue}> %f'
 RPS2='%F{red}\%f'
-
 unset EUIDCOLOR FRAMECOLOR FRAMECOLOR2 HOSTNAMECOLOR HOSTNAMECOLOR2 HOSTNAMECOLOR3 HOSTNAMECOLOR4 TIMEDATECOLOR TIMEDATECOLOR2 PWDCOLOR PWDCOLOR2
-
-
-
-# Prompt
-    autoload -U colors && colors
-    SHORTPROMPT="%{$fg[green]%}>%{$reset_color%}"
-    MEDIUMPROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%1~] %{$reset_color%}%"
-    LONGPROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%~] %{$reset_color%}%"
-    RPROMPTDATE="%{$fg[cyan]%}%*%{$reset_color%}"
-
-    PROMPT=$MEDIUMPROMPT
-
-    alias short='export PROMPT=$SHORTPROMPT && export RPROMPT=""'
-    alias medium='export PROMPT=$MEDIUMPROMPT && export RPROMPT=""'
-    alias long='export PROMPT=$LONGPROMPT && export RPROMPT=$RPROMPTDATE'
-
-
 
 ## Git PS1
 _-git_ps1() {
@@ -160,8 +150,25 @@ _-git_ps1() {
     fi
 }
 
+## Short Prompt
+SHORTPROMPT="%{$fg[green]%}>%{$reset_color%}"
 
-#----- Resource limits
+
+## Aliasing prompt changes
+alias short='export PROMPT=$SHORTPROMPT && export RPROMPT=""'
+alias long='export PROMPT=$LONGPROMPT'
+
+
+
+## Long prompt as default prompt
+PS1=$LONGPROMPT
+
+
+
+
+
+
+#----- Resources limit
 unlimit
 limit coredumpsize 0
 limit -s
@@ -188,7 +195,6 @@ HISTFILE=${ZDOTDIR:-${HOME}}/.zhistory
 HISTSIZE=65535
 ## the maximum number of history events to save in the history file
 SAVEHIST=${HISTSIZE}
-
 ## Directory history settings
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
@@ -196,6 +202,9 @@ add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-max 10
 ## file to save the directory history
 zstyle ':chpwd:*' recent-dirs-file ${ZDOTDIR:-$HOME}/.zdirs
+
+
+
 
 
 #----- Completion
@@ -231,64 +240,20 @@ zstyle ':completion:*:-tilde-::named-directories' ignored-patterns '_*'
 ## ignore the users that uninterested except really expected
 zstyle ':completion:*:*:*:users' ignored-patterns adm amanda amule apache at avahi avahi-autoipd beaglidx bin cacti canna colord clamav daemon dbus distcache dnsmasq dovecot fax ftp games gdm git gkrellmd gopher hacluster haldaemon halt http hsqldb ident incron junkbust kdm ldap lp mail mailman mailnull man messagebus mldonkey mysql nagios named nbd netdump news nfsnobody nobody nscd ntp nut nx obsrun openvpn operator pcap pdnsd polkitd postfix postgres privoxy pulse pvm quagga radvd rpc rpcuser rpm rtkit sagemath scard shutdown squid sshd statd svn sync tftp tor usbmux uucp uuidd vcsa wwwrun xfs '_*' 'systemd-*' ${USERNAME}
 zstyle ':completion:*' single-ignored show
-
 autoload -Uz compinit
 compinit
-
 for i in i386 x86_64 linux32 linux64 pty ptypg stdoutisatty unbuffer me proxychains grc rlwrap;do
     compdef ${i}=command
 done
 
 
-# Git aliases
-    alias g='git'
-        compdef g=git
-    alias gst='git status'
-        compdef _git gst=git-status
-    alias gco= 'git commit -m'
-        compdef _git gco=git-commit-m
-    alias gd='git diff'
-        compdef _git gd=git-diff
-    alias gl='git pull'
-        compdef _git gl=git-pull
-    alias gup='git pull --rebase'
-        compdef _git gup=git-fetch
-    alias gp='git push'
-        compdef _git gp=git-push
-    alias gd='git diff'
-        gdv() { git diff -w "$@" | view - }
-        compdef _git gdv=git-diff
-    alias gdt='git difftool'
-
-
-# SVN aliases
-    alias s="svn"
-        compdef s=svn
-    alias sl="svn log"
-        compdef _svn sl=svn-log
-    alias sst="svn status"
-        compdef _svn sst=svn-status
-    alias sc="svn commit -m"
-        compdef _svn sc=svn-commit-m
-    alias sup="svn update"
-        compdef _svn sup=svn-update
-    alias sd="svn diff"
-        compdef _svn sd=svn-diff
-    alias saa="svn status | grep '^?' | sed 's/^? *\(.*\)/\"\1\"/g' | xargs svn add"
-        compdef _svn saa=svn-status-add
-    alias sra="svn status | grep '^!' | sed 's/^! *\(.*\)/\"\1\"/g' | xargs svn rm"
-        compdef _svn sra=svn-status-rm
 
 
 
-
-
-
-## Print complete command and check correctness
+## Print the complete command and check correctness
 _-accept-line() {
 	local -a WORDS
 	WORDS=( ${(z)BUFFER} )
-## unfortunately ${${(z)BUFFER}[1]} works only for at least two words, thus I had to use additional variable WORDS here.
 	local -r FIRSTWORD=${WORDS[1]}
 	local -r GREEN=$'\e[32m' RESET_COLORS=$'\e[0m'
 	[[ "$(whence -w $FIRSTWORD 2>/dev/null)" == "${FIRSTWORD}: alias" ]] &&
@@ -299,10 +264,14 @@ _-accept-line() {
 
 
 
+
+
 ## grep: exclude these special directories for a better matching speed
 [[ -n ${commands[grep]} ]] && {
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32';for PATTERN in .{cvs,git,hg,svn};do GREP_OPTIONS+=" --exclude-dir=${PATTERN}" done
 }
+
+
 
 
 # less as default pager/viewer
@@ -311,13 +280,15 @@ export PAGER=less
 export MANPAGER=${PAGER}
 export VISUAL=${PAGER}
 }
-
-
 [[ -n ${commands[vim]} ]] && export EDITOR=vim
 export TAR_OPTIONS='--delay-directory-restore'
 [[ -n ${commands[journalctl]} ]] && export SYSTEMD_LESS=FRXM
 [[ -n ${commands[less]} ]] && export LESS=RM
 [[ -n ${commands[urxvtd]} ]] && export RXVT_SOCKET=/tmp/rxvt-unicode-${EUID}-${HOST}
+
+
+
+
 
 ## for colored man page
 [[ -n ${commands[less]} ]] && export LESS_TERMCAP_mb=$'\E[1;31m' \
@@ -328,9 +299,8 @@ export TAR_OPTIONS='--delay-directory-restore'
     LESS_TERMCAP_ue=$'\E[0m' \
     LESS_TERMCAP_us=$'\E[1;32m'
 
-export LANG=en_US.UTF-8
-export LANGUAGE=${LANG}
-export LC_ALL=${LANG}
+
+
 
 
 ## create a dir and cd in it
@@ -358,6 +328,8 @@ mkdirc() {
 
 
 
+
+
 ## create a random named tmp file and cd in it
 cdtmp() {
     if [[ "${1}" == '--help' || "${1}" == '-h' || $# -gt 1 ]];then
@@ -374,6 +346,9 @@ cdtmp() {
 }
 
 
+
+
+
 ## print current tty
 tty() {
     if [[ $# -eq 0 ]];then
@@ -382,6 +357,9 @@ tty() {
         command tty $@
     fi
 }
+
+
+
 
 
 ## dowload a webpage
@@ -422,6 +400,7 @@ fi
 
 
 
+
 ## Display help
 help() {
     local HELPDIR=${HELPDIR:-/usr/share/zsh/${ZSH_VERSION}/help}
@@ -450,44 +429,49 @@ help() {
         else
             man $@
         fi
-    }
-
-
-    ## Create backup file
-    ~() {
-    _-intro() {
-        _-automatic-colored
-        echo "${bldblu}Usage:${rst} ${bldgrn}~${rst} [${bldcyn}FILE${rst}]
-        backup a file or directory using cp(1)
-
-        The target file name is the original name plus a time stamp attached.(%Y%m%d%H%M%S)"
-    }
-    if [[ $# -eq 0 && ${PWD} != ${HOME} ]];then
-        cd ${HOME}
-    elif [[ $# -eq 1 ]];then
-        _-automatic-colored
-        if [[ ! -e ${1} ]];then
-            echo "${bldred}==> ${bld}Aborted: File ${1} doesn't exist${rst}\n"
-            _-intro
-            return 1
-        elif [[ ! -f ${1} ]];then
-            echo "${bldred}==> ${bld}Aborted: ${1} is not a regular file${rst}"
-            return 1
-        elif [[ ! -r ${1} ]];then
-            echo "${bldred}==> ${bld}Aborted: File is unaccessible${rst}"
-            return 1
-        elif [[ ! -s ${1} ]];then
-            echo "${bldblu}==> ${bld}Cancelled: This is a zero-byte file, just why do you want to backup it?${rst}"
-            return 2
-        else
-            local DESTNATIONFILENAME="${1}~`strftime '%Y%m%d%H%M%S' ${EPOCHSECONDS}`"
-            cp -b "${1}" "${DESTNATIONFILENAME}" && echo "${bldgrn}==> ${bld}Finish writing backup: ${DESTNATIONFILENAME}${rst}"
-        fi
-    else
-        _-intro
-    fi
-    unset -f _-intro
 }
+
+
+
+
+
+## Create backup file
+~() {
+_-intro() {
+    _-automatic-colored
+    echo "${bldblu}Usage:${rst} ${bldgrn}~${rst} [${bldcyn}FILE${rst}]
+    backup a file or directory using cp(1)
+
+    The target file name is the original name plus a time stamp attached.(%Y%m%d%H%M%S)"
+}
+if [[ $# -eq 0 && ${PWD} != ${HOME} ]];then
+    cd ${HOME}
+elif [[ $# -eq 1 ]];then
+    _-automatic-colored
+    if [[ ! -e ${1} ]];then
+        echo "${bldred}==> ${bld}Aborted: File ${1} doesn't exist${rst}\n"
+        _-intro
+        return 1
+    elif [[ ! -f ${1} ]];then
+        echo "${bldred}==> ${bld}Aborted: ${1} is not a regular file${rst}"
+        return 1
+    elif [[ ! -r ${1} ]];then
+        echo "${bldred}==> ${bld}Aborted: File is unaccessible${rst}"
+        return 1
+    elif [[ ! -s ${1} ]];then
+        echo "${bldblu}==> ${bld}Cancelled: This is a zero-byte file, just why do you want to backup it?${rst}"
+        return 2
+    else
+        local DESTNATIONFILENAME="${1}~`strftime '%Y%m%d%H%M%S' ${EPOCHSECONDS}`"
+        cp -b "${1}" "${DESTNATIONFILENAME}" && echo "${bldgrn}==> ${bld}Finish writing backup: ${DESTNATIONFILENAME}${rst}"
+    fi
+else
+    _-intro
+fi
+unset -f _-intro
+}
+
+
 
 
 
@@ -505,6 +489,7 @@ su() {
 
 
 
+
 ## Print availible disk space
 df() {
     if [[ $# -eq 0 ]];then
@@ -513,6 +498,10 @@ df() {
         command df $@
     fi
 }
+
+
+
+
 
 ## Print files size
 [[ -n ${commands[${PAGER:-less}]} ]] && du() {
@@ -523,6 +512,10 @@ else
 fi
 }
 
+
+
+
+
 ## Show who is logged on and what they are doing
 [[ -n ${commands[w]} ]] && w() {
 if [[ $# -eq 0 ]];then
@@ -531,6 +524,9 @@ else
     command w $@
 fi
 }
+
+
+
 
 
 ## Show who is logged on
@@ -554,6 +550,7 @@ fi
 
 
 
+
 ## Print terminal display infos
 rsz() {
     if [[ -t 0 && $# -eq 0 ]];then
@@ -571,7 +568,6 @@ rsz() {
         [[ -n ${commands[repo-elephant]} ]] && repo-elephant || print 'Usage: rsz'
     fi
 }
-
 
 
 
@@ -605,6 +601,7 @@ _-automatic-colored() {
 
 
 
+
 ## Terminal emulator title settings ##
 case ${TERM} in
     xterm*|rxvt*|ansi)
@@ -618,6 +615,9 @@ case ${TERM} in
         add-zsh-hook precmd _default_terminal_title
         add-zsh-hook preexec _command_terminal_title ;;
 esac
+
+
+
 
 
 ## make sure that the terminal is in application mode when zle is active, since only then values from ${terminfo} are valid
@@ -659,3 +659,46 @@ bindkey '^[[1;5D' backward-word
 #bindkey ${terminfo[kich1]} overwrite-mode
 ## C-x,C-h: This is missing from the emacs keymap, but not from the vi one
 bindkey '^x^h' _complete_help
+
+
+
+
+
+# Git and svn aliases defined at the end because need completiion set before
+## Git aliases
+    alias g='git'
+        compdef g=git
+    alias gst='git status'
+        compdef _git gst=git-status
+    alias gco= 'git commit -m'
+        compdef _git gco=git-commit-m
+    alias gd='git diff'
+        compdef _git gd=git-diff
+    alias gl='git pull'
+        compdef _git gl=git-pull
+    alias gup='git pull --rebase'
+        compdef _git gup=git-fetch
+    alias gp='git push'
+        compdef _git gp=git-push
+    alias gd='git diff'
+        gdv() { git diff -w "$@" | view - }
+        compdef _git gdv=git-diff
+    alias gdt='git difftool'
+
+## SVN aliases
+    alias s="svn"
+        compdef s=svn
+    alias sl="svn log"
+        compdef _svn sl=svn-log
+    alias sst="svn status"
+        compdef _svn sst=svn-status
+    alias sc="svn commit -m"
+        compdef _svn sc=svn-commit-m
+    alias sup="svn update"
+        compdef _svn sup=svn-update
+    alias sd="svn diff"
+        compdef _svn sd=svn-diff
+    alias saa="svn status | grep '^?' | sed 's/^? *\(.*\)/\"\1\"/g' | xargs svn add"
+        compdef _svn saa=svn-status-add
+    alias sra="svn status | grep '^!' | sed 's/^! *\(.*\)/\"\1\"/g' | xargs svn rm"
+        compdef _svn sra=svn-status-rm
