@@ -24,6 +24,12 @@ let g:ctrlp_working_path_mode = 0
     noremap <A-j> :wincmd j<CR> " focus down window
     noremap <A-k> :wincmd k<CR> " focus up window
     noremap <A-l> :wincmd l<CR> " focus right window
+
+    noremap <silent> <leader>h :wincmd h<CR> " focus left window
+    noremap <silent> <leader>j :wincmd j<CR> " focus down window
+    noremap <silent> <leader>k :wincmd k<CR> " focus up window
+    noremap <silent> <leader>l :wincmd l<CR> " focus right window
+
 	noremap <silent> <leader>wc :close<CR>
 	noremap <silent> <leader>wo <C-W>o
 	noremap <silent> <leader>ml <C-W>L
