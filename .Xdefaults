@@ -1,18 +1,19 @@
-XTerm*termName: xterm-256color
-xterm*geometry: 82x20
-xterm*dynamicColors: true
-xterm*utf8: 2
-xterm*eightBitInput: true
-xterm*saveLines: 512
-xterm*scrollKey: true
-xterm*scrollTtyOutput: true
-xterm*scrollBar: false
-xterm*rightScrollBar: false
-xterm*jumpScroll: false
-xterm*multiScroll: true
-xterm*toolBar: false
+UXTerm*termName: xterm-256color
+Uxterm*geometry: 82x20
+Uxterm*dynamicColors: true
+Uxterm*utf8: 1
+Uxterm*locale: true
+Uxterm*eightBitInput: true
+Uxterm*saveLines: 2048
+Uxterm*scrollKey: true
+Uxterm*scrollTtyOutput: true
+Uxterm*scrollBar: false
+Uxterm*rightScrollBar: false
+Uxterm*jumpScroll: false
+Uxterm*multiScroll: true
+Uxterm*toolBar: false
 
-
+URxvt.scrollBar: false
 
 
 
