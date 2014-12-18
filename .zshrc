@@ -86,6 +86,7 @@ autoload -Uz colors && colors
 if [[ ${terminfo[colors]} == 256 ]];then
     FRAMECOLOR='%F{247}'
     FRAMECOLOR2='%f'
+    EUIDCOLOR='%F{99}'
     if [[ ${EUID} -eq 0 ]];then
         HOSTNAMECOLOR='%B%F{black}'
         HOSTNAMECOLOR2='%F{white}'
