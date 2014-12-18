@@ -14,17 +14,18 @@ usage(){
 }
 
 
-all(){
-    installYaourt()
-    installSpf13()
-    installLamp()
-    installNetworkManager()
-    installPackages()
-    initSettings()
+all() {
+    installYaourt
+    installSpf13
+    installLamp
+    installNetworkManager
+    installPackages
+    initSettings
+    rootEnv
 }
 
 
-initSettings(){
+initSettings (){
     #  change default shell to ZSH
     sudo chsh -s /bin/zsh saponace
 
@@ -40,18 +41,18 @@ initSettings(){
     export LANG="$LC_ALL"
 }
 
-intallYaourt(){
+intallYaourt (){
     echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
     PA yaourt
 }
 
 
-installSpf13(){
+installSpf13 (){
     sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 }
 
 
-installlLamp(){
+installlLamp (){
     PA apache
     PA php-apache
     PA mysql
@@ -78,7 +79,7 @@ installlLamp(){
 
 
 # Network manager
-installNetworkManager(){
+installNetworkManager (){
     PA wpa_supplicant
     PA networkmanager 
     systemctl enable NetworkManager
@@ -89,7 +90,7 @@ installNetworkManager(){
 
 
 
-insatllPackages(){
+installPackages (){
     # X server
     PA xorg-server xorg-server-utils xorg-xinit xter xorg-xclock xorg-twm
     # graphic drivers
@@ -125,6 +126,25 @@ insatllPackages(){
     # Java
     PA jdk7-openjdk
 }
+
+
+
+
+rootEnv (){
+    cd /root
+    # .zshrc
+    ln -s /home/saponace/.zshrc .zshrc
+    # .vimrc
+    ln -s /home/saponace/.vimrc .vimrc
+    ln -s /home/saponace/.vim/ .vim
+    ln -s /home/saponace/.vimrc.local .vimrc.local
+    ln -s /home/saponace/.vimrc.bundles .vimrc.bundles
+    ln -s /home/saponace/.vimrc.bundles.local .vimrc.bundles.local
+    ln -s /home/saponace/.vimrc.before .vimrc.before
+    # use zsh as default shell
+    chsh -s /bin/zsh root
+}
+
 
 
 
