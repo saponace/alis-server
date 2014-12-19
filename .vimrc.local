@@ -17,6 +17,20 @@ let g:ctrlp_working_path_mode = 0
     set nolist                            " lists can be cut
 
 
+"arrow keys do not do anything in normal mode
+    noremap <Up> <NOP>
+    noremap <Down> <NOP>
+    noremap <Left> <NOP>
+    noremap <Right> <NOP>
+
+
+"move lines up/down with Alt+arrows
+    nnoremap <C-j> :m .+1<CR>==
+    nnoremap <C-k> :m .-2<CR>==
+    vnoremap <C-j> :m '>+1<CR>gv=gv
+    vnoremap <C-k> :m '<-2<CR>gv=gv
+
+
 " Maps to make handling windows a bit easier
 	set splitbelow                    " put window created on a split below
 	set splitright                    " put window created on a split on the right
@@ -30,26 +44,19 @@ let g:ctrlp_working_path_mode = 0
     noremap <silent> <leader>k :wincmd k<CR> " focus up window
     noremap <silent> <leader>l :wincmd l<CR> " focus right window
 
-	noremap <silent> <leader>wc :close<CR>
-	noremap <silent> <leader>wo <C-W>o
-	noremap <silent> <leader>ml <C-W>L
-	noremap <silent> <leader>mk <C-W>K
-	noremap <silent> <leader>mh <C-W>H
-	noremap <silent> <leader>mj <C-W>J
-
 
 " Code folding options
     "set foldmethod=syntax
-	"nmap <leader>f0 :set foldlevel=0<CR>
-	"nmap <leader>f1 :set foldlevel=1<CR>
-	"nmap <leader>f2 :set foldlevel=2<CR>
-	"nmap <leader>f3 :set foldlevel=3<CR>
-	"nmap <leader>f4 :set foldlevel=4<CR>
-	"nmap <leader>f5 :set foldlevel=5<CR>
-	"nmap <leader>f6 :set foldlevel=6<CR>
-	"nmap <leader>f7 :set foldlevel=7<CR>
-	"nmap <leader>f8 :set foldlevel=8<CR>
-	"nmap <leader>f9 :set foldlevel=9<CR>
+    nmap <leader>f0 :set foldlevel=0<CR>
+    nmap <leader>f1 :set foldlevel=1<CR>
+    nmap <leader>f2 :set foldlevel=2<CR>
+    nmap <leader>f3 :set foldlevel=3<CR>
+    nmap <leader>f4 :set foldlevel=4<CR>
+    nmap <leader>f5 :set foldlevel=5<CR>
+    nmap <leader>f6 :set foldlevel=6<CR>
+    nmap <leader>f7 :set foldlevel=7<CR>
+    nmap <leader>f8 :set foldlevel=8<CR>
+    nmap <leader>f9 :set foldlevel=9<CR>
 
     
 " Colorscheme
@@ -77,17 +84,19 @@ let g:ctrlp_working_path_mode = 0
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline_symbols.whitespace = 'Ξ'
 
+    
+" EasyMotion
+    " easymotion search highlight color same as vim search highligh color
+    hi link EasyMotionShade Comment
+    " Override vim built-it search
+        map  / <Plug>(easymotion-sn)
+        omap / <Plug>(easymotion-tn)
+    " add hjkl move
+        map <Leader><Leader>l <Plug>(easymotion-lineforward)
+        map <Leader><Leader>j <Plug>(easymotion-j)
+        map <Leader><Leader>k <Plug>(easymotion-k)
+        map <Leader><Leader>h <Plug>(easymotion-linebackward)
+    " keep cursor colum when JK motion
+        let g:EasyMotion_startofline = 0
 
-"arrow keys do not do anything in normal mode
-    noremap <Up> <NOP>
-    noremap <Down> <NOP>
-    noremap <Left> <NOP>
-    noremap <Right> <NOP>
-
-
-"move lines up/down with Alt+arrows
-    nnoremap <C-j> :m .+1<CR>==
-    nnoremap <C-k> :m .-2<CR>==
-    vnoremap <C-j> :m '>+1<CR>gv=gv
-    vnoremap <C-k> :m '<-2<CR>gv=gv
 
