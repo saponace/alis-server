@@ -5,7 +5,6 @@ map <C-l> <C-l>:nohl<CR>              " Remove highlight search
 cmap cwd lcd %:p:h<CR>                " Change working directory to that of the current file
 cmap w!! w !sudo tee % >/dev/null     " For when you forget to sudo.. Really Write the file.
 let g:ctrlp_working_path_mode = 0
-"UnBundle 'scrooloose/syntastic'
 
 
 " Expanding snippets
@@ -63,7 +62,6 @@ let g:ctrlp_working_path_mode = 0
     colorscheme solarized                 " set the default colorscheme
     " its normal that the colors do not macth with the real solarized theme.
     " modify .Xresources to do so
-    
 
 " Airline
     let g:airline_theme='murmur'       "use murmur as default airline theme
