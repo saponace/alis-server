@@ -66,6 +66,8 @@ installCore(){
     PA chromium chromium-pepper-flash
     # dejavu font
     PA ttf-dejavu
+    # Inconsolata font
+    PA ttf-inconsolata
 }
 
 
