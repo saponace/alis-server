@@ -15,14 +15,12 @@ usage(){
 
 
 all() {
-    installYaourt
-    installSpf13
-    installLamp
-    installNetworkManager
-    installPackages
     initSettings
+    installPackages
     rootEnv
 }
+
+
 
 
 initSettings (){
@@ -41,15 +39,114 @@ initSettings (){
     export LANG="$LC_ALL"
 }
 
+
+
+installCore(){
+    # X server
+    PA xorg-server xorg-server-utils xorg-xinit xter xorg-xclock xorg-twm
+    # graphic drivers
+    PA mesa xf86-video-vesa xf86-video-ati
+    # touchpad drivers
+    PA xf86-input-synaptics
+    # login manager
+    PA slim
+    # display manager and app launcher
+    PA i3 dmenu
+    # sound server
+    PA alsa-utils
+    # manpager
+    PA most
+    # access X clipboard
+    PA xclip
+    # keybindings
+    PA wkeybindings
+    # file explorer
+    PA ranger
+    # web navigator and flash extension
+    PA chromium chromium-pepper-flash
+    # dejavu font
+    PA ttf-dejavu
+}
+
+
+
+instllCasual(){
+    #Network manager
+    installNetworkManager
+    # Yaourt package manager
+    installYaourt
+    # pimp
+    PA unzip
+    # VLC media player
+    PA vlc
+}
+
+
+
+installDev(){
+    # utils
+    PA zsh wget openssh svn rsync
+    # Vim and spf13
+    installSpf13
+    # texlive-most
+    PA texlive-most
+    # Java
+    PA jdk7-openjdk
+    # LAMP (apache server)
+    installlLamp
+}
+
+
+
+installPackages (){
+    installCore
+    installCasual
+    installDev
+}
+
+
+
+rootEnv (){
+    cd /root
+    # .zshrc
+    ln -s /home/saponace/.zshrc .zshrc
+    # .vimrc
+    ln -s /home/saponace/.vimrc .vimrc
+    ln -s /home/saponace/.vim/ .vim
+    ln -s /home/saponace/.vimrc.local .vimrc.local
+    ln -s /home/saponace/.vimrc.bundles .vimrc.bundles
+    ln -s /home/saponace/.vimrc.bundles.local .vimrc.bundles.local
+    ln -s /home/saponace/.vimrc.before .vimrc.before
+    # use zsh as default shell
+    chsh -s /bin/zsh root
+}
+
+
+
+
+
+installNetworkManager(){
+    PA wpa_supplicant
+    PA networkmanager 
+    systemctl enable NetworkManager
+    PA network-manager-applet gnome-keyring gnome-icon-theme
+    #(si marche pas, désactiver ipv6 dans dhcpcp)
+}
+
+
+
 intallYaourt (){
     echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
     PA yaourt
 }
 
 
+
 installSpf13 (){
-    sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
+   PA vim 
+   sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 }
+
 
 
 installlLamp (){
@@ -76,78 +173,6 @@ installlLamp (){
     echo -e "Require all granted\n</Directory>" /etc/httpd/conf/extra/httpd-phpmyadmin.conf
     echo -e "Include conf /extra/httpd-phpmyadmin.conf" >> /etc/httpd/conf/httpd.conf
 }
-
-
-# Network manager
-installNetworkManager (){
-    PA wpa_supplicant
-    PA networkmanager 
-    systemctl enable NetworkManager
-    PA network-manager-applet gnome-keyring gnome-icon-theme
-    #(si marche pas, désactiver ipv6 dans dhcpcp)
-}
-
-
-
-
-installPackages (){
-    # X server
-    PA xorg-server xorg-server-utils xorg-xinit xter xorg-xclock xorg-twm
-    # graphic drivers
-    PA mesa xf86-video-vesa xf86-video-ati
-    # touchpad drivers
-    PA xf86-input-synaptics
-    # login manager
-    PA slim
-    # display manager and app launcher
-    PA i3 dmenu
-    # sound server
-    PA alsa-utils
-    # manpager
-    PA most
-    # access X clipboard
-    PA xclip
-    # keybindings
-    PA wkeybindings
-    # file explorer
-    PA ranger
-    # web navigator and flash extension
-    PA chromium chromium-pepper-flash
-    # utils
-    PA zsh wget openssh svn rsync
-    # pimp
-    PA unzip
-    # dejavu font
-    PA ttf-dejavu
-
-    # texlive-most
-    PA texlive-most
-    
-    # Java
-    PA jdk7-openjdk
-}
-
-
-
-
-rootEnv (){
-    cd /root
-    # .zshrc
-    ln -s /home/saponace/.zshrc .zshrc
-    # .vimrc
-    ln -s /home/saponace/.vimrc .vimrc
-    ln -s /home/saponace/.vim/ .vim
-    ln -s /home/saponace/.vimrc.local .vimrc.local
-    ln -s /home/saponace/.vimrc.bundles .vimrc.bundles
-    ln -s /home/saponace/.vimrc.bundles.local .vimrc.bundles.local
-    ln -s /home/saponace/.vimrc.before .vimrc.before
-    # use zsh as default shell
-    chsh -s /bin/zsh root
-}
-
-
-
-
 
 
 
