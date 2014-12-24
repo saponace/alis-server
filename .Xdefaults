@@ -21,7 +21,8 @@ xterm*faceSize: 10
     *color9: #CC6666
 
 ! green
-    *color2: #8C9440
+    !*color2: #8C9440
+    *color2: #749B25
     *color10: #B5BD68
 
 ! yellow
@@ -29,8 +30,10 @@ xterm*faceSize: 10
     *color11: #F0C674
 
 ! blue
-    *color4: #5F819D
-    *color12: #81A2BE
+    !*color4: #5F819D
+    *color4: #2D5DA0
+    !*color12: #81A2BE
+    *color12: #4E7396
 
 ! magenta
     *color5: #85678F
@@ -38,7 +41,8 @@ xterm*faceSize: 10
 
 ! cyan
     *color6: #5E8D87
-    *color14: #8ABEB7
+    !*color14: #8ABEB7
+    *color14: #35B7DB
 
 ! white
     *color7: #707880
