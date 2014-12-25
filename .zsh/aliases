@@ -1,0 +1,70 @@
+## ls
+    alias ls='ls --color=auto --human-readable -p --group-directories-first'
+    alias l='ls'
+    alias ll='ls -lArt'
+
+
+## mkdir
+    alias md=mkdir
+    alias mdc=mkdirc
+
+
+## interactive cp/mv/rm
+    alias rd=rmdir
+    alias cp='cp --interactive'
+    alias mv='mv --interactive'
+    alias rm='rm --interactive --verbose'
+
+
+## because typing 'cd' is A LOT of work!!
+    alias ..='cd ../'
+    alias ...='cd ../../'
+    alias ....='cd ../../../'
+    alias .....='cd ../../../../'
+
+
+## Misc
+[[ -n ${commands[python2]} ]] && alias py=python2
+[[ -n ${commands[bzip2]} ]] && alias bz=bzip2
+[[ -n ${commands[gzip]} ]] && alias gz=gzip
+alias _=sudo
+
+
+## Git aliases
+    alias g='git'
+        compdef g=git
+    alias gst='git status'
+        compdef _git gst=git-status
+    alias gco= 'git commit -m'
+        compdef _git gco=git-commit-m
+    alias gd='git diff'
+        compdef _git gd=git-diff
+    alias gl='git pull'
+        compdef _git gl=git-pull
+    alias gup='git pull --rebase'
+        compdef _git gup=git-fetch
+    alias gp='git push'
+        compdef _git gp=git-push
+    alias gd='git diff'
+        gdv() { git diff -w "$@" | view - }
+        compdef _git gdv=git-diff
+    alias gdt='git difftool'
+
+
+## SVN aliases
+    alias s="svn"
+        compdef s=svn
+    alias sl="svn log"
+        compdef _svn sl=svn-log
+    alias sst="svn status"
+        compdef _svn sst=svn-status
+    alias sc="svn commit -m"
+        compdef _svn sc=svn-commit-m
+    alias sup="svn update"
+        compdef _svn sup=svn-update
+    alias sd="svn diff"
+        compdef _svn sd=svn-diff
+    alias saa="svn status | grep '^?' | sed 's/^? *\(.*\)/\"\1\"/g' | xargs svn add"
+        compdef _svn saa=svn-status-add
+    alias sra="svn status | grep '^!' | sed 's/^! *\(.*\)/\"\1\"/g' | xargs svn rm"
+        compdef _svn sra=svn-status-rm

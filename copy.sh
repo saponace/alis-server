@@ -8,32 +8,11 @@
 #!/bin/bash
 
 
-
-
-gitStatus(){
-    LOCAL=$(git rev-parse @)
-    REMOTE=$(git rev-parse @{u})
-    BASE=$(git merge-base @ @{u})
-
-    if [ $LOCAL = $REMOTE ]; then
-        retval = 0
-    elif [ $LOCAL = $BASE ]; then
-        echo "Local copy of repo too old, need to pull."
-        retval = 1
-    elif [ $REMOTE = $BASE ]; then
-        echo "Local modification commited, need to push"
-        retval = 2
-    else
-        echo "Diverged"
-        retval = 3
-    fi
-}
-
-
-
 usage(){
     echo "Usage: $0 deploy|backup"
 }
+
+
 
 deploy(){
     if [ retval != 0 ]
@@ -42,8 +21,10 @@ deploy(){
         cp .vimrc.bundles.local $HOME
         cp .Xdefaults $HOME
         cp .zshrc $HOME
+        cp -r .zsh $HOME
         cp -r .i3 $HOME
         cp .xinitrc $HOME
+        cp .xbindkeysrc $HOME
         cp .i3status.conf $HOME
 
         #cp slim.conf /etc/
@@ -52,22 +33,23 @@ deploy(){
     echo "successfully deployed files"
 }
 
+
+
 backup(){
         cp $HOME/.vimrc.local .
         cp $HOME/.vimrc.bundles.local .
         cp $HOME/.Xdefaults .
         cp $HOME/.zshrc .
+        cp -r $HOME/.zsh .
         cp -r $HOME/.i3 .
         cp $HOME/.xinitrc .
+        cp $HOME/.xbindkeysrc . 
         cp $HOME/.i3status.conf .
 
         cp /etc/slim.conf slim.conf
         #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
     echo "successfully backed files in this folder"
 }
-
-
-
 
 
 
