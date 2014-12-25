@@ -112,7 +112,11 @@ alternatedPWD(){
             fi
             ((count++))
         else
-            echo -ne "$c"
+            if [ "$c" == "-" ]; then
+                printf "%s" "-"
+            else
+                echo -ne "$c"
+            fi
         fi
     done
 }
