@@ -81,6 +81,8 @@ instllCasual(){
     PA unzip
     # VLC media player
     PA vlc
+    # torrent client
+    PA rtorrent
 }
 
 
