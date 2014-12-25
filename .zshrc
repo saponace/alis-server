@@ -81,6 +81,45 @@ autoload -Uz colors && colors
 
 
 #----- Prompts
+## Print pwd while alternating colors
+
+alternatedPWD(){
+    pwd=$PWD
+    homestr="/home/$USER"
+    sizehomestr=${#homestr}
+    shortPWD=$pwd
+    if [[ $pwd == /home/$USER* ]]
+    then
+        shortPWD=\~${pwd:$sizehomestr}
+    fi
+    count=0
+    colorgrey="\e[0;49;37m"
+    color1="\e[0;31m"
+    color2="\e[0;32m"
+    echo -ne "$color2"
+    for (( i = 0; i < ${#shortPWD}; i++ ))
+    do
+        c="${shortPWD:$i:1}"
+        ((mod=count%2))
+        if [ "$c" == "/" ]
+        then
+            echo -ne "$colorgrey/"
+            if [ "$mod" == 0 ]
+            then
+                echo -ne "$color1"
+            else
+                echo -ne "$color2"
+            fi
+            ((count++))
+        else
+            echo -ne "$c"
+        fi
+    done
+}
+
+
+
+
 ## Long prompt
 [[ ${EUID} -ne 0 ]] && EUIDCOLOR=${fg_bold[blue]} || EUIDCOLOR=${fg[red]}
 if [[ ${terminfo[colors]} == 256 ]];then
@@ -94,7 +133,7 @@ if [[ ${terminfo[colors]} == 256 ]];then
         HOSTNAMECOLOR='%F{82}'
         HOSTNAMECOLOR2='%F{247}'
     fi
-    HOSTNAMECOLOR3='%F{red}' HOSTNAMECOLOR4='%f%b'
+    HOSTNAMECOLOR3='%F{160}' HOSTNAMECOLOR4='%f%b'
     TIMEDATECOLOR='%F{99}'
     TIMEDATECOLOR2='%f'
     PWDCOLOR=' %F{250}'
@@ -117,7 +156,9 @@ else
     PWDCOLOR2=''
 fi
 
-[[ ${LANG} =~ UTF-8 ]] && LONGPROMPT=$'\n'"${FRAMECOLOR}┌[${FRAMECOLOR2}%f%b${HOSTNAMECOLOR}%n${HOSTNAMECOLOR2}@${HOSTNAMECOLOR3}%m${HOSTNAMECOLOR4}${FRAMECOLOR}]─[${FRAMECOLOR2}${TIMEDATECOLOR}%D{%F %T}${TIMEDATECOLOR2}${FRAMECOLOR}]${FRAMECOLOR2}%(?..${FRAMECOLOR}─[%B%F{red}%?%f%b${FRAMECOLOR}]${FRAMECOLOR2})${PWDCOLOR}%~${PWDCOLOR2}\$(_-git_ps1)"$'\n'"${FRAMECOLOR}└─>${FRAMECOLOR2}%{${EUIDCOLOR}%} %#%f%b "
+#[[ ${LANG} =~ UTF-8 ]] && LONGPROMPT=$'\n'"${FRAMECOLOR}┌[${FRAMECOLOR2}%f%b${HOSTNAMECOLOR}%n${HOSTNAMECOLOR2}@${HOSTNAMECOLOR3}%m${HOSTNAMECOLOR4}${FRAMECOLOR}]─[${FRAMECOLOR2}${TIMEDATECOLOR}%D{%F %T}${TIMEDATECOLOR2}${FRAMECOLOR}]${FRAMECOLOR2}%(?..${FRAMECOLOR}─[%B%F{red}%?%f%b${FRAMECOLOR}]${FRAMECOLOR2})${PWDCOLOR}%~${PWDCOLOR2}\$(_-git_ps1)"$'\n'"${FRAMECOLOR}└─>${FRAMECOLOR2}%{${EUIDCOLOR}%} %#%f%b "
+
+[[ ${LANG} =~ UTF-8 ]] && LONGPROMPT=$'\n'"${FRAMECOLOR}┌[${FRAMECOLOR2}%f%b${HOSTNAMECOLOR}%n${HOSTNAMECOLOR2}@${HOSTNAMECOLOR3}%m${HOSTNAMECOLOR4}${FRAMECOLOR}]─[${FRAMECOLOR2}${TIMEDATECOLOR}%D{%F %T}${TIMEDATECOLOR2}${FRAMECOLOR}]${FRAMECOLOR2}%(?..${FRAMECOLOR}─[%B%F{red}%?%f%b${FRAMECOLOR}]${FRAMECOLOR2}) \$(alternatedPWD)\$(_-git_ps1)"$'\n'"${FRAMECOLOR}└─>${FRAMECOLOR2}%{${EUIDCOLOR}%} %#%f%b "
 
 PS2='%F{blue}> %f'
 RPS2='%F{red}\%f'
