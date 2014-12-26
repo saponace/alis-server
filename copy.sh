@@ -29,6 +29,7 @@ deploy(){
 
         #cp slim.conf /etc/
         #cp -r slim-minimal/ /usr/share/slim/themes/ 
+        cp mc/gotar.ini /usr/share/mc/skins/ 
     fi
     echo "successfully deployed files"
 }
@@ -48,6 +49,8 @@ backup(){
 
         cp /etc/slim.conf slim.conf
         #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
+        cp /usr/share/mc/skins/gotar.ini mc/ 
+
     echo "successfully backed files in this folder"
 }
 

@@ -61,13 +61,11 @@ installCore(){
     # keybindings
     PA wkeybindings
     # file explorer
-    PA mc
+    installmc
     # web navigator and flash extension
     PA chromium chromium-pepper-flash
-    # dejavu font
-    PA ttf-dejavu
-    # Inconsolata font
-    PA ttf-inconsolata
+    # fonts
+    installFonts
 }
 
 
@@ -126,10 +124,23 @@ rootEnv (){
 }
 
 
+installmc (){
+    PA mc
+    # Use vim as default editor in mc
+    echo "Open=%var{EDITOR:vi} %f" >> /home/saponace/.config/mc/mc.ext
+}
+
+
+installfonts (){
+    # dejavu font
+    PA ttf-dejavu
+    # Inconsolata font
+    PA ttf-inconsolata
+}
 
 
 
-installNetworkManager(){
+installNetworkManager (){
     PA wpa_supplicant
     PA networkmanager 
     systemctl enable NetworkManager
