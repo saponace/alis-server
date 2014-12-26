@@ -61,7 +61,7 @@ installCore(){
     # keybindings
     PA wkeybindings
     # file explorer
-    PA ranger
+    PA mc
     # web navigator and flash extension
     PA chromium chromium-pepper-flash
     # dejavu font
@@ -141,7 +141,9 @@ installNetworkManager(){
 
 intallYaourt (){
     echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
-    PA yaourt
+    PA yaourt 
+    # ncurses yaourt gui
+    PA pcurses 
 }
 
 
