@@ -70,7 +70,7 @@ installCore(){
 
 
 
-instllCasual(){
+installCasual(){
     #Network manager
     installNetworkManager
     # Yaourt package manager
@@ -80,7 +80,7 @@ instllCasual(){
     # VLC media player
     PA vlc
     # torrent client
-    PA rtorrent
+    installTransmission
 }
 
 
@@ -100,7 +100,7 @@ installDev(){
 
 
 
-installPackages (){
+installPackages(){
     installCore
     installCasual
     installDev
@@ -157,6 +157,12 @@ intallYaourt (){
     PA pcurses 
 }
 
+
+installTransmission(){
+    PA transmission-remote-cli
+    # Detect config file
+    transmission-remote-cli --create-config
+}
 
 
 installSpf13 (){
