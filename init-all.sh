@@ -164,6 +164,7 @@ installTransmission(){
     PA transmission-remote-cli
     # Detect config file
     transmission-remote-cli --create-config
+    systemctl enable transmission.service
 }
 
 
