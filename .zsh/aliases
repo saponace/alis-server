@@ -24,11 +24,11 @@
 
 
 ## Misc
-[[ -n ${commands[python2]} ]] && alias py=python2
-[[ -n ${commands[bzip2]} ]] && alias bz=bzip2
-[[ -n ${commands[gzip]} ]] && alias gz=gzip
-alias _=sudo
-
+    [[ -n ${commands[python2]} ]] && alias py=python2
+    [[ -n ${commands[bzip2]} ]] && alias bz=bzip2
+    [[ -n ${commands[gzip]} ]] && alias gz=gzip
+    alias _='sudo'
+    alias transmission='transmission-remote-cli'
 
 ## Git aliases
     alias g='git'
