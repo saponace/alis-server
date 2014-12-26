@@ -71,7 +71,7 @@ installCore(){
 
 
 installCasual(){
-    #Network manager
+    # Network manager
     installNetworkManager
     # Yaourt package manager
     installYaourt
@@ -81,6 +81,8 @@ installCasual(){
     PA vlc
     # torrent client
     installTransmission
+    # automounting media disks
+    PA udiskie
 }
 
 
