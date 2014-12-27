@@ -16,7 +16,13 @@ _-accept-line() {
 
 ## grep: exclude these special directories for a better matching speed
 [[ -n ${commands[grep]} ]] && {
-export GREP_OPTIONS='--color=auto' GREP_COLOR='7;2;32';for PATTERN in .{cvs,git,hg,svn};do GREP_OPTIONS+=" --exclude-dir=${PATTERN}" done
+    export GREP_COLOR='7;2;32';
+    export GREP_OPT='--color=auto';
+    for PATTERN in .{cvs,git,hg,svn}; do
+        GREP_OPT+=" --exclude-dir=${PATTERN}" 
+            done
+    alias grep="/usr/bin/grep $GREP_OPT"
+    unset GREP_OPT
 }
 
 
