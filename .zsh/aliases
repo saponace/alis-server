@@ -29,6 +29,7 @@
     [[ -n ${commands[gzip]} ]] && alias gz=gzip
     alias _='sudo'
     alias transmission='transmission-remote-cli'
+    alias view='vim -R'  # because view does not use .vimrc
 
 ## Git aliases
     alias g='git'
