@@ -83,6 +83,8 @@ installCasual(){
     installTransmission
     # automounting media disks
     PA udiskie
+    # image viewer
+    PA feh
 }
 
 
