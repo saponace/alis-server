@@ -7,8 +7,8 @@ cmap w!! w !sudo tee % >/dev/null     " For when you forget to sudo.. Really Wri
 let g:ctrlp_working_path_mode = 0
 
 " Sharing clpiboard with xclip
-    map <leader>y :!xclip -f<CR>
-    map <leader>p :r !xclip -o<CR>
+    vmap <leader>y :!xclip -f<CR>
+    nmap <leader>p :r !xclip -o<CR>
  
 " Expanding snippets
     imap <C-o> <Plug>(neosnippet_expand_or_jump)
