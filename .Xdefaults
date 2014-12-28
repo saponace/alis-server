@@ -3,8 +3,8 @@ Uxterm*dynamicColors: true
 Uxterm*utf8: 1
 Uxterm*locale: true
 Uxterm*saveLines: 4096
-xterm*faceName:  Inconsolata
-xterm*faceSize: 10
+xterm*faceName: Inconsolata-g
+xterm*faceSize: 8
 
 
 ! Hybrid color palette

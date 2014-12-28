@@ -64,8 +64,6 @@ installCore(){
     installmc
     # web navigator and flash extension
     PA chromium chromium-pepper-flash
-    # fonts
-    installFonts
 }
 
 
@@ -75,7 +73,7 @@ installCasual(){
     installNetworkManager
     # Yaourt package manager
     installYaourt
-    # pimp
+    # Unzip
     PA unzip
     # VLC media player
     PA vlc
@@ -85,6 +83,8 @@ installCasual(){
     PA udiskie
     # image viewer
     PA feh
+    # fonts
+    installFonts
 }
 
 
@@ -138,8 +138,14 @@ installmc (){
 installfonts (){
     # dejavu font
     PA ttf-dejavu
-    # Inconsolata font
-    PA ttf-inconsolata
+
+    # Inconsolata-g font
+    cd /tmp/
+    mkdir Inconsolata-g && cd Inconsolata-g
+    wget http://www.fantascienza.net/leonardo/ar/inconsolatag/inconsolata-g_font.zip
+    unzip inconsolata-g_font.zip
+    mv Inconsolata-g.ttf /usr/share/fonts/TTF/
+    fc-cache -fv
 }
 
 
