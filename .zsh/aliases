@@ -36,8 +36,12 @@
         compdef g=git
     alias gst='git status'
         compdef _git gst=git-status
-    alias gco= 'git commit -m'
-        compdef _git gco=git-commit-m
+    alias gadd='git add'
+        compdef _git gadd=git-add
+    alias gco='git checkout'
+        compdef _git gco=git-checkout
+    alias gc='git commit -m'
+        compdef _git gc=git-commit-m
     alias gd='git diff'
         compdef _git gd=git-diff
     alias gl='git pull'
@@ -50,6 +54,7 @@
         gdv() { git diff -w "$@" | view - }
         compdef _git gdv=git-diff
     alias gdt='git difftool'
+        compdef _git gdt=git-difftool
 
 
 ## SVN aliases
