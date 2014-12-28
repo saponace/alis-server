@@ -100,6 +100,8 @@ installDev(){
     PA jdk7-openjdk
     # LAMP (apache server)
     installlLamp
+    # Terminal multiplexer
+    PA tmux
 }
 
 

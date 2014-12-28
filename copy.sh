@@ -24,6 +24,7 @@ deploy(){
         cp -r .zsh $HOME
         cp -r .i3 $HOME
         cp mc/ini $HOME/.config/mc/
+        cp .tmux.conf $HOME
         cp transmission-remote-cli/settings.cfg $HOME/.config/transmission-remote-cli/
         cp .xinitrc $HOME
         cp .xbindkeysrc $HOME
@@ -45,7 +46,8 @@ backup(){
         cp $HOME/.zshrc .
         cp -r $HOME/.zsh .
         cp -r $HOME/.i3 .
-        cp $HOME/.config/mc/ini mc/
+        #cp $HOME/.config/mc/ini mc/
+        cp $HOME/.tmux.conf .
         cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli/
         cp $HOME/.xinitrc .
         cp $HOME/.xbindkeysrc . 
