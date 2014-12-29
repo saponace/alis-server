@@ -28,7 +28,7 @@ let g:ctrlp_working_path_mode = 0
     noremap <Right> <NOP>
 
 
-"move lines up/down with Alt+arrows
+"move lines up/down with Ctrl+arrows
     nnoremap <C-j> :m .+1<CR>==
     nnoremap <C-k> :m .-2<CR>==
     vnoremap <C-j> :m '>+1<CR>gv=gv
