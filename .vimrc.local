@@ -51,7 +51,7 @@ let g:ctrlp_working_path_mode = 0
 
 " Resizing windows
     noremap <A-=> <C-w>= 
-    noremap <A-_> <C-w>_ <C-w>|
+    noremap <A-f> <C-w>\|<C-w>_
     noremap <A-H> <C-w>< " Horizontally shorten window
     noremap <A-J> <C-w>- " Vertically shorten window
     noremap <A-K> <C-w>+ " Vertically enlarge window
