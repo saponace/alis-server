@@ -62,6 +62,11 @@ let g:ctrlp_working_path_mode = 0
     noremap <silent> <leader>K <C-w>+ " Vertically enlarge window
     noremap <silent> <leader>L <C-w>> " Horizontally enlarge window
 
+" Moving throw tabs
+    noremap <A-n>  :tabnew<CR> 
+    noremap <A-g>  :tabprevious<CR> 
+    noremap <A-m>  :tabnext<CR> 
+
 
 " Code folding options
     "set foldmethod=syntax
