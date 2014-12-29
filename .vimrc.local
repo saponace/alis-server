@@ -35,7 +35,7 @@ let g:ctrlp_working_path_mode = 0
     vnoremap <C-k> :m '<-2<CR>gv=gv
 
 
-" Maps to make handling windows a bit easier
+" Moving throw windows
 	set splitbelow                    " put window created on a split below
 	set splitright                    " put window created on a split on the right
     noremap <A-h> :wincmd h<CR> " focus left window
@@ -47,6 +47,20 @@ let g:ctrlp_working_path_mode = 0
     noremap <silent> <leader>j :wincmd j<CR> " focus down window
     noremap <silent> <leader>k :wincmd k<CR> " focus up window
     noremap <silent> <leader>l :wincmd l<CR> " focus right window
+
+
+" Resizing windows
+    noremap <A-=> <C-w>= 
+    noremap <A-_> <C-w>_ <C-w>|
+    noremap <A-H> <C-w>< " Horizontally shorten window
+    noremap <A-J> <C-w>- " Vertically shorten window
+    noremap <A-K> <C-w>+ " Vertically enlarge window
+    noremap <A-L> <C-w>> " Horizontally enlarge window
+
+    noremap <silent> <leader>H <C-w>< " Horizontally shorten window
+    noremap <silent> <leader>J <C-w>- " Vertically shorten window
+    noremap <silent> <leader>K <C-w>+ " Vertically enlarge window
+    noremap <silent> <leader>L <C-w>> " Horizontally enlarge window
 
 
 " Code folding options
