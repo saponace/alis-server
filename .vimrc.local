@@ -1,6 +1,6 @@
 set timeoutlen=1000                   " set change from insert mode to normal mode immediate to 1s
 let g:spf13_no_autochdir = 1          " do not change vim working dir when opening a file in  different dir
-nmap <leader>i ggVG=                  " Indent the whole file
+nmap <leader>i mrggVG='r                  " Indent the whole file
 nmap <C-l> <C-l>:nohl<CR>             " Remove highlight search
 cmap cwd lcd %:p:h<CR>                " Change working directory to that of the current file
 cmap w!! w !sudo tee % >/dev/null     " For when you forget to sudo.. Really Write the file.
