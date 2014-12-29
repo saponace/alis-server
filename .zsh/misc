@@ -35,15 +35,6 @@ autoload -Uz zargs zcalc
 
 
 
-## start udiskie (automounter) at startup in background
-if [[ $(ps -au | grep udiskie | wc -l) < 2 ]]
-then 
-    udiskie&
-fi
-
-
-
-
 #----- Resources limit
     unlimit
     limit coredumpsize 0
