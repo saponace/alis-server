@@ -23,7 +23,7 @@ deploy(){
         cp .zshrc $HOME
         cp -r .zsh $HOME
         cp -r .i3 $HOME
-        cp mc/ini $HOME/.config/mc/
+        cp ranger/rc.conf $HOME/.config/ranger/
         cp .tmux.conf $HOME
         cp transmission-remote-cli/settings.cfg $HOME/.config/transmission-remote-cli/
         cp .xinitrc $HOME
@@ -32,7 +32,6 @@ deploy(){
 
         #cp slim.conf /etc/
         #cp -r slim-minimal/ /usr/share/slim/themes/ 
-        cp mc/gotar.ini /usr/share/mc/skins/ 
     fi
     echo "successfully deployed files"
 }
@@ -46,7 +45,7 @@ backup(){
         cp $HOME/.zshrc .
         cp -r $HOME/.zsh .
         cp -r $HOME/.i3 .
-        #cp $HOME/.config/mc/ini mc/
+        cp $HOME/.config/ranger/rc.conf ranger/
         cp $HOME/.tmux.conf .
         cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli/
         cp $HOME/.xinitrc .
@@ -55,7 +54,6 @@ backup(){
 
         cp /etc/slim.conf slim.conf
         #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
-        cp /usr/share/mc/skins/gotar.ini mc/ 
 
     echo "successfully backed files in this folder"
 }

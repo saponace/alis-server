@@ -61,7 +61,7 @@ installCore(){
     # keybindings
     PA wkeybindings
     # file explorer
-    installmc
+    PA ranger
     # web navigator and flash extension
     PA chromium chromium-pepper-flash
 }
@@ -102,6 +102,8 @@ installDev(){
     installlLamp
     # Terminal multiplexer
     PA tmux
+    # Figlet -- Ultra pimp
+    PA figlet
 }
 
 
@@ -129,12 +131,6 @@ rootEnv (){
     chsh -s /bin/zsh root
 }
 
-
-installmc (){
-    PA mc
-    # Use vim as default editor in mc
-    echo "Open=%var{EDITOR:vi} %f" >> /home/saponace/.config/mc/mc.ext
-}
 
 
 installfonts (){
