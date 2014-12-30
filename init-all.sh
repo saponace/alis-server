@@ -2,12 +2,14 @@
 #file: init-all.sh
 #date: Sun Nov 23 02:31:11 CET 2014
 #author: saponace </var/mail/saponace>
-#description:
+#description: Initialize a proper arch environment
 #
+
+# Execute with sudo -E !
 
 #!/bin/bash
 
-PA = pacman -S
+PA = pacman -S --noconfirm
 
 usage(){
 	echo "Usage: $0 ..."
@@ -18,6 +20,7 @@ all() {
     initSettings
     installPackages
     rootEnv
+    copy.sh deploy
 }
 
 
@@ -25,85 +28,85 @@ all() {
 
 initSettings (){
     #  change default shell to ZSH
-    sudo chsh -s /bin/zsh saponace
+        sudo chsh -s /bin/zsh saponace
 
     # add saponace to wheel group (sudoers)
-    useradd -m -G wheel -s /bin/bash saponace
-    sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
+        useradd -m -G wheel -s /bin/bash saponace
+        sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
     
     # use zsh as default shell
-    chsh -s /bin/zsh saponace
+        chsh -s /bin/zsh saponace
 
     # set locale (not sure if usefull)
-    export LC_ALL=en_US.UTF-8
-    export LANG="$LC_ALL"
+        export LC_ALL=en_US.UTF-8
+        export LANG="$LC_ALL"
 }
 
 
 
 installCore(){
     # X server
-    PA xorg-server xorg-server-utils xorg-xinit xter xorg-xclock xorg-twm
+        PA xorg-server xorg-server-utils xorg-xinit xter xorg-xclock xorg-twm
     # graphic drivers
-    PA mesa xf86-video-vesa xf86-video-ati
+        PA mesa xf86-video-vesa xf86-video-ati
     # touchpad drivers
-    PA xf86-input-synaptics
+        PA xf86-input-synaptics
     # login manager
-    PA slim
+        PA slim
     # display manager and app launcher
-    PA i3 dmenu
+        PA i3 dmenu
     # sound server
-    PA alsa-utils
+        PA alsa-utils
     # manpager
-    PA most
+        PA most
     # access X clipboard
-    PA xclip
+        PA xclip
     # keybindings
-    PA wkeybindings
+        PA wkeybindings
     # file explorer
-    PA ranger
+        installRanger
     # web navigator and flash extension
-    PA chromium chromium-pepper-flash
+        PA chromium chromium-pepper-flash
 }
 
 
 
 installCasual(){
     # Network manager
-    installNetworkManager
+        installNetworkManager
     # Yaourt package manager
-    installYaourt
+        installYaourt
     # Unzip
-    PA unzip
+        PA unzip
     # VLC media player
-    PA vlc
+        PA vlc
     # torrent client
-    installTransmission
+        installTransmission
     # automounting media disks
-    PA udiskie
+        PA udiskie
     # image viewer
-    PA feh
+        PA feh
     # fonts
-    installFonts
+        installFonts
 }
 
 
 
 installDev(){
     # utils
-    PA zsh wget openssh svn rsync
+        PA zsh wget openssh svn rsync
     # Vim and spf13
-    installSpf13
+        installSpf13
     # texlive-most
-    PA texlive-most
+        PA texlive-most
     # Java
-    PA jdk7-openjdk
+        PA jdk7-openjdk
     # LAMP (apache server)
-    installlLamp
+        installlLamp
     # Terminal multiplexer
-    PA tmux
+        PA tmux
     # Figlet -- Ultra pimp
-    PA figlet
+        PA figlet
 }
 
 
@@ -157,6 +160,16 @@ installNetworkManager (){
 }
 
 
+installRanger (){
+    PA ranger
+    PA libcaca              # ASCII image preview
+    PA highlight            # Syntax highlight in preview
+    PA poppler              # PDF preview
+    PA mediaonfo            # Audio and video files info in preiew
+    PA atool                # Reading inside archives
+    ranger -copy-config=all # Create dotfiles in $HOME/.config/ranger
+}
+
 
 intallYaourt (){
     echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
@@ -168,8 +181,7 @@ intallYaourt (){
 
 installTransmission(){
     PA transmission-remote-cli
-    # Detect config file
-    transmission-remote-cli --create-config
+    transmission-remote-cli --create-config # Detect config file
 }
 
 
@@ -187,22 +199,20 @@ installlLamp (){
     PA phpmyadmin php-mcrypt
 
     # Allow the use of PHP in apache
-    echo -e "# Use for PHP 5.x:\nLoadModule php5_module       modules/libphp5.so\n" >> /etc/httpd/conf/httpd.conf
-    echo -e "AddHandler php5-script php\nInclude conf/extra/php5_module.conf" >> /etc/http/conf/httpd.conf
-    sed -i "s/mpm_event/mpm_prefork/g" /etc/httpd/conf/httpd.conf
+        echo -e "# Use for PHP 5.x:\nLoadModule php5_module       modules/libphp5.so\n" >> /etc/httpd/conf/httpd.conf
+        echo -e "AddHandler php5-script php\nInclude conf/extra/php5_module.conf" >> /etc/http/conf/httpd.conf
+        sed -i "s/mpm_event/mpm_prefork/g" /etc/httpd/conf/httpd.conf
 
     # Combine php and mysql
-    sed -i "s/#extension=pdo_mysql.so/extension=pdo_mysql.so/g" /etc/php/php.ini
-    sed -i "s/#extension=mcrypt.so/extension=mcrypt.so/g" /etc/php/php.ini
+        sed -i "s/#extension=pdo_mysql.so/extension=pdo_mysql.so/g" /etc/php/php.ini
+        sed -i "s/#extension=mcrypt.so/extension=mcrypt.so/g" /etc/php/php.ini
 
     # phpmyadmin
-    sed -i "s#open_basedir = /#open_basedir = /etc/webapps/:/g" /etc/php/php.ini
-    echo -e 'Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"\n<Directory "/usr/share/webapps/phpMyAdmin/">\n' /etc/httpd/conf/extra/httpd-phpmyadmin.conf
-
-    echo -e "DirectoryIndex index.html index.php\nAllowOverride All\n Options FollowSymlinks\n" /etc/httpd/conf/extra/httpd-phpmyadmin.conf
-
-    echo -e "Require all granted\n</Directory>" /etc/httpd/conf/extra/httpd-phpmyadmin.conf
-    echo -e "Include conf /extra/httpd-phpmyadmin.conf" >> /etc/httpd/conf/httpd.conf
+        sed -i "s#open_basedir = /#open_basedir = /etc/webapps/:/g" /etc/php/php.ini
+        echo -e 'Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"\n<Directory "/usr/share/webapps/phpMyAdmin/">\n' /etc/httpd/conf/extra/httpd-phpmyadmin.conf
+        echo -e "DirectoryIndex index.html index.php\nAllowOverride All\n Options FollowSymlinks\n" /etc/httpd/conf/extra/httpd-phpmyadmin.conf
+        echo -e "Require all granted\n</Directory>" /etc/httpd/conf/extra/httpd-phpmyadmin.conf
+        echo -e "Include conf /extra/httpd-phpmyadmin.conf" >> /etc/httpd/conf/httpd.conf
 }
 
 
