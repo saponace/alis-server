@@ -383,6 +383,7 @@ extract () {
 }
 
 
+    
 
 
 
@@ -404,46 +405,44 @@ esac
 
 
 
-## make sure that the terminal is in application mode when zle is active, since only then values from ${terminfo} are valid
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} ));then
-    zle-line-init() {
-        echoti smkx
-    }
-    zle-line-finish() {
-        echoti rmkx
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-fi
 
 
 
+#----- Motion in command prompt
+    ## ZLE
+        if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} ));then
+        zle-line-init() {
+            echoti smkx
+        }
+        zle-line-finish() {
+            echoti rmkx
+        }
+        zle -N zle-line-init
+        zle -N zle-line-finish
+        fi
+    ## C-x,C-e: edit the current command line in ${EDITOR}
+        autoload -Uz edit-command-line
+        zle -N edit-command-line
+        bindkey '^x^e' edit-command-line
 
-#----- Misc
-## C-x,C-e: edit the current command line in ${EDITOR}
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
-## up: match history forward
-[[ -n ${terminfo[kcuu1]} ]] && bindkey ${terminfo[kcuu1]} up-line-or-search
-## down: match history backward
-[[ -n ${terminfo[kcud1]} ]] && bindkey ${terminfo[kcud1]} down-line-or-search
-## home: go to beginning of line
-[[ -n ${terminfo[khome]} ]] && bindkey ${terminfo[khome]} beginning-of-line
-## end: go to end of line
-[[ -n ${terminfo[kend]} ]] && bindkey ${terminfo[kend]} end-of-line
-## perform history expansion and insert a space into the buffer; this is intended to be bound to space
-bindkey ' ' magic-space
-## FIXME: use a more general(less keymap-specific) way to set these key bindings which are not supported by vt100 and not in the terminfo library. See also http://stackoverflow.com/questions/7767702 http://www.leonerd.org.uk/code/libtermkey/ http://stackoverflow.com/questions/7528091
-## C-right: move forward one word
-bindkey '^[[1;5C' forward-word
-## C-left: move backward one word
-bindkey '^[[1;5D' backward-word
-## S-tab: move through the completion menu backwards
-[[ -n ${terminfo[kcbt]} ]] && bindkey ${terminfo[kcbt]} reverse-menu-complete
-## del: delete forward
-[[ -n ${terminfo[kdch1]} ]] && bindkey ${terminfo[kdch1]} delete-char
-## ins: insert/overtype mode switcher, but I personally recommend to disable this
-#bindkey ${terminfo[kich1]} overwrite-mode
-## C-x,C-h: This is missing from the emacs keymap, but not from the vi one
-bindkey '^x^h' _complete_help
+    ## up: match history forward
+        [[ -n ${terminfo[kcuu1]} ]] && bindkey ${terminfo[kcuu1]} up-line-or-search
+    ## down: match history backward
+        [[ -n ${terminfo[kcud1]} ]] && bindkey ${terminfo[kcud1]} down-line-or-search
+    ## home: go to beginning of line
+        [[ -n ${terminfo[khome]} ]] && bindkey ${terminfo[khome]} beginning-of-line
+    ## end: go to end of line
+        [[ -n ${terminfo[kend]} ]] && bindkey ${terminfo[kend]} end-of-line
+    ## perform history expansion and insert a space into the buffer; this is intended to be bound to space
+        bindkey ' ' magic-space
+
+    ## C-right: move forward one word
+        bindkey '^[[1;5C' forward-word
+    ## C-left: move backward one word
+        bindkey '^[[1;5D' backward-word
+    ## S-tab: move through the completion menu backwards
+        [[ -n ${terminfo[kcbt]} ]] && bindkey ${terminfo[kcbt]} reverse-menu-complete
+    ## del: delete forward
+        [[ -n ${terminfo[kdch1]} ]] && bindkey ${terminfo[kdch1]} delete-char
+    ## C-x,C-h: This is missing from the emacs keymap, but not from the vi one
+    bindkey '^x^h' _complete_help
