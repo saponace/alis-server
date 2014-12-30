@@ -30,6 +30,8 @@
     alias _='sudo'
     alias transmission='transmission-remote-cli'
     alias view='vim -R'  # because view does not use .vimrc
+alias remove-orphans='_ pacman -Rns $(pacman -Qtdq)'
+
 
 ## Git aliases
     alias g='git'
