@@ -1,8 +1,9 @@
-" set change from insert mode to normal mode immediate to 1s
-    set timeoutlen=1000
 
-" do not change vim working dir when opening a file in  different dir
+" Do not change vim working dir when opening a file in  different dir
     let g:spf13_no_autochdir = 1
+
+" CtrlP starts from the location of current file
+    let g:ctrlp_working_path_mode = 1
 
 " Indent the whole file
     nmap <leader>i mrggVG='r
@@ -19,7 +20,17 @@
 " Remove trailing whitespaces and tabs
     map <leader>w :%s/\s\+$//<CR>:nohl<CR>
 
-let g:ctrlp_working_path_mode = 0
+
+
+" set change from insert mode to normal mode immediate
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
 
 
 " Sharing clpiboard with xclip
@@ -135,5 +146,3 @@ let g:ctrlp_working_path_mode = 0
         map <Leader><Leader>h <Plug>(easymotion-linebackward)
     " keep cursor colum when JK motion
         let g:EasyMotion_startofline = 0
-
-
