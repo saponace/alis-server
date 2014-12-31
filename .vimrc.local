@@ -1,16 +1,31 @@
-set timeoutlen=1000                   " set change from insert mode to normal mode immediate to 1s
-let g:spf13_no_autochdir = 1          " do not change vim working dir when opening a file in  different dir
-nmap <leader>i mrggVG='r                  " Indent the whole file
-nmap <C-l> <C-l>:nohl<CR>             " Remove highlight search
-cmap cwd lcd %:p:h<CR>                " Change working directory to that of the current file
-cmap w!! w !sudo tee % >/dev/null     " For when you forget to sudo.. Really Write the file.
+" set change from insert mode to normal mode immediate to 1s
+    set timeoutlen=1000
+
+" do not change vim working dir when opening a file in  different dir
+    let g:spf13_no_autochdir = 1
+
+" Indent the whole file
+    nmap <leader>i mrggVG='r
+
+" Remove highlight search
+    nmap <C-l> <C-l>:nohl<CR>
+
+" Change working directory to that of the current file
+    cmap cwd lcd %:p:h<CR>
+
+" For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+
+" Remove trailing whitespaces and tabs
+    map <leader>w :%s/\s\+$//<CR>:nohl<CR>
+
 let g:ctrlp_working_path_mode = 0
 
 
 " Sharing clpiboard with xclip
     vmap <leader>y :!xclip -f<CR>
     nmap <leader>p :r !xclip -o<CR>
- 
+
 
 " Expanding snippets
     imap <C-o> <Plug>(neosnippet_expand_or_jump)
@@ -50,7 +65,7 @@ let g:ctrlp_working_path_mode = 0
 
 
 " Resizing windows
-    noremap <A-=> <C-w>= 
+    noremap <A-=> <C-w>=
     noremap <A-f> <C-w>\|<C-w>_
     noremap <A-H> <C-w>< " Horizontally shorten window
     noremap <A-J> <C-w>- " Vertically shorten window
@@ -63,9 +78,9 @@ let g:ctrlp_working_path_mode = 0
     noremap <silent> <leader>L <C-w>> " Horizontally enlarge window
 
 " Moving throw tabs
-    noremap <A-n>  :tabnew<CR> 
-    noremap <A-g>  :tabprevious<CR> 
-    noremap <A-m>  :tabnext<CR> 
+    noremap <A-n>  :tabnew<CR>
+    noremap <A-g>  :tabprevious<CR>
+    noremap <A-m>  :tabnext<CR>
 
 
 " Code folding options
@@ -81,7 +96,7 @@ let g:ctrlp_working_path_mode = 0
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
 
-    
+
 " Colorscheme
     colorscheme solarized                 " set the default colorscheme
     " its normal that the colors do not macth with the real solarized theme.
@@ -106,7 +121,7 @@ let g:ctrlp_working_path_mode = 0
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline_symbols.whitespace = 'Ξ'
 
-    
+
 " EasyMotion
     " easymotion search highlight color same as vim search highligh color
     hi link EasyMotionShade Comment
