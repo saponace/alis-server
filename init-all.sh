@@ -86,6 +86,8 @@ installCasual(){
         PA udiskie
     # image viewer
         PA feh
+    # PDF viewer
+        PA apvlv
     # fonts
         installFonts
 }
@@ -105,6 +107,7 @@ installDev(){
         installlLamp
     # Terminal multiplexer
         PA tmux
+        PA tmuxinator
     # Figlet -- Ultra pimp
         PA figlet
 }
