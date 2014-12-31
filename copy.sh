@@ -27,7 +27,6 @@ deploy(){
         cp .tmux.conf $HOME
         cp transmission-remote-cli/settings.cfg $HOME/.config/transmission-remote-cli/
         cp .xinitrc $HOME
-        cp .xbindkeysrc $HOME
         cp .i3status.conf $HOME
 
         #cp slim.conf /etc/
@@ -49,7 +48,6 @@ backup(){
         cp $HOME/.tmux.conf .
         cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli/
         cp $HOME/.xinitrc .
-        cp $HOME/.xbindkeysrc . 
         cp $HOME/.i3status.conf .
 
         cp /etc/slim.conf slim.conf

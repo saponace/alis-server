@@ -61,8 +61,6 @@ installCore(){
         PA most
     # access X clipboard
         PA xclip
-    # keybindings
-        PA wkeybindings
     # file explorer
         installRanger
     # web navigator and flash extension

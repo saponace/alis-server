@@ -123,3 +123,10 @@ font pango:Inconsolata-g Sans Mono 8
 
     # exit i3 (logs you out of your X session)
     bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+#----- Volume control
+    bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute && killall -USR1 i3status
+    bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute && killall -USR1 i3status
+    bindsym XF86AudioMute exec amixer -q set Master toggle && killall -USR1 i3status
+
