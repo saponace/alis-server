@@ -9,7 +9,7 @@
 
 #!/bin/bash
 
-PA = pacman -S --noconfirm
+PA = yaourt -S --noconfirm
 
 usage(){
 	echo "Usage: $0 ..."
@@ -106,16 +106,22 @@ installDev(){
     # Terminal multiplexer
         PA tmux
         PA tmuxinator
-    # Figlet -- Ultra pimp
+    # Figlet, ASCII art -- Ultra pimp
         PA figlet
 }
 
+
+installOptional (){
+    # Eclim, eclipse integration in vim (also install eclipse)
+        PA eclim
+}
 
 
 installPackages(){
     installCore
     installCasual
     installDev
+    #installOptional
 }
 
 
