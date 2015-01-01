@@ -6,7 +6,7 @@
     let g:ctrlp_working_path_mode = 1
 
 " Indent the whole file
-    nmap <leader>i mrggVG='r
+    nmap <leader>i migg=G'i
 
 " Remove highlight search
     nmap <C-l> <C-l>:nohl<CR>
@@ -61,7 +61,7 @@ endif
     vnoremap <C-k> :m '<-2<CR>gv=gv
 
 
-" Moving throw windows
+" Moving through windows
 	set splitbelow                    " put window created on a split below
 	set splitright                    " put window created on a split on the right
     noremap <A-h> :wincmd h<CR> " focus left window
@@ -88,7 +88,10 @@ endif
     noremap <silent> <leader>K <C-w>+ " Vertically enlarge window
     noremap <silent> <leader>L <C-w>> " Horizontally enlarge window
 
-" Moving throw tabs
+" Moving through buffers
+    map <C-l>  :bnext<CR>
+
+" Moving through tabs
     noremap <A-n>  :tabnew<CR>
     noremap <A-g>  :tabprevious<CR>
     noremap <A-m>  :tabnext<CR>

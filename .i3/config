@@ -2,6 +2,9 @@ set $mod Mod4
 
 font pango:Inconsolata-g Sans Mono 8
 
+# Hide titlebars when windows created, but allow toogling titlebars
+    bindsym $mod+a [class="^.*"] border toggle
+    for_window [class="^.*"] border pixel 1
 
 
 #----- Misc
