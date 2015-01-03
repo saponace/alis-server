@@ -427,8 +427,10 @@ esac
 
     ## up: match history forward
         [[ -n ${terminfo[kcuu1]} ]] && bindkey ${terminfo[kcuu1]} up-line-or-search
+        bindkey '^k' up-line-or-search        # vim motion
     ## down: match history backward
         [[ -n ${terminfo[kcud1]} ]] && bindkey ${terminfo[kcud1]} down-line-or-search
+        bindkey '^j' down-line-or-search      # vim motion
     ## home: go to beginning of line
         [[ -n ${terminfo[khome]} ]] && bindkey ${terminfo[khome]} beginning-of-line
     ## end: go to end of line
