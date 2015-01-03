@@ -88,8 +88,6 @@ endif
     noremap <silent> <leader>K <C-w>+ " Vertically enlarge window
     noremap <silent> <leader>L <C-w>> " Horizontally enlarge window
 
-" Moving through buffers
-    map <C-l>  :bnext<CR>
 
 " Moving through tabs
     noremap <A-n>  :tabnew<CR>
