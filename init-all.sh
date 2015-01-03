@@ -174,7 +174,8 @@ installNetworkManager (){
     PA networkmanager 
     systemctl enable NetworkManager
     PA network-manager-applet gnome-keyring gnome-icon-theme
-    #(si marche pas, désactiver ipv6 dans dhcpcp)
+    # Disable ipv6 in dhcpcd.conf
+    echo -e "noipv6rs\nnoipv6" >> /etc/dhcpcd.conf 
 }
 
 installRedshift (){
