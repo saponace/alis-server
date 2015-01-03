@@ -88,6 +88,10 @@ installCasual(){
         PA apvlv
     # fonts
         installFonts
+    # Notification daemon
+        installDunst
+    # Redshift
+        installRedshift
 }
 
 
@@ -108,6 +112,8 @@ installDev(){
         PA tmuxinator
     # Figlet, ASCII art -- Ultra pimp
         PA figlet
+    # gdb
+        PA gdb
 }
 
 
@@ -129,16 +135,16 @@ installPackages(){
 rootEnv (){
     cd /root
     # .zshrc
-    ln -s /home/saponace/.zshrc .zshrc
+        ln -s /home/saponace/.zshrc .zshrc
     # .vimrc
-    ln -s /home/saponace/.vimrc .vimrc
-    ln -s /home/saponace/.vim/ .vim
-    ln -s /home/saponace/.vimrc.local .vimrc.local
-    ln -s /home/saponace/.vimrc.bundles .vimrc.bundles
-    ln -s /home/saponace/.vimrc.bundles.local .vimrc.bundles.local
-    ln -s /home/saponace/.vimrc.before .vimrc.before
+        ln -s /home/saponace/.vimrc .vimrc
+        ln -s /home/saponace/.vim/ .vim
+        ln -s /home/saponace/.vimrc.local .vimrc.local
+        ln -s /home/saponace/.vimrc.bundles .vimrc.bundles
+        ln -s /home/saponace/.vimrc.bundles.local .vimrc.bundles.local
+        ln -s /home/saponace/.vimrc.before .vimrc.before
     # use zsh as default shell
-    chsh -s /bin/zsh root
+        chsh -s /bin/zsh root
 }
 
 
@@ -156,6 +162,11 @@ installfonts (){
     fc-cache -fv
 }
 
+installDunst (){
+    PA dunst
+    mkdir -p /home/saponace/.config/dunst/
+    cp /usr/share/dunst/dunstrc /home/saponace/.config/dunst/
+}
 
 
 installNetworkManager (){
@@ -164,6 +175,13 @@ installNetworkManager (){
     systemctl enable NetworkManager
     PA network-manager-applet gnome-keyring gnome-icon-theme
     #(si marche pas, désactiver ipv6 dans dhcpcp)
+}
+
+installRedshift (){
+    PA redshift
+    echo -e "[redshift]\ntemp-day=5700\ntemp-night=3600" > /home/saponace/.config/redshift.conf
+    echo -e "\ngamma=0.8\nadjustment-method=randr\nlocation-provider=manual" > /home/saponace/.config/redshift.conf
+    echo -e "\n\n[manual]\nlat=45\nlon=0.5" > /home/saponace/.config/redshift.conf
 }
 
 
