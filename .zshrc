@@ -3,7 +3,7 @@
 
 
 
-COMMONPATH="/home/saponace/.zsh"
+COMMONPATH="$HOME/.zsh"
 
 
 source $COMMONPATH/misc
