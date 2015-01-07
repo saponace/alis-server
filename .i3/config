@@ -131,7 +131,9 @@ font pango:Inconsolata-g Sans Mono 8
     # exit i3 (logs you out of your X session)
         bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
     # Lockscreen (Ctrl+Alt+l launch lockscreen and turn off screen)
-        bindsym Control+Mod1+l exec i3lock -c 151515 && xset dpms force off
+        #bindsym Control+Mod1+l exec i3lock -c 151515 && xset dpms force off
+        set $scrshot "/tmp/blurscreenshotfori3lock.png"
+        bindsym Control+Mod1+l exec scrot $scrshot && convert $scrshot -blur 0x4 $scrshot && i3lock -i $scrshot -d
 
 
 #----- Volume control (killall force reloading the status bar)

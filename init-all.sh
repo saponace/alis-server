@@ -92,6 +92,10 @@ installCasual(){
         installDunst
     # Redshift
         installRedshift
+    # Screenshot, used by interactive screenshot
+        PA scrot
+    # Screenshot, used by interactive screenshot
+        PA imagemagick
 }
 
 
