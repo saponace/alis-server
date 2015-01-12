@@ -133,7 +133,7 @@ font pango:Inconsolata-g Sans Mono 8
     # Lockscreen (Ctrl+Alt+l launch lockscreen and turn off screen)
         #bindsym Control+Mod1+l exec i3lock -c 151515 && xset dpms force off
         set $scrshot "/tmp/blurscreenshotfori3lock.png"
-        bindsym Control+Mod1+l exec scrot $scrshot && convert $scrshot -blur 0x4 $scrshot && i3lock -i $scrshot -d
+        bindsym Control+Mod1+l exec scrot $scrshot && xset dpms force off && convert $scrshot -blur 0x4 $scrshot && i3lock -i $scrshot
 
 
 #----- Volume control (killall force reloading the status bar)
