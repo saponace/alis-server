@@ -9,9 +9,12 @@ xterm*faceSize: 8
 
 URxvt.scrollBar: false
 URxvt.font:xft:Inconsolata-g:pixelsize=11
-urxvt*transparent: true
-urxvt*shading: 30
-
+urxvt.transparent: true
+urxvt.shading: 15
+URxvt*meta8: true
+URxvt.keysym.C-BackSpace: \033\010
+URxvt.keysym.C-Right: \033[1;5C
+URxvt.keysym.C-Left: \033[1;5D
 
 
 
