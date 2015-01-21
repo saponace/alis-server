@@ -22,12 +22,11 @@ deploy(){
         cp .Xresources $HOME
         cp .zshrc $HOME
         cp -r .zsh $HOME
-        cp -r .i3 $HOME
+        cp -r awesome $HOME/.config
         cp ranger/rc.conf $HOME/.config/ranger/
         cp .tmux.conf $HOME
         cp transmission-remote-cli/settings.cfg $HOME/.config/transmission-remote-cli/
         cp .xinitrc $HOME
-        cp .i3status.conf $HOME
 
         #cp slim.conf /etc/
         #cp -r slim-minimal/ /usr/share/slim/themes/ 
@@ -43,12 +42,11 @@ backup(){
         cp $HOME/.Xresources .
         cp $HOME/.zshrc .
         cp -r $HOME/.zsh .
-        cp -r $HOME/.i3 .
+        cp -r $HOME/.config/awesome .
         cp $HOME/.config/ranger/rc.conf ranger/
         cp $HOME/.tmux.conf .
         cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli/
         cp $HOME/.xinitrc .
-        cp $HOME/.i3status.conf .
 
         cp /etc/slim.conf slim.conf
         #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 

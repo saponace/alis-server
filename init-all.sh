@@ -53,8 +53,10 @@ installCore(){
         PA xf86-input-synaptics
     # login manager
         PA slim
-    # display manager and app launcher
-        PA i3 dmenu
+    # display manager
+        PA awesome
+    # Lock screen
+        PA i3lock
     # sound server
         PA alsa-utils
     # manpager
