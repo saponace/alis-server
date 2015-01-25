@@ -26,7 +26,7 @@ deploy(){
         cp ranger.conf $HOME/.config/ranger/
         cp mpd.conf $HOME/.config/mpd/
         cp .tmux.conf $HOME
-        cp transmission-remote-cli/settings.cfg $HOME/.config/transmission-remote-cli/
+        cp transmission-remote-cli.cfg $HOME/.config/transmission-remote-cli/settings.cfg
         cp .xinitrc $HOME
 
         #cp slim.conf /etc/
@@ -47,7 +47,7 @@ backup(){
         cp $HOME/.config/ranger/rc.conf ranger.conf
         cp $HOME/.config/mpd/mpd.conf .
         cp $HOME/.tmux.conf .
-        cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli/
+        cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
         cp $HOME/.xinitrc .
 
         cp /etc/slim.conf slim.conf
