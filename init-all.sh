@@ -90,8 +90,6 @@ installCasual(){
         PA apvlv
     # fonts
         installFonts
-    # Notification daemon
-        installDunst
     # Redshift
         installRedshift
     # Screenshot, used by interactive screenshot
@@ -168,11 +166,6 @@ installfonts (){
     fc-cache -fv
 }
 
-installDunst (){
-    PA dunst
-    mkdir -p /home/saponace/.config/dunst/
-    cp /usr/share/dunst/dunstrc /home/saponace/.config/dunst/
-}
 
 
 installNetworkManager (){
