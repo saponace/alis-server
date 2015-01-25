@@ -23,7 +23,7 @@ deploy(){
         cp .zshrc $HOME
         cp -r .zsh $HOME
         cp -r awesome $HOME/.config
-        cp ranger/rc.conf $HOME/.config/ranger/
+        cp ranger.conf $HOME/.config/ranger/
         cp mpd.conf $HOME/.config/mpd/
         cp .tmux.conf $HOME
         cp transmission-remote-cli/settings.cfg $HOME/.config/transmission-remote-cli/
@@ -44,7 +44,7 @@ backup(){
         cp $HOME/.zshrc .
         cp -r $HOME/.zsh .
         cp -r $HOME/.config/awesome .
-        cp $HOME/.config/ranger/rc.conf ranger/
+        cp $HOME/.config/ranger/rc.conf ranger.conf
         cp $HOME/.config/mpd/mpd.conf .
         cp $HOME/.tmux.conf .
         cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli/
