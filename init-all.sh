@@ -10,6 +10,7 @@
 #!/bin/bash
 
 PA = yaourt -S --noconfirm
+homedir = /home/saponace
 
 usage(){
 	echo "Usage: $0 ..."
@@ -92,10 +93,10 @@ installCasual(){
         installFonts
     # Redshift
         installRedshift
-    # Screenshot, used by interactive screenshot
+    # Screenshot and image manipulation, used by interactive screenshot
         PA scrot
-    # Screenshot, used by interactive screenshot
-        PA imagemagick
+    # Music
+        installMusic
 }
 
 
@@ -184,6 +185,18 @@ installRedshift (){
     echo -e "\n\n[manual]\nlat=45\nlon=0.5" > /home/saponace/.config/redshift.conf
 }
 
+
+installMusic (){
+    # Music server
+        PA mpd
+    # MPD client
+        PA ncmpcpp
+    # Config dir
+        mkdir $homedir/.config/mpd
+    # Config files
+        mkdir $homedir/.config/mpd/playlists
+        touch $hoemdir/.config/mpd/{database,log,pid,state,sticker.sql}
+}
 
 installRanger (){
     PA ranger
