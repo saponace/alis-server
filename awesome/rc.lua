@@ -76,8 +76,8 @@ graphics   = "gimp"
 mail       = terminal .. " -e mutt "
 
 local layouts = {
-  awful.layout.suit.tile,
   awful.layout.suit.tile.left,
+  awful.layout.suit.tile,
   awful.layout.suit.fair,
   --awful.layout.suit.tile.bottom,
   --awful.layout.suit.floating,
