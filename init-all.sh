@@ -68,6 +68,8 @@ installCore(){
         installRanger
     # web navigator and flash extension
         PA chromium chromium-pepper-flash
+    # XrandR, multi-monitor 
+        PA xrandr arandr
 }
 
 
