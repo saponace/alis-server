@@ -149,3 +149,12 @@ endif
         map <Leader><Leader>h <Plug>(easymotion-linebackward)
     " keep cursor colum when JK motion
         let g:EasyMotion_startofline = 0
+
+
+" Insert single char with s (on cursor location) and S (after cursor). Can be
+" repeted with '5s '
+    function! RepeatChar(char, count)
+       return repeat(a:char, a:count)
+     endfunction
+     nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
+     nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
