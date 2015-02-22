@@ -568,7 +568,7 @@ globalkeys = awful.util.table.join(
     --awful.key({ modkey, "Shift"   }, "l",  function () awful.util.spawn()  end),
     awful.key({ altkey, "Control" }, "l",  function () awful.util.spawn_with_shell(lockscreen_cmd)  end),
     awful.key({ modkey,           }, "space",  function () menubar.show()  end),
-    awful.key({ modkey,           }, "c",  function () awful.util.spawn("chromium")  end)
+    awful.key({ modkey,           }, "c",  function () awful.util.spawn("google-chrome-stable")  end)
 
 
 
