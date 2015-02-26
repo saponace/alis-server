@@ -71,6 +71,8 @@ installCore(){
         PA google-chrome
     # XrandR, multi-monitor 
         PA xrandr arandr
+    # cron job to alert when low battery
+        installLowBatteryWarningCron
 }
 
 
@@ -122,12 +124,17 @@ installDev(){
         PA figlet
     # gdb
         PA gdb
+    # Eclipse, IDE
+        PA eclipse
 }
 
 
-installOptional (){
-    # Eclim, eclipse integration in vim (also install eclipse)
-        PA eclim
+installLowBatteryWarningCron (){
+    # cron script management
+        PA cronie
+        echo "*/1 * * * * env DISPLAY=:0 /home/saponace/config/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
+        crontab -u saponace /tmp/cron-jobs.txt
+        systemctl enable cronie
 }
 
 
