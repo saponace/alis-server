@@ -9,25 +9,27 @@
 
 
 usage(){
-    echo "Usage: $0 deploy|backup"
+    echo "Usage: $0 deploy|backup username"
 }
 
+username=$2
+usernameHome=(/home/$username)
 
 
 deploy(){
     if [ retval != 0 ]
     then
-        cp .vimrc.local $HOME
-        cp .vimrc.bundles.local $HOME
-        cp .Xresources $HOME
-        cp .zshrc $HOME
-        cp -r .zsh $HOME
-        cp -r awesome $HOME/.config
-        cp ranger.conf $HOME/.config/ranger/
-        cp mpd.conf $HOME/.config/mpd/
-        cp .tmux.conf $HOME
-        cp transmission-remote-cli.cfg $HOME/.config/transmission-remote-cli/settings.cfg
-        cp .xinitrc $HOME
+        cp .vimrc.local $usernameHome
+        cp .vimrc.bundles.local $usernameHome
+        cp .Xresources $usernameHome
+        cp .zshrc $usernameHome
+        cp -r .zsh $usernameHome
+        cp -r awesome $usernameHome/.config
+        cp ranger.conf $usernameHome/.config/ranger/
+        cp mpd.conf $usernameHome/.config/mpd/
+        cp .tmux.conf $usernameHome
+        cp transmission-remote-cli.cfg $usernameHome/.config/transmission-remote-cli/settings.cfg
+        cp .xinitrc $usernameHome
 
         #cp slim.conf /etc/
         #cp -r slim-minimal/ /usr/share/slim/themes/ 
@@ -38,17 +40,17 @@ deploy(){
 
 
 backup(){
-        cp $HOME/.vimrc.local .
-        cp $HOME/.vimrc.bundles.local .
-        cp $HOME/.Xresources .
-        cp $HOME/.zshrc .
-        cp -r $HOME/.zsh .
-        cp -r $HOME/.config/awesome .
-        cp $HOME/.config/ranger/rc.conf ranger.conf
-        cp $HOME/.config/mpd/mpd.conf .
-        cp $HOME/.tmux.conf .
-        cp $HOME/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
-        cp $HOME/.xinitrc .
+        cp $usernameHome/.vimrc.local .
+        cp $usernameHome/.vimrc.bundles.local .
+        cp $usernameHome/.Xresources .
+        cp $usernameHome/.zshrc .
+        cp -r $usernameHome/.zsh .
+        cp -r $usernameHome/.config/awesome .
+        cp $usernameHome/.config/ranger/rc.conf ranger.conf
+        cp $usernameHome/.config/mpd/mpd.conf .
+        cp $usernameHome/.tmux.conf .
+        cp $usernameHome/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
+        cp $usernameHome/.xinitrc .
 
         cp /etc/slim.conf slim.conf
         #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 

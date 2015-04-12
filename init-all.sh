@@ -9,8 +9,11 @@
 
 #!/bin/bash
 
-PA = yaourt -S --noconfirm
-homedir = /home/saponace
+PA=(yaourt -S --noconfirm)
+username=(saponace)
+
+
+homedir=(/home/$username)
 
 usage(){
 	echo "Usage: $0 ..."
@@ -21,7 +24,7 @@ all() {
     initSettings
     installPackages
     rootEnv
-    copy.sh deploy
+    copy.sh deploy $username
 }
 
 
@@ -29,16 +32,14 @@ all() {
 
 initSettings (){
     #  change default shell to ZSH
-        sudo chsh -s /bin/zsh saponace
+        sudo chsh -s /bin/zsh $username
 
-    # add saponace to wheel group (sudoers)
-        useradd -m -G wheel -s /bin/bash saponace
+    # add the user to wheel group (sudoers)
+        useradd -m -G wheel -s /bin/bash $username
         sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
     
-    # use zsh as default shell
-        chsh -s /bin/zsh saponace
-
     # set locale (not sure if usefull)
+        localectl set-keymap fr-latin9.map.gz
         export LC_ALL=en_US.UTF-8
         export LANG="$LC_ALL"
 }
@@ -47,30 +48,30 @@ initSettings (){
 
 installCore(){
     # X server
-        PA xorg-server xorg-server-utils xorg-xinit xterm xorg-xclock xorg-twm
+        $PA xorg-server xorg-server-utils xorg-xinit xterm xorg-xclock xorg-twm
     # graphic drivers
-        PA mesa xf86-video-vesa xf86-video-ati
+        $PA mesa xf86-video-vesa xf86-video-ati
     # touchpad drivers
-        PA xf86-input-synaptics
+        $PA xf86-input-synaptics
     # login manager
-        PA slim
+        $PA slim
     # display manager
-        PA awesome
+        $PA awesome
     # Lock screen
-        PA i3lock
+        $PA i3lock
     # sound server
-        PA alsa-utils
+        $PA alsa-utils
     # manpager
-        PA most
+        $PA most
     # access X clipboard
-        PA xclip
+        $PA xclip
     # file explorer
         installRanger
     # web navigator and flash extension
-        #PA chromium chromium-pepper-flash
-        PA google-chrome
+        #$PA chromium chromium-pepper-flash
+        $PA google-chrome
     # XrandR, multi-monitor 
-        PA xrandr arandr
+        $PA xrandr arandr
     # cron job to alert when low battery
         installLowBatteryWarningCron
 }
@@ -83,23 +84,23 @@ installCasual(){
     # Yaourt package manager
         installYaourt
     # Unzip
-        PA unzip
+        $PA unzip
     # VLC media player
-        PA vlc
+        $PA vlc
     # torrent client
         installTransmission
     # automounting media disks
-        PA udiskie
+        $PA udiskie
     # image viewer
-        PA feh
+        $PA feh
     # PDF viewer
-        PA apvlv
+        $PA apvlv
     # fonts
         installFonts
     # Redshift
         installRedshift
     # Screenshot and image manipulation, used by interactive screenshot
-        PA scrot
+        $PA scrot
     # Music
         installMusic
 }
@@ -108,32 +109,32 @@ installCasual(){
 
 installDev(){
     # utils
-        PA zsh wget openssh svn rsync
+        $PA zsh wget openssh svn rsync
     # Vim and spf13
         installSpf13
     # texlive-most
-        PA texlive-most
+        $PA texlive-most
     # Java
-        PA jdk7-openjdk
+        $PA jdk7-openjdk
     # LAMP (apache server)
         installlLamp
     # Terminal multiplexer
-        PA tmux
-        PA tmuxinator
+        $PA tmux
+        $PA tmuxinator
     # Figlet, ASCII art -- Ultra pimp
-        PA figlet
+        $PA figlet
     # gdb
-        PA gdb
+        $PA gdb
     # Eclipse, IDE
-        PA eclipse
+        $PA eclipse
 }
 
 
 installLowBatteryWarningCron (){
     # cron script management
-        PA cronie
-        echo "*/1 * * * * env DISPLAY=:0 /home/saponace/config/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
-        crontab -u saponace /tmp/cron-jobs.txt
+        $PA cronie
+        echo "*/1 * * * * env DISPLAY=:0 /home/$username/config/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
+        crontab -u $username /tmp/cron-jobs.txt
         systemctl enable cronie
 }
 
@@ -150,14 +151,14 @@ installPackages(){
 rootEnv (){
     cd /root
     # .zshrc
-        ln -s /home/saponace/.zshrc .zshrc
+        ln -s /home/$username/.zshrc .zshrc
     # .vimrc
-        ln -s /home/saponace/.vimrc .vimrc
-        ln -s /home/saponace/.vim/ .vim
-        ln -s /home/saponace/.vimrc.local .vimrc.local
-        ln -s /home/saponace/.vimrc.bundles .vimrc.bundles
-        ln -s /home/saponace/.vimrc.bundles.local .vimrc.bundles.local
-        ln -s /home/saponace/.vimrc.before .vimrc.before
+        ln -s /home/$username/.vimrc .vimrc
+        ln -s /home/$username/.vim/ .vim
+        ln -s /home/$username/.vimrc.local .vimrc.local
+        ln -s /home/$username/.vimrc.bundles .vimrc.bundles
+        ln -s /home/$username/.vimrc.bundles.local .vimrc.bundles.local
+        ln -s /home/$username/.vimrc.before .vimrc.before
     # use zsh as default shell
         chsh -s /bin/zsh root
 }
@@ -166,7 +167,7 @@ rootEnv (){
 
 installfonts (){
     # dejavu font
-    PA ttf-dejavu
+    $PA ttf-dejavu
 
     # Inconsolata-g font
     cd /tmp/
@@ -180,27 +181,27 @@ installfonts (){
 
 
 installNetworkManager (){
-    PA wpa_supplicant
-    PA networkmanager 
+    $PA wpa_supplicant
+    $PA networkmanager 
     systemctl enable NetworkManager
-    PA network-manager-applet gnome-keyring gnome-icon-theme
+    $PA network-manager-applet gnome-keyring gnome-icon-theme
     # Disable ipv6 in dhcpcd.conf
     echo -e "noipv6rs\nnoipv6" >> /etc/dhcpcd.conf 
 }
 
 installRedshift (){
-    PA redshift
-    echo -e "[redshift]\ntemp-day=5700\ntemp-night=3600" > /home/saponace/.config/redshift.conf
-    echo -e "\ngamma=0.8\nadjustment-method=randr\nlocation-provider=manual" > /home/saponace/.config/redshift.conf
-    echo -e "\n\n[manual]\nlat=45\nlon=0.5" > /home/saponace/.config/redshift.conf
+    $PA redshift
+    echo -e "[redshift]\ntemp-day=5700\ntemp-night=3600" > /home/$username/.config/redshift.conf
+    echo -e "\ngamma=0.8\nadjustment-method=randr\nlocation-provider=manual" > /home/$username/.config/redshift.conf
+    echo -e "\n\n[manual]\nlat=45\nlon=0.5" > /home/$username/.config/redshift.conf
 }
 
 
 installMusic (){
     # Music server
-        PA mpd
+        $PA mpd
     # MPD client
-        PA ncmpcpp
+        $PA ncmpcpp
     # Config dir
         mkdir $homedir/.config/mpd
     # Config files
@@ -209,42 +210,42 @@ installMusic (){
 }
 
 installRanger (){
-    PA ranger
-    PA libcaca              # ASCII image preview
-    PA highlight            # Syntax highlight in preview
-    PA poppler              # PDF preview
-    PA mediaonfo            # Audio and video files info in preiew
-    PA atool                # Reading inside archives
+    $PA ranger
+    $PA libcaca              # ASCII image preview
+    $PA highlight            # Syntax highlight in preview
+    $PA poppler              # PDF preview
+    $PA mediaonfo            # Audio and video files info in preiew
+    $PA atool                # Reading inside archives
     ranger -copy-config=all # Create dotfiles in $HOME/.config/ranger
 }
 
 
 intallYaourt (){
     echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
-    PA yaourt 
+    $PA yaourt 
     # ncurses yaourt gui
-    PA pcurses 
+    $PA pcurses 
 }
 
 
 installTransmission(){
-    PA transmission-remote-cli
+    $PA transmission-remote-cli
     transmission-remote-cli --create-config # Detect config file
 }
 
 
 installSpf13 (){
-   PA vim 
+   $PA vim 
    sudo curl http://j.mp/spf13-vim3 -L -o - | sh       # spf13, config and plugin pack
 }
 
 
 
 installlLamp (){
-    PA apache
-    PA php-apache
-    PA mysql
-    PA phpmyadmin php-mcrypt
+    $PA apache
+    $PA php-apache
+    $PA mysql
+    $PA phpmyadmin php-mcrypt
 
     # Allow the use of PHP in apache
         echo -e "# Use for PHP 5.x:\nLoadModule php5_module       modules/libphp5.so\n" >> /etc/httpd/conf/httpd.conf
