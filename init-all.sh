@@ -47,7 +47,7 @@ initSettings (){
 
 installCore(){
     # X server
-        PA xorg-server xorg-server-utils xorg-xinit xter xorg-xclock xorg-twm
+        PA xorg-server xorg-server-utils xorg-xinit xterm xorg-xclock xorg-twm
     # graphic drivers
         PA mesa xf86-video-vesa xf86-video-ati
     # touchpad drivers

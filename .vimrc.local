@@ -21,7 +21,7 @@
     map <leader>w :%s/\s\+$//<CR>:nohl<CR>
 
 " Allow usage of keybindings using the alt key in URxvt 
-    set termencoding=latin1
+    "set termencoding=latin1
 
 
 " set change from insert mode to normal mode immediate
