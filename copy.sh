@@ -31,8 +31,8 @@ deploy(){
         cp transmission-remote-cli.cfg $usernameHome/.config/transmission-remote-cli/settings.cfg
         cp .xinitrc $usernameHome
 
-        #cp slim.conf /etc/
-        #cp -r slim-minimal/ /usr/share/slim/themes/ 
+        sudo cp slim.conf /etc/
+        sudo cp -r slim-minimal/ /usr/share/slim/themes/ 
     fi
     echo "successfully deployed files"
 }
@@ -60,7 +60,7 @@ backup(){
 
 
 
-if [ $# -ne 1 ]
+if [ $# -ne 2 ]
 then
     usage
     exit 1
