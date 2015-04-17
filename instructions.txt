@@ -1,6 +1,7 @@
 loadkeys i386/azerty/fr-latin9.map.gz
-cfdisk -> label type: dos
 
+
+cfdisk -> label type: dos
 
 puis faire toutes les partitions
     -> /dev/sda5 : root
@@ -23,17 +24,15 @@ genfstab -p -L /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
 
+
 vim /etc/locale.gen
     -> uncomment fr_FR... lines
-ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
-hwclock --systohc --localtime
-echo  $hostname > /etc/hostname
-systemctl enable dhcpcd.service
-mkinitcpio -p linux
-pacman -S grub os-prober
-grub-install --target=i386-pc --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+
+init-before-reboot.sh $hostname
+
 exit
 exit
 
-then init-all.sh
+reboot
+
+init-all.sh
