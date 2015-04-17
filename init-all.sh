@@ -16,7 +16,7 @@ username=($1)
 homedir=(/home/$username)
 
 usage(){
-	echo "Usage: $0 ..."
+	echo "Usage: $0 username"
 }
 
 
@@ -31,9 +31,6 @@ all() {
 
 
 initSettings (){
-    #  change default shell to ZSH
-        sudo chsh -s /bin/zsh $username
-
     # set locale (not sure if usefull)
         localectl set-keymap fr-latin9.map.gz
         export LC_ALL=en_US.UTF-8
@@ -267,6 +264,8 @@ if [ $# -ne 1 ]
 then
 	usage
 	exit 1
+else
+	all
 fi
 
 

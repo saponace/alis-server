@@ -21,4 +21,6 @@ passwd root
     sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
     echo enter $username password:
     passwd $username
+#  change default shell to ZSH
+    sudo chsh -s /bin/zsh $username
 
