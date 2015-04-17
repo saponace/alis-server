@@ -10,7 +10,7 @@
 #!/bin/bash
 
 PA=(yaourt -S --noconfirm)
-username=(saponace)
+username=($1)
 
 
 homedir=(/home/$username)
@@ -34,10 +34,6 @@ initSettings (){
     #  change default shell to ZSH
         sudo chsh -s /bin/zsh $username
 
-    # add the user to wheel group (sudoers)
-        useradd -m -G wheel -s /bin/bash $username
-        sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
-    
     # set locale (not sure if usefull)
         localectl set-keymap fr-latin9.map.gz
         export LC_ALL=en_US.UTF-8
@@ -267,7 +263,7 @@ installlLamp (){
 
 
 
-if [ $# -ne ... ]
+if [ $# -ne 1 ]
 then
 	usage
 	exit 1

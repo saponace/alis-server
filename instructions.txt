@@ -28,7 +28,7 @@ arch-chroot /mnt
 vim /etc/locale.gen
     -> uncomment fr_FR... lines
 
-init-before-reboot.sh $hostname
+init-before-reboot.sh $hostname $username
 
 exit
 exit
@@ -39,4 +39,4 @@ swapoff /dev/sda7
 
 reboot
 
-init-all.sh
+init-all.sh $username
