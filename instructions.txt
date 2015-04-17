@@ -33,6 +33,10 @@ init-before-reboot.sh $hostname
 exit
 exit
 
+umount /dev/sda6
+umount /dev/sda5
+swapoff /dev/sda7
+
 reboot
 
 init-all.sh
