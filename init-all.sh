@@ -21,16 +21,16 @@ usage(){
 
 
 all() {
-    initSettings
-    installPackages
-    rootEnv
-    copy.sh deploy $username
+#    initSettings
+#    installPackages
+#    ./copy.sh deploy $username
+     rootEnv
 }
 
 
 
 
-initSettings (){
+initSettings (){   #marche pas parce qu'il ne trouve pas les locales
     # set locale (not sure if usefull)
         localectl set-keymap fr-latin9.map.gz
         export LC_ALL=en_US.UTF-8
@@ -104,7 +104,7 @@ installDev(){
     # utils
         $PA zsh wget openssh svn rsync
     # Vim and spf13
-        installSpf13
+        # installSpf13
     # texlive-most
         $PA texlive-most
     # Java
@@ -142,18 +142,17 @@ installPackages(){
 
 
 rootEnv (){
-    cd /root
     # .zshrc
-        ln -s /home/$username/.zshrc .zshrc
+        sudo ln -s /home/$username/.zshrc /root/.zshrc
     # .vimrc
-        ln -s /home/$username/.vimrc .vimrc
-        ln -s /home/$username/.vim/ .vim
-        ln -s /home/$username/.vimrc.local .vimrc.local
-        ln -s /home/$username/.vimrc.bundles .vimrc.bundles
-        ln -s /home/$username/.vimrc.bundles.local .vimrc.bundles.local
-        ln -s /home/$username/.vimrc.before .vimrc.before
+        sudo ln -s /home/$username/.vimrc /root/.vimrc
+        sudo ln -s /home/$username/.vim/ /root/.vim
+        sudo ln -s /home/$username/.vimrc.local /root/.vimrc.local
+        sudo ln -s /home/$username/.vimrc.bundles /root/.vimrc.bundles
+        sudo ln -s /home/$username/.vimrc.bundles.local /root/.vimrc.bundles.local
+        sudo ln -s /home/$username/.vimrc.before /root/.vimrc.before
     # use zsh as default shell
-        chsh -s /bin/zsh root
+        sudo chsh -s /bin/zsh root
 }
 
 
@@ -198,7 +197,7 @@ installMusic (){
     # Config dir
         mkdir $homedir/.config/mpd
     # Config files
-        mkdir $homedir/.config/mpd/playlists
+        mkdir -p $homedir/.config/mpd/playlists
         touch $hoemdir/.config/mpd/{database,log,pid,state,sticker.sql}
 }
 
