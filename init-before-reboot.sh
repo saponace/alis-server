@@ -2,8 +2,7 @@
 
 hostname=($1)
 
-vim /etc/locale.gen
-    -> uncomment fr_FR... lines
+locale-gen
 ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 hwclock --systohc --localtime
 echo  $hostname > /etc/hostname
