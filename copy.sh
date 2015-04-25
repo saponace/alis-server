@@ -8,6 +8,14 @@
 #!/bin/bash
 
 
+function cp-parents {
+  if [ ! -d "$2" ]; then
+	mkdir -p "$2"
+  fi
+  cp -R "$1" "$2"
+}
+
+
 usage(){
     echo "Usage: $0 deploy|backup username"
 }
@@ -19,20 +27,20 @@ usernameHome=(/home/$username)
 deploy(){
     if [ retval != 0 ]
     then
-        cp .vimrc.local $usernameHome
-        cp .vimrc.bundles.local $usernameHome
-        cp .Xresources $usernameHome
-        cp .zshrc $usernameHome
-        cp -r .zsh $usernameHome
-        cp -r awesome $usernameHome/.config
-        cp ranger.conf $usernameHome/.config/ranger/
-        cp mpd.conf $usernameHome/.config/mpd/
-        cp .tmux.conf $usernameHome
-        cp transmission-remote-cli.cfg $usernameHome/.config/transmission-remote-cli/settings.cfg
-        cp .xinitrc $usernameHome
+        cp-parents .vimrc.local $usernameHome
+        cp-parents .vimrc.bundles.local $usernameHome
+        cp-parents .Xresources $usernameHome
+        cp-parents .zshrc $usernameHome
+        cp-parents .zsh $usernameHome
+        cp-parents awesome $usernameHome/.config
+        cp-parents ranger.conf $usernameHome/.config/ranger/
+        cp-parents mpd.conf $usernameHome/.config/mpd/
+        cp-parents .tmux.conf $usernameHome
+        cp-parents transmission-remote-cli.cfg $usernameHome/.config/transmission-remote-cli/settings.cfg
+        cp-parents .xinitrc $usernameHome
 
         sudo cp slim.conf /etc/
-        sudo cp -r slim-minimal/ /usr/share/slim/themes/ 
+        #sudo mkdir -p /usr/share/slim/themes/ && sudo cp -R slim-minimal/ /usr/share/slim/themes/ 
     fi
     echo "successfully deployed files"
 }
@@ -40,20 +48,20 @@ deploy(){
 
 
 backup(){
-        cp $usernameHome/.vimrc.local .
-        cp $usernameHome/.vimrc.bundles.local .
-        cp $usernameHome/.Xresources .
-        cp $usernameHome/.zshrc .
-        cp -r $usernameHome/.zsh .
-        cp -r $usernameHome/.config/awesome .
-        cp $usernameHome/.config/ranger/rc.conf ranger.conf
-        cp $usernameHome/.config/mpd/mpd.conf .
-        cp $usernameHome/.tmux.conf .
-        cp $usernameHome/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
-        cp $usernameHome/.xinitrc .
+        cp-parents $usernameHome/.vimrc.local .
+        cp-parents $usernameHome/.vimrc.bundles.local .
+        cp-parents $usernameHome/.Xresources .
+        cp-parents $usernameHome/.zshrc .
+        cp-parents $usernameHome/.zsh .
+        cp-parents $usernameHome/.config/awesome .
+        cp-parents $usernameHome/.config/ranger/rc.conf ranger.conf
+        cp-parents $usernameHome/.config/mpd/mpd.conf .
+        cp-parents $usernameHome/.tmux.conf .
+        cp-parents $usernameHome/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
+        cp-parents $usernameHome/.xinitrc .
 
-        cp /etc/slim.conf slim.conf
-        #cp -r /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
+        cp-parents /etc/slim.conf slim.conf
+        #cp-parents /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
 
     echo "successfully backed files in this folder"
 }
