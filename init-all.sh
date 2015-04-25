@@ -74,8 +74,6 @@ installCore(){
 installCasual(){
     # Network manager
         installNetworkManager
-    # Yaourt package manager
-        installYaourt
     # Unzip
         $PA unzip
     # VLC media player
@@ -133,6 +131,7 @@ installLowBatteryWarningCron (){
 
 
 installPackages(){
+    installYaourt
     installCore
     installCasual
     installDev
@@ -212,9 +211,9 @@ installRanger (){
 }
 
 
-intallYaourt (){
-    echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
-    $PA yaourt 
+installYaourt (){
+    echo -e $'[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch' | sudo tee -a /etc/pacman.conf >/dev/null
+    sudo pacman -Syu yaourt 
     # ncurses yaourt gui
     $PA pcurses 
 }
