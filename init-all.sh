@@ -22,9 +22,9 @@ usage(){
 
 all() {
 #    initSettings
-#    installPackages
+    installPackages
 #    ./copy.sh deploy $username
-     rootEnv
+#     rootEnv
 }
 
 
@@ -32,8 +32,8 @@ all() {
 
 initSettings (){   #marche pas parce qu'il ne trouve pas les locales
     # set locale (not sure if usefull)
-        localectl set-keymap fr-latin9.map.gz
-        export LC_ALL=en_US.UTF-8
+        sudo localectl set-keymap fr-latin9.map.gz
+        export LC_ALL=fr_FR.utf8
         export LANG="$LC_ALL"
 }
 
