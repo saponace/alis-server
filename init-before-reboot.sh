@@ -6,6 +6,7 @@ username=($2)
 echo  $hostname > /etc/hostname
 ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 locale-gen
+localectl set-keymap fr-latin1.map.gz
 hwclock --systohc --localtime
 systemctl enable dhcpcd.service
 mkinitcpio -p linux
