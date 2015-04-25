@@ -9,7 +9,7 @@
 
 #!/bin/bash
 
-PA=(yaourt -S --noconfirm)
+PA="yaourt -S --noconfirm"
 username=($1)
 
 
