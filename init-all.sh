@@ -21,10 +21,10 @@ usage(){
 
 
 all() {
-#    initSettings
+    initSettings
     installPackages
-#    ./copy.sh deploy $username
-#     rootEnv
+    ./copy.sh deploy $username
+     rootEnv
 }
 
 
