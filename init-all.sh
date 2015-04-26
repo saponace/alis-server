@@ -30,10 +30,10 @@ all() {
 
 
 
-initSettings (){   #marche pas parce qu'il ne trouve pas les locales
+initSettings (){
     # set locale (not sure if usefull)
         sudo localectl set-keymap fr-latin9.map.gz
-        export LC_ALL=fr_FR.utf8
+        export LC_ALL=en_US.UTF-8
         export LANG="$LC_ALL"
 }
 
