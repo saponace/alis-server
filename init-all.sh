@@ -5,7 +5,6 @@
 #description: Initialize a proper arch environment
 #
 
-# Execute with sudo -E !
 
 #!/bin/bash
 
@@ -21,8 +20,8 @@ usage(){
 
 
 all() {
-    initSettings
     installPackages
+    initSettings
     ./copy.sh deploy $username
      rootEnv
 }
@@ -35,6 +34,8 @@ initSettings (){
         sudo localectl set-keymap fr-latin9.map.gz
         export LC_ALL=en_US.UTF-8
         export LANG="$LC_ALL"
+    # Change default shell to ZSH
+        chsh -s /bin/zsh $username
 }
 
 
@@ -48,6 +49,7 @@ installCore(){
         $PA xf86-input-synaptics
     # login manager
         $PA slim
+        systemctl enable slim.service
     # display manager
         $PA awesome
     # Lock screen
@@ -61,7 +63,6 @@ installCore(){
     # file explorer
         installRanger
     # web navigator and flash extension
-        #$PA chromium chromium-pepper-flash
         $PA google-chrome
     # XrandR, multi-monitor 
         $PA xrandr arandr
@@ -102,7 +103,7 @@ installDev(){
     # utils
         $PA zsh wget openssh svn rsync
     # Vim and spf13
-        # installSpf13
+         installSpf13
     # texlive-most
         $PA texlive-most
     # Java
