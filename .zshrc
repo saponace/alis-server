@@ -12,4 +12,4 @@ source $COMMONPATH/misc-functions
 source $COMMONPATH/aliases
 source $COMMONPATH/prompt
 
-eval $( dircolors -b "$HOME/.zsh/ls-colors" )
+eval $( dircolors -b "$COMMONPATH/ls-colors" )
