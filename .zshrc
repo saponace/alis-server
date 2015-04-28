@@ -2,9 +2,9 @@
 # Misc doit être placé en premier parce d'autres fichiers on besoin de lui pour être chargés
 
 
-USERNAME="saponace"
+username="saponace"
 
-COMMONPATH="/home/$USERNAME/.zsh"
+COMMONPATH="/home/$username/.zsh"
 
 
 source $COMMONPATH/misc
