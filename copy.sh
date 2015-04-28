@@ -8,11 +8,11 @@
 #!/bin/bash
 
 
-function cp-parents {
-  if [ ! -d "$2" ]; then
-	mkdir -p "$2"
-  fi
-  cp -R "$1" "$2"
+function cpparents {
+    if [ ! -d "$2" ]; then
+        mkdir -p "$2"
+    fi
+    cp -R "$1" "$2"
 }
 
 
@@ -27,17 +27,17 @@ usernameHome=(/home/$username)
 deploy(){
     if [ retval != 0 ]
     then
-        cp-parents .vimrc.local $usernameHome
-        cp-parents .vimrc.bundles.local $usernameHome
-        cp-parents .Xresources $usernameHome
-        cp-parents .zshrc $usernameHome
-        cp-parents .zsh $usernameHome
-        cp-parents awesome $usernameHome/.config
-        cp-parents ranger.conf $usernameHome/.config/ranger/
-        cp-parents mpd.conf $usernameHome/.config/mpd/
-        cp-parents .tmux.conf $usernameHome
-        cp-parents transmission-remote-cli.cfg $usernameHome/.config/transmission-remote-cli/settings.cfg
-        cp-parents .xinitrc $usernameHome
+        cpparents .vimrc.local $usernameHome
+        cpparents .vimrc.bundles.local $usernameHome
+        cpparents .Xresources $usernameHome
+        cpparents .zshrc $usernameHome
+        cpparents .zsh $usernameHome
+        cpparents awesome $usernameHome/.config
+        cpparents ranger.conf $usernameHome/.config/ranger/
+        cpparents mpd.conf $usernameHome/.config/mpd/
+        cpparents .tmux.conf $usernameHome
+        cpparents transmission-remote-cli.cfg $usernameHome/.config/transmission-remote-cli/settings.cfg
+        cpparents .xinitrc $usernameHome
 
         sudo cp slim.conf /etc/
         #sudo mkdir -p /usr/share/slim/themes/ && sudo cp -R slim-minimal/ /usr/share/slim/themes/ 
@@ -48,20 +48,20 @@ deploy(){
 
 
 backup(){
-        cp-parents $usernameHome/.vimrc.local .
-        cp-parents $usernameHome/.vimrc.bundles.local .
-        cp-parents $usernameHome/.Xresources .
-        cp-parents $usernameHome/.zshrc .
-        cp-parents $usernameHome/.zsh .
-        cp-parents $usernameHome/.config/awesome .
-        cp-parents $usernameHome/.config/ranger/rc.conf ranger.conf
-        cp-parents $usernameHome/.config/mpd/mpd.conf .
-        cp-parents $usernameHome/.tmux.conf .
-        cp-parents $usernameHome/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
-        cp-parents $usernameHome/.xinitrc .
+    cpparents $usernameHome/.vimrc.local .
+    cpparents $usernameHome/.vimrc.bundles.local .
+    cpparents $usernameHome/.Xresources .
+    cpparents $usernameHome/.zshrc .
+    cpparents $usernameHome/.zsh .
+    cpparents $usernameHome/.config/awesome .
+    cpparents $usernameHome/.config/ranger/rc.conf ranger.conf
+    cpparents $usernameHome/.config/mpd/mpd.conf .
+    cpparents $usernameHome/.tmux.conf .
+    cpparents $usernameHome/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
+    cpparents $usernameHome/.xinitrc .
 
-        cp-parents /etc/slim.conf slim.conf
-        #cp-parents /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
+    cpparents /etc/slim.conf slim.conf
+    #cpparents /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
 
     echo "successfully backed files in this folder"
 }
