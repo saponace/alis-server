@@ -31,7 +31,7 @@ all() {
 
 initSettings (){
     # set locale (not sure if usefull)
-        sudo localectl set-keymap fr-latin9.map.gz
+        sudo localectl set-keymap fr-latin9
         export LC_ALL=en_US.UTF-8
         export LANG="$LC_ALL"
     # Change default shell to ZSH
