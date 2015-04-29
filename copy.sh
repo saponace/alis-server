@@ -40,7 +40,7 @@ deploy(){
         cpparents .xinitrc $usernameHome
 
         sudo cp slim.conf /etc/
-        #sudo mkdir -p /usr/share/slim/themes/ && sudo cp -R slim-minimal/ /usr/share/slim/themes/ 
+        sudo mkdir -p /usr/share/slim/themes/ && sudo cp -R slim-minimal/ /usr/share/slim/themes/ 
     fi
     echo "successfully deployed files"
 }
