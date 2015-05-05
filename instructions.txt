@@ -30,6 +30,8 @@ vim /etc/locale.gen
 
 init-before-reboot.sh $hostname $username
 
+ecrire l'UUID de la partition linux dans /boot/loader/entries/arch.conf (peut etre vu avec blkid)
+
 exit
 exit
 
