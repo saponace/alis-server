@@ -28,7 +28,7 @@ arch-chroot /mnt
 vim /etc/locale.gen
     -> uncomment fr_FR... and en_US.UTF-8 lines
 
-init-before-reboot.sh $hostname $username
+init-before-reboot.sh $hostname $username $linux-partition(ex:/dev/sda2)
 
 ecrire l'UUID de la partition linux dans /boot/loader/entries/arch.conf (peut etre vu avec blkid)
 
