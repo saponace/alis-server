@@ -33,7 +33,7 @@ deploy(){
         cpparents .zshrc $usernameHome
         cpparents .zsh $usernameHome
         cpparents awesome $usernameHome/.config
-        cpparents ranger.conf $usernameHome/.config/ranger/
+        cpparents ranger.conf $usernameHome/.config/ranger/rc.conf
         cpparents mpd.conf $usernameHome/.config/mpd/
         cpparents .tmux.conf $usernameHome
         cpparents transmission-remote-cli.cfg $usernameHome/.config/transmission-remote-cli/settings.cfg
@@ -48,19 +48,19 @@ deploy(){
 
 
 backup(){
-    cpparents $usernameHome/.vimrc.local .
-    cpparents $usernameHome/.vimrc.bundles.local .
-    cpparents $usernameHome/.Xresources .
-    cpparents $usernameHome/.zshrc .
-    cpparents $usernameHome/.zsh .
-    cpparents $usernameHome/.config/awesome .
-    cpparents $usernameHome/.config/ranger/rc.conf ranger.conf
-    cpparents $usernameHome/.config/mpd/mpd.conf .
-    cpparents $usernameHome/.tmux.conf .
-    cpparents $usernameHome/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
-    cpparents $usernameHome/.xinitrc .
+    cp $usernameHome/.vimrc.local .
+    cp $usernameHome/.vimrc.bundles.local .
+    cp $usernameHome/.Xresources .
+    cp $usernameHome/.zshrc .
+    cp -r $usernameHome/.zsh .
+    cp -r $usernameHome/.config/awesome .
+    cp $usernameHome/.config/ranger/rc.conf ranger.conf
+    cp $usernameHome/.config/mpd/mpd.conf .
+    cp $usernameHome/.tmux.conf .
+    cp $usernameHome/.config/transmission-remote-cli/settings.cfg transmission-remote-cli.cfg
+    cp $usernameHome/.xinitrc .
 
-    cpparents /etc/slim.conf slim.conf
+    cp /etc/slim.conf slim.conf
     #cpparents /usr/share/slim/themes/slim-minimal/ slim-minimal/ 
 
     echo "successfully backed files in this folder"
