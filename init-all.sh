@@ -146,7 +146,7 @@ rootEnv (){
         sudo ln -s /home/$username/.zshrc /root/.zshrc
     # .vimrc
         sudo ln -s /home/$username/.vimrc /root/.vimrc
-        sudo ln -s /home/$username/.vim/ /root/.vim
+        sudo ln -s /home/$username/.vim /root/.vim
         sudo ln -s /home/$username/.vimrc.local /root/.vimrc.local
         sudo ln -s /home/$username/.vimrc.bundles /root/.vimrc.bundles
         sudo ln -s /home/$username/.vimrc.bundles.local /root/.vimrc.bundles.local
