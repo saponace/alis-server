@@ -49,14 +49,21 @@ endif
     set nolist                            " lists can be cut
 
 
-"arrow keys do not do anything in normal mode
+" Arrow keys do not do anything in normal mode
     noremap <Up> <NOP>
     noremap <Down> <NOP>
     noremap <Left> <NOP>
     noremap <Right> <NOP>
 
+" Don't know why, but without this, arrows do write A, B, C or D on my new
+" computer
+    imap <ESC>oA <ESC>ki
+    imap <ESC>oB <ESC>ji
+    imap <ESC>oC <ESC>li
+    imap <ESC>oD <ESC>hi
 
-"move lines up/down with Ctrl+arrows
+
+" Move lines up/down with Ctrl+arrows
     nnoremap <C-j> :m .+1<CR>==
     nnoremap <C-k> :m .-2<CR>==
     vnoremap <C-j> :m '>+1<CR>gv=gv
