@@ -199,6 +199,7 @@ volumewidget = lain.widgets.alsa({
     end
 })
 
+
 -- Net
 netdownicon = wibox.widget.imagebox(beautiful.widget_netdown)
 --netdownicon.align = "middle"
@@ -568,7 +569,11 @@ globalkeys = awful.util.table.join(
     --awful.key({ modkey, "Shift"   }, "l",  function () awful.util.spawn()  end),
     awful.key({ altkey, "Control" }, "l",  function () awful.util.spawn_with_shell(lockscreen_cmd)  end),
     awful.key({ modkey,           }, "space",  function () menubar.show()  end),
-    awful.key({ modkey,           }, "c",  function () awful.util.spawn("google-chrome-stable")  end)
+    awful.key({ modkey,           }, "c",  function () awful.util.spawn("google-chrome-stable")  end),
+
+-- Brigthness control
+    awful.key({}, "#232",  function () awful.util.spawn_with_shell("light -U 10", false) end),
+    awful.key({}, "#233",  function () awful.util.spawn_with_shell("light -A 10", false) end)
 
 
 
