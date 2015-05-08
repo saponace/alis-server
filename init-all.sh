@@ -36,6 +36,8 @@ initSettings (){
         export LANG="$LC_ALL"
     # Change default shell to ZSH
         chsh -s /bin/zsh $username
+    # Change the default soundcard
+        sudo echo -e "pcm.\!default {\ntype hw\ncard 1\n}\n\nctl.\!default {\ntype hw\ncard 1\n}" > /etc/asound.conf
 }
 
 
