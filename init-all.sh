@@ -97,6 +97,8 @@ installCasual(){
         $PA scrot
     # Music
         installMusic
+    # Image modifier, usel to lock the screen
+        $PA imagemagick
 }
 
 
