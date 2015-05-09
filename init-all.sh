@@ -128,6 +128,7 @@ installDev(){
 
 installLowBatteryWarningCron (){
     # cron script management
+        $PA acpi
         $PA cronie
         echo "*/1 * * * * env DISPLAY=:0 /home/$username/config/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
         crontab -u $username /tmp/cron-jobs.txt
