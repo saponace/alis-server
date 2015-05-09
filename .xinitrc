@@ -11,7 +11,5 @@
                             #feh --bg-scale /usr/share/slim/themes/slim-minimal/background.jpg
 # Load Xterm config file
     xrdb .Xresources
-# System components management to save battery
-    powerdown
 # Window manager
     exec awesome 
