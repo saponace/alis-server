@@ -70,6 +70,8 @@ installCore(){
         $PA xrandr arandr
     # cron job to alert when low battery
         installLowBatteryWarningCron
+    # System components management to save battery
+        $PA powerdown-git
 }
 
 
