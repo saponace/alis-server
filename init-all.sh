@@ -88,7 +88,7 @@ installCasual(){
     # image viewer
         $PA feh
     # PDF viewer
-        $PA apvlv
+        $PA evince
     # fonts
         installFonts
     # Redshift
