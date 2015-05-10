@@ -226,7 +226,7 @@ installYaourt (){
 
 
 installTransmission(){
-    $PA transmission-gtk
+    $PA transmission-remote-gtk
     $PA transmission-remote-cli
     transmission-remote-cli --create-config # Detect config file
 }
