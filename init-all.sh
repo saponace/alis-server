@@ -36,8 +36,8 @@ initSettings (){
         export LANG="$LC_ALL"
     # Change default shell to ZSH
         chsh -s /bin/zsh $username
-    # Change the default soundcard
-        sudo echo -e "pcm.\!default {\ntype hw\ncard 1\n}\n\nctl.\!default {\ntype hw\ncard 1\n}" > /etc/asound.conf
+    # Change the default soundcard ------------------- Does not look useful anymore because i use pulseaudio
+        #sudo echo -e "pcm.\!default {\ntype hw\ncard 1\n}\n\nctl.\!default {\ntype hw\ncard 1\n}" > /etc/asound.conf
 }
 
 
@@ -70,6 +70,8 @@ installCore(){
         $PA xrandr arandr
     # cron job to alert when low battery
         installLowBatteryWarningCron
+    # Sound server
+        $PA pulseaudio pulseaudio-alsa pavucontrol
 }
 
 

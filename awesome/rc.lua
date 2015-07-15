@@ -498,15 +498,15 @@ globalkeys = awful.util.table.join(
     --awful.key({ altkey,           }, "h",      function () fswidget.show(7) end),
     --awful.key({ altkey,           }, "w",      function () yawn.show(7) end),
 
-    -- ALSA volume control
+    -- Pulse volume control. Work thanks to pulseaudio-alsa
     awful.key({}, "XF86AudioRaiseVolume",
         function ()
-            awful.util.spawn("amixer -q set Master 10%+")
+            awful.util.spawn("amixer -q set Master 5%+")
             volumewidget.update()
         end),
     awful.key({}, "XF86AudioLowerVolume",
         function ()
-            awful.util.spawn("amixer -q set Master 10%-")
+            awful.util.spawn("amixer -q set Master 5%-")
             volumewidget.update()
         end),
     awful.key({}, "XF86AudioMute",
@@ -514,11 +514,6 @@ globalkeys = awful.util.table.join(
             awful.util.spawn("amixer -q set Master playback toggle")
             volumewidget.update()
         end),
-    --awful.key({ altkey, "Control" }, "m",
-        --function ()
-            --awful.util.spawn("amixer -q set Master playback 100%")
-            --volumewidget.update()
-        --end),
 
     -- MPD control
     awful.key({ altkey, "Control" }, "Up",
