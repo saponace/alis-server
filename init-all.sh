@@ -68,8 +68,8 @@ installCore(){
         $PA google-chrome
     # XrandR, multi-monitor 
         $PA xrandr arandr
-    # cron job to alert when low battery
-        installLowBatteryWarningCron
+    # cron job to alert when low battery and power consumption optimization
+        batteryManagement
     # Sound server
         $PA pulseaudio pulseaudio-alsa pavucontrol
 }
@@ -128,13 +128,15 @@ installDev(){
 }
 
 
-installLowBatteryWarningCron (){
-    # cron script management
-        $PA acpi
+batteryManagement (){
+        $PA acpi acpid laptop-mode-tools
+        systemctl enable acpid.service
+        systemctl enable laptop-mode.service
+    # low battery warning cron script management
         $PA cronie
-        echo "*/1 * * * * env DISPLAY=:0 /home/$username/config/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
+        echo "*/1 * * * * env DISPLAY=:0 /home/$username/dotfiles/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
         crontab -u $username /tmp/cron-jobs.txt
-        systemctl enable cronie
+        systemctl enable cronie.service
 }
 
 
