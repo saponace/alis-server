@@ -129,9 +129,7 @@ installDev(){
 
 
 batteryManagement (){
-        $PA acpi acpid laptop-mode-tools
-        systemctl enable acpid.service
-        systemctl enable laptop-mode.service
+        $PA acpi 
     # low battery warning cron script management
         $PA cronie
         echo "*/1 * * * * env DISPLAY=:0 /home/$username/dotfiles/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
