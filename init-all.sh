@@ -129,7 +129,7 @@ installDev(){
 
 
 batteryManagement (){
-        $PA acpi 
+        $PA acpi pm-utils
     # low battery warning cron script management
         $PA cronie
         echo "*/1 * * * * env DISPLAY=:0 /home/$username/dotfiles/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
