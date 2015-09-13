@@ -13,9 +13,12 @@ total_battery_level=$((($battery1_level * $battery1_capacity + $battery2_level *
 is_ac_plugged_in=`acpi -a | grep "on-line" | wc -l`
 
 
-user_to_send_notifications_to=`cat /etc/passwd | grep /home/ | cut -d: -f1`
 
 
+users=`w -h | cut -d' ' -f1`
+IFS=$' '
+users_array=($(printf "%s\n" "${users[@]}" | sort -u | tr '\n' ' '))
+unset IFS
 
 
 
@@ -26,26 +29,47 @@ critical_level=3
 
 
 
-if [[ $is_ac_plugged_in -eq 0 ]]; then
-    if [[ $total_battery_level -le $low_level && $total_battery_level -gt $very_low_level ]]; then
-        sudo -u $user_to_send_notifications_to notify-send "Low battery warning"  "
-        Battery level is ${total_battery_level}% (Which is low)" --urgency=normal --expire-time=10000
-        
-    elif [[ $total_battery_level -le $very_low_level && $total_battery_level -gt $critical_level ]]; then
-        sudo -u saponace notify-send "Critical battery level warning"  "
-        Battery level is ${total_battery_level}%
-        You should really consider plugging an AC power source
-        or shutting your system down now" --urgency=critical --expire-time=10000
 
-    elif [[ $total_battery_level -le $critical_level ]]; then
-        sudo -u $user_to_send_notifications_to notify-send "Suspending system now" "
-        The system is currently hybrid-suspending
-        Go plug an AC power source now
-        (I know, it's hard to get off the couch)
-        "
-        pm-suspend-hybrid
+
+
+
+# Send a notification to the specified user
+# @param $1 The user to whom the notification should be sent
+# @param $2 The title of the notification
+# @param $3 The text notification
+# @param $4 The urgency of the notification. Can be low, normal or critical
+send_notification(){
+    sudo -u "$1" notify-send "$2" "$3" --urgency="$4" --expire-time=10000
+}
+
+
+
+
+
+
+
+for current_user in "${users_array[@]}"
+do
+    if [[ $is_ac_plugged_in -eq 0 ]]; then
+        if [[ $total_battery_level -le $low_level && $total_battery_level -gt $very_low_level ]]; then
+        send_notification "$current_user" "Low battery" "Battery level is ${total_battery_level}% (Which is low)" "normal"
+            
+        elif [[ $total_battery_level -le $very_low_level && $total_battery_level -gt $critical_level ]]; then
+        send_notification $current_user "Critical battery level" "Battery level is ${total_battery_level}%.\nYou should really consider plugging an AC power source\nor shutting your system down now" "critical"
+
+        elif [[ $total_battery_level -le $critical_level ]]; then
+        send_notification $current_user "Suspending system now" "The system is currently hybrid-suspending\nGo plug an AC power source now\n(I know, it's hard to get off the couch)" "normal"
+            pm-suspend-hybrid
+        fi
     fi
-fi
+done
+
+
+
+
+
+
+
 
 
 
