@@ -11,8 +11,6 @@ is_ac_plugged_in=`acpi -a | grep "on-line" | wc -l`
 
 total_battery_level=$((($battery1_level * $battery1_capacity + $battery2_level * $battery2_capacity)/($battery1_capacity + $battery2_capacity)))
 
-echo -e $total_battery_level'%\n('$battery1_level'%*'$battery1_capacity'mAh + '$battery2_level'%*'$battery2_capacity'mAh)'
-
 
 
 low_level=10
@@ -42,3 +40,8 @@ if [[ $is_ac_plugged_in -eq 0 ]]; then
     fi
 fi
 
+
+
+
+
+echo -e $total_battery_level'%\n('$battery1_level'% of '$battery1_capacity'mAh and '$battery2_level'% of '$battery2_capacity'mAh)'

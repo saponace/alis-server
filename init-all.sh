@@ -132,7 +132,8 @@ batteryManagement (){
         $PA acpi pm-utils
     # low battery warning cron script management
         $PA cronie
-        echo "*/1 * * * * env DISPLAY=:0 /home/$username/dotfiles/low-battery-warning-cron.sh" > /tmp/cron-jobs.txt
+        cp battery-level.sh /usr/bin/battery-level
+        echo "*/1 * * * * env DISPLAY=:0 /usr/bin/battery-level" > /tmp/cron-jobs.txt
         crontab -u $username /tmp/cron-jobs.txt
         systemctl enable cronie.service
 }
