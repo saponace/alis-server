@@ -134,7 +134,7 @@ batteryManagement (){
         $PA cronie
         cp battery-level.sh /usr/bin/battery-level
         echo "*/1 * * * * env DISPLAY=:0 /usr/bin/battery-level" > /tmp/cron-jobs.txt
-        crontab -u $username /tmp/cron-jobs.txt
+        crontab -u root /tmp/cron-jobs.txt
         systemctl enable cronie.service
 }
 
