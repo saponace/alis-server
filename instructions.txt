@@ -1,3 +1,6 @@
+// To install a new arch environment
+
+
 loadkeys i386/azerty/fr-latin9.map.gz
 
 

@@ -309,20 +309,6 @@ fi
 
 
 
-# Battery level indicator, only work with a two-batteries laptop
-
-bat() {
-    battery1_level=`acpi -b | grep -oP '[0-9]+(?=%)' | cut -d $'\n' -f1`
-    battery2_level=`acpi -b | grep -oP '[0-9]+(?=%)' | cut -d $'\n' -f2`
-    battery1_capacity=`acpi -V | grep -oP '[0-9]+(?= mAh,)' | cut -d $'\n' -f1`
-    battery2_capacity=`acpi -V | grep -oP '[0-9]+(?= mAh,)' | cut -d $'\n' -f2`
-
-    total_battery_level=$((($battery1_level * $battery1_capacity + $battery2_level * $battery2_capacity)/($battery1_capacity + $battery2_capacity)))
-
-    echo $total_battery_level'%'
-}
-
-
 
 
 ## Print terminal display infos

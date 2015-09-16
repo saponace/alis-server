@@ -65,9 +65,6 @@ terminal   = "uxterm" or "urxvtc"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
-scrshot_file = "/tmp/blurscreenshotfori3lock.png"
-lockscreen_cmd = "scrot ".. scrshot_file .. " && xset dpms force off && convert " .. scrshot_file .. " -blur 0x4 " .. scrshot_file .. " && i3lock -i" ..  scrshot_file
-
 -- user defined
 browser    = "dwb"
 browser2   = "iron"
@@ -562,7 +559,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "s",  function () awful.layout.inc(layouts, -1)  end),
     --awful.key({ modkey,           }, "l",  function () awful.util.spawn()  end),
     --awful.key({ modkey, "Shift"   }, "l",  function () awful.util.spawn()  end),
-    awful.key({ altkey, "Control" }, "l",  function () awful.util.spawn_with_shell(lockscreen_cmd)  end),
+    awful.key({ altkey, "Control" }, "l",  function () awful.util.spawn_with_shell("lock-screen")  end),
     awful.key({ modkey,           }, "space",  function () menubar.show()  end),
     awful.key({ modkey,           }, "c",  function () awful.util.spawn("google-chrome-stable")  end),
 
