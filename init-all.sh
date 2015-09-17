@@ -97,10 +97,12 @@ installCasual(){
         installRedshift
     # Screenshot and image manipulation, used by interactive screenshot
         $PA scrot
-    # Music
-        installMusic
     # Image modifier, usel to lock the screen
         $PA imagemagick
+    # Music
+        installMusic
+    # Illegal video streaming
+        $PA popcorntime-bin
 }
 
 
