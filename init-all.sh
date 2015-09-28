@@ -32,8 +32,6 @@ all() {
 initSettings (){
     # set locale (not sure if usefull)
         sudo localectl set-keymap fr-latin9
-        export LC_ALL=en_US.UTF-8
-        export LANG="$LC_ALL"
     # Change default shell to ZSH
         chsh -s /bin/zsh $username
     # Change the default soundcard ------------------- Does not look useful anymore because i use pulseaudio

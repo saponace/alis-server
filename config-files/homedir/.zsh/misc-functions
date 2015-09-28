@@ -32,7 +32,6 @@ _-accept-line() {
 [[ -n ${commands[less]} ]] && {
 export PAGER=less
 export MANPAGER=${PAGER}
-export VISUAL=${PAGER}
 }
 [[ -n ${commands[vim]} ]] && export EDITOR=vim
 export TAR_OPTIONS='--delay-directory-restore'
