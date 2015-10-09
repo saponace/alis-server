@@ -110,19 +110,20 @@ installDev(){
         $PA zsh wget openssh svn rsync
     # Vim and spf13
          installSpf13
-    # texlive-most
+    # texlive-most (LaTeX compiler)
         $PA texlive-most
-    # Java
-        $PA jdk7-openjdk
     # Terminal multiplexer
         $PA tmux
         $PA tmuxinator
-    # Figlet, ASCII art -- Ultra pimp
-        $PA figlet
-    # gdb
-        $PA gdb
-    # Eclipse, IDE
-        $PA eclipse
+    # Java Developpement Kit
+        $PA jdk7-openjdk openjdk7-doc
+        $PA jdk8-openjdk openjdk8-doc
+    # Build tools
+        $PA gdb maven
+    # IDEs
+        $PA intellij-idea-utltimate-edition
+        $PA clion
+        $PA android-studio
 }
 
 
