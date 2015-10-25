@@ -49,6 +49,7 @@ function send_notification(){
 function do_action_when_low_level()
 {
     is_ac_plugged_in=`acpi -a | grep "on-line" | wc -l`
+    total_battery_level=$(compute_total_battery_level)
 
     users=`w -h | cut -d' ' -f1`
     IFS=$' '
