@@ -91,16 +91,14 @@ installCasual(){
         $PA evince
     # fonts
         installFonts
-    # Redshift
-        installRedshift
     # Screenshot and image manipulation, used by interactive screenshot
         $PA scrot
     # Image modifier, usel to lock the screen
         $PA imagemagick
     # Music
         installMusic
-    # Illegal video streaming
-        $PA popcorntime-bin
+    # NTFS filesystems management
+        $PA ntfs-3g
 }
 
 
@@ -184,13 +182,6 @@ installNetworkManager (){
     $PA network-manager-applet gnome-keyring gnome-icon-theme
     # Disable ipv6 in dhcpcd.conf
     echo -e "noipv6rs\nnoipv6" >> /etc/dhcpcd.conf 
-}
-
-installRedshift (){
-    $PA redshift
-    echo -e "[redshift]\ntemp-day=5700\ntemp-night=3600" > /home/$username/.config/redshift.conf
-    echo -e "\ngamma=0.8\nadjustment-method=randr\nlocation-provider=manual" > /home/$username/.config/redshift.conf
-    echo -e "\n\n[manual]\nlat=45\nlon=0.5" > /home/$username/.config/redshift.conf
 }
 
 
