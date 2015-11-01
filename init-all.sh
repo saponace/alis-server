@@ -119,7 +119,7 @@ installDev(){
     # Build tools
         $PA gdb maven
     # IDEs
-        $PA intellij-idea-utltimate-edition
+        $PA intellij-idea-ultimate-edition
         $PA clion
         $PA android-studio
 }
