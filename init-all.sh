@@ -75,6 +75,8 @@ installCore(){
 
 
 installCasual(){
+    # Sets a random wallpaper from reddit periodically with cron
+        randomWallpaperCronJob
     # Network manager
         installNetworkManager
     # Unzip
@@ -129,9 +131,15 @@ batteryManagement (){
         $PA acpi pm-utils
     # low battery warning cron script management
         $PA cronie
-        echo "*/1 * * * * env DISPLAY=:0 /usr/bin/battery-level" > /tmp/cron-jobs.txt
-        crontab -u root /tmp/cron-jobs.txt
+        echo "*/1 * * * * env DISPLAY=:0 /bin/battery-level" > /tmp/root-crontab.txt
+        crontab -u root /tmp/root-crontab.txt
         systemctl enable cronie.service
+}
+
+
+randomWallpaperCronJob (){
+    echo "*/15 * * * * env DISPLAY=:0.0 /bin/set-random-wallpaper" > /tmp/user-crontab.txt
+    crontab -u $username /tmp/user-crontab.txt
 }
 
 
