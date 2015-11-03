@@ -19,4 +19,4 @@ cp -R config-files/homedir/* $usernameHome
 sudo cp $otherConfigFilesDir/slim.conf /etc/
 sudo mkdir -p /usr/share/slim/themes/ && sudo cp -R $otherConfigFilesDir/slim-minimal/ /usr/share/slim/themes/ 
 
-sudo cp scrpits/* /bin/
+sudo cp scripts/* /bin/
