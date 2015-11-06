@@ -10,3 +10,5 @@
     exec awesome 
 # Start pulseaudio
     pulseaudio --start
+# Disale touchpad while typing on keyboard
+    syndaemon -i 0.5 -d
