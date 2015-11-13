@@ -1,91 +1,133 @@
 #!/bin/bash                                                          
 
-#Battery level monitoring script. Displays the remaining level of every battery, and displays a notification if the total percentage of batteries is bellow 10%. Hibernate the system if the total percentage is below 3%.
+# Battery level monitoring script. Displays the remaining level of every
+# battery, and displays a notification if the total percentage of batteries is
+# bellow 10%. Hibernate the system if the total percentage is below 3%.
+
+
+
+
+# Main function that parses the parameters and call the appropriate function
+# @param $1 The option given to the script
+function main() {
+    local option="$1"
+    case ${option} in
+    -d)
+    display_everything
+    ;;
+    -n)
+    send_notification_if_low_level
+    ;;
+    *)
+    print-usage
+    ;;
+    esac
+}
+
+
+# Print the usage of the script
+function print-usage() {
+	echo "Usage: $0 -d|-n"
+	echo "-d: Display information about the batteries"
+    echo "-n: Send a notification to all users using X when the battery level is low"
+	exit 1
+}
+
 
 
 
 #Compute the total level of battery
-function compute_total_battery_level()
-{
+function compute_total_battery_level() {
     local batteries_total_capacity=0
     local batteries_total_capacity_times_level=0
     local nb_of_batteries=`acpi -b | wc -l`
 
-    for counter in `seq 1 $nb_of_batteries`;
+    for counter in `seq 1 ${nb_of_batteries}`;
     do
         local curr_battery_level=`acpi -b | grep -oP '[0-9]+(?=%)' | cut -d $'\n' -f${counter}`
         local curr_battery_capacity=`acpi -V | grep -oP '[0-9]+(?= mAh,)' | cut -d $'\n' -f${counter}`
-        local curr_battery_capatity_times_level=`expr $curr_battery_capacity "*" $curr_battery_level`
-        batteries_total_capacity=`expr $batteries_total_capacity "+" $curr_battery_capacity`
-        batteries_total_capacity_times_level=`expr $batteries_total_capacity_times_level "+" $curr_battery_capatity_times_level`
+        local curr_battery_capacity_times_level=`expr ${curr_battery_capacity} "*" ${curr_battery_level}`
+        local batteries_total_capacity=`expr ${batteries_total_capacity} "+" ${curr_battery_capacity}`
+        local batteries_total_capacity_times_level=`expr ${batteries_total_capacity_times_level} "+" ${curr_battery_capacity_times_level}`
     done
-    local total_battery_level=`expr $batteries_total_capacity_times_level "/" $batteries_total_capacity`
+    local total_battery_level=`expr ${batteries_total_capacity_times_level} "/" ${batteries_total_capacity}`
     echo "$total_battery_level"
 }
+
+
+# tells whether the ac adapter is plugged in or no
+function is_adapter_plugged() {
+    local is_ac_plugged_in=`acpi -a | grep "on-line" | wc -l`
+    echo "$is_ac_plugged_in"
+}
+
+
 # Display the total battery level
-function display_total_battery_level()
-{
-    total_level="$(compute_total_battery_level) %"
-    is_ac_plugged_in="$(is_adapter_plugged)"
-    if [[ $is_ac_plugged_in -eq 1 ]]; then
+function display_total_battery_level() {
+    local total_level="$(compute_total_battery_level) %"
+    local is_ac_plugged_in="$(is_adapter_plugged)"
+    if [[ ${is_ac_plugged_in} -eq 1 ]]; then
         echo "$total_level (plugged)"
     else
         echo "$total_level (unplugged)"
     fi
 }
-#Display the details of all the batteries
-function display_batteries_details()
-{
+
+
+# Display the details of all the batteries
+function display_batteries_details() {
     local nb_of_batteries=`acpi -b | wc -l`
-    for counter in `seq 1 $nb_of_batteries`;
+    for counter in `seq 1 ${nb_of_batteries}`;
     do
-        curr_battery_level=`acpi -b | grep -oP '[0-9]+(?=%)' | cut -d $'\n' -f${counter}`
-        curr_battery_capacity=`acpi -V | grep -oP '[0-9]+(?= mAh,)' | cut -d $'\n' -f${counter}`
+        local curr_battery_level=`acpi -b | grep -oP '[0-9]+(?=%)' | cut -d $'\n' -f${counter}`
+        local curr_battery_capacity=`acpi -V | grep -oP '[0-9]+(?= mAh,)' | cut -d $'\n' -f${counter}`
         echo -e "  $curr_battery_level% of $curr_battery_capacity"mAh
     done
 }
-# tells whether the ac adaper is plugged in or no 
-function is_adapter_plugged()
-{
-    is_ac_plugged_in=`acpi -a | grep "on-line" | wc -l`
-    echo "$is_ac_plugged_in"
+
+# Display everything that can be printed in the terminal
+function display_everything() {
+    display_total_battery_level
+    display_batteries_details
 }
+
 
 # Send a notification to the specified user
 # @param $1 The title of the notification
 # @param $2 The text notification
 # @param $3 The urgency of the notification. Can be low, normal or critical
-send_notification() {
+function send_notification() {
     title=$1
     body=$2
     urgency=$3
 
     for pid in $(pgrep 'awesome'); do
-        eval $(grep -z ^USER /proc/$pid/environ)
-        eval export $(grep -z ^DISPLAY /proc/$pid/environ)
-        eval export $(grep -z ^DBUS_SESSION_BUS_ADDRESS /proc/$pid/environ)
+        eval $(grep -z ^USER /proc/${pid}/environ)
+        eval export $(grep -z ^DISPLAY /proc/${pid}/environ)
+        eval export $(grep -z ^DBUS_SESSION_BUS_ADDRESS /proc/${pid}/environ)
         #su $USER -c "notify-send $title $body --urgency=$urgency --expire-time=10000"
-        su $USER -c "notify-send \"$title\" \"$body\" --urgency=$urgency --expire-time=10000"
+        su ${USER} -c "notify-send \"$title\" \"$body\" --urgency=$urgency --expire-time=10000"
     done
 }
-# Do whatever it should do when the bettery level is really low
-function do_action_when_low_level()
-{
-    is_ac_plugged_in=$(is_adapter_plugged)
-    total_battery_level=$(compute_total_battery_level)
 
-    low_level=10
-    very_low_level=6
-    critical_level=3
 
-    if [[ $is_ac_plugged_in -eq 0 ]]; then
-        if [[ $total_battery_level -le $low_level && $total_battery_level -gt $very_low_level ]]; then
+# Do whatever it should do when the battery level is really low
+function send_notification_if_low_level() {
+    local is_ac_plugged_in=$(is_adapter_plugged)
+    local total_battery_level=$(compute_total_battery_level)
+
+    local low_level=10
+    local very_low_level=6
+    local critical_level=3
+
+    if [[ ${is_ac_plugged_in} -eq 0 ]]; then
+        if [[ ${total_battery_level} -le ${low_level} && \
+            ${total_battery_level} -gt ${very_low_level} ]]; then
             send_notification "Low battery" "Battery level is ${total_battery_level}% (Which is low)" "normal"
-
-        elif [[ $total_battery_level -le $very_low_level && $total_battery_level -gt $critical_level ]]; then
+        elif [[ ${total_battery_level} -le ${very_low_level} && \
+            ${total_battery_level} -gt ${critical_level} ]]; then
             send_notification "Critical battery level" "Battery level is ${total_battery_level}%.\nYou should really consider plugging an AC power source\nor shutting your system down now" "critical"
-
-        elif [[ $total_battery_level -le $critical_level ]]; then
+        elif [[ ${total_battery_level} -le ${critical_level} ]]; then
             send_notification "Suspending system now" "The system is currently hybrid-suspending\nGo plug an AC power source now\n(I know, it's hard to get off the couch)" "normal"
             pm-suspend-hybrid
         fi
@@ -93,6 +135,5 @@ function do_action_when_low_level()
 }
 
 
-display_total_battery_level
-display_batteries_details
-do_action_when_low_level
+# call the main function
+main $1
