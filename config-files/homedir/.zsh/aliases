@@ -5,7 +5,6 @@
 
 
 ## mkdir
-    alias md=mkdir
     alias mdc=mkdirc
 
 
@@ -24,13 +23,10 @@
 
 
 ## Misc
-    [[ -n ${commands[python2]} ]] && alias py=python2
-    [[ -n ${commands[bzip2]} ]] && alias bz=bzip2
-    [[ -n ${commands[gzip]} ]] && alias gz=gzip
     alias _='sudo'
-    alias transmission='transmission-remote-cli'
     alias view='vim -R'  # because view does not use .vimrc
-alias remove-orphans='_ pacman -Rns $(pacman -Qtdq)'
+    alias remove-orphans='_ pacman -Rns $(pacman -Qtdq)'
+    alias bt='battery-level -d'
 
 
 ## Git aliases
