@@ -122,7 +122,6 @@ installDev(){
         $PA texlive-most
     # Terminal multiplexer
         $PA tmux
-        $PA tmuxinator
     # Java Developpement Kit
         $PA jdk7-openjdk openjdk7-doc
         $PA jdk8-openjdk openjdk8-doc
