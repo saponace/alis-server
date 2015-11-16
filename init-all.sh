@@ -101,6 +101,8 @@ installCasual(){
         installMusic
     # NTFS filesystems management
         $PA ntfs-3g
+    # Theme for gtk
+        $PA gtk-theme-arc
 }
 
 
