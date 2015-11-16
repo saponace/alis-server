@@ -72,6 +72,10 @@ installCore(){
         $PA pulseaudio-bluetooth bluez bluez-utils bluez-firmware
     # Rfkill, to turn on and off wireless interfaces
         $PA rfkill
+    # FingerPrint scanner drivers
+        $PA fprintd
+    # Mount distant directory over ssh
+        $PA sshfs
 }
 
 
