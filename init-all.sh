@@ -34,8 +34,6 @@ initSettings (){
         sudo localectl set-keymap fr-latin9
     # Change default shell to ZSH
         chsh -s /bin/zsh $username
-    # Change the default soundcard ------------------- Does not look useful anymore because i use pulseaudio
-        #sudo echo -e "pcm.\!default {\ntype hw\ncard 1\n}\n\nctl.\!default {\ntype hw\ncard 1\n}" > /etc/asound.conf
 }
 
 
@@ -70,6 +68,10 @@ installCore(){
         batteryManagement
     # Sound server
         $PA pulseaudio pulseaudio-alsa pavucontrol
+    # Use pulseaudio with bluetooth
+        $PA pulseaudio-bluetooth bluez bluez-utils bluez-firmware
+    # Rfkill, to turn on and off wireless interfaces
+        $PA rfkill
 }
 
 
