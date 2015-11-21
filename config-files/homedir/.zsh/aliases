@@ -26,7 +26,7 @@
     alias _='sudo'
     alias view='vim -R'  # because view does not use .vimrc
     alias remove-orphans='_ pacman -Rns $(pacman -Qtdq)'
-    alias bt='battery-level -d'
+    alias bt='battery-level -a'
 
 
 ## Git aliases
