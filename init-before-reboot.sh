@@ -16,11 +16,10 @@ mkinitcpio -p linux
             #pacman -S grub os-prober
             #grub-install --target=i386-pc --recheck /dev/sda
             #grub-mkconfig -o /boot/grub/grub.cfg
-    pacman -S efibootmgr gummiboot
-    pacman -S gummiboot 
+    pacman -S efibootmgr
     umount /sys/firmware/efi/efivars
     mount -t efivarfs efivarfs /sys/firmware/efi/efivars
-    gummiboot --path=/boot/ install
+    bootctl --path=/boot/ install
     mkdir /boottemp
     cp boot/{vmlinuz-linux,initramfs-linux.img} boottemp
     mount $uefipart /boot
@@ -37,6 +36,6 @@ passwd root
 # add the user to wheel group (sudoers)
     useradd -m -G wheel -s /bin/bash $username
     sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
-    echo enter $username password:
-    passwd $username
+echo enter $username password:
+passwd $username
 

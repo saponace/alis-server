@@ -48,8 +48,15 @@ installCore(){
     # login manager
         $PA slim
         systemctl enable slim.service
-    # display manager
-        $PA awesome
+    # windows manager and dependencies
+        $PA i3 
+        $PA dmenu 
+        # For mpstat, proc stats
+        $PA sysstat
+        # Fontawesome for the icons in the status bar
+        $PA i3blocks otf-font-awesome 
+    # Notifications daemon
+        $PA dunst
     # Lock screen
         $PA i3lock
     # sound server

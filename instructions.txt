@@ -1,46 +1,34 @@
-// To install a new arch environment
+// To install a new arch linux
 
 
-loadkeys i386/azerty/fr-latin9.map.gz
+loadkeys fr
 
+create partitions (at least root and swap)
+if not boot partition already exist, also create a boot partition of type EFI FILESYSTEM and mkfs.vfat -F 32 this partition
+format theses partions (mkfs.ext4 and mkswap)
 
-cfdisk -> label type: dos
-
-puis faire toutes les partitions
-    -> /dev/sda5 : root
-    -> /dev/sda6 : home
-    -> /dev/sda7 : swap
-
-mkfs.ext4 /dev/sd5
-mkfs.ext4 /dev/sd6
-mkswap /dev/sd7
-mkdir /mnt/home
-mount /dev/sda5 /mnt
-mount /dev/sda6 /mnt/home
-swapon /dev/sda7
-
+mount at /mnt and swapon, (do not forget to mount /boot)
 pacstrap /mnt base base-devel
 
 
+pacstrap /mnt base base-devel
 genfstab -p -L /mnt >> /mnt/etc/fstab
+
 
 arch-chroot /mnt
 
-
-
-vim /etc/locale.gen
+vi /etc/locale.gen
     -> uncomment fr_FR... and en_US.UTF-8 lines
 
-init-before-reboot.sh $hostname $username $linux-partition(ex:/dev/sda2)
+pacman -Syu git
+git clone https://github.com/saponace/dotfiles.git
+init-before-reboot.sh $hostname $username $boot-partition(ex:/dev/sda2)
 
 ecrire l'UUID de la partition linux dans /boot/loader/entries/arch.conf (peut etre vu avec blkid)
 
 exit
-exit
 
-umount /dev/sda6
-umount /dev/sda5
-swapoff /dev/sda7
+umount and swapoff partitions
 
 reboot
 
