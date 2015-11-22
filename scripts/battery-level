@@ -106,12 +106,11 @@ function send_notification() {
     body=$2
     urgency=$3
 
-    for pid in $(pgrep 'awesome'); do
+    for pid in $(pgrep 'i3'); do
         eval $(grep -z ^USER /proc/${pid}/environ)
         eval export $(grep -z ^DISPLAY /proc/${pid}/environ)
         eval export $(grep -z ^DBUS_SESSION_BUS_ADDRESS /proc/${pid}/environ)
-        #su $USER -c "notify-send $title $body --urgency=$urgency --expire-time=10000"
-        su ${USER} -c "notify-send \"$title\" \"$body\" --urgency=$urgency --expire-time=10000"
+        su ${USER} -c "notify-send \"$title\" \"$body\" --urgency=$urgency"
     done
 }
 
