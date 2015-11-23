@@ -32,3 +32,10 @@ passwd root
 echo enter $username password:
 passwd $username
 
+
+# Move the git repo into the user's home directory
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
+    mv git_repo_path /home/$username
+    chown -R $username:$username /home/$username/
