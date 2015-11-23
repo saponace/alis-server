@@ -1,33 +1,43 @@
-// To install a new arch linux
+# Follow these steps to install a new arch linux
 
 
-loadkeys fr
-
-create partitions (at least root and swap)
-if not boot partition already exist, also create a boot partition of type EFI FILESYSTEM and mkfs.vfat -F 32 this partition
-format theses partions (mkfs.ext4 and mkswap)
-
-mount at /mnt and swapon, (do not forget to mount /boot in /mnt/boot)
+# Set the keyboard layout to French
+    - $ loadkeys fr
 
 
-pacstrap /mnt base base-devel
-genfstab -p -L /mnt >> /mnt/etc/fstab
+# Create partitions
+    - create partitions (at least root and swap)
+    - If no boot partition already exist, also create a boot partition of type EFI FILESYSTEM and mkfs.vfat -F 32 this partition
+    - Format theses partions (mkfs.ext4 and mkswap)
 
 
-arch-chroot /mnt
-
-vi /etc/locale.gen
-    -> uncomment fr_FR... and en_US.UTF-8 lines
-
-pacman -Syu git
-git clone https://github.com/saponace/dotfiles.git
-init-before-reboot.sh $hostname $username $boot-partition(ex:/dev/sda2) $linux-root-partition(ex:/dev/sda1)
+# Mounting the partitions
+    - Mount at /mnt and swapon, (do not forget to mount /boot in /mnt/boot, create directories if needed)
 
 
-exit
+# Prepare the new system before chrooting
+    - $ pacstrap /mnt base base-devel
+    - $ genfstab -p -L /mnt >> /mnt/etc/fstab
 
-umount and swapoff partitions
 
-reboot
+# Chrooting in the new system
+    - $ arch-chroot /mnt
 
-init-all.sh $username
+
+# Configuring the new system
+    - $ vi /etc/locale.gen
+          -> uncomment fr_FR... and en_US.UTF-8 lines
+    -$ pacman -Syu git
+    -$ git clone https://github.com/saponace/dotfiles.git
+    -$ init-before-reboot.sh $hostname $username $boot_partition $linux_root_partition
+        (where $boot_partition and $linux_root_partition are formed like /dev/sdaX)
+
+
+# Rebooting
+    - $ exit
+    - umount and swapoff partitions
+    - $ reboot
+
+
+# Configuring the new system
+    - execute init-all.sh $username
