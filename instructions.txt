@@ -7,8 +7,7 @@ create partitions (at least root and swap)
 if not boot partition already exist, also create a boot partition of type EFI FILESYSTEM and mkfs.vfat -F 32 this partition
 format theses partions (mkfs.ext4 and mkswap)
 
-mount at /mnt and swapon, (do not forget to mount /boot)
-pacstrap /mnt base base-devel
+mount at /mnt and swapon, (do not forget to mount /boot in /mnt/boot)
 
 
 pacstrap /mnt base base-devel
@@ -22,9 +21,8 @@ vi /etc/locale.gen
 
 pacman -Syu git
 git clone https://github.com/saponace/dotfiles.git
-init-before-reboot.sh $hostname $username $boot-partition(ex:/dev/sda2)
+init-before-reboot.sh $hostname $username $boot-partition(ex:/dev/sda2) $linux-root-partition(ex:/dev/sda1)
 
-ecrire l'UUID de la partition linux dans /boot/loader/entries/arch.conf (peut etre vu avec blkid)
 
 exit
 
