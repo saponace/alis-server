@@ -8,21 +8,15 @@ rootpart=($4)
 echo  $hostname > /etc/hostname
 ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 locale-gen
-localectl set-keymap fr-latin1.map.gz
+echo "KEYMAP=fr-latin1.map.gz" > /etc/vconsole.conf
 hwclock --systohc --localtime
-#systemctl enable dhcpcd.service
 mkinitcpio -p linux
 
 # Boot manager
     pacman -S efibootmgr
-    #umount /sys/firmware/efi/efivars
-    #mount -t efivarfs efivarfs /sys/firmware/efi/efivars
     mount $uefipart /boot
     bootctl --path=/boot install
-    #mkdir /boottemp
-    #cp boot/{vmlinuz-linux,initramfs-linux.img} boottemp
-    #mv boottemp/* boot/
-    #rm -rf /boottemp
+
     echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
     rootpart_uuid=$(blkid $rootpart | cut -f2 -d\")
     echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=UUID=$rootpart_uuid rw" > /boot/loader/entries/arch.conf
