@@ -29,7 +29,7 @@
           -> uncomment fr_FR... and en_US.UTF-8 lines
     -$ pacman -Syu git
     -$ git clone https://github.com/saponace/dotfiles.git
-    -$ init-before-reboot.sh $hostname $username $boot_partition $linux_root_partition
+    -$ install-core.sh $hostname $username $boot_partition $linux_root_partition
         (where $boot_partition and $linux_root_partition are formed like /dev/sdaX)
 
 
@@ -40,4 +40,4 @@
 
 
 # Configuring the new system
-    - execute init-all.sh $username
+    - execute configure-system.sh $username
