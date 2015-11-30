@@ -17,8 +17,8 @@ shopt -s dotglob #To be able to copy dotfiles
 
 cp -R config-files/homedir/* $usernameHome
 
-sudo cp $otherConfigFilesDir/slim/slim.conf /etc/
-sudo mkdir -p /usr/share/slim/themes/ && sudo cp -R $otherConfigFilesDir/slim/slim-minimal/ /usr/share/slim/themes/ 
-sudo mkdir -p /usr/share/gtk-3.0/ && sudo cp -R $otherConfigFilesDir/gtk-theme/settings.ini /usr/share/gtk-3.0/
+cp $otherConfigFilesDir/slim/slim.conf /etc/
+mkdir -p /usr/share/slim/themes/ && cp -R $otherConfigFilesDir/slim/slim-minimal/ /usr/share/slim/themes/ 
+mkdir -p /usr/share/gtk-3.0/ && cp -R $otherConfigFilesDir/gtk-theme/settings.ini /usr/share/gtk-3.0/
 
-sudo cp scripts/* /bin/
+cp scripts/* /bin/
