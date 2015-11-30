@@ -4,8 +4,7 @@
 
 
 
-COMMONPATH=$(dirname $(readlink -f $0))
-
+COMMONPATH=$(cd $(dirname "$0"); pwd)
 
 source ${COMMONPATH}/misc
 source ${COMMONPATH}/misc-functions
