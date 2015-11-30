@@ -3,12 +3,18 @@
 
 
 
-COMMONPATH="/home/saponace/.zsh"
+
+COMMONPATH=$(dirname $(readlink -f $0))
 
 
-source $COMMONPATH/misc
-source $COMMONPATH/misc-functions
-source $COMMONPATH/aliases
-source $COMMONPATH/prompt
+source ${COMMONPATH}/misc
+source ${COMMONPATH}/misc-functions
+source ${COMMONPATH}/aliases
+source ${COMMONPATH}/prompt
 
-eval $( dircolors -b "$HOME/.zsh/ls-colors" )
+eval $( dircolors -b "${COMMONPATH}/ls-colors" )
+
+
+
+
+
