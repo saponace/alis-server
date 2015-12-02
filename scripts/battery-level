@@ -34,7 +34,7 @@ function print-usage() {
 	echo "Usage: $0 -d|-n"
 	echo "-a: Display information about the batteries"
 	echo "-s: Display the total battery level"
-    echo "-n: Send a notification to all users using X when the battery level is low"
+    echo "-n: Send a notification to all users using X when the battery level is low, and suspend if battery level is critical"
 	exit 1
 }
 
