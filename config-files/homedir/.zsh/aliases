@@ -53,22 +53,3 @@
         compdef _git gdv=git-diff
     alias gdt='git difftool'
         compdef _git gdt=git-difftool
-
-
-## SVN aliases
-    alias s="svn"
-        compdef s=svn
-    alias sl="svn log"
-        compdef _svn sl=svn-log
-    alias sst="svn status"
-        compdef _svn sst=svn-status
-    alias sc="svn commit -m"
-        compdef _svn sc=svn-commit-m
-    alias sup="svn update"
-        compdef _svn sup=svn-update
-    alias sd="svn diff"
-        compdef _svn sd=svn-diff
-    alias saa="svn status | grep '^?' | sed 's/^? *\(.*\)/\"\1\"/g' | xargs svn add"
-        compdef _svn saa=svn-status-add
-    alias sra="svn status | grep '^!' | sed 's/^! *\(.*\)/\"\1\"/g' | xargs svn rm"
-        compdef _svn sra=svn-status-rm
