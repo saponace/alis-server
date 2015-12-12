@@ -29,7 +29,7 @@ install_transmission
 
 install_yaourt(){
     echo -e $'[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
-    sudo pacman -Syu yaourt
+    pacman -Syu yaourt
 }
 
 install_x_related(){
@@ -102,7 +102,7 @@ install_terminal_utils(){
     # Text editor
         ${PA} vim
    # spf13, vim config and plugin pack
-       sudo curl http://j.mp/spf13-vim3 -L -o - | sh
+       curl http://j.mp/spf13-vim3 -L -o - | sh
     # Downloads from the web
         ${PA} wget
     # ssh client and server

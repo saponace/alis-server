@@ -10,6 +10,8 @@ usage(){
 }
 
 all() {
+    # Enabling networking
+        dhcpcd
     ${install_packages_script_path} ${username}
     set_default_shell
     set_cron_jobs
@@ -50,14 +52,14 @@ create_config_files(){
         mkdir -p ${home_dir}/.config/mpd/playlists
         touch ${home_dir}/.config/mpd/{database,log,pid,state,sticker.sql}
     # Create ranger dotfiles
-        su -u ${user} ranger --copy-config=all
+        su - ${user} 'ranger --copy-config=all'
     # Make transmission detect config file
-        sudo -u ${user} transmission-remote-cli --create-config
+        su - ${user} 'transmission-remote-cli --create-config'
 }
 
 set_misc(){
     # set locale (not sure if useful)
-        sudo localectl set-keymap fr-latin9
+        localectl set-keymap fr-latin9
     # Start login manager on startup
         systemctl enable slim.service
 }
