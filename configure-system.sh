@@ -13,6 +13,7 @@ all() {
     # Enabling networking
         dhcpcd
     ${install_packages_script_path} ${username}
+    chown ${username}:${username} /home/${username}
     set_default_shell
     set_cron_jobs
     configure_networkmanager
@@ -52,9 +53,9 @@ create_config_files(){
         mkdir -p ${home_dir}/.config/mpd/playlists
         touch ${home_dir}/.config/mpd/{database,log,pid,state,sticker.sql}
     # Create ranger dotfiles
-        su - ${user} 'ranger --copy-config=all'
+        su - ${user} -c 'ranger --copy-config=all'
     # Make transmission detect config file
-        su - ${user} 'transmission-remote-cli --create-config'
+        su - ${user} -c 'transmission-remote-cli --create-config'
 }
 
 set_misc(){
