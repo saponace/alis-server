@@ -26,8 +26,8 @@ install_transmission
 }
 
 install_yaourt(){
-    echo -e $'[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
-    pacman -Syu yaourt
+    su -c echo -e "$'[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf"
+    sudo pacman -Syu yaourt
 }
 
 install_x_related(){
