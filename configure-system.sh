@@ -1,25 +1,24 @@
 #!/bin/bash
 
-username=$1
-home_dir=/home/${username}
+username=${USER}
 deploy_files_script_path="./deploy-files.sh"
 install_packages_script_path="./install-packages.sh"
 
 usage(){
-	echo "Usage: $0 username"
+	echo "No arguments should be given to this script"
 }
 
 all() {
     # Enabling networking
         sudo dhcpcd
-    ${install_packages_script_path} ${username}
+    ${install_packages_script_path}
     set_default_shell
     set_cron_jobs
     configure_networkmanager
     create_config_files
     set_misc
     set_gtk_theme
-    ${deploy_files_script_path} ${username}
+    sudo ${deploy_files_script_path} ${username}
 }
 
 set_default_shell(){
@@ -71,7 +70,7 @@ set_gtk_theme() {
 
 
 
-if [ $# -ne 1 ]
+if [ $# -ne 0 ]
 then
 	usage
 	exit 1

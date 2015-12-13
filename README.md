@@ -54,5 +54,5 @@ Umount and swapoff partitions
 Log in as the user, and
 ```
 # cd dotfiles
-# ./configure-system.sh $username
+# ./configure-system.sh
 ```

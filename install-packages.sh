@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-username=$1
-home_dir=/home/${username}
 PA="yaourt -S --noconfirm"
 
 
 usage(){
-	echo "Usage: $0 username"
+	echo "No arguments should be given to this script"
 }
 
 all(){
@@ -192,7 +190,7 @@ install_transmission(){
 }
 
 
-if [ $# -ne 1 ]
+if [ $# -ne 0 ]
 then
 	usage
 	exit 1
