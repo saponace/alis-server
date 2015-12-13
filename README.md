@@ -38,8 +38,8 @@ Uncomment the locales you are interested in. Then:
 # pacman -Syu git
 # git clone https://github.com/saponace/dotfiles.git
 # install-core.sh $hostname $username $boot_partition $linux_root_partition
-        (where $boot_partition and $linux_root_partition are formed like /dev/sdaX)
 ```
+(where $boot_partition and $linux_root_partition are formed like /dev/sdaX)
 
 ### Reboot
 ```
