@@ -8,7 +8,7 @@
     # Auto USB mounter
         /usr/bin/udiskie -s &
     # Disale touchpad while typing on keyboard
-        syndaemon -i 0.5 -d &
+        syndaemon -i 0.2 -d &
     # Start pulseaudio
         pulseaudio --start
     # Notifications daemon
@@ -19,4 +19,5 @@
         nm-applet 2>&1 /dev/null &
     # Pulse audi tray icon
         pasystray &
-
+    # Invert caps lock key and escape key
+        setxkbmap -option caps:escape
