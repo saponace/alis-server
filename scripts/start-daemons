@@ -19,5 +19,9 @@
         nm-applet 2>&1 /dev/null &
     # Pulse audi tray icon
         pasystray &
+
+#----- Settings
     # Invert caps lock key and escape key
         setxkbmap -option caps:escape
+    # Disable screen blanking when inactive
+        xset -dpms & xset s noblank & xset s off
