@@ -8,11 +8,16 @@ then
     exit 1
 fi
 
+
+pushd `dirname $0` > /dev/null
+this_script_dir=`pwd -P`
+popd > /dev/null
+
 username=$1
 username_home="/home/${username}"
-homedir_dotfiles=${PWD}/"config-files/homedir"
-other_config_files_dir=${PWD}/"config-files/other"
-scripts_dir=${PWD}/scripts
+homedir_dotfiles=${this_script_dir}/"config-files/homedir"
+other_config_files_dir=${this_script_dir}/"config-files/other"
+scripts_dir=${this_script_dir}/scripts
 link_command='ln -snf'
 
 
