@@ -12,6 +12,7 @@ username=$1
 username_home="/home/${username}"
 homedir_dotfiles=${PWD}/"config-files/homedir"
 other_config_files_dir=${PWD}/"config-files/other"
+scripts_dir=${PWD}/scripts
 link_command='ln -snf'
 
 
@@ -53,4 +54,4 @@ done
         ${link_command} ${other_config_files_dir}/gtk-theme/settings.ini /usr/share/gtk-3.0/
 
 # Scripts
-    ${link_command} scripts/* /bin/
+    ${link_command} ${scripts_dir}/* /bin/
