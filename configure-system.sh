@@ -1,7 +1,7 @@
 #!/bin/bash
 
 username=${USER}
-deploy_files_script_path="./deploy-files.sh"
+link_files_script_path="./link-files.sh"
 install_packages_script_path="./install-packages.sh"
 
 usage(){
@@ -17,7 +17,7 @@ all() {
     create_config_files
     set_misc
     set_gtk_theme
-    sudo ${deploy_files_script_path} ${username}
+    sudo ${link_files_script_path} ${username}
 }
 
 enable_networking(){
