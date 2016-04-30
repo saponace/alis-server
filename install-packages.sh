@@ -132,7 +132,6 @@ install_dev(){
         ${PA} maven
     # IDEs
         ${PA} intellij-idea-ultimate-edition
-        ${PA} android-studio
 }
 
 install_battery_management_utils(){
@@ -161,10 +160,6 @@ install_sound_related(){
         ${PA} pulseaudio pulseaudio-alsa alsa-utils pavucontrol
     # Use bluetooth with pulseaudio
         ${PA} pulseaudio-bluetooth bluez bluez-utils bluez-firmware
-    # Music server
-        ${PA} mpd
-    # MPD client
-        ${PA} ncmpcpp
 }
 
 install_ranger_and_optional_dependencies(){
@@ -181,12 +176,8 @@ install_ranger_and_optional_dependencies(){
 }
 
 install_transmission(){
-    # Transmission daemon
+    # Transmission daemon. Web interface accessible at http://localhost:9091
         ${PA} transmission-cli
-    # Command line UI
-        ${PA} transmission-remote-cli
-    # GTK UI
-        ${PA} transmission-remote-gtk
 }
 
 
