@@ -15,6 +15,7 @@ popd > /dev/null
 
 username=$1
 username_home="/home/${username}"
+root_home="/root"
 homedir_dotfiles=${this_script_dir}/"config-files/homedir"
 other_config_files_dir=${this_script_dir}/"config-files/other"
 scripts_dir=${this_script_dir}/scripts
@@ -30,10 +31,11 @@ link_command='ln -snf'
 
 # $HOME/.config
 mkdir -p ${username_home}/.config
+mkdir -p ${root_home}/.config
 files_to_link=${homedir_dotfiles}/.config/*;
 for config in ${files_to_link}; do
     target_user=${username_home}/.config/$( basename $config )
-    target_root=/root/.config/$( basename $config )
+    target_root=${root_home}/.config/$( basename $config )
     ${link_command} ${config} ${target_user}
     ${link_command} ${config} ${target_root}
 done
@@ -42,7 +44,7 @@ done
 files_to_link=$(find ${homedir_dotfiles} -mindepth 1 -maxdepth 1 -not -name ".config")
 for config in ${files_to_link}; do
     target_user=${username_home}/$( basename $config )
-    target_root=/root/$( basename $config )
+    target_root=${root_home}/.config/$( basename $config )
     ${link_command} ${config} ${target_user}
     ${link_command} ${config} ${target_root}
 done
