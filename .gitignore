@@ -1,0 +1,2 @@
+config-files/homedir/.config/ranger/*
+!config-files/homedir/.config/ranger/rc.conf
