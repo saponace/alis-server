@@ -99,9 +99,9 @@ install_terminal_utils(){
         ${PA} rfkill
     # Text editor
         ${PA} vim
-        ${PA} nvim
-    # spf13, vim config and plugin pack
-       curl http://j.mp/spf13-vim3 -L -o - | sh
+        # Neovim
+            ${PA} neovim
+            ${PA} python-neovim
     # Downloads from the web
         ${PA} wget
     # ssh client and server

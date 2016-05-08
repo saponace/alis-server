@@ -58,6 +58,9 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'tpope/vim-markdown', { 'for': 'markdown' } " Markdown support
     " JSON
         Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
+    " Python
+        Plug 'klen/python-mode' " Python syntax, indentation, documentation, code checking, ...
+
 
 call plug#end()
 
@@ -324,7 +327,6 @@ nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 	nmap <silent> <leader>y :NERDTreeFind<cr> " Expand to the path of the file in the current buffer
 
 " CtrlP
-	nmap <silent> <leader>r :CtrlPBuffer<cr>
 	let g:ctrlp_map='<leader>p'
 	let g:ctrlp_dotfiles=1
 	let g:ctrlp_working_path_mode = 'ra'
@@ -353,6 +355,9 @@ let g:SuperTabCrMapping = 0
 
 " Vim-json
     let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
+
+" Python mode
+    let g:pymode_doc_bind = "<leader>h"
 
 " }}}
 
