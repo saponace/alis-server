@@ -77,12 +77,17 @@ set history=1000 " Change commands history to 1000
 set textwidth=120 " Automatic text wrapping when line too long
 
 " Tab control
+    let tabsize = 4
+    " The visible width of tabs
+        execute "set tabstop=".tabsize
+    " Edit as if the tabs are tabsize characters wide
+        execute "set softtabstop=".tabsize
+    " Number of spaces to use for indent and unindent
+        execute "set shiftwidth=".tabsize
     set smarttab " Tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-    set tabstop=4 " The visible width of tabs
-    set softtabstop=4 " Edit as if the tabs are 4 characters wide
-    set shiftwidth=4 " Number of spaces to use for indent and unindent
     set shiftround " Round indent to a multiple of 'shiftwidth'
     set completeopt+=longest
+    set expandtab " Replace tab characters by spaces
 
 " Make sure the mouse is usable in vim
     if has('mouse')
