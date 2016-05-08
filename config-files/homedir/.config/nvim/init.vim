@@ -351,6 +351,9 @@ let g:SuperTabCrMapping = 0
 	map  n <Plug>(easymotion-next)
 	map  N <Plug>(easymotion-prev)
 
+" Vim-json
+    let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
+
 " }}}
 
 
