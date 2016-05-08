@@ -99,7 +99,8 @@ install_terminal_utils(){
         ${PA} rfkill
     # Text editor
         ${PA} vim
-   # spf13, vim config and plugin pack
+        ${PA} nvim
+    # spf13, vim config and plugin pack
        curl http://j.mp/spf13-vim3 -L -o - | sh
     # Downloads from the web
         ${PA} wget
@@ -132,6 +133,8 @@ install_dev(){
         ${PA} maven
     # IDEs
         ${PA} intellij-idea-ultimate-edition
+    # Ctags, tags index generating. Use by nvim plugin Tagbar
+        ${PA} tagbar
 }
 
 install_battery_management_utils(){

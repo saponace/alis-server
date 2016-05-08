@@ -1,2 +1,4 @@
 config-files/homedir/.config/ranger/*
 !config-files/homedir/.config/ranger/rc.conf
+
+config-files/homedir/.config/nvim/plugged
