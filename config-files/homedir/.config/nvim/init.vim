@@ -59,7 +59,7 @@ call plug#begin('~/.config/nvim/plugged')
     " JSON
         Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
     " Python
-        Plug 'klen/python-mode' " Python syntax, indentation, documentation, code checking, ...
+        Plug 'klen/python-mode', { 'for': 'py' }  " Python syntax, indentation, documentation, code checking ...
 
 
 call plug#end()
