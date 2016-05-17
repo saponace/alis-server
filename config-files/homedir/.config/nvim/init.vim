@@ -105,12 +105,13 @@ set diffopt+=vertical " Default split for vimdiff is vertical
 
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' " Highlight Git merge conflicts
 
+set undofile " Persistent undos accros sessions
+
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " Location of vim backup files
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " Location of vim swap files
+set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " Location of vim undo directory
 
 set laststatus=2 " Show the status line all the time
-
-set undofile " Persistent undos accros sessions
 
 " }}}
 
