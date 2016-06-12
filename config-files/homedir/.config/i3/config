@@ -16,14 +16,15 @@
 #----- Open apps
     # Start a terminal
         bindsym $mod+Return exec uxterm
-    # Start chrome 
+    # Start chrome
         bindsym $mod+x exec google-chrome-stable
-    # Start dmenu (a program launcher)
-        bindsym $mod+space exec --no-startup-id i3-dmenu-desktop
+    # Start rofi (Program launcher and windows selector)
+        bindsym $mod+w exec --no-startup-id rofi -show window
+        bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
 
     # Open dropdown terminal
        exec uxterm -name scratchpad
-       #for_window [instance="scratchpad"] floating enable; resize grow left 300; resize grow right 300; resize grow down 150; resize grow up 100; move scratchpad; 
+       #for_window [instance="scratchpad"] floating enable; resize grow left 300; resize grow right 300; resize grow down 150; resize grow up 100; move scratchpad;
        #for_window [instance="scratchpad"] floating enable; move scratchpad;  floating_minimum_size 100 x 100; floating_maximum 100 x 100;
        for_window [instance="scratchpad"] floating enable;
        for_window [instance="scratchpad"] floating_minimum_size 100 x 100

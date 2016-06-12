@@ -38,3 +38,11 @@ UXTerm*faceSize: 9
 ! white
     *color7: #707880
     *color15: #C5C8C6
+
+
+!----- ROFI Color theme
+rofi.color-enabled: true
+rofi.color-window: argb:a71d1f21, #c5c8c6, argb:78c5c8c6
+rofi.color-normal: #1d1f21, #c5c8c6, argb:8e44494e, #505254, #161717
+rofi.color-active: argb:0c9c3b3, #268bd2, #d8d3c0, #2187cd, #e8e1ce
+rofi.color-urgent: #e1dac7, #c42a27, #d5d0bd, #cc3330, #ded8c9

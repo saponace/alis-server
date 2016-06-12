@@ -50,8 +50,8 @@ install_x_related(){
 install_windows_manager(){
     # windows manager
         ${PA} i3
-    # Application launcher
-        ${PA} dmenu
+    # Application launcher (rofi is a program launcher and window selector. Calls dmenu to start programs)
+        ${PA} rofi dmenu
     # Status bar
         ${PA} i3blocks
     # i3blocks dependencies
