@@ -179,7 +179,7 @@ install_ranger_and_optional_dependencies(){
 }
 
 install_transmission(){
-    # Transmission daemon. Web interface accessible at http://localhost:9091
+    # Transmission daemon.
         ${PA} transmission-cli
 }
 
