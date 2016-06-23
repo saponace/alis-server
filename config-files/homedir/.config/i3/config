@@ -20,7 +20,7 @@
         bindsym $mod+x exec google-chrome-stable
     # Start rofi (Program launcher and windows selector)
         bindsym $mod+w exec --no-startup-id rofi -show window
-        bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
+        bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i'
 
     # Open dropdown terminal
        exec uxterm -name scratchpad
