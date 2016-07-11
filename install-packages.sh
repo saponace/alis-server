@@ -83,6 +83,8 @@ install_misc(){
         ${PA} udiskie
     # NTFS filesystems management
         ${PA} ntfs-3g
+    # Backup utility
+        ${PA} borgbackup
 }
 
 install_terminal_related(){
