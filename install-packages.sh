@@ -165,6 +165,13 @@ install_sound_related(){
         ${PA} pulseaudio pulseaudio-alsa alsa-utils pavucontrol
     # Use bluetooth with pulseaudio
         ${PA} pulseaudio-bluetooth bluez bluez-utils bluez-firmware
+    # Jack2, other sound server
+        ${PA} jack2
+    # Jack2 GUI
+        ${PA} qjackctl
+    # Jack sink for pulseaudio
+        ${PA} pulseaudio-jack
+
 }
 
 install_ranger_and_optional_dependencies(){
