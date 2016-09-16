@@ -39,7 +39,7 @@ Uncomment the locales you are interested in. Then:
 # pacman -Syu git
 # git clone https://github.com/saponace/dotfiles.git
 # cd dotfiles
-# install-core.sh $hostname $username $boot_partition $linux_root_partition
+# ./install-core.sh $hostname $username $boot_partition $linux_root_partition
 ```
 
 ### Reboot
