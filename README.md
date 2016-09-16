@@ -8,12 +8,13 @@
 
 ### Create partitions
 Create partitions (at least root and swap)
-If no boot partition already exist, also create a boot partition of type EFI FILESYSTEM and `mkfs.vfat -F 32` this partition.  
 Format theses partions (mkfs.ext4 and mkswap)
+
+If no boot partition already exist, also create a boot partition of type EFI FILESYSTEM and `mkfs.vfat -F 32` this partition.
 
 
 ### Mount the partitions
-Mount at /mnt and swapon, (do not forget to mount /boot in /mnt/boot, create directories if needed)
+Mount at /mnt and swapon, (do not forget to mount the boot partition on /mnt/boot, create directories if needed)
 
 
 ### Prepare the new system before chrooting
