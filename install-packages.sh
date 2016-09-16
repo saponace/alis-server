@@ -162,7 +162,7 @@ install_network_manager(){
 
 install_sound_related(){
     # Sound server
-        ${PA} pulseaudio pulseaudio-alsa alsa-utils pavucontrol
+        ${PA} pulseaudio pulseaudio-alsa alsa-utils pavucontrol pasystray
     # Use bluetooth with pulseaudio
         ${PA} pulseaudio-bluetooth bluez bluez-utils bluez-firmware
     # Jack2, other sound server
