@@ -68,6 +68,8 @@ install_hardware_drivers(){
         ${PA} xf86-input-synaptics
     # FingerPrint scanner drivers
         ${PA} fprintd
+    # Brightness control (backlight)
+        ${PA} light
 }
 
 install_misc(){
