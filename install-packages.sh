@@ -62,8 +62,8 @@ install_windows_manager(){
 }
 
 install_hardware_drivers(){
-    # graphic drivers (intel is default, vesa is generic used if intel failed)
-        ${PA} mesa xf86-video-vesa xf86-video-intel
+    # graphic drivers
+        ${PA} mesa xf86-video-vesa
     # touchpad drivers
         ${PA} xf86-input-synaptics
     # FingerPrint scanner drivers
