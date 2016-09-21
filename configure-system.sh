@@ -18,6 +18,7 @@ all() {
     set_misc
     set_gtk_theme
     sudo ${link_files_script_path} ${username}
+    configure_thinkpad_specific
 }
 
 enable_networking(){
@@ -26,13 +27,13 @@ enable_networking(){
     while [ "$var1" != "end" ]
     do
         pingtime=$(ping -w 1 google.com | grep ttl)
-        if [ "$pingtime" = "" ] 
-        then 
+        if [ "$pingtime" = "" ]
+        then
             sleep 2
         else
-            break 
-        fi 
-    done 
+            break
+        fi
+    done
     echo "Done !"
 }
 
@@ -76,11 +77,18 @@ set_misc(){
     sudo localectl set-keymap fr-latin9
     # Start login manager on startup
     sudo systemctl enable slim.service
+    # Enable laptop-mode tools (save battery)
+    systemctl enable laptop-mode.service
 }
 
 set_gtk_theme() {
     su -c "echo -e 'gtk-icon-theme-name = \"Arc-Darker\"\ngtk-theme-name = \"Arc-Darker\"\ngtk-font-name = \"Inconsolata-g 8\"' > /usr/share/gtk-2.0/gtkrc"
     su -c "echo -e '[Settings]\ngtk-icon-theme-name = Arc-Darker\ngtk-theme-name = Arc-Darker\ngtk-font-name = Inconsolata-g 8' > /usr/share/gtk-3.0/settings.ini"
+}
+
+configure_thinkpad_specific(){
+    # Enable tp-battery mode (start/stop charging thinkpad batteries at given values
+    systemctl enable tp-battery-mode
 }
 
 

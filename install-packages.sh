@@ -8,21 +8,21 @@ usage(){
 }
 
 all(){
-install_yaourt
-install_x_related
-install_windows_manager
-install_hardware_drivers
-install_misc
-install_terminal_related
-install_terminal_utils
-install_display_utils
-install_dev
-install_battery_management_utils
-install_fonts
-install_network_manager
-install_sound_related
-install_ranger_and_optional_dependencies
-install_transmission
+    install_yaourt
+    install_x_related
+    install_windows_manager
+    install_hardware_drivers
+    install_misc
+    install_terminal_related
+    install_terminal_utils
+    install_display_utils
+    install_dev
+    install_battery_management_utils
+    install_fonts
+    install_network_manager
+    install_sound_related
+    install_ranger_and_optional_dependencies
+    install_thinkpad_specific
 }
 
 install_yaourt(){
@@ -66,8 +66,6 @@ install_hardware_drivers(){
         ${PA} mesa xf86-video-vesa
     # touchpad drivers
         ${PA} xf86-input-synaptics
-    # FingerPrint scanner drivers
-        ${PA} fprintd
     # Brightness control (backlight)
         ${PA} light
 }
@@ -87,6 +85,8 @@ install_misc(){
         ${PA} ntfs-3g
     # Backup utility
         ${PA} borgbackup
+    # Transmission (torrenting) daemon.(and CLI and web-UI)
+        ${PA} transmission-daemon-
 }
 
 install_terminal_related(){
@@ -146,6 +146,8 @@ install_battery_management_utils(){
         ${PA} acpi
     # Suspend tool
         ${PA} pm-utils
+    # Chnage behavior of components depending on AC state
+        ${PA} laptop-mode-tools
 }
 
 install_fonts(){
@@ -189,9 +191,11 @@ install_ranger_and_optional_dependencies(){
         ${PA} atool
 }
 
-install_transmission(){
-    # Transmission daemon.
-        ${PA} transmission-cli
+install_thinkpad_specific(){
+    # Start and stop charging batteries at given values (preserve batteries health on the long term)
+        ${PA} tp-battery-mode
+    # FingerPrint scanner drivers
+        ${PA} fprintd
 }
 
 
