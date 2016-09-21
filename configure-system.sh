@@ -39,46 +39,48 @@ enable_networking(){
 
 set_default_shell(){
     # for the user
-    chsh -s /bin/zsh ${username}
+        chsh -s /bin/zsh ${username}
     # For root
-    sudo chsh -s /bin/zsh root
+        sudo chsh -s /bin/zsh root
 }
 
 set_cron_jobs(){
-    sudo systemctl enable cronie.service
+    # Enable crontab manager
+        sudo systemctl enable cronie.service
     # Root cron jobs
     # Display notification or suspend when low battery (every minute)
-    echo "*/1 * * * * env DISPLAY=:0 /bin/battery-level -n" > /tmp/root-crontab.txt
-    sudo crontab -u root /tmp/root-crontab.txt
+        echo "*/1 * * * * env DISPLAY=:0 /bin/battery-level -n" > /tmp/root-crontab.txt
+        sudo crontab -u root /tmp/root-crontab.txt
     # User cron jobs
     # Set a random wallpaper every 15 minutes
-    echo "*/15 * * * * env DISPLAY=:0.0 /bin/set-random-wallpaper" > /tmp/user-crontab.txt
-    sudo crontab -u ${username} /tmp/user-crontab.txt
+        echo "*/15 * * * * env DISPLAY=:0.0 /bin/set-random-wallpaper" > /tmp/user-crontab.txt
+        sudo crontab -u ${username} /tmp/user-crontab.txt
 }
 
 configure_networkmanager(){
-    sudo systemctl enable NetworkManager.service
+    # Enable network manager
+        sudo systemctl enable NetworkManager.service
     # Disable ipv6 in dhcpcd.conf
-    sudo echo -e "noipv6rs\nnoipv6" >> /etc/dhcpcd.conf
+        sudo echo -e "noipv6rs\nnoipv6" >> /etc/dhcpcd.conf
 }
 
 create_config_files(){
     # Create empty config files for MPD (compulsory to make MPD wrk properly)
-    mkdir -p ~/.config/mpd/playlists
-    touch ~/.config/mpd/{database,log,pid,state,sticker.sql}
+        mkdir -p ~/.config/mpd/playlists
+        touch ~/.config/mpd/{database,log,pid,state,sticker.sql}
     # Create ranger dotfiles
-    ranger --copy-config=all
+        ranger --copy-config=all
     # Make transmission detect config file
-    transmission-remote-cli --create-config
+        transmission-remote-cli --create-config
 }
 
 set_misc(){
     # set locale (not sure if useful)
-    sudo localectl set-keymap fr-latin9
+        sudo localectl set-keymap fr-latin9
     # Start login manager on startup
-    sudo systemctl enable slim.service
+        sudo systemctl enable slim.service
     # Enable laptop-mode tools (save battery)
-    systemctl enable laptop-mode.service
+        systemctl enable laptop-mode.service
 }
 
 set_gtk_theme() {
@@ -88,7 +90,7 @@ set_gtk_theme() {
 
 configure_thinkpad_specific(){
     # Enable tp-battery mode (start/stop charging thinkpad batteries at given values
-    systemctl enable tp-battery-mode
+        systemctl enable tp-battery-mode
 }
 
 
