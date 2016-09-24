@@ -81,6 +81,8 @@ set_misc(){
         sudo systemctl enable slim.service
     # Enable laptop-mode tools (save battery)
         systemctl enable laptop-mode.service
+    # Disable terminal bell (actually totally disable internal speaker)
+        su -c "echo 'blacklist pcspkr' > /etc/modprobe.d/nobeep.conf"
 }
 
 set_gtk_theme() {
