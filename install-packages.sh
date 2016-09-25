@@ -39,9 +39,9 @@ install_x_related(){
         ${PA} dunst
     # Lock screen
         ${PA} i3lock
-    # access X clipboard
+    # Access X clipboard
         ${PA} xclip
-    # XrandR, multi-monitor
+    # Multi-monitor management
         ${PA} xrandr arandr
     # Dark gtk2 and gtk3 theme
         ${PA} gtk-theme-arc
