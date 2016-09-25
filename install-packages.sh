@@ -43,6 +43,8 @@ install_x_related(){
         ${PA} xclip
     # Multi-monitor management
         ${PA} xrandr arandr
+    # Color shifter, reduce blue emission
+        ${PA} redshift
     # Dark gtk2 and gtk3 theme
         ${PA} gtk-theme-arc
 }
