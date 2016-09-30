@@ -22,6 +22,7 @@ all(){
     install_network_manager
     install_sound_related
     install_ranger_and_optional_dependencies
+    install_virtualbox
     install_thinkpad_specific
 }
 
@@ -191,6 +192,13 @@ install_ranger_and_optional_dependencies(){
         ${PA} mediainfo
     # See archives content
         ${PA} atool
+}
+
+install_virtualbox(){
+    # Virtualbox
+        ${PA} virtualbox
+    # Required modules
+        ${PA} virtualbox-host-dkms
 }
 
 install_thinkpad_specific(){

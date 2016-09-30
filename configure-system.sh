@@ -83,6 +83,8 @@ set_misc(){
         systemctl enable laptop-mode.service
     # Disable terminal bell (actually totally disable internal speaker)
         su -c "echo 'blacklist pcspkr' > /etc/modprobe.d/nobeep.conf"
+    # Enable virtualbox driver module
+        sudo modprobe vboxdrv
 }
 
 set_gtk_theme() {
