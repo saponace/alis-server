@@ -8,6 +8,7 @@ usage(){
 }
 
 all(){
+    install_core
     install_yaourt
     install_x_related
     install_windows_manager
@@ -24,6 +25,10 @@ all(){
     install_ranger_and_optional_dependencies
     install_virtualbox
     install_thinkpad_specific
+}
+
+install_core(){
+    ${PA} linux-headers
 }
 
 install_yaourt(){
