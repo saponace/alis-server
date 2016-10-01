@@ -37,8 +37,8 @@ Uncomment the locales you are interested in. Then:
 
 ```
 # pacman -Syu git
-# git clone https://github.com/saponace/dotfiles.git
-# cd dotfiles
+# git clone https://github.com/saponace/alis.git
+# cd alis
 # ./install-core.sh $hostname $username $boot_partition $linux_root_partition
 ```
 
@@ -54,6 +54,6 @@ Umount and swapoff partitions
 ### Configure the new system
 Log in as the user, and
 ```
-# cd dotfiles
+# cd alis
 # ./configure-system.sh
 ```
