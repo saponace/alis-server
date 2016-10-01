@@ -65,9 +65,6 @@ configure_networkmanager(){
 }
 
 create_config_files(){
-    # Create empty config files for MPD (compulsory to make MPD wrk properly)
-        mkdir -p ~/.config/mpd/playlists
-        touch ~/.config/mpd/{database,log,pid,state,sticker.sql}
     # Create ranger dotfiles
         ranger --copy-config=all
     # Make transmission detect config file
