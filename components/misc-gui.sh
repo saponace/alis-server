@@ -13,3 +13,5 @@
     ${INSTALL} feh
 # PDF viewer
     ${INSTALL} evince
+# Music streaming
+    ${INSTALL} spotify
