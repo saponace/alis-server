@@ -3,10 +3,8 @@
 #-------------------------------------------------
 
 
-INSTALL="echo"
-# INSTALL="yaourt -S --noconfirm"
-SOURCE="ls -l"
-# SOURCE="source"
+INSTALL="yaourt -S --noconfirm"
+SOURCE="source"
 COMPONENTS_PATH="./components"
 
 ${SOURCE} ${COMPONENTS_PATH}/network.sh
