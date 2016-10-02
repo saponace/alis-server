@@ -7,8 +7,9 @@ INSTALL="yaourt -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
 
-${SOURCE} ${COMPONENTS_PATH}/network.sh
+${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
+${SOURCE} ${COMPONENTS_PATH}/network-related.sh
 ${SOURCE} ${COMPONENTS_PATH}/core.sh
 ${SOURCE} ${COMPONENTS_PATH}/dev.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh

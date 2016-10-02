@@ -1,24 +1,7 @@
 #-------------------------------------------------
-# Enable networking and install/configure networking related programs
+# Install/configure networking related programs
 #-------------------------------------------------
 
-
-# Enable dhcpcd
-enable_networking(){
-    echo "Enabling networking ..."
-    sudo dhcpcd
-    while [ "$var1" != "end" ]
-    do
-        pingtime=$(ping -w 1 google.com | grep ttl)
-        if [ "$pingtime" = "" ]
-        then
-            sleep 2
-        else
-            break
-        fi
-    done
-    echo "Done !"
-}
 
 # Install Networkmanager packages
 install_networkmanager(){
@@ -39,6 +22,5 @@ configure_networkmanager(){
 }
 
 
-enable_networking
 install_networkmanager
 configure_networkmanager
