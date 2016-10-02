@@ -24,7 +24,7 @@ link_command='ln -snf'
 
 # $HOME/.config
 mkdir -p ${username_home}/.config
-mkdir -p ${root_home}/.config
+sudo mkdir -p ${root_home}/.config
 files_to_link=${homedir_dotfiles}/.config/*;
 for config in ${files_to_link}; do
     target_user=${username_home}/.config/$( basename $config )
