@@ -8,6 +8,8 @@
 # Java Development Kit
     ${INSTALL} jdk7-openjdk openjdk7-doc
     ${INSTALL} jdk8-openjdk openjdk8-doc
+    # Make JRE the default JRE
+        su -c "echo 'JAVA_HOME=/usr/lib/jvm/java-8-openjdk' >> /etc/environment"
 # C debug tools
     ${INSTALL} gdb
 # Java build tools
