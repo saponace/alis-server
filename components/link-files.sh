@@ -15,9 +15,6 @@ homedir_dotfiles=${files_to_deploy_dir}"/config-files/homedir"
 other_config_files_dir=${files_to_deploy_dir}"/config-files/other"
 scripts_dir=${files_to_deploy_dir}"/scripts"
 
-
-echo $scripts_dir
-exit
 link_command='ln -snf'
 
 # Allows copying dotfiles
@@ -33,7 +30,7 @@ for config in ${files_to_link}; do
     target_user=${username_home}/.config/$( basename $config )
     target_root=${root_home}/.config/$( basename $config )
     ${link_command} ${config} ${target_user}
-    ${link_command} ${config} ${target_root}
+    sudo ${link_command} ${config} ${target_root}
 done
 
 # $HOME
@@ -42,7 +39,7 @@ for config in ${files_to_link}; do
     target_user=${username_home}/$( basename $config )
     target_root=${root_home}/.config/$( basename $config )
     ${link_command} ${config} ${target_user}
-    ${link_command} ${config} ${target_root}
+    sudo ${link_command} ${config} ${target_root}
 done
 
 
