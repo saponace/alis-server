@@ -7,6 +7,16 @@ INSTALL="yaourt -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
 
+
+# Prevent sudo timeout
+sudo -v
+while true; do
+  sudo -nv; sleep 1m
+  kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
+done &
+
+
+
 ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
 ${SOURCE} ${COMPONENTS_PATH}/network-related.sh
