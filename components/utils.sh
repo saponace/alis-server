@@ -13,3 +13,5 @@
     ${INSTALL} wget
 # Rfkill, to turn on and off wireless interfaces
     ${INSTALL} rfkill
+# Distant and local copy
+    ${INSTALL} rsync
