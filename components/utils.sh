@@ -15,3 +15,5 @@
     ${INSTALL} rfkill
 # Distant and local copy
     ${INSTALL} rsync
+# Network discovery tool
+    ${INSTALL} nmap
