@@ -1,5 +1,5 @@
 
-# Follow these steps to install a new arch linux
+# Follow these steps to install a new arch linux system
 
 ### Set the keyboard layout to French
 ```
@@ -7,40 +7,21 @@
 ```
 
 ### Create partitions
-Create partitions (at least root and swap)
-Format theses partions (mkfs.ext4 and mkswap)
-
-If no boot partition already exist, also create a boot partition of type EFI FILESYSTEM and `mkfs.vfat -F 32` this partition.
+Create partitions boot, swap and root (with fdisk for instance).
 
 
-### Mount the partitions
-Mount at /mnt and swapon, (do not forget to mount the boot partition on /mnt/boot, create directories if needed)
+# Remount archiso with more space to be able to download and install git
+mount -o remount,size=2G /run/archiso/cowspace
 
-
-### Prepare the new system before chrooting
- ```
-    # pacstrap /mnt base base-devel
-    # genfstab -p -L /mnt >> /mnt/etc/fstab
-```
-
-### Chroot into the new system
-```
-# arch-chroot /mnt
-```
-
+# Clone this repo
+git clone https://github.com/saponace/alis.git
 
 ### Install the new system
 ```
-# vi /etc/locale.gen
-```
-Uncomment the locales you are interested in. Then: 
-
-```
-# pacman -Syu git
-# git clone https://github.com/saponace/alis.git
 # cd alis
-# ./install-core.sh $hostname $username $boot_partition $linux_root_partition
+# ./install-core.sh $hostname $username $boot_partition $swap_partition $root_partition
 ```
+
 
 ### Reboot
 ```
