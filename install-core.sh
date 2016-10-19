@@ -13,20 +13,48 @@ root_part=$5
 # Format swap partition
     mkswap ${boot_part}
 
+
 # Set encryption on root partition and open encrypted partition
-    sudo cryptsetup --verbose --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 luksFormat ${root_partition}
-    cryptsetup luksOpen ${root_partition} root
+    cryptsetup --verbose --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 luksFormat ${root_part}
+    cryptsetup luksOpen ${root_part} root
 
 # Format root partition
     mkfs.btrfs /dev/mapper/root
 
-# Mount root
---- Mount everything btrfs related ---
+
+# Mount root and create Btrfs subvolumes
+    mount /dev/mapper/root /mnt
+    cd /mnt
+    btrfs subvolume create ROOT
+    cd
+    umount /mnt
+    mount -o noatime,space_cache,autodefrag,subvol=ROOT /dev/mapper/root /mnt
+    cd /mnt
+    btrfs subvolume create root
+    btrfs subvolume create home
+    btrfs subvolume create etc
+    btrfs subvolume create mnt
+    btrfs subvolume create opt
+    btrfs subvolume create var
+    btrfs subvolume create tmp
+    # cd
+    # umount /mnt
+    # mount -o noatime,space_cache,subvol=ROOT ${root_part} /mnt
+    # mkdir /mnt/{root,home,etc,mnt,opt,var,tmp}
+    # mount -o noatime,space_cache,subvol=root ${root_part} /mnt/root
+    # mount -o noatime,space_cache,subvol=home ${root_part} /mnt/home
+    # mount -o noatime,space_cache,subvol=etc ${root_part} /mnt/etc
+    # mount -o noatime,space_cache,subvol=mnt ${root_part} /mnt/mnt
+    # mount -o noatime,space_cache,subvol=opt ${root_part} /mnt/opt
+    # mount -o noatime,space_cache,subvol=var ${root_part} /mnt/var
+    # mount -o noatime,space_cache,subvol=tmp ${root_part} /mnt/tmp
+
 # Mount boot partition
     mkdir /mnt/boot
-    mount ${boot_partition} /mnt/boot
+    mount ${boot_part} /mnt/boot
 # Enable swap
-    swapon ${swap_partition}
+    swapon ${swap_part}
+
 
 # Install base components into new system
     pacstrap /mnt base base-devel btrfs-progs
@@ -35,68 +63,12 @@ root_part=$5
     genfstab -U -p /mnt >> /mnt/etc/fstab
 
 
---- Move git repo to new root if needed TODO: check if ablt to do from here ---
-
-# Chroot into the new system
-    arch-chroot /mnt
-
-
-
-# Set the hostname
-    echo  ${hostname} > /etc/hostname
-
-# Set le locales and the keymap
-    # Configure locales
-        echo -e "\nfr_FR.UTF-8 UTF-8\nfr_FR ISO-8859-1\nfr_FR@euro ISO-8859-15\n" >> /etc/locale.gen
-        echo -e "en_US.UTF-8 UTF-8\nen_US ISO-8859-1" >> /etc/locale.gen
-        locale-gen
-    ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
-    echo "KEYMAP=fr-latin1.map.gz" > /etc/vconsole.conf
-
-# Set the clock
-    hwclock --systohc --localtime
-
-
-
-
-# Create ramdisk
-    # Configure mkinitcpio
-    sed 's/^BINARIES=""/BINARIES="\/usr\/bin\/btrfsck"/' /etc/mkinitcpio.conf
-    sed 's/^HOOKS=".*"/HOOKS="base udev resume autodetect mdconf block encrypt filesystems keyboard keymap image btrfs"/' /etc/mkinitcpio.conf
-    mkinitcpio -p linux
-
-
-# Install and configure boot manager
-    pacman -S efibootmgr
-    # mount ${uefi_part} /boot
-    bootctl --path=/boot install
-
-    # Create menu entry
-        echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
-    # Configure entry
-    # TODO: Check that mess
-        root_part_uuid=$(blkid ${root_part} | cut -f2 -d\")
-        root_part_uuid=$(blkid ${swap_part} | cut -f2 -d\")
-        echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\n" > /boot/loader/entries/arch.conf
-        echo -e "options cryptdevice=UUID=${root_part_uuid}:luks root=/dev/mapper/root rootflags=subvol=##TODO## quiet resume=UUID=${swap_part_uuid}" > /boot/loader/entries/arch.conf
-
-
-# Set root password
-    echo Enter root password:
-    passwd root
-
-
-# Create the user and add him to wheel group (sudoers)
-    useradd -m -G wheel -s /bin/bash ${username}
-    sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
-    # Set user password
-        echo Enter ${username} password:
-        passwd ${username}
-
-
-# Move the git repo into the user's home directory
+# Move the git repo into the /root of the new system
     pushd `dirname $0` > /dev/null
     git_repo_path=`pwd`
     popd > /dev/null
-    mv ${git_repo_path} /home/${username}
-    chown -R ${username}:${username} /home/${username}/
+    mv ${git_repo_path} /mnt/root
+
+
+# Chroot into the new system
+    arch-chroot /mnt /root/alis/install-core-after-chroot.sh ${hostname} ${username} ${swap_part} ${root_part}
