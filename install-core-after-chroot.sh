@@ -37,10 +37,10 @@ root_part=$4
         echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
     # Configure entry
         root_part_uuid=$(blkid ${root_part} | cut -f2 -d\")
-        root_part_uuid=$(blkid ${swap_part} | cut -f2 -d\")
+        swap_part_uuid=$(blkid ${swap_part} | cut -f2 -d\")
         echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\n" > /boot/loader/entries/arch.conf
         # TODO: Check that mess
-        echo -e "options cryptdevice=UUID=${root_part_uuid}:luks root=/dev/mapper/luks-${root_part_uuid} rootflags=subvol=##TODO## quiet resume=UUID=${swap_part_uuid}" > /boot/loader/entries/arch.conf
+        echo -e "options cryptdevice=UUID=${root_part_uuid}:luks root=/dev/mapper/luks-${root_part_uuid} rootflags=subvol=ROOT quiet resume=UUID=${swap_part_uuid}" > /boot/loader/entries/arch.conf
 
 
 # Set root password
