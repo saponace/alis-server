@@ -11,10 +11,11 @@ root_part=$5
 # Format boot partition
     mkfs.vfat -F 32 ${boot_part}
 # Format swap partition
-    mkswap ${boot_part}
+    mkswap ${swap_part}
 
 
 # Set encryption on root partition and open encrypted partition
+    echo "Encrypting root partition. Please enter passphrase when prompted."
     cryptsetup --verbose --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 luksFormat ${root_part}
     cryptsetup luksOpen ${root_part} root
 
