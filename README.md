@@ -15,8 +15,10 @@ Create partitions boot, swap and root (with fdisk for instance).
 # mount -o remount,size=2G /run/archiso/cowspace
 ```
 
-### Clone this repo
+### Install git and clone this repo
 ```
+pacman -Syy
+pacman -S git
 # git clone https://github.com/saponace/alis.git
 ```
 
