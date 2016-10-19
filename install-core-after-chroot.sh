@@ -24,8 +24,8 @@ root_part=$4
 
 # Create ramdisk
     # Configure mkinitcpio
-    sed 's/^BINARIES=""/BINARIES="\/usr\/bin\/btrfsck"/' /etc/mkinitcpio.conf
-    sed 's/^HOOKS=".*"/HOOKS="base udev resume autodetect mdconf block encrypt filesystems keyboard keymap image btrfs"/' /etc/mkinitcpio.conf
+    sed -i 's/^BINARIES=""/BINARIES="\/usr\/bin\/btrfsck"/' /etc/mkinitcpio.conf
+    sed -i 's/^HOOKS=".*"/HOOKS="base udev resume autodetect mdconf block encrypt filesystems keyboard keymap image btrfs"/' /etc/mkinitcpio.conf
     mkinitcpio -p linux
 
 
