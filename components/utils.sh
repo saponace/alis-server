@@ -17,3 +17,5 @@
     ${INSTALL} rsync
 # Network discovery tool
     ${INSTALL} nmap
+# Btrfs snapshots manager
+    ${INSTALL} snapper
