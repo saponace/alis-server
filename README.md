@@ -11,10 +11,14 @@ Create partitions boot, swap and root (with fdisk for instance).
 
 
 ### Remount archiso with more space to be able to download and install git
-mount -o remount,size=2G /run/archiso/cowspace
+```
+# mount -o remount,size=2G /run/archiso/cowspace
+```
 
 ### Clone this repo
-git clone https://github.com/saponace/alis.git
+```
+# git clone https://github.com/saponace/alis.git
+```
 
 ### Install the new system
 ```
