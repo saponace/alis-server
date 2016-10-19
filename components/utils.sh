@@ -2,7 +2,8 @@
 # Install utilities
 #-------------------------------------------------
 
-
+# Git
+    ${INSTALL} git
 # SSH client and server
     ${INSTALL} ssh
 # Mount distant directories over ssh
