@@ -53,4 +53,4 @@ done
         sudo ${link_command} ${other_config_files_dir}/gtk-theme/settings.ini /usr/share/gtk-3.0/
 
 # Scripts
-    sudo ${link_command} ${scripts_dir}/* /bin/
+    sudo ${link_command} ${scripts_dir}/* /usr/bin/
