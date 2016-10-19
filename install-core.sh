@@ -65,10 +65,8 @@ root_part=$5
 
 
 # Move the git repo into the /root of the new system
-    pushd `dirname $0` > /dev/null
-    git_repo_path=`pwd`
-    popd > /dev/null
-    mv ${git_repo_path} /mnt/root
+    git_repo_path=/root/alis
+    mv ${git_repo_path} /mnt/root/
 
 
 # Chroot into the new system
