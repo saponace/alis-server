@@ -17,8 +17,7 @@ Create partitions boot, swap and root (with fdisk for instance).
 
 ### Install git and clone this repo
 ```
-# pacman -Syy
-# pacman -S git
+# pacman -Syy git
 # git clone https://github.com/saponace/alis.git
 ```
 
