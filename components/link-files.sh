@@ -37,7 +37,7 @@ done
 files_to_link=$(find ${homedir_dotfiles} -mindepth 1 -maxdepth 1 -not -name ".config")
 for config in ${files_to_link}; do
     target_user=${username_home}/$( basename $config )
-    target_root=${root_home}/.config/$( basename $config )
+    target_root=${root_home}/$( basename $config )
     ${link_command} ${config} ${target_user}
     sudo ${link_command} ${config} ${target_root}
 done
