@@ -22,5 +22,6 @@
         fprintd-enroll -f right-middle-finger
         fprintd-enroll -f right-ring-finger
         fprintd-enroll -f right-little-finger
-    # Add fingerprint authentication to the list of login authentications
-        su -c "echo 'auth sufficient pam_fprintd.so' >> /etc/pam.d/system-local-login"
+    # Add fingerprint authentication to the list of login authentications at the beginning of the file
+        string_to_add="auth sufficient pam_fprintd.so"
+        sudo sed -i -e "1i${string_to_add}\\" /etc/pam.d/system-local-login
