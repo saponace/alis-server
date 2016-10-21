@@ -20,5 +20,3 @@
     ${INSTALL} nmap
 # List open files by given process
     ${INSTALL} lsof
-# Btrfs snapshots manager
-    ${INSTALL} snapper
