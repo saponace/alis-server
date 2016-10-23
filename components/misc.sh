@@ -12,6 +12,3 @@
 
 # NTFS filesystems management
     ${INSTALL} ntfs-3g
-
-# Backup utility
-    ${INSTALL} borgbackup
