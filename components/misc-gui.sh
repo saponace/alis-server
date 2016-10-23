@@ -7,6 +7,8 @@
     ${INSTALL} google-chrome
 # Media player
     ${INSTALL} vlc
+    # vlc dependency to have a GUI
+        ${INSTALL} qt4
 # Disks management (useful for S.M.A.R.T. tests)
     ${INSTALL} gnome-disk-utility
 # Image viewer
