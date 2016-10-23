@@ -4,7 +4,7 @@
 
 
 # Transmission (torrenting) daemon (and CLI and web-UI)
-    ${INSTALL} transmission-daemon-
+    ${INSTALL} transmission-cli
     transmission-remote-cli --create-config   # Make transmission detect config file
 
 # auto-mounting media disks daemon
