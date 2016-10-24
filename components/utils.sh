@@ -20,3 +20,5 @@
     ${INSTALL} nmap
 # List open files by given process
     ${INSTALL} lsof
+# Delete duplicates files
+    ${INSTALL} rmlint
