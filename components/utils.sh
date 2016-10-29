@@ -8,8 +8,9 @@
     ${INSTALL} ssh
 # Mount distant directories over ssh
     ${INSTALL} sshfs
-# Unzip
+# Zip
     ${INSTALL} unzip
+    ${INSTALL} zip
 # Downloads from the web
     ${INSTALL} wget
 # Rfkill, to turn on and off wireless interfaces
