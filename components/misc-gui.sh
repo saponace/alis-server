@@ -17,3 +17,5 @@
     ${INSTALL} evince
 # Music streaming
     ${INSTALL} spotify
+# Budget manager
+    ${INSTALL} homebank
