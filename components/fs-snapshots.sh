@@ -14,6 +14,14 @@
     sudo snapper -c etc create-config /etc
     sudo snapper -c opt create-config /opt
 
+# Reduce number of kept snapshots and increase cleanup
+# frequency from all cleanup files
+    for config_file in /etc/snapper/configs/*
+    do
+        sudo sed -i 's/NUMBER_LIMIT=".."/NUMBER_LIMIT="20"/' ${config_file}
+    done
+
+
 # Prevent /home/${USER}/.cache from being snapshotted
 # Directory may already exist, so we need to make sure
 # it is renamed if it exists before creating the subvolume
