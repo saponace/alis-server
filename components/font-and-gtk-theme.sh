@@ -8,7 +8,7 @@
     ${INSTALL} ttf-dejavu     # Fallback font
 
 # Install arc gtk theme
-    ${INSTALL} gtk-theme-arc
+    ${INSTALL} arc-gtk-theme
 
 # Set this theme and the font for GTK2 and GTK3
     su -c "echo -e 'gtk-icon-theme-name = \"Arc-Dark\"\ngtk-theme-name = \"Arc-Dark\"\ngtk-font-name = \"Inconsolata-g 8\"' > /usr/share/gtk-2.0/gtkrc"
