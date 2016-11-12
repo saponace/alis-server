@@ -23,3 +23,5 @@
     ${INSTALL} lsof
 # Delete duplicates files
     ${INSTALL} rmlint
+# System monitor tool
+    ${INSTALL} glances
