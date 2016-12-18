@@ -1,8 +1,0 @@
-#!/bin/bash
-
-scrshot_file="/tmp/blurscreenshotfori3lock.png"
-
-scrot $scrshot_file 
-xset dpms force off 
-convert $scrshot_file -blur 0x4 $scrshot_file 
-i3lock -i $scrshot_file

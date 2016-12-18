@@ -1,0 +1,6 @@
+[submodule "files-to-deploy/scripts"]
+	path = files-to-deploy/scripts
+	url = https://github.com/saponace/misc-scripts.git
+[submodule "files-to-deploy/config-files"]
+	path = files-to-deploy/config-files
+	url = https://github.com/saponace/dotfiles.git
