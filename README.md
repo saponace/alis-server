@@ -24,7 +24,7 @@ Create partitions boot, swap and root (with fdisk for instance).
 ### Install the new system
 ```
 # cd alis
-# ./install-core.sh $hostname $username $boot_partition $swap_partition $root_partition
+# ./install.sh $hostname $username $boot_partition $swap_partition $root_partition
 ```
 
 
