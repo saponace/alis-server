@@ -18,7 +18,7 @@ Create partitions boot, swap and root (with fdisk for instance).
 ### Install git and clone this repo
 ```
 # pacman -Syy git
-# git clone https://github.com/saponace/alis.git
+# git clone --recursive https://github.com/saponace/alis.git
 ```
 
 ### Install the new system
