@@ -18,12 +18,12 @@ Create partitions boot, swap and root (with fdisk for instance).
 ### Install git and clone this repo
 ```
 # pacman -Syy git
-# git clone --recursive https://github.com/saponace/alis.git
+# git clone --recursive https://github.com/saponace/alis-server.git
 ```
 
 ### Install the new system
 ```
-# cd alis
+# cd alis-server
 # ./install.sh $hostname $username $boot_partition $swap_partition $root_partition
 ```
 
@@ -40,6 +40,6 @@ Umount and swapoff partitions
 ### Configure the new system
 Log in as the user, and
 ```
-# cd alis
+# cd alis-server
 # ./configure-system.sh
 ```
