@@ -16,3 +16,5 @@ do
     fi
 done
 echo "Done !"
+
+# TODO: check all that (need to set static IP)

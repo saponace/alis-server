@@ -3,9 +3,6 @@
 #-------------------------------------------------
 
 
-# Terminal emulator
-    ${INSTALL} xterm
-
 # Shell
     ${INSTALL} zsh
 # Set default shell

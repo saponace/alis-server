@@ -24,3 +24,5 @@ configure_networkmanager(){
 
 install_networkmanager
 configure_networkmanager
+
+#TODO: static IP

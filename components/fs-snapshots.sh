@@ -41,4 +41,3 @@
         rmdir "${dir}_tmp"
     }
     create_subvolume_from_dir /home/${USER}/.cache
-    create_subvolume_from_dir /home/${USER}/.config/google-chrome
