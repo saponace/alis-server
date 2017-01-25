@@ -8,6 +8,12 @@ root_part=$5
 chroot_script_to_call="install-core-after-chroot.sh"
 
 
+# Get the current directory
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
+    git_repo_dir_name=$(basename ${git_repo_path})
+
 
 # Format boot partition
     mkfs.vfat -F 32 ${boot_part}
@@ -50,12 +56,8 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Move the git repo into the /root of the new system
-    pushd `dirname $0` > /dev/null
-    git_repo_path=`pwd`
-    popd > /dev/null
     mv ${git_repo_path} /mnt/root/
 
 
 # Chroot into the new system
-    git_repo_dir_name=$(basename ${git_repo_path})
     arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${swap_part} ${root_part}
