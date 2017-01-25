@@ -54,4 +54,4 @@ root_part=$5
 
 
 # Chroot into the new system
-    arch-chroot /mnt /root/alis/install-core-after-chroot.sh ${hostname} ${username} ${swap_part} ${root_part}
+    arch-chroot /mnt /root/alis-srever/install-core-after-chroot.sh ${hostname} ${username} ${swap_part} ${root_part}
