@@ -54,4 +54,4 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Chroot into the new system
-    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${swap_part} ${root_part}
+    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${root_part}
