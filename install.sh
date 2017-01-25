@@ -15,16 +15,16 @@ root_part=$5
 
 
 # Format root partition
-    mkfs.btrfs /dev/mapper/root
+    mkfs.btrfs ${root_part}
 
 
 # Mount root and create Btrfs subvolumes
-    mount /dev/mapper/root /mnt
+    mount ${root_part} /mnt
     cd /mnt
     btrfs subvolume create ROOT
     cd
     umount /mnt
-    mount -o noatime,space_cache,autodefrag,subvol=ROOT /dev/mapper/root /mnt
+    mount -o noatime,space_cache,autodefrag,subvol=ROOT ${root_part} /mnt
     cd /mnt
     btrfs subvolume create root
     btrfs subvolume create home
