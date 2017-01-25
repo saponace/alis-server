@@ -49,7 +49,7 @@ root_part=$5
 
 
 # Move the git repo into the /root of the new system
-    git_repo_path=/root/alis
+    git_repo_path=/root/alis-server
     mv ${git_repo_path} /mnt/root/
 
 
