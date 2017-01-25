@@ -2,8 +2,12 @@
 
 hostname=$1
 username=$2
-swap_part=$3
-root_part=$4
+disk_device=$3
+swap_part_nb=$4
+root_part_nb=$5
+
+swap_part="${disk_device}${swap_part_nb}"
+root_part="${disk_device}${root_part_nb}"
 chroot_script_to_call="install-core-after-chroot.sh"
 
 
@@ -54,4 +58,4 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Chroot into the new system
-    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${root_part}
+    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${disk_device}
