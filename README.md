@@ -24,7 +24,7 @@ Create partitions grub (1MB, type:ef02), swap, root (with fdisk for instance).
 ### Install the new system
 ```
 # cd alis-server
-# ./install.sh $hostname $username $boot_partition $swap_partition $root_partition
+# ./install.sh $hostname $username $swap_partition $root_partition
 ```
 
 

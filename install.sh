@@ -2,9 +2,8 @@
 
 hostname=$1
 username=$2
-boot_part=$3
-swap_part=$4
-root_part=$5
+swap_part=$3
+root_part=$4
 chroot_script_to_call="install-core-after-chroot.sh"
 
 
@@ -15,8 +14,6 @@ chroot_script_to_call="install-core-after-chroot.sh"
     git_repo_dir_name=$(basename ${git_repo_path})
 
 
-# Format boot partition
-    mkfs.vfat -F 32 ${boot_part}
 # Format swap partition
     mkswap ${swap_part}
 
@@ -41,9 +38,6 @@ chroot_script_to_call="install-core-after-chroot.sh"
     btrfs subvolume create var
     btrfs subvolume create tmp
 
-# Mount boot partition
-    mkdir /mnt/boot
-    mount ${boot_part} /mnt/boot
 # Enable swap
     swapon ${swap_part}
 
