@@ -28,15 +28,9 @@ root_part=$4
 
 
 # Install and configure boot manager
-    pacman -S efibootmgr
-    # mount ${uefi_part} /boot
-        bootctl --path=/boot install
-    # Create menu entry
-        echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
-    # Configure entry
-        root_part_uuid=$(blkid ${root_part} | cut -f2 -d\")
-        swap_part_uuid=$(blkid ${swap_part} | cut -f2 -d\")
-        echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
+    pacman -S grub
+    grub-install --target=i386-pc /dev/sdx
+    grub-mkconfig -o /boot/grub/grub.cfg
 
 
 # Set root password
