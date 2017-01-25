@@ -2,8 +2,7 @@
 
 hostname=$1
 username=$2
-swap_part=$3
-root_part=$4
+root_part=$3
 
 
 
@@ -29,7 +28,7 @@ root_part=$4
 
 # Install and configure boot manager
     pacman -S grub
-    grub-install --target=i386-pc /dev/sdx
+    grub-install --target=i386-pc ${root_part}
     grub-mkconfig -o /boot/grub/grub.cfg
 
 
