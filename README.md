@@ -7,7 +7,7 @@
 ```
 
 ### Create partitions
-Create partitions boot, swap and root (with fdisk for instance).
+Create partitions grub (1MB, type:ef02), swap, root (with fdisk for instance).
 
 
 ### Remount archiso with more space to be able to download and install git
