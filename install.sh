@@ -46,6 +46,9 @@ chroot_script_to_call="install-core-after-chroot.sh"
     swapon ${swap_part}
 
 
+# Refresh pacman gpg keys list
+    pacman-key --refresh-key
+
 # Install base components into new system
     pacstrap /mnt base base-devel btrfs-progs
 
