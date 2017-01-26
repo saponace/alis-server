@@ -20,22 +20,6 @@ link_command='ln -snf'
     shopt -s dotglob
 
 
-# Generic config files
-link_homedir_files(${homedir_dotfiles})
-# Server specific config files
-link_homedir_files(${additional_config_files_dir}/homedir)
-
-
-# Other configuration files
-    # Nginx
-        sudo mkdir -p /etc/nginx/
-        sudo ${link_command} ${additional_config_files_dir}/other/nginx.conf /etc/nginx
-    # Interfaces
-        sudo mkdir -p /etc/network/
-        sudo ${link_command} ${additional_config_files_dir}/other/interfaces /etc/network
-
-
-
 # Link config files located under $HOME ($HOME/ and $HOME/.config)
 # $1: Dotfiles source dir (where the dotfiles will be linked from)
 function link_homedir_files(){
@@ -59,3 +43,19 @@ function link_homedir_files(){
         sudo ${link_command} ${config} ${target_root}
     done
 }
+
+
+
+# Generic config files
+    link_homedir_files "${homedir_dotfiles}"
+# Server specific config files
+    link_homedir_files "${additional_config_files_dir}/homedir"
+
+
+# Other configuration files
+    # Nginx
+        sudo mkdir -p /etc/nginx/
+        sudo ${link_command} ${additional_config_files_dir}/other/nginx.conf /etc/nginx
+    # Interfaces
+        sudo mkdir -p /etc/network/
+        sudo ${link_command} ${additional_config_files_dir}/other/interfaces /etc/network
