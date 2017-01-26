@@ -19,7 +19,6 @@ done &
 
 ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
-${SOURCE} ${COMPONENTS_PATH}/fs-snapshots.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh
 ${SOURCE} ${COMPONENTS_PATH}/security.sh
 ${SOURCE} ${COMPONENTS_PATH}/network-related.sh
@@ -30,6 +29,7 @@ ${SOURCE} ${COMPONENTS_PATH}/ssh.sh
 ${SOURCE} ${COMPONENTS_PATH}/transmission.sh
 ${SOURCE} ${COMPONENTS_PATH}/nextcloud.sh
 ${SOURCE} ${COMPONENTS_PATH}/web-server.sh
+${SOURCE} ${COMPONENTS_PATH}/fs-snapshots.sh
 ${COMPONENTS_PATH}/link-files.sh
 
 
