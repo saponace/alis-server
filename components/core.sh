@@ -9,6 +9,6 @@
     sudo localectl set-keymap fr-latin9
 # Disable terminal bell (actually totally disable internal speaker)
     su -c "echo 'blacklist pcspkr' > /etc/modprobe.d/nobeep.conf"
-# Network Time Protocl Daemon synchronization( synchronize time with internet)
-    ${INSTALL} ntpd
+# Network Time Protocl Daemon synchronization(synchronize time with internet)
+    ${INSTALL} ntp
     sudo systemctl enable ntpd.service
