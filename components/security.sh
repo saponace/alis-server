@@ -7,5 +7,5 @@
 # Install firewall
     ${INSTALL} ufw
 # Enable the firewall
-   ufw enable
-   systemctl enable ufw.service
+   sudo ufw enable
+   sudo systemctl enable ufw.service

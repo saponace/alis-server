@@ -10,19 +10,19 @@ sshd_config_file="/etc/ssh/sshd_config"
 
 
 # Enable SSH daemon
-    systemctl enable sshd.service
+    sudo systemctl enable sshd.service
 # Quicker SSH login
-    echo 'UseDNS no' > ${sshd_config_file}
+    sudo echo 'UseDNS no' > ${sshd_config_file}
 # Enable SSHFS
-    echo "Subsystem sftp /usr/lib/sftp-server" >> ${sshd_config_file}
+    sudo echo "Subsystem sftp /usr/lib/sftp-server" >> ${sshd_config_file}
 
 # Security
     # Whitelist SSH port on the firewall
-        ufw allow 22
+        sudo ufw allow 22
     # Disable ssh connection to root account
-        echo "PermitRootLogin no" >> ${sshd_config_file}
+        sudo echo "PermitRootLogin no" >> ${sshd_config_file}
     # Disable authentication via password, require ssh key
-        echo "PasswordAuthentication no" >> ${sshd_config_file}
+        sudo echo "PasswordAuthentication no" >> ${sshd_config_file}
 
     # Add known_hosts file to user's ssh configuration
     if [ -f "${AUTHORIZED_KEYS_FILE}" ]
