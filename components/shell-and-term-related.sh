@@ -7,7 +7,7 @@
     ${INSTALL} zsh
 # Set default shell
     # For the user
-        sudo chsh -s /bin/zsh ${USER}
+        sudo chsh -s /bin/zsh ${username}
     # For root
         sudo chsh -s /bin/zsh root
 

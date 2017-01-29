@@ -1,13 +1,9 @@
 #!/bin/bash
 
-hostname=$1
-username=$2
-disk_device=$3
-swap_part_nb=$4
-root_part_nb=$5
+source ./alis-server.config
 
-swap_part="${disk_device}${swap_part_nb}"
-root_part="${disk_device}${root_part_nb}"
+
+root_partition="${root_device}${root_partition_suffix}"
 chroot_script_to_call="install-core-after-chroot.sh"
 
 
@@ -19,20 +15,20 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Format swap partition
-    mkswap ${swap_part}
+    mkswap ${swap_partition}
 
 
 # Format root partition
-    mkfs.btrfs ${root_part}
+    mkfs.btrfs ${root_partition}
 
 
 # Mount root and create Btrfs subvolumes
-    mount ${root_part} /mnt
+    mount ${root_partition} /mnt
     cd /mnt
     btrfs subvolume create ROOT
     cd
     umount /mnt
-    mount -o noatime,space_cache,autodefrag,subvol=ROOT ${root_part} /mnt
+    mount -o noatime,space_cache,autodefrag,subvol=ROOT ${root_partition} /mnt
     cd /mnt
     btrfs subvolume create root
     btrfs subvolume create home
@@ -43,7 +39,7 @@ chroot_script_to_call="install-core-after-chroot.sh"
     btrfs subvolume create tmp
 
 # Enable swap
-    swapon ${swap_part}
+    swapon ${swap_partition}
 
 
 # Refresh pacman gpg keys list
@@ -61,4 +57,4 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Chroot into the new system
-    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call} ${hostname} ${username} ${disk_device}
+    arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call}

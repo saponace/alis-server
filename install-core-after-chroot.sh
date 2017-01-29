@@ -1,9 +1,6 @@
 #!/bin/bash
 
-hostname=$1
-username=$2
-disk_device=$3
-
+source ./alis-server.config
 
 
 # Set the hostname
@@ -28,7 +25,7 @@ disk_device=$3
 
 # Install and configure boot manager
     pacman -S grub
-    grub-install --target=i386-pc ${disk_device}
+    grub-install --target=i386-pc ${root_device}
     grub-mkconfig -o /boot/grub/grub.cfg
 
 

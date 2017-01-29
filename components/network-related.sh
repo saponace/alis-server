@@ -3,26 +3,19 @@
 #-------------------------------------------------
 
 
-# Install Networkmanager packages
-install_networkmanager(){
-    # To access network state without root privileges
-        ${INSTALL} wpa_supplicant
-    # Network manager
-        ${INSTALL} networkmanager
-    # NetworkManager tray icon
-        ${INSTALL} network-manager-applet gnome-keyring gnome-icon-theme
-}
+# Enabble networking and resolving daemons
+    sudo systemctl enable systemd-networkd
+    sudo systemctl enable systemd-resolved
 
-# Configure Networkmanager
-configure_networkmanager(){
-    # Enable network manager
-        sudo systemctl enable NetworkManager.service
-    # Disable ipv6 in dhcpcd.conf
-        su -c "echo -e 'noipv6rs\nnoipv6' >> /etc/dhcpcd.conf"
-}
+# Link system resolv.cponf to systemd's resolv.conf
+    sudo rm /etc/resolv.conf
+    sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
-
-install_networkmanager
-configure_networkmanager
-
-#TODO: static IP
+# Configure static address
+sudo su -c "echo '[Match]
+Name=${network_interface_name}
+[Network]
+Address=${static_ip_address}
+Gateway=${lan_gateway_ip_address}
+DNS=${dns_server_ip_address}
+' >> /etc/systemd/network/10-static-interface.network'

@@ -7,7 +7,7 @@ pushd `dirname $0` > /dev/null
 this_script_dir=`pwd -P`
 popd > /dev/null
 
-username_home="/home/${USER}"
+username_home="/home/${username}"
 root_home="/root"
 
 files_to_deploy_dir=${this_script_dir}"/../files-to-deploy"

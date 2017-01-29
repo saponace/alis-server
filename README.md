@@ -24,13 +24,8 @@ Create partitions grub (1MB, type:ef02), swap, root (with fdisk for instance).
 ### Install the new system
 ```
 # cd alis-server
-# ./install.sh $hostname $username $disk_device $swap_partition_number $root_partition_number
+# ./install.sh
 ```
-Example:
-```
-# ./install.sh tartiflette saponace /dev/sda 2 3
-```
-
 
 ### Reboot
 ```
@@ -45,7 +40,13 @@ Umount and swapoff partitions
 Log in as the user, and
 ```
 # cd alis-server
-# ./configure-system.sh $authorized_keys_filepath
+# ./configure-system.sh
 ```
-Where $authorized_keys_filepath is the path to an authorized_keys ssh file to deploy to the server
 
+### Reboot
+```
+# reboot
+```
+
+### Note
+All the configs are stored in the editable file ./alis-erver.config

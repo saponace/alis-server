@@ -6,7 +6,6 @@
 INSTALL="yaourt -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
-AUTHORIZED_KEYS_FILE=$1
 
 
 # Prevent sudo timeout
@@ -17,6 +16,7 @@ while true; do
 done &
 
 
+source ./alis-server.config
 
 ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
