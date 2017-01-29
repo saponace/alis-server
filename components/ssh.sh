@@ -21,7 +21,7 @@ function add_sshd_config(){
     sudo systemctl enable sshd.service
 
 # Initialize sshd_config file
-    sudo su -c "echo '' >> ${sshd_config_file}"
+    sudo su -c "echo '' > ${sshd_config_file}"
 # Quicker SSH login
     add_sshd_config "UseDNS no"
 # Enable SSHFS
