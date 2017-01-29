@@ -6,6 +6,7 @@
 INSTALL="yaourt -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
+AUTHORIZED_KEYS_FILE=$1
 
 
 # Prevent sudo timeout

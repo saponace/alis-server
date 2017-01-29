@@ -45,5 +45,7 @@ Umount and swapoff partitions
 Log in as the user, and
 ```
 # cd alis-server
-# ./configure-system.sh
+# ./configure-system.sh $authorized_keys_filepath
 ```
+Where $authorized_keys_filepath is the path to an authorized_keys ssh file to deploy to the server
+
