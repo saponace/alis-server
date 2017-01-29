@@ -1,5 +1,5 @@
 #-------------------------------------------------
-# Install/configure networking related programs
+# Configure networking
 #-------------------------------------------------
 
 
