@@ -4,8 +4,6 @@
 
 ${INSTALL} transmission-cli
 
-# Disable transmission daemon service
-    update-rc.d transmission-daemon disable
 # Whitelist transmission RPC port on the firewall
     sudo ufw allow 9091
 
