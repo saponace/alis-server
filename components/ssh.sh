@@ -38,9 +38,9 @@ function add_sshd_config(){
     # Add known_hosts file to user's ssh configuration
     if [ -f "${AUTHORIZED_KEYS_FILE}" ]
     then
-        mkdir -p /home/${USERNAME}/.ssh/
-        cp ${AUTHORIZED_KEYS_FILE} /home/${USERNAME}/.ssh/authorized_keys
-        chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/.ssh
+        mkdir -p /home/${USER}/.ssh/
+        cp ${AUTHORIZED_KEYS_FILE} /home/${USER}/.ssh/authorized_keys
+        chown -R ${USER}:${USER} /home/${USER}/.ssh
     else
         start_red_text="\e[00;31m"
         stop_red_text="\e[00m"
