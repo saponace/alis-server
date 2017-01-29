@@ -33,9 +33,9 @@ sshd_config_file="/etc/ssh/sshd_config"
     else
         start_red_text="\e[00;31m"
         stop_red_text="\e[00m"
-        echo "${start_red_text}"
+        echo -e "${start_red_text}"
         echo "Authorized_keys file \"${AUTHORIZED_KEYS_FILE}\" not found. You won't be able to connect via SSH"
-        echo "${start_red_text}"
+        echo -e "${start_red_text}"
     fi
 
 
