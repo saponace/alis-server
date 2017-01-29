@@ -18,4 +18,4 @@ Name=${network_interface_name}
 Address=${static_ip_address}
 Gateway=${lan_gateway_ip_address}
 DNS=${dns_server_ip_address}
-' >> /etc/systemd/network/10-static-interface.network'
+' >> /etc/systemd/network/10-static-interface.network"
