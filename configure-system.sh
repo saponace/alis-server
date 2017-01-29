@@ -18,6 +18,14 @@ done &
 
 source ./alis-server.config
 
+# Check if the user that calls this script is the same user as defined in the config file
+if [[ ${username} != ${USER} ]];
+then
+  echo "Error: you are not ${username} as defined in the config file. Please execute this script as ${username}."
+  exit 1
+fi
+
+
 ${SOURCE} ${COMPONENTS_PATH}/enable-networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh
