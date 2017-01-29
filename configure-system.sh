@@ -6,6 +6,7 @@
 INSTALL="yaourt -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
+CONFIG_FILE_PATH="./alis-server.config"
 
 
 # Prevent sudo timeout
@@ -16,7 +17,13 @@ while true; do
 done &
 
 
-source ./alis-server.config
+
+if [ ! -f "${CONFIG_FILE_PATH}" ]
+then
+  echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
+  exit 1
+fi
+source ${CONFIG_FILE_PATH}
 
 # Check if the user that calls this script is the same user as defined in the config file
 if [[ ${username} != ${USER} ]];

@@ -1,6 +1,13 @@
 #!/bin/bash
 
-source ./alis-server.config
+CONFIG_FILE_PATH="./alis-server.config"
+
+if [ ! -f "${CONFIG_FILE_PATH}" ]
+then
+  echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
+  exit 1
+fi
+source ${CONFIG_FILE_PATH}
 
 
 # Set the hostname
