@@ -37,7 +37,7 @@ source ${CONFIG_FILE_PATH}
 
 
 # Install and configure boot manager
-    pacman -S grub
+    pacman -S --noconfirm grub
     grub-install --target=i386-pc ${root_device}
     grub-mkconfig -o /boot/grub/grub.cfg
 
