@@ -7,6 +7,7 @@ pushd `dirname $0` > /dev/null
 this_script_dir=`pwd -P`
 popd > /dev/null
 
+username=$1
 username_home="/home/${username}"
 root_home="/root"
 

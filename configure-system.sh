@@ -46,7 +46,7 @@ ${SOURCE} ${COMPONENTS_PATH}/transmission.sh
 ${SOURCE} ${COMPONENTS_PATH}/nextcloud.sh
 ${SOURCE} ${COMPONENTS_PATH}/web-server.sh
 ${SOURCE} ${COMPONENTS_PATH}/fs-snapshots.sh
-${COMPONENTS_PATH}/link-files.sh
+${COMPONENTS_PATH}/link-files.sh ${username}
 
 
 
