@@ -24,5 +24,6 @@ DNS=${dns_server_ip_address}
 
 
 # Activate Wake On Lan
-    ${INSTALL} wol-systemd
+    # Using pacman here because yaourt is not installed yet (will be installed in the next component)
+    ${INSTALL_PACMAN} wol-systemd
     sudo systemctl enable wol@${network_interface_name}.service
