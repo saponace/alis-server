@@ -1,6 +1,12 @@
 #!/bin/bash
 
-CONFIG_FILE_PATH="./alis-server.config"
+
+# Get the current directory
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
+
+CONFIG_FILE_PATH="${git_repo_path}/alis-server.config"
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
 then
@@ -50,9 +56,6 @@ source ${CONFIG_FILE_PATH}
 
 
 # Move the git repo into the user's home directory
-    pushd `dirname $0` > /dev/null
-    git_repo_path=`pwd`
-    popd > /dev/null
     mv ${git_repo_path} /home/${username}
     chown -R ${username}:${username} /home/${username}/
 
