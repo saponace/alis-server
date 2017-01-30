@@ -4,7 +4,6 @@
 
 
 INSTALL="yaourt -S --noconfirm"
-INSTALL_PACMAN="sudo pacman -S --noconfirm"
 SOURCE="source"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
@@ -36,6 +35,7 @@ fi
 
 ${SOURCE} ${COMPONENTS_PATH}/networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
+${SOURCE} ${COMPONENTS_PATH}/enable-wol.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh
 ${SOURCE} ${COMPONENTS_PATH}/security.sh
 ${SOURCE} ${COMPONENTS_PATH}/core.sh
