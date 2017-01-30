@@ -4,8 +4,6 @@
 
 # Btrfs snapshots manager
     ${INSTALL} snapper
-# Call snapper before and after each pacman/yaourt call
-    ${INSTALL} snap-pac
 
 
 # Setup all the snapper configs (snapshots triggered every hour by default)
@@ -14,6 +12,10 @@
     sudo snapper -c home create-config /home
     sudo snapper -c etc create-config /etc
     sudo snapper -c opt create-config /opt
+
+
+    # Call snapper before and after each pacman/yaourt call
+        ${INSTALL} snap-pac
 
 
 # Reduce number of kept snapshots and increase cleanup
@@ -32,12 +34,18 @@
 # $1: The directory to convert to a subvolume
     function create_subvolume_from_dir () {
         dir=$1
-        owner_of_dir=$(ls -ld ${dir} | awk '{print $3}')
-        group_of_dir=$(ls -ld ${dir} | awk '{print $4}')
-        mv "${dir}" "${dir}_tmp"
-        sudo btrfs subvolume create "${dir}"
-        sudo chown -R ${owner_of_dir}:${group_of_dir} "${dir}"
-        mv "${dir}_tmp"/{*,.*} "${dir}"
-        rmdir "${dir}_tmp"
+        if [ -f "$dir" ]
+        then
+            owner_of_dir=$(ls -ld ${dir} | awk '{print $3}')
+            group_of_dir=$(ls -ld ${dir} | awk '{print $4}')
+            mv "${dir}" "${dir}_tmp"
+            sudo btrfs subvolume create "${dir}"
+            sudo chown -R ${owner_of_dir}:${group_of_dir} "${dir}"
+            mv "${dir}_tmp"/{*,.*} "${dir}"
+            rmdir "${dir}_tmp"
+        else
+            sudo btrfs subvolume create "${dir}"
+        fi
     }
+
     create_subvolume_from_dir /home/${username}/.cache
