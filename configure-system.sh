@@ -33,7 +33,7 @@ then
 fi
 
 
-${SOURCE} ${COMPONENTS_PATH}/network.sh
+${SOURCE} ${COMPONENTS_PATH}/networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh
 ${SOURCE} ${COMPONENTS_PATH}/security.sh
