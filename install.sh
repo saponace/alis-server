@@ -10,7 +10,7 @@
     git_repo_dir_name=$(basename ${git_repo_path})
 
 
-CONFIG_FILE_PATH="./alis-server.config"
+CONFIG_FILE_PATH="${git_repo_path}/alis-server.config"
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
 then
