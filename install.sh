@@ -16,6 +16,8 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Get the current directory
+# Leave this block of code at the very beginning of the script (some
+# commands may change the current directory later in this script)
     pushd `dirname $0` > /dev/null
     git_repo_path=`pwd`
     popd > /dev/null
