@@ -1,6 +1,15 @@
 #!/bin/bash
 
 
+# Get the current directory
+# Leave this block of code at the very beginning of the script (some
+# commands may change the current directory later in this script)
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
+    git_repo_dir_name=$(basename ${git_repo_path})
+
+
 CONFIG_FILE_PATH="./alis-server.config"
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
@@ -14,14 +23,6 @@ source ${CONFIG_FILE_PATH}
 root_partition="${root_device}${root_partition_suffix}"
 chroot_script_to_call="install-core-after-chroot.sh"
 
-
-# Get the current directory
-# Leave this block of code at the very beginning of the script (some
-# commands may change the current directory later in this script)
-    pushd `dirname $0` > /dev/null
-    git_repo_path=`pwd`
-    popd > /dev/null
-    git_repo_dir_name=$(basename ${git_repo_path})
 
 
 # Format swap partition

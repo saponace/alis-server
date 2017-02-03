@@ -8,6 +8,7 @@
     git_repo_path=`pwd`
     popd > /dev/null
 
+
 CONFIG_FILE_PATH="${git_repo_path}/alis-server.config"
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
@@ -16,6 +17,7 @@ then
   exit 1
 fi
 source ${CONFIG_FILE_PATH}
+
 
 
 # Set the hostname
