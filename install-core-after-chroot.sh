@@ -28,7 +28,7 @@ source ${CONFIG_FILE_PATH}
         echo -e "\n${locales_to_enable}" >> /etc/locale.gen
         locale-gen
         ln -s ${locale_zone_path} /etc/localtime
-        echo "${keymap}" > /etc/vconsole.conf
+        echo "KEYMAP=${keymap}" > /etc/vconsole.conf
 
 # Set the clock
     hwclock --systohc --localtime
