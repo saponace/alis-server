@@ -39,11 +39,6 @@ source ${CONFIG_FILE_PATH}
     mkinitcpio -p linux
 
 
-# Install and configure boot manager
-    pacman -S --noconfirm grub
-    grub-install --target=i386-pc ${root_device}
-    grub-mkconfig -o /boot/grub/grub.cfg
-
 
 # Set root password
     echo Enter root password:
