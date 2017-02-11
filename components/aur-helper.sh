@@ -5,4 +5,4 @@
 
 
 # Packer
-    pacman -S packer
+    sudo pacman -S packer
