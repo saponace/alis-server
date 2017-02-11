@@ -14,6 +14,7 @@ root_home="/root"
 files_to_deploy_dir=${this_script_dir}"/../files-to-deploy"
 homedir_dotfiles=${files_to_deploy_dir}"/config-files/homedir"
 additional_config_files_dir=${files_to_deploy_dir}"/additional-config-files"
+scripts_dir=${files_to_deploy_dir}"/scripts"
 
 link_command='ln -snf'
 
@@ -60,3 +61,6 @@ function link_homedir_files(){
     # Interfaces
         sudo mkdir -p /etc/network/
         sudo ${link_command} ${additional_config_files_dir}/other/interfaces /etc/network
+
+# Scripts
+    sudo ${link_command} ${scripts_dir}/* /usr/bin/
