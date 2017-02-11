@@ -44,6 +44,7 @@ ${SOURCE} ${COMPONENTS_PATH}/ssh.sh
 ${SOURCE} ${COMPONENTS_PATH}/transmission.sh
 ${SOURCE} ${COMPONENTS_PATH}/nextcloud.sh
 ${SOURCE} ${COMPONENTS_PATH}/web-server.sh
+${SOURCE} ${COMPONENTS_PATH}/kodi.sh
 ${COMPONENTS_PATH}/link-files.sh ${username}
 
 
