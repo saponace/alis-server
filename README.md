@@ -1,7 +1,7 @@
 
-# Follow these steps to install a new arch linux system
+# Follow these steps to install a new alarm (Arch Linux for ARM) system
 
-### Log in as root
+After burning the image to the raspberry pi sd card, log in as root and:
 
 ### Set the keyboard layout to French
 ```
