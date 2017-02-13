@@ -5,4 +5,4 @@
 
 
 # Packer
-    sudo pacman -S packer
+    sudo pacman -S --noconfirm packer
