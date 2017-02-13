@@ -13,4 +13,4 @@
 
 
 # Whitelist kodi RPC port on the firewall
-    ufw allow 8080
+    sudo ufw allow 8080
