@@ -31,7 +31,7 @@ Log in as the user, and
 # cd alis-server
 # ./configure-system.sh
 ```
-The system will reboot into the fresh install
+The system will reboot into the fresh install.
 
 ### Note
 All the configs are stored in the editable file ./alis-erver.config
