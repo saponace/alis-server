@@ -1,52 +1,54 @@
-#-------------------------------------------------
-# Main script. Calls all the subscripts
-#-------------------------------------------------
+#!/bin/bash
 
 
-INSTALL="packer -S --noconfirm"
-SOURCE="source"
-COMPONENTS_PATH="./components"
-CONFIG_FILE_PATH="./alis-server.config"
+# Get the current directory
+# Leave this block of code at the very beginning of the script (some
+# commands may change the current directory later in this script)
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
 
 
-# Prevent sudo timeout
-sudo -v
-while true; do
-  sudo -nv; sleep 1m
-  kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
-done &
-
-
+CONFIG_FILE_PATH="${git_repo_path}/alis-server.config"
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
 then
-  echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
-  exit 1
+    echo "Error: config file ${CONFIG_FILE_PATH} not found. Please create this file and try again"
+    exit 1
 fi
 source ${CONFIG_FILE_PATH}
 
-# Check if the user that calls this script is the same user as defined in the config file
-if [[ ${username} != ${USER} ]];
-then
-  echo "Error: you are not ${username} as defined in the config file. Please execute this script as ${username}."
-  exit 1
-fi
 
 
-${SOURCE} ${COMPONENTS_PATH}/networking.sh
-${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
-${SOURCE} ${COMPONENTS_PATH}/utils.sh
-${SOURCE} ${COMPONENTS_PATH}/security.sh
-${SOURCE} ${COMPONENTS_PATH}/core.sh
-${SOURCE} ${COMPONENTS_PATH}/file-manager.sh
-${SOURCE} ${COMPONENTS_PATH}/shell-and-term-related.sh
-${SOURCE} ${COMPONENTS_PATH}/ssh.sh
-${SOURCE} ${COMPONENTS_PATH}/transmission.sh
-${SOURCE} ${COMPONENTS_PATH}/nextcloud.sh
-${SOURCE} ${COMPONENTS_PATH}/web-server.sh
-${SOURCE} ${COMPONENTS_PATH}/kodi.sh
-${COMPONENTS_PATH}/link-files.sh ${username}
+# Set the hostname
+    echo  ${hostname} > /etc/hostname
+
+# Set le locales and the keymap
+    # Configure locales
+        echo -e "\n${locales_to_enable}" >> /etc/locale.gen
+        locale-gen
+        ln -sf ${locale_zone_path} /etc/localtime
+        echo "KEYMAP=${keymap}" > /etc/vconsole.conf
 
 
+# Install sudo
+    pacman -S --noconfirm sudo
 
+
+# Set root password
+    echo Enter root password:
+    passwd root
+
+
+# Create the user and add him to wheel group (sudoers)
+    useradd -m -G wheel -s /bin/bash ${username}
+    sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
+    # Set user password
+        echo Enter ${username} password:
+        passwd ${username}
+
+
+# Move the git repo into the user's home directory
+    mv ${git_repo_path} /home/${username}
+    chown -R ${username}:${username} /home/${username}/
 
