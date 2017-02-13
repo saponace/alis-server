@@ -49,6 +49,6 @@ source ${CONFIG_FILE_PATH}
 
 
 # Move the git repo into the user's home directory
-    mv ${git_repo_path} /home/${username}
+    mv ${git_repo_path} /home/${username}/
     chown -R ${username}:${username} /home/${username}/
 
