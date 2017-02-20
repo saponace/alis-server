@@ -23,26 +23,24 @@ function get_luks_passwd(){
     done
 }
 
-# $1: Passphrase prompt message
-# $2: device UUID
-# $3: LUKS mapper name
-# $4: Mount point
+# $1: device UUID
+# $2: LUKS mapper name
+# $3: Mount point
 function mount_single_device(){
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$2 $3 -d -
-    sudo mount /dev/mapper/$3 $4
+    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$1 $2 -d -
+    sudo mount /dev/mapper/$2 $3
 }
 
-# $1: Passphrase prompt message
-# $2: device 1 UUID
-# $3: device 2 UUID
-# $4: LUKS mapper 1 name
-# $5: LUKS mapper 2 name
-# $6: Mount point
-# $7: Mount options
+# $1: device 1 UUID
+# $2: device 2 UUID
+# $3: LUKS mapper 1 name
+# $4: LUKS mapper 2 name
+# $5: Mount point
+# $6: Mount options
 function mount_btrfs_raid1_device(){
+    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$1 $3 -d -
     printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$2 $4 -d -
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$3 $5 -d -
-    sudo mount -t btrfs -o $7 /dev/mapper/$4 $6
+    sudo mount -t btrfs -o $6 /dev/mapper/$3 $5
 }
 
 
