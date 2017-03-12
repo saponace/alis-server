@@ -25,7 +25,7 @@ function add_sshd_config(){
 # Quicker SSH login
     add_sshd_config "UseDNS no"
 # Enable SSHFS
-    add_sshd_config "Subsystem sftp /usr/lib/sftp-server"
+    add_sshd_config "Subsystem sftp /usr/lib/ssh/sftp-server"
 
 # Security
     # Whitelist SSH port on the firewall
