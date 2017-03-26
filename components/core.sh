@@ -14,3 +14,5 @@
     sudo systemctl enable ntpd.service
 # Increase partition of the physical memory dedicated to the GPU
     sudo sed -i 's/gpu_mem=64/gpu_mem=512/g' /boot/config.txt
+# Hard drives management
+    ${INSTALL} hdparm
