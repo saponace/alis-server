@@ -42,9 +42,9 @@ ${SOURCE} ${COMPONENTS_PATH}/file-manager.sh
 ${SOURCE} ${COMPONENTS_PATH}/shell-and-term-related.sh
 ${SOURCE} ${COMPONENTS_PATH}/ssh.sh
 ${SOURCE} ${COMPONENTS_PATH}/transmission.sh
-${SOURCE} ${COMPONENTS_PATH}/web-server.sh
 ${SOURCE} ${COMPONENTS_PATH}/kodi.sh
 ${COMPONENTS_PATH}/link-files.sh ${username}
+${SOURCE} ${COMPONENTS_PATH}/web-server.sh
 
 sync
 sudo reboot
