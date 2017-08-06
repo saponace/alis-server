@@ -21,3 +21,18 @@ DNS=${dns_server_ip_address}
     sudo systemctl start systemd-networkd
     sudo systemctl enable systemd-resolved
     sudo systemctl start systemd-resolved
+
+
+# Configure VPN (auto generate OpenVPN config files for VPN Private Internet Access)
+    ${INSTALL} openvpn
+    ${INSTALL} private-internet-access-vpn
+    # Write credentials in a file
+        vpn_credentials_file="etc/private-internet-access/login.conf"
+        sudo echo ${vpn_login} > ${vpn_credentials_file}
+        sudo echo ${vpn_password} >> ${vpn_credentials_file}
+        sudo chown root:root ${vpn_credentials_file}
+        sudo chmod 600 ${vpn_credentials_file}
+    # Create OpenVPN config files
+        sudo pia -a
+    # Enable OpenVPN
+    # TODO: enable OpenVPN
