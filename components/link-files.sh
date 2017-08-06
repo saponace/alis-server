@@ -61,6 +61,10 @@ function link_homedir_files(){
     # Interfaces
         sudo mkdir -p /etc/network/
         sudo ${link_command} ${additional_config_files_dir}/other/interfaces /etc/network
+    # Let's encrypt certificates
+        sudo mkdir -p /etc/systemd/system/:
+        sudo ${link_command} ${additional_config_files_dir}/other/systemd-services/* /etc/systemd/system/
+
 
 # Scripts
     sudo ${link_command} ${scripts_dir}/* /usr/bin/
