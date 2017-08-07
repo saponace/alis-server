@@ -14,3 +14,5 @@ ${INSTALL} nginx
     ${INSTALL} certbot-nginx
     # Custom service
         sudo systemctl enable certbot.timer
+    # Link config directory
+        create_directory_symlink  ${letsencrypt_persistant_config_dir} "/etc/letsencrypt"

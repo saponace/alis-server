@@ -33,6 +33,7 @@ then
 fi
 
 
+${SOURCE} common-functions.sh
 ${SOURCE} ${COMPONENTS_PATH}/networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh
