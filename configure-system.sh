@@ -54,19 +54,19 @@ function install_component (){
 
 
 source common-functions.sh
-execute_component networking
-execute_component aur-helper
-execute_component vpn
-execute_component utils
-execute_component security
-execute_component core
-execute_component file-manager
-execute_component shell-and-term-related
-execute_component ssh
-execute_component transmission
-execute_component web-server
-execute_component kodi
-execute_component sonarr-radarr
+install_component networking
+install_component aur-helper
+install_component vpn
+install_component utils
+install_component security
+install_component core
+install_component file-manager
+install_component shell-and-term-related
+install_component ssh
+install_component transmission
+install_component web-server
+install_component kodi
+install_component sonarr-radarr
 ${COMPONENTS_PATH}/link-files.sh ${username}
 
 sync
