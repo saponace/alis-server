@@ -27,6 +27,6 @@
     sudo systemctl enable jackett
 
 # Link Sonarr and Jackettdirectory
-    create_directory_symlink  ${sonarr_persistant_config_dir} "~/var/lib/sonarr"
-    create_directory_symlink  ${radarr_persistant_config_dir} "~/var/lib/radarr"
+    create_directory_symlink  ${sonarr_persistant_config_dir} "/var/lib/sonarr"
+    create_directory_symlink  ${radarr_persistant_config_dir} "/var/lib/radarr"
     create_directory_symlink  ${jackett_persistant_config_dir} "/usr/share/Jackett/.config/Jackett"
