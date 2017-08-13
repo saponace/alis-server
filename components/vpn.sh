@@ -5,6 +5,7 @@
 
 ${INSTALL} openvpn
 # Auto generate OpenVPN config files for VPN Private Internet Access (pia)
+    ${INSTALL} binutils  # Is required by pia to install, but not listed as a dependency
     ${INSTALL} fakeroot  # Is required by pia to install, but not listed as a dependency
     ${INSTALL} private-internet-access-vpn
     # Write credentials in a file
