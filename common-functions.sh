@@ -11,9 +11,7 @@ function create_directory_symlink (){
 
     symlink_parent=$(dirname ${symlink})
 
-    # Permissions on a symlink are most probably not revelant. Needs to be checked
-    permission_backup_file=$(mktemp)
-    clone_permission_and_ownership ${symlink} ${permission_backup_file}
+    clone_permission_and_ownership ${symlink} ${source_dir}
 
     sudo mkdir -p ${source_dir}
     sudo rm -rf ${symlink}
@@ -22,7 +20,6 @@ function create_directory_symlink (){
     then
         sudo mv "${symlink_parent}/$(basename ${source_dir})" "${symlink}"
     fi
-    clone_permission_and_ownership ${permission_backup_file} ${symlink}
 }
 
 # Clone file ownership and mode
