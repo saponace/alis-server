@@ -36,6 +36,7 @@ fi
 ${SOURCE} common-functions.sh
 ${SOURCE} ${COMPONENTS_PATH}/networking.sh
 ${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
+${SOURCE} ${COMPONENTS_PATH}/vpn.sh
 ${SOURCE} ${COMPONENTS_PATH}/utils.sh
 ${SOURCE} ${COMPONENTS_PATH}/security.sh
 ${SOURCE} ${COMPONENTS_PATH}/core.sh
