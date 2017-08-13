@@ -4,9 +4,9 @@
 
 
 INSTALL="packer -S --noconfirm"
-SOURCE="source"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
+LOG_FILE="./alis-server.log"
 
 
 # Prevent sudo timeout
@@ -33,20 +33,40 @@ then
 fi
 
 
-${SOURCE} common-functions.sh
-${SOURCE} ${COMPONENTS_PATH}/networking.sh
-${SOURCE} ${COMPONENTS_PATH}/aur-helper.sh
-${SOURCE} ${COMPONENTS_PATH}/vpn.sh
-${SOURCE} ${COMPONENTS_PATH}/utils.sh
-${SOURCE} ${COMPONENTS_PATH}/security.sh
-${SOURCE} ${COMPONENTS_PATH}/core.sh
-${SOURCE} ${COMPONENTS_PATH}/file-manager.sh
-${SOURCE} ${COMPONENTS_PATH}/shell-and-term-related.sh
-${SOURCE} ${COMPONENTS_PATH}/ssh.sh
-${SOURCE} ${COMPONENTS_PATH}/transmission.sh
-${SOURCE} ${COMPONENTS_PATH}/web-server.sh
-${SOURCE} ${COMPONENTS_PATH}/kodi.sh
-${SOURCE} ${COMPONENTS_PATH}/sonarr-radarr.sh
+# Execute a component file
+# The name of the component (without the ending ".sh")
+function install_component (){
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "Starting installation of component $1" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
+  echo "" 2>&1 | tee -a ${LOG_FILE}
+}
+
+
+
+
+source common-functions.sh
+execute_component networking
+execute_component aur-helper
+execute_component vpn
+execute_component utils
+execute_component security
+execute_component core
+execute_component file-manager
+execute_component shell-and-term-related
+execute_component ssh
+execute_component transmission
+execute_component web-server
+execute_component kodi
+execute_component sonarr-radarr
 ${COMPONENTS_PATH}/link-files.sh ${username}
 
 sync
