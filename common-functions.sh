@@ -18,14 +18,8 @@ function create_directory_symlink (){
     sudo mkdir -p ${source_dir}
     sudo rm -rf ${symlink}
     sudo ln -s ${source_dir} ${symlink_parent}
-    sudo mv "${symlink_parent}/$(basename ${source_dir})" "${symlink}"
-    # clone_permission_and_ownership ${permission_backup_file} ${symlink}
+    if [ $(basename "${symlink}") == $(basename "${source_dir}") ];
+    then
+        sudo mv "${symlink_parent}/$(basename ${source_dir})" "${symlink}"
+    fi
 }
-
-# # Clone file ownership and mode
-# # $1: The source file
-# # $2: The target file
-# function clone_permission_and_ownership(){
-#     chown --reference="$1" "$2"
-#     chmod --reference="$1" "$2"
-# }
