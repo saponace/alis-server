@@ -45,6 +45,7 @@ ${SOURCE} ${COMPONENTS_PATH}/ssh.sh
 ${SOURCE} ${COMPONENTS_PATH}/transmission.sh
 ${SOURCE} ${COMPONENTS_PATH}/web-server.sh
 ${SOURCE} ${COMPONENTS_PATH}/kodi.sh
+${SOURCE} ${COMPONENTS_PATH}/sonarr-radarr.sh
 ${COMPONENTS_PATH}/link-files.sh ${username}
 
 sync
