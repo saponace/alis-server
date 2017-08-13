@@ -18,7 +18,7 @@ function create_directory_symlink (){
     sudo mkdir -p ${source_dir}
     sudo rm -rf ${symlink}
     sudo ln -s ${source_dir} ${symlink_parent}
-    if [ $(basename "${symlink}") == $(basename "${source_dir}") ];
+    if [ $(basename "${symlink}") != $(basename "${source_dir}") ];
     then
         sudo mv "${symlink_parent}/$(basename ${source_dir})" "${symlink}"
     fi
