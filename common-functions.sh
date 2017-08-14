@@ -11,9 +11,9 @@ function create_directory_symlink (){
 
     symlink_parent=$(dirname ${symlink})
 
-    clone_permission_and_ownership ${symlink} ${source_dir}
-
     sudo mkdir -p ${source_dir}
+    sudo mkdir -p ${symlink}
+    clone_permission_and_ownership ${symlink} ${source_dir}
     sudo rm -rf ${symlink}
     sudo ln -s ${source_dir} ${symlink_parent}
     if [ $(basename "${symlink}") != $(basename "${source_dir}") ];
