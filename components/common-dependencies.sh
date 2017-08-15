@@ -4,4 +4,4 @@
 
 
 ${INSTALL} binutils  # Is required by pia-tools at least
-${INSTALL} pia-tools # Is required by sonarr and radarr at least
+${INSTALL} fakeroot # Is required by sonarr, radarr and jackettt least
