@@ -5,7 +5,6 @@
 
 ${INSTALL} openvpn
 # Auto generate OpenVPN config files for VPN Private Internet Access (pia)
-    ${INSTALL} binutils  # Is required by pia-tools to install, but not listed as a dependency
     ${INSTALL} pia-tools
     sudo su -c "echo '${vpn_login}\n${vpn_password}' | pia-tools --setup"
 # # Block non-VPN traffic. Works in conjunction with ufw
