@@ -65,6 +65,8 @@ function link_homedir_files(){
         sudo mkdir -p /var/lib/transmission/.config/
         sudo ${link_command} ${additional_config_files_dir}/other/transmission-daemon /var/lib/transmission/.config/
         sudo chown -R transmission:transmission ${additional_config_files_dir}/other/transmission-daemon
+    # Private internet access
+        sudo ${link_command} ${additional_config_files_dir}/other/pia-tools.conf /etc/
 
 
 # Scripts
