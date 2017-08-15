@@ -12,7 +12,21 @@ ${INSTALL} nginx
 
 # certbot - Let's encrypt client
     ${INSTALL} certbot-nginx
-    # Custom service
+    # Custom service to renew certificate
+        sudo su -c "echo '[Unit]
+Description=Lets Encrypt renewal
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/certbot renew --quiet --agree-tos
+ExecStartPost=/bin/systemctl reload nginx.service' > /etc/systemd/system/certbot.service"
+        sudo su -c "echo '[Unit]
+Description=Twice daily renewal of Lets Encrypts certificates
+[Timer]
+OnCalendar=0/12:00:00
+RandomizedDelaySec=1h
+Persistent=true
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/certbot.timer"
         sudo systemctl enable certbot.timer
     # Link config directory
         create_directory_symlink  ${letsencrypt_persistant_config_dir} "/etc/letsencrypt"

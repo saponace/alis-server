@@ -61,9 +61,6 @@ function link_homedir_files(){
     # Interfaces
         sudo mkdir -p /etc/network/
         sudo ${link_command} ${additional_config_files_dir}/other/interfaces /etc/network
-    # Let's encrypt services
-        sudo mkdir -p /etc/systemd/system/
-        sudo ${link_command} ${additional_config_files_dir}/other/systemd-services/* /etc/systemd/system/
     # Transmission
         sudo mkdir -p /var/lib/transmission/.config/
         sudo ${link_command} ${additional_config_files_dir}/other/transmission-daemon /var/lib/transmission/.config/
