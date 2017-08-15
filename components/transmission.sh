@@ -7,8 +7,7 @@ ${INSTALL} transmission-cli
 # Whitelist transmission RPC port on the firewall
     sudo ufw allow 9091
 
-# Link config file
-    config_dir="${ADDITIONAL_CONFIG_FILES_DIR}/other/transmission-daemon"
-    create_link ${config_dir} /var/lib/transmission/.config/
-    sudo chown -R transmission:transmission ${config_dir}
-    sudo chown -R transmission:transmission /var/lib/transmission/
+# Copy config file (I copy the file here because I can't manage to make transmission see the file when it's linked
+    target_file="/var/lib/transmission/.config/transmission-daemon/settings.json"
+    sudo cp -f "${ADDITIONAL_CONFIG_FILES_DIR}/other/transmission-daemon/settings.json" ${target_file}
+    sudo chown transmission:transmission ${target_file}
