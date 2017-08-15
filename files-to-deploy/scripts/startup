@@ -65,7 +65,7 @@ function mount_btrfs_raid1_device(){
 
 # After all the drives are mounted
     # Start transmission
-        transmission-daemon --config-dir /home/saponace/.config/transmission-daemon/
+        sudo systemctl start transmission
     # Start nginx
         sudo systemctl start nginx
     # Start kodi
