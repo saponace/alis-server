@@ -27,3 +27,6 @@ Persistent=true
 [Install]
 WantedBy=timers.target' > /etc/systemd/system/pia-tools-check.timer"
     sudo systemctl enable pia-tools-check.timer
+
+# Link pia-tools config file
+    create_link ${ADDITIONAL_CONFIG_FILES_DIR}/other/pia-tools.conf /etc/

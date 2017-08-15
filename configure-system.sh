@@ -7,6 +7,7 @@ INSTALL="packer -S --noconfirm"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"
+ADDITIONAL_CONFIG_FILES_DIR="files-to-deploy/additional-config-files"
 
 
 # Prevent sudo timeout

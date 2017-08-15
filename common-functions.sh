@@ -29,3 +29,11 @@ function clone_permission_and_ownership(){
     sudo chown --reference="$1" "$2"
     sudo chmod --reference="$1" "$2"
 }
+
+# Link a file and make sur the directory of the link exists
+# $1: The source file
+# $2: The target directory
+function create_link (){
+    sudo mkdir -p $2
+    sudo ln -snf $1 $2
+}

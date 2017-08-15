@@ -52,19 +52,5 @@ function link_homedir_files(){
     link_homedir_files "${homedir_dotfiles}"
 # Server specific config files
     link_homedir_files "${additional_config_files_dir}/homedir"
-
-
-# Other configuration files
-    # Nginx
-        sudo mkdir -p /etc/nginx/
-        sudo ${link_command} ${additional_config_files_dir}/other/nginx.conf /etc/nginx
-    # Transmission
-        sudo mkdir -p /var/lib/transmission/.config/
-        sudo ${link_command} ${additional_config_files_dir}/other/transmission-daemon /var/lib/transmission/.config/
-        sudo chown -R transmission:transmission ${additional_config_files_dir}/other/transmission-daemon
-    # Private internet access
-        sudo ${link_command} ${additional_config_files_dir}/other/pia-tools.conf /etc/
-
-
 # Scripts
     sudo ${link_command} ${scripts_dir}/* /usr/bin/
