@@ -58,9 +58,6 @@ function link_homedir_files(){
     # Nginx
         sudo mkdir -p /etc/nginx/
         sudo ${link_command} ${additional_config_files_dir}/other/nginx.conf /etc/nginx
-    # Interfaces
-        sudo mkdir -p /etc/network/
-        sudo ${link_command} ${additional_config_files_dir}/other/interfaces /etc/network
     # Transmission
         sudo mkdir -p /var/lib/transmission/.config/
         sudo ${link_command} ${additional_config_files_dir}/other/transmission-daemon /var/lib/transmission/.config/
