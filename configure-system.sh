@@ -57,6 +57,7 @@ function install_component (){
 source common-functions.sh
 install_component networking
 install_component aur-helper
+install_component common-dependencies
 install_component vpn
 install_component utils
 install_component security
