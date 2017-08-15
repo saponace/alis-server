@@ -21,12 +21,11 @@
     sudo usermod -a -G video sonarr
     sudo usermod -a -G video radarr
 
-# Enable Jackett
+# Enable services
     sudo systemctl enable sonarr
     sudo systemctl enable radarr
-    sudo systemctl enable jackett
 
-# Link Sonarr and Jackettdirectory
+# Link persistant config directories
     create_directory_symlink  ${sonarr_persistant_config_dir} "/var/lib/sonarr"
     create_directory_symlink  ${radarr_persistant_config_dir} "/var/lib/radarr"
     create_directory_symlink  ${jackett_persistant_config_dir} "/usr/share/Jackett/.config/Jackett"

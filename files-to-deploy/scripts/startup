@@ -70,3 +70,6 @@ function mount_btrfs_raid1_device(){
         sudo systemctl start nginx
     # Start kodi
         sudo systemctl start kodi
+        # Start jackett (service cannot be enabled, or else it starts before mouting persistant config directory and
+        # does not update configuration)
+        sudo systemctl start jackett
