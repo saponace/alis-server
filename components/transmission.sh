@@ -11,3 +11,4 @@ ${INSTALL} transmission-cli
     config_dir="${ADDITIONAL_CONFIG_FILES_DIR}/other/transmission-daemon"
     create_link ${config_dir} /var/lib/transmission/.config/
     sudo chown -R transmission:transmission ${config_dir}
+    sudo chown -R transmission:transmission /var/lib/transmission/
