@@ -12,17 +12,18 @@ sudo -v
 
 
 
-# $1: Prompt phrase
-# $2: UUID of luks device to get passphrase of
+# $1: UUID of luks device to get passphrase of
 function get_luks_passwd(){
     # Prompt for the device LUKS passphrase and loop infinitely until the passphrase is correct
-    echo $1
+    echo "Enter LUKS passphrase"
     read -s LUKS_PASSWD
-    until $(printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen --test-passphrase /dev/disk/by-uuid/${2} -d -)
+    echo "Checking passphrase ..."
+    until $(printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen --test-passphrase /dev/disk/by-uuid/$1 -d -)
     do
-        echo $1
+        echo "Passphrase not valid, please enter proper passphrase"
         read -s LUKS_PASSWD
     done
+    echo "Passphrase validated !"
 }
 
 # $1: device UUID
@@ -48,17 +49,20 @@ function mount_btrfs_raid1_device(){
 
 
 # Prompt all LUKS passphrases without checking
-    get_luks_passwd "Enter LUKS passphrase" ${TV_DEVICE_UUID}
+    get_luks_passwd ${TV_DEVICE_UUID}
 
 # Mount DATA RAID1
     echo "Mounting DATA device ..."
     mount_btrfs_raid1_device ${DATA1_DEVICE_UUID} ${DATA2_DEVICE_UUID} "data1-luks-mapper" "data2-luks-mapper" /mnt "autodefrag"
+    echo "Done !"
 # Mount MOVIES disk
     echo "Mounting MOVIES device ..."
     mount_single_device ${MOVIES_DEVICE_UUID} movies-luks-mapper /mnt/media/movies
+    echo "Done !"
 # Mount TV disk
     echo "Mounting TV device ..."
     mount_single_device ${TV_DEVICE_UUID} tv-luks-mapper /mnt/media/tv
+    echo "Done !"
 
 # Unset password and remove it from memroy
     unset LUKS_PASSWD
@@ -66,16 +70,25 @@ function mount_btrfs_raid1_device(){
 # Disk that acts as a buffer / proxy for downloaded files. Used to prevent from useless writes on other disks
     echo "Mounting download proxy device ..."
     sudo mount -u ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
+    echo "Done !"
 
 
 
 # After all the drives are mounted
     # Start transmission
+        echo "Starting transmission ..."
         sudo systemctl start transmission
+        echo "Done !"
     # Start nginx
+    echo "Starting Nginx ..."
         sudo systemctl start nginx
+        echo "Done !"
     # Start kodi
+        echo "Starting Kodi ..."
         sudo systemctl start kodi
+        echo "Done !"
     # Start jackett (service cannot be enabled, or else it starts before mouting persistant config directory and
     # does not update configuration)
+        echo "Starting Jackett ..."
         sudo systemctl start jackett
+        echo "Done !"
