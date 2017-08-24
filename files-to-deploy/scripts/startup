@@ -4,6 +4,8 @@ DATA1_DEVICE_UUID="136020b5-a00d-46e1-a77f-4774c96dff81"
 DATA2_DEVICE_UUID="3245f655-c540-460e-9828-636680c099ee"
 MOVIES_DEVICE_UUID="0edd1cec-c43c-4cda-9e95-f453305c27c6"
 TV_DEVICE_UUID="c31f1a91-1c8b-44e8-b922-832465c3d2e9"
+DOWNLOAD_PROXY_DEVICE_UUID="782582e2-21a8-4582-b395-efce5c413e8d"
+
 
 
 sudo -v
@@ -60,6 +62,10 @@ function mount_btrfs_raid1_device(){
 
 # Unset password and remove it from memroy
     unset LUKS_PASSWD
+
+# Disk that acts as a buffer / proxy for downloaded files. Used to prevent from useless writes on other disks
+    echo "Mounting download proxy device ..."
+    sudo mount -u ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
 
 
 
