@@ -21,10 +21,6 @@
     sudo usermod -a -G video sonarr
     sudo usermod -a -G video radarr
 
-# Enable services
-    sudo systemctl enable sonarr
-    sudo systemctl enable radarr
-
 # Link persistant config directories
     create_directory_symlink  ${sonarr_persistant_config_dir} "/var/lib/sonarr"
     create_directory_symlink  ${radarr_persistant_config_dir} "/var/lib/radarr"

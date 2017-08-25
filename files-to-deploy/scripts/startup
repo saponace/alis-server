@@ -74,21 +74,18 @@ function mount_btrfs_raid1_device(){
 
 
 
-# After all the drives are mounted
-    # Start transmission
-        echo "Starting transmission ..."
-        sudo systemctl start transmission
+# Start services that depend on config dirs on mounted drives after these drives are mounted
+    # Start a service
+    # $1: Service name
+    function start_service() {
+        echo "Starting $1 ..."
+        sudo systemctl start $1
         echo "Done !"
-    # Start nginx
-    echo "Starting Nginx ..."
-        sudo systemctl start nginx
-        echo "Done !"
-    # Start kodi
-        echo "Starting Kodi ..."
-        sudo systemctl start kodi
-        echo "Done !"
-    # Start jackett (service cannot be enabled, or else it starts before mouting persistant config directory and
-    # does not update configuration)
-        echo "Starting Jackett ..."
-        sudo systemctl start jackett
-        echo "Done !"
+    }
+
+    start_service transmission
+    start_service nginx
+    start_service kodi
+    start_service jackett
+    start_service sonarr
+    # start_service radarr
