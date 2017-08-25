@@ -69,7 +69,7 @@ function mount_btrfs_raid1_device(){
 
 # Disk that acts as a buffer / proxy for downloaded files. Used to prevent from useless writes on other disks
     echo "Mounting download proxy device ..."
-    sudo mount -u ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
+    sudo mount --uuid ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
     echo "Done !"
 
 
