@@ -19,6 +19,8 @@
     # Set RAM split (allocate 256MB of RAM to the GPU)
         sudo sed -i 's/gpu_mem=.*/gpu_mem=256/g' /boot/config.txt
     # Zswap and swap (can do zram too)
+        # Zswap not enabled in linux-raspberry-pi kernel
+        # sudo sed -i '$s/$/ zswap.enabled=1/' /boot/cmdline.txt  # Enable zswap
         ${INSTALL} systemd-swap
         sudo systemctl enable systemd-swap
         create_link "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-swap/1.conf" "/etc/systemd/swap.conf.d/"
