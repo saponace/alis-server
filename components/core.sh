@@ -23,4 +23,4 @@
         # sudo sed -i '$s/$/ zswap.enabled=1/' /boot/cmdline.txt  # Enable zswap
         ${INSTALL} systemd-swap
         sudo systemctl enable systemd-swap
-        create_link "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-swap.conf" "/etc/systemd/"
+        create_link "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-swap/swap.conf" "/etc/systemd/"
