@@ -23,4 +23,5 @@
         # sudo sed -i '$s/$/ zswap.enabled=1/' /boot/cmdline.txt  # Enable zswap
         ${INSTALL} systemd-swap
         sudo systemctl enable systemd-swap
-        create_link "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-swap/1.conf" "/etc/systemd/swap.conf.d/"
+        # Copying file because systemd-swap unit file has "protectHome=true", so it can not access /home/
+        sudo cp "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-swap/1.conf" "/etc/systemd/swap.conf.d/"
