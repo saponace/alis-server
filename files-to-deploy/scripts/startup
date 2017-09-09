@@ -88,4 +88,4 @@ function mount_btrfs_raid1_device(){
     start_service kodi
     start_service jackett
     start_service sonarr
-    # start_service radarr
+    start_service radarr
