@@ -2,7 +2,7 @@
 Description=Glances
 
 [Service]
-ExecStart=/usr/local/bin/glances --webserver
+ExecStart=/bin/glances --webserver
 Restart=on-abort
 
 [Install]
