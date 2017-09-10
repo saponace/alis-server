@@ -22,4 +22,4 @@
     ${INSTALL} python-bottle  # Glances web UI dependency
     # Glances web UI daemon
         create_link "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-units/glances-web.service" "/etc/systemd/system/"
-        sudo systemct enable glances-web
+        sudo systemctl enable glances-web
