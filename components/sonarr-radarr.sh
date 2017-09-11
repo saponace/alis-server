@@ -13,9 +13,10 @@
     ${INSTALL} jackett
 
 # Whitelist web UIs ports on the firewall
-    sudo ufw allow 8989  # Sonarr
-    sudo ufw allow 7878  # Radarr
-    sudo ufw allow 9117  # Jackett
+# Disabled since all traffic goes trough nginx reverse proxy
+    # sudo ufw allow 8989  # Sonarr
+    # sudo ufw allow 7878  # Radarr
+    # sudo ufw allow 9117  # Jackett
 
 # Add systemd services users to "video" group
     sudo usermod -a -G video sonarr
