@@ -15,7 +15,7 @@
     "download-dir": "/mnt/torrents/torrents-complete",
     "download-limit": 100,
     "download-limit-enabled": 0,
-    "download-queue-enabled": true,
+    "download-queue-enabled": false,
     "download-queue-size": 5,
     "encryption": 1,
     "idle-seeding-limit": 30,
