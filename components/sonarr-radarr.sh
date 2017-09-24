@@ -11,6 +11,7 @@
 
 # Jackett: tracker proxy for sonarr and radarr
     ${INSTALL} jackett
+    jackett_config_dir="/usr/share/Jackett/.config/Jackett"
 
 # Whitelist web UIs ports on the firewall
 # Disabled since all traffic goes trough nginx reverse proxy
@@ -25,4 +26,8 @@
 # Link persistant config directories
     create_directory_symlink  ${sonarr_persistant_config_dir} "/var/lib/sonarr"
     create_directory_symlink  ${radarr_persistant_config_dir} "/var/lib/radarr"
-    create_directory_symlink  ${jackett_persistant_config_dir} "/usr/share/Jackett/.config/Jackett"
+    create_directory_symlink  ${jackett_persistant_config_dir} "${jackett_config_dir}"
+
+# Create Jackett dynamic config dir
+    sudo mkdir "${jackett_config_dir}/.mono"
+    sudo chown jackett:jackett "${jackett_config_dir}/.mono/"
