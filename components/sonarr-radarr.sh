@@ -33,9 +33,4 @@
     sudo chown jackett:jackett "${jackett_config_dir}/.mono/"
 
 # Automatically restart Sonarr on failure
-sonarr_config_override_dir="/etc/systemd/system/sonarr.service.d"
-sudo mkdir ${sonarr_config_override_dir}
-sudo su -c "echo '[Service]
-Restart=always
-RestartSec=5
-' > ${sonarr_config_override_dir}/override.conf"
+    echo -e "[Service]Restart=always\nRestartSec=5\n" | sudo SYSTEMD_EDITOR=tee systemctl edit sonarr
