@@ -38,3 +38,6 @@
 
 # Link config file config file
     create_link ${ADDITIONAL_CONFIG_FILES_DIR}/other/hyperion.config.json /usr/share/hyperion
+
+# Allow REST API port through firewall
+    sudo ufw allow 19444
