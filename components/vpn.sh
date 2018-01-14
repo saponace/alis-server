@@ -14,18 +14,8 @@ ${INSTALL} openvpn
 # Update openVPN config files
     sudo systemctl start pia-tools-update.timer
 # Custom service to stop transmission when connection to the VPN is lost
-sudo su -c "echo '[Unit]
-Description=VPN connection check
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/pia-tools --check' > /etc/systemd/system/pia-tools-check.service"
-sudo su -c "echo '[Unit]
-Description=Recurrent VPN connection check
-[Timer]
-OnCalendar=*:0/1
-Persistent=true
-[Install]
-WantedBy=timers.target' > /etc/systemd/system/pia-tools-check.timer"
+    create_link "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-units/pia-tools-check.service" "/etc/systemd/system/"
+    create_link "${ADDITIONAL_CONFIG_FILES_DIR}/other/systemd-units/pia-tools-check.timer" "/etc/systemd/system/"
     sudo systemctl enable pia-tools-check.timer
 
 # Link pia-tools config file
