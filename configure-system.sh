@@ -69,6 +69,7 @@ install_component transmission
 install_component web-server
 install_component kodi
 install_component sonarr-radarr
+install_component hyperion
 ${COMPONENTS_PATH}/link-files.sh ${username}
 
 sync
