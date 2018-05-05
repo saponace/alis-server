@@ -39,5 +39,8 @@
 # Link config file config file
     create_link ${ADDITIONAL_CONFIG_FILES_DIR}/other/hyperion.config.json /usr/share/hyperion
 
+# Enable input/output on raspberry pi pins (led strip connected to these pins)
+    sudo su -c "echo 'dtparam=spi=on' >> /boot/config.txt"
+
 # Allow REST API port through firewall
     sudo ufw allow 19444
