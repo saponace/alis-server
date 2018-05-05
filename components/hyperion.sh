@@ -9,7 +9,7 @@
     popd > /dev/null
 
 # Install required dependencies
-    sudo pacman -S --needed make cmake base-devel qt4 libusb libxrender icu
+    ${INSTALL} make cmake base-devel qt4 libusb libxrender icu
 
 # Compile hyperion from sources
     export HYPERION_BUILD_DIR="/tmp/hyperion-build"
