@@ -46,7 +46,7 @@ function add_sshd_config(){
         stop_red_text="\e[00m"
         echo -e "${start_red_text}"
         echo "Authorized_keys file \"${authorized_keys_file}\" not found. You won't be able to connect via SSH"
-        echo -e "${start_red_text}"
+        echo -e "${stop_red_text}"
     fi
 
 
