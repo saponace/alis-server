@@ -1,0 +1,7 @@
+[Unit]
+Description=Recurrent VPN connection check
+[Timer]
+OnCalendar=*:0/1
+Persistent=true
+[Install]
+WantedBy=timers.target

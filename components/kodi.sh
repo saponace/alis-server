@@ -4,9 +4,9 @@
 
 
 # Install the package
-    ${INSTALL} kodi-rbp-git
+    ${INSTALL} kodi-rbp
 
-Whitelist kodi RPC port on the firewall
+# Whitelist kodi RPC port on the firewall
     sudo ufw allow 8080
 
 # Link config directory

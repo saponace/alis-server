@@ -1,91 +1,35 @@
 #! /bin/bash
 
-DATA1_DEVICE_UUID="136020b5-a00d-46e1-a77f-4774c96dff81"
-DATA2_DEVICE_UUID="3245f655-c540-460e-9828-636680c099ee"
-MOVIES_DEVICE_UUID="0edd1cec-c43c-4cda-9e95-f453305c27c6"
-TV_DEVICE_UUID="c31f1a91-1c8b-44e8-b922-832465c3d2e9"
-DOWNLOAD_PROXY_DEVICE_UUID="782582e2-21a8-4582-b395-efce5c413e8d"
 
-
-
+# Prevent sudo timeout
 sudo -v
+while true; do
+  sudo -nv; sleep 1m
+  kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
+done &
 
 
-
-# $1: UUID of luks device to get passphrase of
-function get_luks_passwd(){
-    # Prompt for the device LUKS passphrase and loop infinitely until the passphrase is correct
-    echo "Enter LUKS passphrase"
-    read -s LUKS_PASSWD
-    echo "Checking passphrase ..."
-    until $(printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen --test-passphrase /dev/disk/by-uuid/$1 -d -)
-    do
-        echo "Passphrase not valid, please enter proper passphrase"
-        read -s LUKS_PASSWD
-    done
-    echo "Passphrase validated !"
+# Start services that depend on config dirs located on mounted drives after these drives are mounted
+# Start a service
+# $1: Service name
+function start_service() {
+  printf "Starting $1... "
+  sudo systemctl start $1
+  printf "Done !\n"
 }
 
-# $1: device UUID
-# $2: LUKS mapper name
-# $3: Mount point
-function mount_single_device(){
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$1 $2 -d -
-    sudo mount /dev/mapper/$2 $3
-}
+echo "Mounting drives..."
+if manage-disks -m ;
+then
+  echo "Mounting drives succeeded"
+else
+  echo "Mounting drives failed"
+  exit 1
+fi
 
-# $1: device 1 UUID
-# $2: device 2 UUID
-# $3: LUKS mapper 1 name
-# $4: LUKS mapper 2 name
-# $5: Mount point
-# $6: Mount options
-function mount_btrfs_raid1_device(){
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$1 $3 -d -
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$2 $4 -d -
-    sudo mount -t btrfs -o $6 /dev/mapper/$3 $5
-}
-
-
-
-# Prompt all LUKS passphrases without checking
-    get_luks_passwd ${TV_DEVICE_UUID}
-
-# Mount DATA RAID1
-    echo "Mounting DATA device ..."
-    mount_btrfs_raid1_device ${DATA1_DEVICE_UUID} ${DATA2_DEVICE_UUID} "data1-luks-mapper" "data2-luks-mapper" /mnt "autodefrag"
-    echo "Done !"
-# Mount MOVIES disk
-    echo "Mounting MOVIES device ..."
-    mount_single_device ${MOVIES_DEVICE_UUID} movies-luks-mapper /mnt/media/movies
-    echo "Done !"
-# Mount TV disk
-    echo "Mounting TV device ..."
-    mount_single_device ${TV_DEVICE_UUID} tv-luks-mapper /mnt/media/tv
-    echo "Done !"
-
-# Unset password and remove it from memroy
-    unset LUKS_PASSWD
-
-# Disk that acts as a buffer / proxy for downloaded files. Used to prevent from useless writes on other disks
-    echo "Mounting download proxy device ..."
-    sudo mount --uuid ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
-    echo "Done !"
-
-
-
-# Start services that depend on config dirs on mounted drives after these drives are mounted
-    # Start a service
-    # $1: Service name
-    function start_service() {
-        echo "Starting $1 ..."
-        sudo systemctl start $1
-        echo "Done !"
-    }
-
-    start_service transmission
-    start_service nginx
-    start_service kodi
-    start_service jackett
-    start_service sonarr
-    start_service radarr
+start_service transmission
+start_service nginx
+start_service kodi
+start_service jackett
+start_service sonarr
+start_service radarr
