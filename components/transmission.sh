@@ -5,7 +5,8 @@
 ${INSTALL} transmission-cli
 
 # Whitelist transmission RPC port on the firewall
-    sudo ufw allow 9091
+# Disabled since all traffic goes trough nginx reverse proxy
+    # sudo ufw allow 9091
 
 # Copy config file (I copy the file here because I can't manage to make transmission see the file when it's linked
     target_dir="/var/lib/transmission/.config/transmission-daemon"
