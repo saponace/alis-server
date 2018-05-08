@@ -52,6 +52,8 @@
     "rpc-username": "",
     "rpc-whitelist": "127.0.0.1",
     "rpc-whitelist-enabled": false,
+    "rpc-host-whitelist": "*",
+    "rpc-host-whitelist-enabled": true,
     "scrape-paused-torrents-enabled": true,
     "script-torrent-done-enabled": false,
     "script-torrent-done-filename": "",
@@ -67,5 +69,5 @@
     "upload-limit": 100,
     "upload-limit-enabled": 0,
     "upload-slots-per-torrent": 14,
-    "utp-enabled": true
+    "utp-enabled": false
 }
