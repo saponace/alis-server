@@ -1,0 +1,14 @@
+  # System monitoring tool
+  glances:
+    image: "nicolargo/glances"
+    container_name: "glances"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - "%GLANCES_PORT%:61208"
+    restart: always
+    GLANCES_OPT: "-w"
+    environment:
+      - GLANCES_OPT=-w
+    net: host
+    pid: host

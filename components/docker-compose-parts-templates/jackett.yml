@@ -1,3 +1,4 @@
+  # Torrent trackers proxy
   jackett:
     image: "linuxserver/jackett"
     container_name: "jackett"
