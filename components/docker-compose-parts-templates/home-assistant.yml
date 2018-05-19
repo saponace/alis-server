@@ -1,0 +1,16 @@
+  # Smart home hub
+  homeassistant:
+    container_name: homeassistant
+    restart: always
+    image: homeassistant/home-assistant
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      - %DOCKER_SHARED_DIR%:/shared
+    ports:
+      - "%HOME_ASSISTANT_PORT%:8123"
+    privileged: true
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%

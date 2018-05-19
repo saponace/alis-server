@@ -1,0 +1,10 @@
+version: "3"
+services:
+  # Auto update docker containers
+  watchtower:
+    container_name: watchtower
+    restart: always
+    image: v2tec/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --schedule "0 0 4 * * *" --cleanup<Paste>

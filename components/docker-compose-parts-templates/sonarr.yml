@@ -1,0 +1,17 @@
+  # TV shows PVR
+  sonarr:
+    image: "linuxserver/sonarr"
+    container_name: "sonarr"
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/sonarr:/config
+      - %DOWNLOADS_COMPLETE_DIR%:/downloads
+      - %TV_DIR%:/tv
+      - "/etc/localtime:/etc/localtime:ro"
+      - %DOCKER_SHARED_DIR%:/shared
+    ports:
+        - "%SONARR_PORT%:8989"
+    restart: always
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%

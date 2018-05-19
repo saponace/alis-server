@@ -43,6 +43,7 @@ function install_component (){
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  echo "" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
@@ -54,23 +55,25 @@ function install_component (){
 
 
 
-source common-functions.sh
-install_component networking
-install_component aur-helper
-install_component vpn
-install_component utils
-install_component security
-install_component core
-install_component file-manager
-install_component shell-and-term-related
-install_component ssh
+source ./global-variables.sh
+source ./common-functions.sh
+# install_component networking
+# install_component aur-helper
+# install_component vpn
+# install_component utils
+# install_component security
+# install_component core
+# install_component file-manager
+# install_component shell-and-term-related
+# install_component ssh
 ####
 # install_component transmission
 # install_component web-server
 # install_component kodi
-# install_component sonarr-radarr
+install_component pvr
 # install_component hyperion
-${COMPONENTS_PATH}/link-files.sh ${username}
+install_component docker
+# ${COMPONENTS_PATH}/link-files.sh ${username}
 
 sync
-sudo reboot
+# sudo reboot
