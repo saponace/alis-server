@@ -4,7 +4,7 @@
 
 DOCKER_SHARED_DIR="/docker-shared"
 TEMP_DOCKER_COMPOSE_PARTS_DIR="/tmp/docker-compose-parts"
-DOCKER_COMPOSE_PARTS_TEMPLATES_DIRNAME_RELATIVE_TO_REPO_ROOT="components/docker-compose-parts-templates"
+COMPONENTS_DIR="components"
 mkdir -p ${TEMP_DOCKER_COMPOSE_PARTS_DIR}
 
 declare -A COMMON_TEMPLATES_MAPPING=(
