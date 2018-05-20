@@ -1,6 +1,6 @@
   # System monitoring tool
   glances:
-    image: "nicolargo/glances"
+    image: "easypi/glances-arm"
     container_name: "glances"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro

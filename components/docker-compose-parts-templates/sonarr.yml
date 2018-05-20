@@ -1,6 +1,6 @@
   # TV shows PVR
   sonarr:
-    image: "linuxserver/sonarr"
+    image: "lsioarmhf/sonarr"
     container_name: "sonarr"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/sonarr:/config

@@ -11,12 +11,11 @@ services:
     networks:
         - pianet
     volumes:
-        - /yourpath/auth.conf:/auth.conf:ro
+        - /tmp/auth.conf:/auth.conf:ro
     environment:
         - PROTOCOL=tcp
         - ENCRYPTION=strong
         - REGION=France
     restart: always
-  networks:
     pianet:
         external: true

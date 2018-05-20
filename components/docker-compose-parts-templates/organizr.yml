@@ -2,7 +2,7 @@
   organizr:
     container_name: organizr
     restart: always
-    image: lsiocommunity/organizr
+    image: lsioarmhf/organizr
     volumes:
       - %CONTAINERS_CONFIG_DIR%/organizr:/config
       - %DOCKER_SHARED_DIR%:/shared

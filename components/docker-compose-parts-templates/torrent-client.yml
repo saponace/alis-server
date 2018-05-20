@@ -1,0 +1,38 @@
+  transmission:
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.armhf
+    container_name: transmission
+    image: haugene/transmission-openvpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    restart: always
+    ports:
+      - "%TRANMISSION_PORT%:9091"
+      - "8888:8888"
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp/transmission:/data
+    environment:
+      - OPENVPN_PROVIDER=PIA
+      - OPENVPN_CONFIG=%VPN_REGION%
+      - OPENVPN_USERNAME=%VPN_USERNAME%
+      - OPENVPN_PASSWORD=%VPN_PWD%
+      - TRANSMISSION_WEB_UI=combustion
+      - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
+      - LOCAL_NETWORK=192.168.0.0/24
+      - TRANSMISSION_UMASK=0
+      - TRANSMISSION_RATIO_LIMIT=0
+      - TRANSMISSION_RATIO_LIMIT_ENABLED=true
+      - TRANSMISSION_DOWNLOAD_LIMIT=100
+      - TRANSMISSION_DOWNLOAD_LIMIT_ENABLED=0
+      - TRANSMISSION_DOWNLOAD_QUEUE_ENABLED=false
+      - TRANSMISSION_INCOMPLETE_DIR="/mnt/torrents/torrents-incomplete"
+      - TRANSMISSION_INCOMPLETE_DIR_ENABLED=true
+      - TRANSMISSION_MAX_PEERS_GLOBAL=200
+

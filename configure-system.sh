@@ -59,8 +59,8 @@ source ./global-variables.sh
 source ./common-functions.sh
 # install_component networking
 # install_component aur-helper
-# install_component vpn
-# install_component utils
+install_component vpn
+install_component utils
 # install_component security
 # install_component core
 # install_component file-manager
@@ -71,6 +71,7 @@ source ./common-functions.sh
 # install_component web-server
 # install_component kodi
 install_component pvr
+install_component bookmarks-manager
 # install_component hyperion
 install_component docker
 # ${COMPONENTS_PATH}/link-files.sh ${username}

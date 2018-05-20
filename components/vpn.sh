@@ -6,7 +6,7 @@
 # ${INSTALL} openvpn
 # Auto generate OpenVPN config files for VPN Private Internet Access (pia)
     # ${INSTALL} pia-tools
-    sudo su -c "echo '${vpn_login}\n${vpn_password}' | pia-tools --setup"
+# sudo su -c "echo '${vpn_login}\n${vpn_password}' | pia-tools --setup"
 
 
 # # # Block non-VPN traffic. Works in conjunction with ufw
