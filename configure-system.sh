@@ -71,7 +71,7 @@ source ./common-functions.sh
 # install_component web-server
 # install_component kodi
 install_component pvr
-# install_component bookmarks-manager
+install_component bookmarks-manager
 # install_component hyperion
 install_component docker
 # ${COMPONENTS_PATH}/link-files.sh ${username}

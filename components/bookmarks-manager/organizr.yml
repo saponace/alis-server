@@ -1,4 +1,4 @@
-  # Quickly access all the services in one spot
+  # Bookmarks manager
   organizr:
     container_name: organizr
     restart: always
