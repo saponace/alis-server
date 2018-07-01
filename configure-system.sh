@@ -69,7 +69,7 @@ source ./common-functions.sh
 ####
 # install_component transmission
 # install_component web-server
-# install_component kodi
+# install_component media-center
 install_component pvr
 install_component bookmarks-manager
 # install_component hyperion
