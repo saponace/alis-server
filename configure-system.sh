@@ -38,16 +38,18 @@ fi
 # The name of the component (without the ending ".sh")
 function install_component (){
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "Starting installation of component $1" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  if [ -f "${COMPONENTS_PATH}/$1/$1.sh" ]; then
+      source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  elif [ -f "${COMPONENTS_PATH}/$1.sh" ]; then
+    source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
+  else
+    echo "Error: Component $1 not found"
+  fi
   echo "" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "========================================" 2>&1 | tee -a ${LOG_FILE}
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
@@ -58,6 +60,11 @@ function install_component (){
 source ./global-variables.sh
 source ./common-functions.sh
 # install_component networking
+
+install_component r
+install_component i
+install_component h
+
 # install_component aur-helper
 # install_component vpn
 # install_component utils
@@ -72,7 +79,6 @@ source ./common-functions.sh
 # install_component media-center
 install_component pvr
 install_component bookmarks-manager
-# install_component hyperion
 install_component docker
 # ${COMPONENTS_PATH}/link-files.sh ${username}
 
