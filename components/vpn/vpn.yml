@@ -1,0 +1,21 @@
+  # VPN
+  pia:
+    image: openvpn_client
+    container_name: pia
+    cap_add:
+        - NET_ADMIN
+    devices:
+        - /dev/net/tun
+    networks:
+        - pianet
+    ports:
+      - "%TRANSMISSION_PORT%:%TRANSMISSION_PORT%"
+      - "%SONARR_PORT%:%SONARR_PORT%"
+      - "%RADARR_PORT%:%RADARR_PORT%"
+      - "%JACKETT_PORT%:%JACKETT_PORT%"
+    volumes:
+        - /tmp/docker-volumes/pia_port:/var/run/pia/
+        - /tmp/vpn/cred:/config/credentials
+    environment:
+        - REGION=France
+    restart: always

@@ -60,13 +60,7 @@ function install_component (){
 source ./global-variables.sh
 source ./common-functions.sh
 # install_component networking
-
-install_component r
-install_component i
-install_component h
-
 # install_component aur-helper
-# install_component vpn
 # install_component utils
 # install_component security
 # install_component core
@@ -74,6 +68,7 @@ install_component h
 # install_component shell-and-term-related
 # install_component ssh
 ####
+install_component vpn
 # install_component transmission
 # install_component web-server
 # install_component media-center
