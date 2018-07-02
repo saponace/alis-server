@@ -1,5 +1,5 @@
   # VPN
-  pia:
+  vpn-client:
     image: openvpn_client
     container_name: pia
     cap_add:
