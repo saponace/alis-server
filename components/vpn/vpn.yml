@@ -7,7 +7,7 @@
     devices:
         - /dev/net/tun
     networks:
-        - pianet
+        - vpn_client_net
     ports:
       - "%TRANSMISSION_PORT%:%TRANSMISSION_PORT%"
       - "%SONARR_PORT%:%SONARR_PORT%"

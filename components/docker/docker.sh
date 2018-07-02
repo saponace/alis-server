@@ -27,8 +27,7 @@ declare -A  mappings=(
 
 docker_compose_file="/tmp/docker-compose.yml"
 
-echo "version: \"3\"" > ${docker_compose_file}
-echo "services:" >> ${docker_compose_file}
+cat base.yml >> ${docker_compose_file}
 
 for part in ${TEMP_DOCKER_COMPOSE_PARTS_DIR}/*; do
     cat ${part} >> ${docker_compose_file}
