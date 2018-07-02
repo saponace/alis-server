@@ -1,6 +1,6 @@
   # VPN
   vpn-client:
-    image: openvpn_client
+    image: openvpn-client
     container_name: pia_client
     cap_add:
         - NET_ADMIN
