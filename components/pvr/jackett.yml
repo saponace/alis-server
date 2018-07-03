@@ -7,8 +7,6 @@
       - %TORRENTS_BLACKHOLE%:/downloads
       - "/etc/localtime:/etc/localtime:ro"
       - %DOCKER_SHARED_DIR%:/shared
-    ports:
-      - "%JACKETT_PORT%:9117"
     restart: always
     environment:
       - PUID=%DOCKER_USER_ID%

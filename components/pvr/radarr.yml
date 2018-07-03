@@ -8,8 +8,6 @@
       - %MOVIES_DIR%:/movies
       - "/etc/localtime:/etc/localtime:ro"
       - %DOCKER_SHARED_DIR%:/shared
-    ports:
-      - "%RADARR_PORT%:7878"
     restart: always
     environment:
       - PUID=%DOCKER_USER_ID%

@@ -8,8 +8,6 @@
       - %TV_DIR%:/tv
       - "/etc/localtime:/etc/localtime:ro"
       - %DOCKER_SHARED_DIR%:/shared
-    ports:
-        - "%SONARR_PORT%:8989"
     restart: always
     environment:
       - PUID=%DOCKER_USER_ID%
