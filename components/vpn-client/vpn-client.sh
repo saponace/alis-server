@@ -9,9 +9,8 @@
     docker build -t openvpn-client components/vpn-client/
 
 # Create credentials file on host machine that will be passed to container
-# TODO: choose location of vpn credentials file and change reference in docker-compose.yml
-    # sudo su -c "echo \"${vpn_login}\n${vpn_password}\" > /vpn-credentials"
-    # chmod 600 /vpn-credentials
+    sudo su -c "echo \"${vpn_login}\n${vpn_password}\" > /pia-credentials"
+    sudo chmod 600 /pia-credentials
 
 # Build docker-compose definition
     source components/pvr/variables.sh

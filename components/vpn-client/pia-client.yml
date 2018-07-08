@@ -1,5 +1,5 @@
   # VPN
-  pia-client:
+  pia_client:
     image: openvpn-client
     container_name: pia_client
     cap_add:
@@ -15,7 +15,7 @@
       - "%JACKETT_PORT_EXTERNAL%:%JACKETT_PORT_INTERNAL%"
     volumes:
         - /tmp/docker-volumes/pia_port:/var/run/pia/
-        - /tmp/vpn/cred:/config/credentials
+        - /pia-credentials:/config/credentials
     environment:
         - REGION=France
     restart: always
