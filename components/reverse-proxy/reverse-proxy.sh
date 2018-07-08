@@ -15,10 +15,11 @@
     sudo mkdir -p ${CONTAINERS_CONFIG_DIR}/traefik/acme
     sudo touch ${CONTAINERS_CONFIG_DIR}/traefik/acme/acme.toml
     sudo chmod 600 ${CONTAINERS_CONFIG_DIR}/traefik/acme/acme.toml
+    htpasswd=$(openssl passwd -apr1 ${webserver_passwd} | sed "s/\\$/\\\\$/g")
     declare -A  traefik_config_mappings=(
         ["LETS_ENCRYPT_EMAIL"]="${lets_encrypt_email}"
         ["DOMAIN_NAME"]="${domain_name}"
-        ["HTPASSWD"]="${username}:`openssl passwd -apr1 ${webserver_passwd}`"
+        ["HTPASSWD"]="${username}:${htpasswd}"
         )
     fill_template_file ${COMPONENTS_DIR}/reverse-proxy/traefik.toml /tmp/traefik.toml "$(declare -p traefik_config_mappings)"
     sudo mv /tmp/traefik.toml ${CONTAINERS_CONFIG_DIR}/traefik/traefik.toml
