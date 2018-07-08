@@ -14,7 +14,7 @@
     volumes:
       - %CONTAINERS_CONFIG_DIR%/organizr:/config
       - %DOCKER_SHARED_DIR%:/shared
-    ports:
+    # ports:
       # - "####:80"
     environment:
       - PUID=%DOCKER_USER_ID%
