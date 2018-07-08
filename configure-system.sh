@@ -69,7 +69,7 @@ source ./common-functions.sh
 # install_component ssh
 ####
 install_component vpn
-# install_component transmission
+install_component reverse-proxy
 # install_component web-server
 # install_component media-center
 install_component pvr
