@@ -26,4 +26,4 @@
         ["JACKETT_PORT_INTERNAL"]="${JACKETT_PORT_INTERNAL}"
         ["JACKETT_PORT_EXTERNAL"]="${JACKETT_PORT_EXTERNAL}"
     )
-    process_docker_compose_service vpn-client/pia "$(declare -p docker_compose_template_mappings)"
+    process_docker_compose_service vpn-client/pia-client "$(declare -p docker_compose_template_mappings)"
