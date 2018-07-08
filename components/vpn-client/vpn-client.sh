@@ -6,7 +6,7 @@
 
 
 # Building docker image
-    docker build -t openvpn-client components/vpn/
+    docker build -t openvpn-client components/vpn-client/
 
 # Create credentials file on host machine that will be passed to container
 # TODO: choose location of vpn credentials file and change reference in docker-compose.yml
@@ -26,4 +26,4 @@
         ["JACKETT_PORT_INTERNAL"]="${JACKETT_PORT_INTERNAL}"
         ["JACKETT_PORT_EXTERNAL"]="${JACKETT_PORT_EXTERNAL}"
     )
-    process_docker_compose_service vpn/vpn "$(declare -p docker_compose_template_mappings)"
+    process_docker_compose_service vpn-client/pia "$(declare -p docker_compose_template_mappings)"

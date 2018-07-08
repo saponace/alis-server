@@ -9,6 +9,12 @@
       - "/etc/localtime:/etc/localtime:ro"
       - %DOCKER_SHARED_DIR%:/shared
     restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=sonarr"
+      - "traefik.frontend.rule=Host:sonarr.%DOMAIN_NAME%"
+      - "traefik.port=8989"
+      - "traefik.docker.network=traefik_proxy"
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

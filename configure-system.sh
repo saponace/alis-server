@@ -68,7 +68,7 @@ source ./common-functions.sh
 # install_component shell-and-term-related
 # install_component ssh
 ####
-install_component vpn
+install_component vpn-client
 install_component reverse-proxy
 # install_component web-server
 # install_component media-center

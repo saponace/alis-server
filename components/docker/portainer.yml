@@ -4,8 +4,6 @@
     container_name: portainer
     restart: always
     command: --templates http://templates/templates.json
-    networks:
-      - traefik_proxy
 #    ports:
 #      - "XXXX:9000"
     labels:
