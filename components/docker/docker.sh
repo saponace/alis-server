@@ -4,15 +4,6 @@
 
 # mkdir -p ${DOCKER_SHARED_DIR}
 
-declare -A  mappings=(
-["ORGANIZR_PORT"]="9001"
-["HOME_ASSISTANT_PORT"]="9002"
-["PIA_CREDENTIALS_FILE"]=""
-# [""]=""
-# [""]=""
-# [""]=""
-)
-
 # Watchtower: Watch containers for new versions and seamlessly update
     declare -A  watchtower_docker_compose_template_mappings=(
     )
@@ -20,7 +11,7 @@ declare -A  mappings=(
 
 # Portainer: Docker containers management via Web UI
     declare -A  portainer_docker_compose_template_mappings=(
-        ["PORTAINER_PORT"]="9000"
+        ["DOMAIN_NAME"]="${domain_name}"
     )
     process_docker_compose_service docker/portainer "$(declare -p portainer_docker_compose_template_mappings)"
 

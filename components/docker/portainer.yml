@@ -4,8 +4,16 @@
     container_name: portainer
     restart: always
     command: --templates http://templates/templates.json
-    ports:
-      - "%PORTAINER_PORT%:9000"
+    networks:
+      - traefik_proxy
+#    ports:
+#      - "XXXX:9000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=portainer"
+      - "traefik.frontend.rule=Host:portainer.%DOMAIN_NAME%"
+      - "traefik.port=9000"
+      - "traefik.docker.network=traefik_proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - %CONTAINERS_CONFIG_DIR%/portainer/data:/data
