@@ -11,7 +11,6 @@
 
 # Portainer: Docker containers management via Web UI
     declare -A  portainer_docker_compose_template_mappings=(
-        ["DOMAIN_NAME"]="${domain_name}"
     )
     process_docker_compose_service docker/portainer "$(declare -p portainer_docker_compose_template_mappings)"
 

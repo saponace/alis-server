@@ -4,7 +4,6 @@
 
 # Create docker-compose definition
     declare -A  reverse_proxy_docker_compose_template_mappings=(
-        ["DOMAIN_NAME"]="${domain_name}"
         ["CLOUDFLARE_EMAIL"]="${cloudflare_email}"
         ["CLOUDFLARE_API_KEY"]="${cloudflare_api_key}"
         )
@@ -18,7 +17,6 @@
     htpasswd=$(openssl passwd -apr1 ${webserver_passwd} | sed "s/\\$/\\\\$/g")
     declare -A  traefik_config_mappings=(
         ["LETS_ENCRYPT_EMAIL"]="${lets_encrypt_email}"
-        ["DOMAIN_NAME"]="${domain_name}"
         ["HTPASSWD"]="${username}:${htpasswd}"
         )
     fill_template_file ${COMPONENTS_DIR}/reverse-proxy/traefik.toml /tmp/traefik.toml "$(declare -p traefik_config_mappings)"

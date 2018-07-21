@@ -1,0 +1,30 @@
+  transmission:
+    container_name: transmission
+    image: lsioarmhf/transmission
+    restart: always
+    network_mode: "service:pia_client"
+    ports:
+      - "%TRANMISSION_PORT%:9091"
+      - "8888:8888"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - %CONTAINERS_CONFIGS_DIR%/transmission:/config \
+      - %DOWNLOADS_COMPLETE_DIR%:/downloads
+      - %TORRENTS_BLACKHOLE_DIR%:/watch \
+
+      - %CONTAINERS_CONFIG_DIR%/radarr:/config
+      - %DOWNLOADS_COMPLETE_DIR%:/downloads
+      - %MOVIES_DIR%:/movies
+      - %DOCKER_SHARED_DIR%:/shared
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=transmission"
+      - "traefik.frontend.rule=Host:transmission.%DOMAIN_NAME%"
+      - "traefik.port=9091"
+      - "traefik.docker.network=traefik_proxy"
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
+# -p 51413:51413 \
+# -p 51413:51413/udp \

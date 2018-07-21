@@ -13,10 +13,12 @@ declare -A COMMON_TEMPLATES_MAPPING=(
     ["DOCKER_USER_ID"]="$(id -u ${USER})"
     ["DOCKER_GROUP_ID"]="$(id -g ${USER})"
     ["TIMEZONE"]="\\\"Europe/Paris\\\""
+    ["DOMAIN_NAME"]="${domain_name}"
     ["MOVIES_DIR"]="/mnt/media/movies"
     ["TV_DIR"]="/mnt/media/tv"
     ["MEDIA_DIR"]="/mnt/media"
     ["CONTAINERS_CONFIG_DIR"]="${CONTAINERS_CONFIG_DIR}"
     ["DOCKER_SHARED_DIR"]="${DOCKER_SHARED_DIR}"
     ["DOWNLOADS_COMPLETE_DIR"]="/mnt/torrents/torrents-complete"
+    ["TORRENTS_BLACKHOLE"]="/torrents-blackhole"
 )
