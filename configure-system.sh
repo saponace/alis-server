@@ -70,6 +70,7 @@ source ./common-functions.sh
 ####
 install_component vpn-client
 install_component reverse-proxy
+install_component torrenting-client
 # install_component web-server
 # install_component media-center
 install_component pvr
