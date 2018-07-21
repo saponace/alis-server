@@ -1,7 +1,1 @@
-files-to-deploy/config-files/homedir/.config/ranger/*
-files-to-deploy/!config-files/homedir/.config/ranger/rc.conf
-
-files-to-deploy/config-files/homedir/.config/nvim/plugged
-files-to-deploy/config-files/homedir/.config/nvim/.netrwhist
-
-files-to-deploy/additional-config-files/homedir/.config/transmission-daemon/dht.dat
+alis-server.log
