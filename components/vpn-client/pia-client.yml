@@ -8,11 +8,6 @@
         - /dev/net/tun
     networks:
         - vpn_client_net
-    ports:
-      - "%TRANSMISSION_PORT_EXTERNAL%:%TRANSMISSION_PORT_INTERNAL%"
-      - "%SONARR_PORT_EXTERNAL%:%SONARR_PORT_INTERNAL%"
-      - "%RADARR_PORT_EXTERNAL%:%RADARR_PORT_INTERNAL%"
-      - "%JACKETT_PORT_EXTERNAL%:%JACKETT_PORT_INTERNAL%"
     volumes:
         - /tmp/docker-volumes/pia_port:/var/run/pia/
         - /pia-credentials:/config/credentials

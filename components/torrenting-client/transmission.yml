@@ -3,9 +3,6 @@
     image: lsioarmhf/transmission
     restart: always
     network_mode: "service:pia_client"
-    ports:
-      - "%TRANMISSION_PORT%:9091"
-      - "8888:8888"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - %CONTAINERS_CONFIG_DIR%/transmission:/config \
