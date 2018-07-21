@@ -1,0 +1,17 @@
+  # Server analysis tool
+  netdata:
+    image: firehol/netdata:armv7hf
+    container_name: netdata
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=netdata"
+      - "traefik.frontend.rule=Host:netdata.%DOMAIN_NAME%"
+      - "traefik.port=19999"
+      - "traefik.docker.network=traefik_proxy"
