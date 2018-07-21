@@ -2,8 +2,6 @@ version: "3"
 networks:
   vpn_client_net:
   traefik_proxy:
-    external:
-      name: traefik_proxy
   default:
     driver: bridge
 services:
