@@ -3,10 +3,8 @@
 #-------------------------------------------------
 
 
-
-
 # Building docker image
-    docker build -t openvpn-client components/vpn-client/
+    docker build -t openvpn-client components/vpn-client/docker-build
 
 # Create credentials file on host machine that will be passed to container
     sudo su -c "echo \"${vpn_login}\n${vpn_password}\" > /pia-credentials"
