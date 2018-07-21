@@ -8,14 +8,9 @@
       - "8888:8888"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - %CONTAINERS_CONFIGS_DIR%/transmission:/config \
+      - %CONTAINERS_CONFIG_DIR%/transmission:/config \
       - %DOWNLOADS_COMPLETE_DIR%:/downloads
-      - %TORRENTS_BLACKHOLE_DIR%:/watch \
-
-      - %CONTAINERS_CONFIG_DIR%/radarr:/config
-      - %DOWNLOADS_COMPLETE_DIR%:/downloads
-      - %MOVIES_DIR%:/movies
-      - %DOCKER_SHARED_DIR%:/shared
+      - %TORRENTS_BLACKHOLE%:/watch \
     labels:
       - "traefik.enable=true"
       - "traefik.backend=transmission"
