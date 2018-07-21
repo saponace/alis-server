@@ -73,6 +73,7 @@ install_component reverse-proxy
 install_component torrenting-client
 # install_component web-server
 # install_component media-center
+install_component homeassistant
 install_component netdata
 install_component pvr
 install_component bookmarks-manager
