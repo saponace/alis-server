@@ -8,6 +8,7 @@
     networks:
       - default
       - traefik_proxy
+      - vpn_client_net
     ports:
       - "80:80"
       - "443:443"
