@@ -7,7 +7,7 @@
     network_mode: "service:pia_client"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/plex:/config
-      - %/tmp/plex-transcode:/transcode
+      - /tmp/plex-transcode:/transcode
       - %MEDIA_DIR%/movies:/movies
       - %MEDIA_DIR%/tv:/tvshows
       # - %DOCKER_SHARED_DIR%:/shared
