@@ -24,4 +24,4 @@
       - "traefik.docker.network=traefik_proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - %CONTAINERS_CONFIG_DIR%/traefik:/etc/traefik
+      - %CONTAINERS_DATA_DIR%/traefik:/etc/traefik
