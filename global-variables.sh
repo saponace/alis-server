@@ -19,6 +19,7 @@ declare -A COMMON_TEMPLATES_MAPPING=(
     ["TV_DIR"]="/mnt/media/tv"
     ["MEDIA_DIR"]="/mnt/media"
     ["CONTAINERS_CONFIG_DIR"]="${CONTAINERS_CONFIG_DIR}"
+    ["CONTAINERS_DATA_DIR"]="${CONTAINERS_DATA_DIR}"
     ["DOCKER_SHARED_DIR"]="${DOCKER_SHARED_DIR}"
     ["DOWNLOADS_COMPLETE_DIR"]="/mnt/torrents/torrents-complete"
     ["TORRENTS_BLACKHOLE"]="/torrents-blackhole"
