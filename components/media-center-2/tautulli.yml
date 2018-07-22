@@ -1,0 +1,19 @@
+  # Provides lots of statistics on plex
+  tautulli:
+    container_name: tautulli
+    restart: always
+    image: lsioarmhf/tautulli
+    network_mode: "service:pia_client"
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/tautulli:/config
+      - /plexlogs:/logs:ro # TODO
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
+    labels:
+        - "traefik.enable=true"
+        - "traefik.backend=tautulli"
+        - "traefik.frontend.rule=Host:tautulli.%DOMAIN_NAME%"
+        - "traefik.port=8181"
+        - "traefik.docker.network=traefik_proxy"

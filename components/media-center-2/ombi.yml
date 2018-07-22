@@ -1,0 +1,18 @@
+  # Handle content requests for plex and emby
+  ombi:
+    container_name: ombi
+    restart: always
+    image: lsioarmhf/ombi
+    network_mode: "service:pia_client"
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/ombi:/config
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
+    labels:
+        - "traefik.enable=true"
+        - "traefik.backend=ombi"
+        - "traefik.frontend.rule=Host:ombi.%DOMAIN_NAME%"
+        - "traefik.port=3579"
+        - "traefik.docker.network=traefik_proxy"
