@@ -10,7 +10,7 @@
 Create partitions grub (1MB, type:ef02), swap, root (with fdisk for instance).
 
 
-### Remount archiso with more space to be able to download and install git (not mandatory)
+### Remount archiso with more space to be able to download and install git
 ```
 # mount -o remount,size=2G /run/archiso/cowspace
 ```
