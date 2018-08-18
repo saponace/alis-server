@@ -1,5 +1,5 @@
 
-# Follow these steps to install a new arch linux system
+# Follow these steps to install a new arch linux server
 
 ### Set the keyboard layout to French
 ```
@@ -10,7 +10,7 @@
 Create partitions grub (1MB, type:ef02), swap, root (with fdisk for instance).
 
 
-### Remount archiso with more space to be able to download and install git
+### Remount archiso with more space to be able to download and install git (not mandatory)
 ```
 # mount -o remount,size=2G /run/archiso/cowspace
 ```
