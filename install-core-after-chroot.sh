@@ -19,6 +19,7 @@ fi
 source ${CONFIG_FILE_PATH}
 
 
+root_partition="${install_disk}3"
 
 # Set the hostname
     echo  ${hostname} > /etc/hostname
@@ -45,7 +46,7 @@ source ${CONFIG_FILE_PATH}
 # Create menu entry
     echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
 # Configure entry
-    root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
+   root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
     echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
     echo -e "options root=UUID=${root_partition_uuid} rw" >> /boot/loader/entries/arch.conf
 
