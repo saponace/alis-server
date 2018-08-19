@@ -20,44 +20,49 @@ fi
 source ${CONFIG_FILE_PATH}
 
 
-root_partition="${root_device}${root_partition_suffix}"
+boot_partition="${install_disk}1"
+swap_partition="${install_disk}2"
+root_partition="${install_disk}3"
+
 chroot_script_to_call="install-core-after-chroot.sh"
 
 
 
-# Format swap partition
+# Create partition table
+  # Delete existing partition table
+    wipefs -a ${install_disk}
+  # Create boot partition, then SWAP partition, then root partition
+    fdisk_create_boot_partition="n\np\n1\n\n+${boot_partition_size}\nt\nef\n"
+    fdisk_create_swap_partition="n\np\n2\n\n+${swap_partition_size}\nt\n2\n82\n"
+    if [ "${root_partition_size}" == "MAX" ]
+    then
+      root_partition_end="\n"
+    else
+      root_partition_end="+${root_partition_size}\n"
+    fi
+    fdisk_create_root_partition="n\np\n3\n\n${root_partition_end}\nt\n2\n83\n"
+    fdisk_set_bootable_partition_and_write_partition_table="a\n1\nw\n"
+
+    echo -e "${fdisk_create_swap_partition}${fdisk_create_swap_partition}${fdisk_create_swap_partition}" | fdisk ${install_disk}
+
+# Format partitions
+    mkfs.vfat -F 32 ${boot_partition}
     mkswap ${swap_partition}
+    mkfs.ext4 ${root_partition}
 
 
-# Format root partition
-    mkfs.btrfs ${root_partition}
-
-
-# Mount root and create Btrfs subvolumes
-    mount ${root_partition} /mnt
-    cd /mnt
-    btrfs subvolume create ROOT
-    cd
-    umount /mnt
-    mount -o noatime,space_cache,autodefrag,subvol=ROOT ${root_partition} /mnt
-    cd /mnt
-    btrfs subvolume create root
-    btrfs subvolume create home
-    btrfs subvolume create etc
-    btrfs subvolume create mnt
-    btrfs subvolume create opt
-    btrfs subvolume create var
-    btrfs subvolume create tmp
-
-# Enable swap
+# Mount partitions and swapon
+    mount ${boot_partition} /mnt/boot
     swapon ${swap_partition}
+    mount ${root_partition} /mnt
 
 
 # Refresh pacman gpg keys list
+    pacman-key --init
     pacman-key --refresh-key
 
 # Install base components into new system
-    pacstrap /mnt base base-devel btrfs-progs
+    pacstrap /mnt base base-devel
 
 # Generate fstab of new system to automatically mount all the devices at bootup
     genfstab -U -p /mnt >> /mnt/etc/fstab
