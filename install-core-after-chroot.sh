@@ -40,15 +40,14 @@ source ${CONFIG_FILE_PATH}
 
 
 # Install and configure boot loader
-    # mount boot partition to /boot
-        bootctl --path=/boot install
-    # Create menu entry
-        echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
-    # Configure entry
-        root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
-        swap_partition_uuid=$(blkid ${swap_partition} | cut -f2 -d\")
-        echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
-        # echo -e "options quiet rw" >> /boot/loader/entries/arch.conf
+# mount boot partition to /boot
+    bootctl --path=/boot install
+# Create menu entry
+    echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
+# Configure entry
+    root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
+    echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
+    echo -e "options root=UUID=${root_partition_uuid} rw" >> /boot/loader/entries/arch.conf
 
 
 # Set root password
