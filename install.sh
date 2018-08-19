@@ -31,21 +31,26 @@ chroot_script_to_call="install-core-after-chroot.sh"
 # Create partition table
   # Delete existing partition table
     wipefs -a ${install_disk}
-  # Create boot partition, then SWAP partition, then root partition
-    fdisk_create_boot_partition="n\np\n1\n\n+${boot_partition_size}\nt\nef\n"
-    fdisk_create_swap_partition="n\np\n2\n\n+${swap_partition_size}\nt\n2\n82\n"
+  # Create partition and filesystem for boot, SWAP, and root
+    swap_end_position=$((${boot_partition_size}+${swap_partition_size}))
     if [ "${root_partition_size}" == "MAX" ]
     then
-      root_partition_end="\n"
+      root_end_position="100%"
     else
-      root_partition_end="+${root_partition_size}\n"
+      root_end_position="$((${swap_end_position}+${root_partition_size}))M"
     fi
-    fdisk_create_root_partition="n\np\n3\n\n${root_partition_end}\nt\n2\n83\n"
-    fdisk_set_bootable_partition_and_write_partition_table="a\n1\nw\n"
+    # FIXME: parted does not add partitions after each other, but at a given position. Here for exemple, the swap
+    # partition size will be ${swap_partition_size}-${boot_partition_size}
+    parted ${install_disk} mklabel gpt
+    parted --align optimal ${install_disk} unit mb mkpart primary fat32 0% ${boot_partition_size}
+    parted ${install_disk} name 1 boot
+    parted ${install_disk} set 1 boot on
+    parted --align optimal ${install_disk} unit mb mkpart primary linux-swap $((${boot_partition_size}+1)) ${swap_end_position}
+    parted ${install_disk} name 2 swap
+    parted --align optimal ${install_disk} unit mb mkpart primary ext4 $((${swap_end_position}+1)) ${root_end_position}
+    parted ${install_disk} name 3 root
 
-    echo -e "${fdisk_create_boot_partition}${fdisk_create_swap_partition}${fdisk_create_root_partition}${fdisk_set_bootable_partition_and_write_partition_table}" | fdisk ${install_disk}
-
-# Format partitions
+  # Format partitions
     mkfs.vfat -F 32 ${boot_partition}
     mkswap ${swap_partition}
     mkfs.ext4 ${root_partition}
