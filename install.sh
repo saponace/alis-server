@@ -54,6 +54,7 @@ chroot_script_to_call="install-core-after-chroot.sh"
 # Mount partitions and swapon
     swapon ${swap_partition}
     mount ${root_partition} /mnt
+    mkdir /mnt/boot
     mount ${boot_partition} /mnt/boot
 
 
