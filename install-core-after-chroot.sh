@@ -27,7 +27,7 @@ source ${CONFIG_FILE_PATH}
     # Configure locales
         echo -e "\n${locales_to_enable}" >> /etc/locale.gen
         locale-gen
-        ln -s ${locale_zone_path} /etc/localtime
+        ln -sf ${locale_zone_path} /etc/localtime
         echo "KEYMAP=${keymap}" > /etc/vconsole.conf
 
 # Set the clock
