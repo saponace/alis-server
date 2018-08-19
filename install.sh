@@ -43,7 +43,7 @@ chroot_script_to_call="install-core-after-chroot.sh"
     fdisk_create_root_partition="n\np\n3\n\n${root_partition_end}\nt\n2\n83\n"
     fdisk_set_bootable_partition_and_write_partition_table="a\n1\nw\n"
 
-    echo -e "${fdisk_create_boot_partition}${fdisk_create_swap_partition}${fdisk_create_root_partition}" | fdisk ${install_disk}
+    echo -e "${fdisk_create_boot_partition}${fdisk_create_swap_partition}${fdisk_create_root_partition}${fdisk_set_bootable_partition_and_write_partition_table}" | fdisk ${install_disk}
 
 # Format partitions
     mkfs.vfat -F 32 ${boot_partition}
