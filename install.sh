@@ -52,9 +52,9 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Mount partitions and swapon
-    mount ${boot_partition} /mnt/boot
     swapon ${swap_partition}
     mount ${root_partition} /mnt
+    mount ${boot_partition} /mnt/boot
 
 
 # Refresh pacman gpg keys list
