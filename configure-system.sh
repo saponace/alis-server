@@ -3,7 +3,7 @@
 #-------------------------------------------------
 
 
-INSTALL="packer -S --noconfirm"
+INSTALL="yaourt -S --noconfirm"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"

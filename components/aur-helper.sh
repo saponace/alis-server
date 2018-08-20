@@ -1,8 +1,13 @@
 #-------------------------------------------------
 # Install an AUR helper
-# Here, packer
+# Here, yaourt
 #-------------------------------------------------
 
 
-# Packer
-    sudo pacman -S --noconfirm packer
+# Yaourt
+    sudo su -c "echo -e $'[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch' >> /etc/pacman.conf"
+    sudo pacman -Syu --noconfirm yaourt
+
+# Yaourt packages tab completion
+    ${INSTALL} aurtab
+
