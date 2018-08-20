@@ -16,7 +16,7 @@
     cd /tmp
     git clone https://aur.archlinux.org/yay.git
     cd yay
-    makepkg -si
+    makepkg -si --noconfirm
     cd ${git_repo_path}
 
 
