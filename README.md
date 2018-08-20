@@ -1,11 +1,15 @@
 
-# Follow these steps to install a new alarm (Arch Linux for ARM) system
-
-After burning the image to the raspberry pi sd card, log in as root and:
+# Follow these steps to install a new arch linux server
 
 ### Set the keyboard layout to French
 ```
 # loadkeys fr
+```
+
+
+### Remount archiso with more space to be able to download and install git
+```
+# mount -o remount,size=2G /run/archiso/cowspace
 ```
 
 ### Install git and clone this repo
@@ -21,6 +25,10 @@ After burning the image to the raspberry pi sd card, log in as root and:
 ```
 
 ### Reboot
+```
+# exit
+```
+Umount and swapoff partitions
 ```
 # reboot
 ```
