@@ -16,3 +16,7 @@
     cd yay
     makepkg -si
     cd ${git_repo_path}
+
+
+# Enable colored output
+    sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
