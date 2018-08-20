@@ -11,7 +11,7 @@
 
 
 # Git is required to install yay
-    sudo pacman -Syy git
+    sudo pacman -Sy --noconfirm git
 # Install AUR helper
     cd /tmp
     git clone https://aur.archlinux.org/yay.git
