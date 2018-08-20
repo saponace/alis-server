@@ -3,7 +3,7 @@
 #-------------------------------------------------
 
 
-INSTALL="yaourt -S --noconfirm"
+INSTALL="yay -S --noconfirm"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"
