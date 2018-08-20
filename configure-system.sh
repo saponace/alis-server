@@ -3,7 +3,7 @@
 #-------------------------------------------------
 
 
-INSTALL="packer -S --noconfirm"
+INSTALL="yay -S --noconfirm"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"
@@ -54,13 +54,29 @@ function install_component (){
   echo "" 2>&1 | tee -a ${LOG_FILE}
 }
 
+function enable_networking (){
+  echo "Enabling networking ..."
+  sudo dhcpcd
+  while [ "$var1" != "end" ]
+  do
+      pingtime=$(ping -w 1 google.com | grep ttl)
+      if [ "$pingtime" = "" ]
+      then
+          sleep 2
+      else
+          break
+      fi
+  done
+  echo "Done !"
+}
 
 
 
+enable_networking
 source ./global-variables.sh
 source ./common-functions.sh
 # install_component networking
-# install_component aur-helper
+ install_component aur-helper
 # install_component utils
 # install_component security
 # install_component core
