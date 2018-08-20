@@ -10,6 +10,8 @@
     popd > /dev/null
 
 
+# Git is required to install yay
+    pacman -Syy git
 # Install AUR helper
     cd /tmp
     git clone https://aur.archlinux.org/yay.git
