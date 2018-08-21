@@ -4,6 +4,8 @@
 
 
 # Building docker image
+    # Build dependency
+        ${INSTALL} docker
     docker build -t openvpn-client components/vpn-client/docker-build
 
 # Create credentials file on host machine that will be passed to container
