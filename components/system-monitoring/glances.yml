@@ -1,0 +1,13 @@
+  # Overall server monitoring tool
+  glances:
+    image: nicolargo/glances
+    container_name:glances
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=glances"
+      - "traefik.frontend.rule=Host:glances.%DOMAIN_NAME%"
+      - "traefik.port=61209"
+      - "traefik.docker.network=traefik_proxy"

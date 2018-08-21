@@ -17,7 +17,12 @@
 
 
 
-# Build docker-compose definition
-    declare -A  docker_compose_template_mappings=(
+# Build glances docker-compose definition
+    declare -A  glances_docker_compose_template_mappings=(
     )
-    process_docker_compose_service netdata/netdata "$(declare -p docker_compose_template_mappings)"
+    process_docker_compose_service system-monitoring/glances "$(declare -p glances_docker_compose_template_mappings)"
+
+# Build netdata docker-compose definition
+    declare -A  netdata_docker_compose_template_mappings=(
+    )
+    process_docker_compose_service system-monitoring/netdata "$(declare -p netdata_docker_compose_template_mappings)"

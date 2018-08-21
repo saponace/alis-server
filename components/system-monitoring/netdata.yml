@@ -1,4 +1,4 @@
-  # Server analysis tool
+  # Complete server monitoring tool
   netdata:
     image: firehol/netdata:armv7hf
     container_name: netdata
