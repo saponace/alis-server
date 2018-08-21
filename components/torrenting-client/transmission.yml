@@ -1,6 +1,6 @@
   transmission:
     container_name: transmission
-    image: lsioarmhf/transmission
+    image: linuxserver/transmission
     restart: always
     network_mode: "service:pia_client"
     volumes:

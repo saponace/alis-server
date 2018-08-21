@@ -2,7 +2,8 @@
   homeassistant:
     container_name: homeassistant
     restart: always
-    image: homeassistant/raspberrypi3-homeassistant
+    image: homeassistant/home-assistant
+
     volumes:
       - %CONTAINERS_CONFIG_DIR%/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
