@@ -75,14 +75,14 @@ function enable_networking (){
 enable_networking
 source ./global-variables.sh
 source ./common-functions.sh
-# install_component networking
- install_component aur-helper
-# install_component utils
-# install_component security
-# install_component core
-# install_component file-manager
-# install_component shell-and-term-related
-# install_component ssh
+install_component aur-helper
+install_component networking
+install_component utils
+install_component security
+install_component core
+install_component file-manager
+install_component shell-and-term-related
+install_component ssh
 ####
 install_component vpn-client
 install_component reverse-proxy
