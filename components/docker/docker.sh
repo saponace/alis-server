@@ -2,7 +2,7 @@
 # Configure Docker
 #-------------------------------------------------
 
-mkdir -p ${DOCKER_SHARED_DIR}
+sudo mkdir -p ${DOCKER_SHARED_DIR}
 ${INSTALL} docker docker-compose
 sudo systemctl enable docker
 
