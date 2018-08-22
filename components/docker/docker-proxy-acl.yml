@@ -1,5 +1,5 @@
-  # Manage docker conainers via a web UI
-  portainer:
+  # Provide an access layer to docker.sock
+  docker-proxy-acl:
     image: kmlucy/docker-proxy-acl
     container_name: docker-proxy-acl
     restart: always
