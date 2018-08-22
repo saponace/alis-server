@@ -7,6 +7,11 @@ ${INSTALL} docker docker-compose
 sudo systemctl enable docker
 
 
+# Docker-proxy-ACL: Access layer for docker.sock (used by netdata)
+    declare -A  docker_proxy_acl_docker_compose_template_mappings=(
+   )
+    process_docker_compose_service docker/docker-proxy-acl "$(declare -p docker_proxy_acl_docker_compose_template_mappings)"
+
 # Watchtower: Watch containers for new versions and seamlessly update
     declare -A  watchtower_docker_compose_template_mappings=(
     )

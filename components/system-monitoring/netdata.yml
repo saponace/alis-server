@@ -1,6 +1,6 @@
   # Complete server monitoring tool
   netdata:
-    image: firehol/netdata:armv7hf
+    image: titpetric/netdata
     container_name: netdata
     restart: always
     cap_add:
@@ -8,7 +8,7 @@
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock
+      - %DOCKER_SHARED_DIR%/docker-proxy-acl/docker.sock:/var/run/docker.sock
     labels:
       - "traefik.enable=true"
       - "traefik.backend=netdata"
