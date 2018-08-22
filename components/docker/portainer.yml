@@ -3,9 +3,6 @@
     image: portainer/portainer
     container_name: portainer
     restart: always
-    command: --templates http://templates/templates.json
-#    ports:
-#      - "XXXX:9000"
     labels:
       - "traefik.enable=true"
       - "traefik.backend=portainer"
