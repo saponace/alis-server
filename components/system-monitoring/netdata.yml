@@ -3,6 +3,8 @@
     image: titpetric/netdata
     container_name: netdata
     restart: always
+    depends_on:
+      - docker-proxy-acl
     cap_add:
       - SYS_PTRACE
     volumes:
