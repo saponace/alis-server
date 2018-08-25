@@ -9,6 +9,7 @@ app_key=$( cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 )
 echo "Firefly iii app key: ${app_key}"
 
 declare -A  firefly_iii_docker_compose_template_mappings=(
+    ["FIREFLY_DATA"]="/firefly-iii"
     ["DB_NAME"]=${db_name}
     ["DB_USERNAME"]=${db_username}
     ["DB_PWD"]=${db_pwd}
