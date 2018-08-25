@@ -1,5 +1,5 @@
   # Finances management
-  firefly-iii:
+  firefly_iii:
     image: jc5x/firefly-iii
     environment:
       - FF_DB_HOST=firefly_iii_db
@@ -10,9 +10,9 @@
       - FF_APP_ENV=local
       - TZ=%TIMEZONE%
     links:
-      - firefly-iii-db
+      - firefly_iii_db
     networks:
-      - firefly-iii-net
+      - firefly_iii_net
     volumes:
       - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
       - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
