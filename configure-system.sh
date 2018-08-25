@@ -88,7 +88,7 @@ install_component vpn-client
 install_component reverse-proxy
 install_component torrenting-client
 # install_component web-server
-install_component media-center-
+install_component media-center
 install_component home-assistant
 install_component system-monitoring
 install_component pvr
