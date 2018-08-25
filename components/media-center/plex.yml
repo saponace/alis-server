@@ -24,8 +24,8 @@
       - PLEX_GID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-        - "traefik.enable=true"
-        - "traefik.backend=plex"
-        - "traefik.frontend.rule=Host:plex.%DOMAIN_NAME%"
-        - "traefik.port=32400"
-        - "traefik.docker.network=traefik_proxy"
+      - "traefik.enable=true"
+      - "traefik.backend=plex"
+      - "traefik.frontend.rule=Host:plex.%DOMAIN_NAME%"
+      - "traefik.port=32400"
+      - "traefik.docker.network=traefik_proxy"

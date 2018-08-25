@@ -11,8 +11,8 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-        - "traefik.enable=true"
-        - "traefik.backend=ombi"
-        - "traefik.frontend.rule=Host:ombi.%DOMAIN_NAME%"
-        - "traefik.port=3579"
-        - "traefik.docker.network=traefik_proxy"
+      - "traefik.enable=true"
+      - "traefik.backend=ombi"
+      - "traefik.frontend.rule=Host:ombi.%DOMAIN_NAME%"
+      - "traefik.port=3579"
+      - "traefik.docker.network=traefik_proxy"
