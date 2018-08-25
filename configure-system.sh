@@ -93,6 +93,7 @@ install_component home-assistant
 install_component system-monitoring
 install_component pvr
 install_component bookmarks-manager
+install_component finances-management
 install_component docker
 # ${COMPONENTS_PATH}/link-files.sh ${username}
 
