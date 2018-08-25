@@ -22,6 +22,7 @@
       - PLEX_UID=%DOCKER_USER_ID%
       - PLEX_GID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
+      - PLEX_CLAIM=%PLEX_CLAIM%
     labels:
       - "traefik.enable=true"
       - "traefik.backend=plex"

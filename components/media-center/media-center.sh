@@ -4,6 +4,7 @@
 
 
 declare -A plex_docker_compose_template_mappings=(
+    ["PLEX_CLAIM"]="TODO" #TODO
 )
 process_docker_compose_service media-center/plex "$(declare -p plex_docker_compose_template_mappings)"
 
