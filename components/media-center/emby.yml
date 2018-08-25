@@ -2,18 +2,14 @@
   emby:
     container_name: emby
     restart: always
-    image: emby/embyserver_arm32v7_neon
+    image: emby/embyserver
     volumes:
       - %CONTAINERS_CONFIG_DIR%/emby:/config
       - %MEDIA_DIR%:/mnt/share1
-      # - %DOCKER_SHARED_DIR%:/shared
-    # ports:
-    #   - "8096:8096"
-    #   - "8920:8920"
+      - %DOCKER_SHARED_DIR%:/shared
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
-      # - TZ=%TIMEZONE%
     labels:
         - "traefik.enable=true"
         - "traefik.backend=emby"

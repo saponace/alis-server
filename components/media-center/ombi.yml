@@ -2,7 +2,7 @@
   ombi:
     container_name: ombi
     restart: always
-    image: lsioarmhf/ombi
+    image: linuxserver/ombi
     network_mode: "service:pia_client"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/ombi:/config

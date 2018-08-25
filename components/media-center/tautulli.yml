@@ -2,7 +2,7 @@
   tautulli:
     container_name: tautulli
     restart: always
-    image: lsioarmhf/tautulli
+    image: tautulli/tautulli
     network_mode: "service:pia_client"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/tautulli:/config
