@@ -2,8 +2,7 @@
   plex:
     container_name: plex
     restart: always
-    image: lsioarmhf/plex
-    # network_mode: "host"
+    image: plexinc/pms-docker
     network_mode: "service:pia_client"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/plex:/config
