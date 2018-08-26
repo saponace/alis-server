@@ -1,6 +1,7 @@
   # Finances management
   firefly_iii_app:
     image: jc5x/firefly-iii
+    container_name: firefly_iii_app
     environment:
       - FF_DB_HOST=firefly_iii_db
       - FF_DB_NAME=%DB_NAME%

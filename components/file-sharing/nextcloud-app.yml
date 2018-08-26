@@ -1,7 +1,7 @@
   # Files sharing
   nextcloud_app:
     image: nextcloud
-    name: nextcloud_app
+    container_name: nextcloud_app
     restart: always
     links:
       - nextcloud_db

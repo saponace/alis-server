@@ -1,7 +1,7 @@
   # Nexcloud database
   nextcloud_db:
-    name: nextcloud_db
     image: mariadb
+    container_name: nextcloud_db
     restart: always
     networks:
       - nextcloud_net
