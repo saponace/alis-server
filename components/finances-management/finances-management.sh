@@ -15,7 +15,7 @@ declare -A  firefly_iii_app_docker_compose_template_mappings=(
     ["DB_PWD"]=${db_pwd}
     ["APP_KEY"]=${app_key}
 )
-process_docker_compose_service finances-management/firefly-iii_app "$(declare -p firefly_iii_app_docker_compose_template_mappings)"
+process_docker_compose_service finances-management/firefly-iii-app "$(declare -p firefly_iii_app_docker_compose_template_mappings)"
 
 declare -A  firefly_iii_db_docker_compose_template_mappings=(
     ["DB_NAME"]=${db_name}
