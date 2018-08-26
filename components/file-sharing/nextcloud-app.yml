@@ -4,7 +4,7 @@
     name: nextcloud_app
     restart: always
     links:
-zsh:1: command not found: n
+      - nextcloud_db
     networks:
       - nextcloud_net
     volumes:
