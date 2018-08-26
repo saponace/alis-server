@@ -4,7 +4,9 @@
     name: nextcloud_app
     restart: always
     links:
-      - nextcloud_db
+zsh:1: command not found: n
+    networks:
+      - nextcloud_net
     volumes:
       - %NEXTCLOUD_DATA%/app:/var/www/html
     labels:

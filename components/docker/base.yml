@@ -4,6 +4,8 @@ networks:
   traefik_proxy:
   firefly_iii_net:
     driver: bridge
+  nextcloud_net:
+    driver: bridge
   default:
     driver: bridge
 services:

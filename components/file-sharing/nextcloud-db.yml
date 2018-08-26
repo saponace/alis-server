@@ -3,6 +3,8 @@
     name: nextcloud_db
     image: mariadb
     restart: always
+    networks:
+      - nextcloud_net
     volumes:
       - %NEXTCLOUD_DATA%/db:/var/lib/mysql
     environment:
