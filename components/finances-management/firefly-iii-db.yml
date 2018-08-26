@@ -1,4 +1,4 @@
-  # Finances management
+  # Firefly iii database
   firefly_iii_db:
     image: "mariadb:latest"
     environment:

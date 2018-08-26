@@ -1,5 +1,5 @@
   # Finances management
-  firefly_iii:
+  firefly_iii_app:
     image: jc5x/firefly-iii
     environment:
       - FF_DB_HOST=firefly_iii_db
