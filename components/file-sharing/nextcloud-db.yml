@@ -1,0 +1,12 @@
+  # Nexcloud database
+  nextcloud_db:
+    name: nextcloud_db
+    image: mariadb
+    restart: always
+    volumes:
+      - %NEXTCLOUD_DATA%/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=%DB_ROOT_PWD%
+      - MYSQL_PASSWORD=%DB_PWD%
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud

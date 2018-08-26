@@ -1,0 +1,15 @@
+  # Files sharing
+  nextcloud_app:
+    image: nextcloud
+    name: nextcloud_app
+    restart: always
+    links:
+      - nextcloud_db
+    volumes:
+      - %NEXTCLOUD_DATA%/app:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=nextcloud"
+      - "traefik.frontend.rule=Host:nextcloud.%DOMAIN_NAME%"
+      - "traefik.port=80"
+      - "traefik.docker.network=traefik_proxy"
