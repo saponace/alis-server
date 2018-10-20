@@ -25,9 +25,10 @@ sudo systemctl enable docker
 
 # Merge all docker-compose parts into final docker-compose.yml
    mkdir -p /opt
-   docker_compose_file="/opt/docker-compose.yml"
+   docker_compose_dir="/opt/server-apps-suite"
+   docker_compose_file="${docker_compose_dir}/docker-compose.yml"
 
-   sudo touch ${docker_compose_file}
+   sudo mkdir ${docker_compose_dir}
    sudo chown ${username}:${username} ${docker_compose_file}
 
    cat components/docker/base.yml >> ${docker_compose_file}
@@ -36,3 +37,24 @@ sudo systemctl enable docker
       cat ${part} >> ${docker_compose_file}
    done
 
+
+# Create systemd unit file and start docker-compose at bootup
+sudo su -c " echo '[Unit]
+Description=Docker compose application suite Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+WorkingDirectory=/opt/server-apps-suite
+ExecStart=/usr/local/bin/docker-compose up
+ExecStop=/usr/local/bin/docker-compose down
+TimeoutStartSec=0
+Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
+' >> /etc/systemd/system/server-apps-suite.service"
+
+sudo systemctl enable server-apps-suite
