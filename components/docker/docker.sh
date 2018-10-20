@@ -29,7 +29,7 @@ sudo systemctl enable docker
    docker_compose_file="${docker_compose_dir}/docker-compose.yml"
 
    sudo mkdir ${docker_compose_dir}
-   sudo chown ${username}:${username} ${docker_compose_file}
+   sudo chown ${username}:${username} ${docker_compose_dir}
 
    cat components/docker/base.yml >> ${docker_compose_file}
 
