@@ -23,13 +23,14 @@ sudo systemctl enable docker
     process_docker_compose_service docker/portainer "$(declare -p portainer_docker_compose_template_mappings)"
 
 
-mkdir -p /opt
-docker_compose_file="/opt/docker-compose.yml"
-sudo chown ${username}:${username} ${docker_compose_file}
+# Merge all docker-compose parts into final docker-compose.yml
+   mkdir -p /opt
+   docker_compose_file="/opt/docker-compose.yml"
 
-cat components/docker/base.yml >> ${docker_compose_file}
+   cat components/docker/base.yml >> ${docker_compose_file}
+   sudo chown ${username}:${username} ${docker_compose_file}
 
-for part in ${TEMP_DOCKER_COMPOSE_PARTS_DIR}/*; do
-    cat ${part} >> ${docker_compose_file}
-done
+   for part in ${TEMP_DOCKER_COMPOSE_PARTS_DIR}/*; do
+      cat ${part} >> ${docker_compose_file}
+   done
 
