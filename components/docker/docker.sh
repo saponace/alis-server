@@ -45,9 +45,9 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-WorkingDirectory=/opt/server-apps-suite
-ExecStart=/usr/local/bin/docker-compose up
-ExecStop=/usr/local/bin/docker-compose down
+WorkingDirectory=${docker_compose_dir}
+ExecStart=$(which docker-compose) up
+ExecStop=$(which docker-compose) down
 TimeoutStartSec=0
 Restart=on-failure
 StartLimitIntervalSec=60
