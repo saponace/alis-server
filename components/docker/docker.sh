@@ -25,10 +25,11 @@ sudo systemctl enable docker
 
 mkdir -p /opt
 docker_compose_file="/opt/docker-compose.yml"
+sudo chown ${username}:${username} ${docker_compose_file}
 
-sudo cat components/docker/base.yml >> ${docker_compose_file}
+cat components/docker/base.yml >> ${docker_compose_file}
 
 for part in ${TEMP_DOCKER_COMPOSE_PARTS_DIR}/*; do
-    sudo cat ${part} >> ${docker_compose_file}
+    cat ${part} >> ${docker_compose_file}
 done
 
