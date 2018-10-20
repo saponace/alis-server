@@ -55,6 +55,6 @@ StartLimitBurst=3
 
 [Install]
 WantedBy=multi-user.target
-' >> /etc/systemd/system/server-apps-suite.service"
+' > /etc/systemd/system/server-apps-suite.service"
 
 sudo systemctl enable server-apps-suite
