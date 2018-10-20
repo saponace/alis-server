@@ -40,7 +40,7 @@ sudo systemctl enable docker
 
 # Create systemd unit file and start docker-compose at bootup
 sudo su -c " echo '[Unit]
-Description=Docker compose application suite Service
+Description=Server apps suite (docker-compose) Service
 Requires=docker.service
 After=docker.service
 
