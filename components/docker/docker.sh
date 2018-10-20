@@ -23,7 +23,8 @@ sudo systemctl enable docker
     process_docker_compose_service docker/portainer "$(declare -p portainer_docker_compose_template_mappings)"
 
 
-docker_compose_file="/tmp/docker-compose.yml"
+mkdir -p /opt
+docker_compose_file="/opt/docker-compose.yml"
 
 cat components/docker/base.yml >> ${docker_compose_file}
 
