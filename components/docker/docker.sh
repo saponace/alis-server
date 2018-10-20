@@ -50,7 +50,7 @@ ExecStart=$(which docker-compose) up
 ExecStop=$(which docker-compose) down
 TimeoutStartSec=0
 Restart=on-failure
-StartLimitIntervalSec=60
+StartLimitInterval=60
 StartLimitBurst=3
 
 [Install]
