@@ -22,4 +22,3 @@
       - "traefik.backend=fireflyiii"
       - "traefik.frontend.rule=Host:fireflyiii.%DOMAIN_NAME%"
       - "traefik.port=80"
-      - "traefik.docker.network=traefik_proxy"

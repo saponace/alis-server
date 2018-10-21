@@ -15,4 +15,3 @@
       - "traefik.backend=ombi"
       - "traefik.frontend.rule=Host:ombi.%DOMAIN_NAME%"
       - "traefik.port=3579"
-      - "traefik.docker.network=traefik_proxy"

@@ -1,7 +1,6 @@
 version: "3"
 networks:
   vpn_client_net:
-  traefik_proxy:
   firefly_iii_net:
     driver: bridge
   nextcloud_net:

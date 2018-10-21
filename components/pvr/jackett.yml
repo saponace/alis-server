@@ -14,7 +14,6 @@
       - "traefik.backend=jackett"
       - "traefik.frontend.rule=Host:jackett.%DOMAIN_NAME%"
       - "traefik.port=9117"
-      - "traefik.docker.network=traefik_proxy"
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

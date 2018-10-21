@@ -14,4 +14,3 @@
       - "traefik.backend=nextcloud"
       - "traefik.frontend.rule=Host:nextcloud.%DOMAIN_NAME%"
       - "traefik.port=80"
-      - "traefik.docker.network=traefik_proxy"

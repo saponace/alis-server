@@ -18,4 +18,3 @@
       - "traefik.backend=homeassistant"
       - "traefik.frontend.rule=Host:homeassistant.%DOMAIN_NAME%"
       - "traefik.port=8123"
-      - "traefik.docker.network=traefik_proxy"

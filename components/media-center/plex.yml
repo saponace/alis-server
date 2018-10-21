@@ -28,4 +28,3 @@
       - "traefik.backend=plex"
       - "traefik.frontend.rule=Host:plex.%DOMAIN_NAME%"
       - "traefik.port=32400"
-      - "traefik.docker.network=traefik_proxy"
