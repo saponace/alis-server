@@ -1,5 +1,0 @@
-[Unit]
-Description=VPN connection check
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/pia-tools --check
