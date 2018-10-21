@@ -5,9 +5,9 @@
     network_mode: "service:pia_client"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - %CONTAINERS_CONFIG_DIR%/transmission:/config \
+      - %CONTAINERS_CONFIG_DIR%/transmission:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads
-      - %TORRENTS_BLACKHOLE_DIR%:/watch \
+      - %TORRENTS_BLACKHOLE_DIR%:/watch
     labels:
       - "traefik.enable=true"
       - "traefik.backend=transmission"
@@ -18,5 +18,3 @@
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
-# -p 51413:51413 \
-# -p 51413:51413/udp \

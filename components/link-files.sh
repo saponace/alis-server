@@ -50,7 +50,5 @@ function link_homedir_files(){
 
 # Generic config files
     link_homedir_files "${homedir_dotfiles}"
-# # Server specific config files
-#     link_homedir_files "${additional_config_files_dir}/homedir"
 # Scripts
     sudo ${link_command} ${scripts_dir}/* /usr/bin/
