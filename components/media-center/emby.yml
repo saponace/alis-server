@@ -3,6 +3,7 @@
     container_name: emby
     restart: always
     image: emby/embyserver
+    network_mode: "service:pia_client"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/emby:/config
       - %MEDIA_DIR%:/mnt/share1
