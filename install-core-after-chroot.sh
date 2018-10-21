@@ -28,6 +28,7 @@ root_partition="${install_disk}3"
     # Configure locales
         echo -e "\n${locales_to_enable}" >> /etc/locale.gen
         locale-gen
+        locale_zone_path="/usr/share/zoneinfo/${timezone}"
         ln -sf ${locale_zone_path} /etc/localtime
         echo "KEYMAP=${keymap}" > /etc/vconsole.conf
 
