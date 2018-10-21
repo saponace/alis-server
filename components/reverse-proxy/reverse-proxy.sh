@@ -19,5 +19,5 @@
         ["LETS_ENCRYPT_EMAIL"]="${lets_encrypt_email}"
         ["HTPASSWD"]="${username}:${htpasswd}"
         )
-    fill_template_file ${COMPONENTS_DIR}/reverse-proxy/traefik.toml /tmp/traefik.toml "$(declare -p traefik_config_mappings)"
+    fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/traefik.toml /tmp/traefik.toml "$(declare -p traefik_config_mappings)"
     sudo mv /tmp/traefik.toml ${CONTAINERS_DATA_DIR}/traefik/traefik.toml
