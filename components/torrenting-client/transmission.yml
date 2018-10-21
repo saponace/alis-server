@@ -6,8 +6,8 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - %CONTAINERS_CONFIG_DIR%/transmission:/config \
-      - %DOWNLOADS_COMPLETE_DIR%:/downloads
-      - %TORRENTS_BLACKHOLE%:/watch \
+      - %TORRENTS_DOWNLOADS_DIR%:/downloads
+      - %TORRENTS_BLACKHOLE_DIR%:/watch \
     labels:
       - "traefik.enable=true"
       - "traefik.backend=transmission"

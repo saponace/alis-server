@@ -4,7 +4,7 @@
     container_name: "sonarr"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/sonarr:/config
-      - %DOWNLOADS_COMPLETE_DIR%:/downloads
+      - %TORRENTS_DOWNLOADS_COMPLETE_DIR%:/downloads
       - %TV_DIR%:/tv
       - "/etc/localtime:/etc/localtime:ro"
       - %DOCKER_SHARED_DIR%:/shared
