@@ -9,4 +9,4 @@ process_docker_compose_service torrenting-client/transmission "$(declare -p tran
 
 # Create transmission configuration file
     sudo mkdir -p ${CONTAINERS_CONFIG_DIR}/transmission/
-    sudo cp ${COMPONENTS_DIR}/transmission/config/settings.json ${CONTAINERS_CONFIG_DIR}/transmission/
+    sudo cp ${COMPONENTS_DIR}/torrenting-client/config/settings.json ${CONTAINERS_CONFIG_DIR}/transmission/
