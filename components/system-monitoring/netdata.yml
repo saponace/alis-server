@@ -16,6 +16,5 @@
       - "traefik.backend=netdata"
       - "traefik.frontend.rule=Host:netdata.%DOMAIN_NAME%"
       - "traefik.port=19999"
-      - "traefik.docker.network=traefik_proxy"
     environment:
       - PGID=%DOCKER_GROUP_ID_FROM_HOST%

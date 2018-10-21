@@ -13,7 +13,6 @@
       - "traefik.backend=transmission"
       - "traefik.frontend.rule=Host:transmission.%DOMAIN_NAME%"
       - "traefik.port=9091"
-      - "traefik.docker.network=traefik_proxy"
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
