@@ -10,7 +10,7 @@
     volumes:
       - %NEXTCLOUD_DATA%/app:/var/www/html
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=nextcloud"
-      - "traefik.frontend.rule=Host:nextcloud.%DOMAIN_NAME%"
-      - "traefik.port=80"
+      - traefik.enable=true
+      - traefik.backend=nextcloud
+      - traefik.frontend.rule=Host:nextcloud.%DOMAIN_NAME%
+      - traefik.port=80

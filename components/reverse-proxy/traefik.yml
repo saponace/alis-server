@@ -9,17 +9,16 @@
       - default
       - vpn_client_net
     ports:
-      - "80:80"
-      - "443:443"
-      # - "XXXX:8080"
+      - 80:80
+      - 443:443
     environment:
       - CLOUDFLARE_EMAIL=%CLOUDFLARE_EMAIL%
       - CLOUDFLARE_API_KEY=%CLOUDFLARE_API_KEY%
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=traefik"
-      - "traefik.frontend.rule=Host:traefik.%DOMAIN_NAME%"
-      - "traefik.port=8080"
+      - traefik.enable=true
+      - traefik.backend=traefik
+      - traefik.frontend.rule=Host:traefik.%DOMAIN_NAME%
+      - traefik.port=8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - %CONTAINERS_DATA_DIR%/traefik:/etc/traefik

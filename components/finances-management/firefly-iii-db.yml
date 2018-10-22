@@ -1,6 +1,6 @@
   # Firefly iii database
   firefly_iii_db:
-    image: "mariadb:latest"
+    image: mariadb:latest
     container_name: firefly_iii_db
     environment:
       - MYSQL_DATABASE=%DB_NAME%

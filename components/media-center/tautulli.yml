@@ -3,7 +3,7 @@
     container_name: tautulli
     restart: always
     image: tautulli/tautulli
-    network_mode: "service:pia_client"
+    network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/tautulli:/config
       - /plexlogs:/logs:ro # TODO
@@ -12,7 +12,7 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=tautulli"
-      - "traefik.frontend.rule=Host:tautulli.%DOMAIN_NAME%"
-      - "traefik.port=8181"
+      - traefik.enable=true
+      - traefik.backend=tautulli
+      - traefik.frontend.rule=Host:tautulli.%DOMAIN_NAME%
+      - traefik.port=8181

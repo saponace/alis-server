@@ -4,15 +4,13 @@
     restart: always
     image: lsiocommunity/organizr
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=organizr"
-      - "traefik.frontend.rule=Host:organizr.%DOMAIN_NAME%"
-      - "traefik.port=80"
+      - traefik.enable=true
+      - traefik.backend=organizr
+      - traefik.frontend.rule=Host:organizr.%DOMAIN_NAME%
+      - traefik.port=80
     volumes:
       - %CONTAINERS_CONFIG_DIR%/organizr:/config
       - %DOCKER_SHARED_DIR%:/shared
-    # ports:
-      # - "####:80"
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

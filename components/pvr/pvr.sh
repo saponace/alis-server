@@ -2,9 +2,6 @@
 # Personal video recording
 #-------------------------------------------------
 
-# Load ports variables
-source components/pvr/variables.sh
-
 # Sonarr: automated TV shows download
     declare -A  sonarr_docker_compose_template_mappings=(
     )

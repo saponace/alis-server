@@ -3,7 +3,7 @@
     container_name: emby
     restart: always
     image: emby/embyserver
-    network_mode: "service:pia_client"
+    network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/emby:/config
       - %MEDIA_DIR%:/mnt/share1
@@ -12,7 +12,7 @@
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=emby"
-      - "traefik.frontend.rule=Host:emby.%DOMAIN_NAME%"
-      - "traefik.port=8096"
+      - traefik.enable=true
+      - traefik.backend=emby
+      - traefik.frontend.rule=Host:emby.%DOMAIN_NAME%
+      - traefik.port=8096

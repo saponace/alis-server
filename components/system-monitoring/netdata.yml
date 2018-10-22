@@ -12,9 +12,9 @@
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=netdata"
-      - "traefik.frontend.rule=Host:netdata.%DOMAIN_NAME%"
-      - "traefik.port=19999"
+      - traefik.enable=true
+      - traefik.backend=netdata
+      - traefik.frontend.rule=Host:netdata.%DOMAIN_NAME%
+      - traefik.port=19999
     environment:
       - PGID=%DOCKER_GROUP_ID_FROM_HOST%

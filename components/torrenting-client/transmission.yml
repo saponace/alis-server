@@ -2,17 +2,17 @@
     container_name: transmission
     image: linuxserver/transmission
     restart: always
-    network_mode: "service:pia_client"
+    network_mode: service:pia_client
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - %CONTAINERS_CONFIG_DIR%/transmission:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads
       - %TORRENTS_BLACKHOLE_DIR%:/watch
     labels:
-      - "traefik.enable=true"
-      - "traefik.backend=transmission"
-      - "traefik.frontend.rule=Host:transmission.%DOMAIN_NAME%"
-      - "traefik.port=9091"
+      - traefik.enable=true
+      - traefik.backend=transmission
+      - traefik.frontend.rule=Host:transmission.%DOMAIN_NAME%
+      - traefik.port=9091
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
