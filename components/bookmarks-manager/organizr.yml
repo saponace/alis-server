@@ -1,13 +1,8 @@
   # Bookmarks manager
   organizr:
     container_name: organizr
-    restart: always
     image: lsiocommunity/organizr
-    labels:
-      - traefik.enable=true
-      - traefik.backend=organizr
-      - traefik.frontend.rule=Host:organizr.%DOMAIN_NAME%
-      - traefik.port=80
+    restart: always
     volumes:
       - %CONTAINERS_CONFIG_DIR%/organizr:/config
       - %DOCKER_SHARED_DIR%:/shared
@@ -15,4 +10,8 @@
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
-
+    labels:
+      - traefik.enable=true
+      - traefik.backend=organizr
+      - traefik.frontend.rule=Host:organizr.%DOMAIN_NAME%
+      - traefik.port=80

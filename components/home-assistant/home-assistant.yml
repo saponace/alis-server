@@ -1,14 +1,13 @@
   # Smart home hub
   homeassistant:
     container_name: homeassistant
-    restart: always
     image: homeassistant/home-assistant
-
+    restart: always
+    privileged: true
     volumes:
       - %CONTAINERS_CONFIG_DIR%/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
       - %DOCKER_SHARED_DIR%:/shared
-    privileged: true
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

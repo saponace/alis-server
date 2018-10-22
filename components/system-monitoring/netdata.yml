@@ -1,20 +1,20 @@
-  # Complete server monitoring tool
+  # Server monitoring
   netdata:
-    image: netdata/netdata
     container_name: netdata
+    image: netdata/netdata
     restart: always
-    cap_add:
-      - SYS_PTRACE
     security_opt:
       - apparmor:unconfined
+    cap_add:
+      - SYS_PTRACE
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - PGID=%DOCKER_GROUP_ID_FROM_HOST%
     labels:
       - traefik.enable=true
       - traefik.backend=netdata
       - traefik.frontend.rule=Host:netdata.%DOMAIN_NAME%
       - traefik.port=19999
-    environment:
-      - PGID=%DOCKER_GROUP_ID_FROM_HOST%

@@ -1,8 +1,8 @@
   # Media center
   plex:
     container_name: plex
-    restart: always
     image: plexinc/pms-docker
+    restart: always
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/plex:/config

@@ -1,21 +1,21 @@
   # Movies PVR
   radarr:
-    image: linuxserver/radarr
     container_name: radarr
+    image: linuxserver/radarr
+    restart: always
+    network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/radarr:/config
       - %TORRENTS_DOWNLOADS_COMPLETE_DIR%:/downloads
       - %MOVIES_DIR%:/movies
       - /etc/localtime:/etc/localtime:ro
       - %DOCKER_SHARED_DIR%:/shared
-    restart: always
-    network_mode: service:pia_client
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
       - traefik.backend=radarr
       - traefik.frontend.rule=Host:radarr.%DOMAIN_NAME%
       - traefik.port=7878
-    environment:
-      - PUID=%DOCKER_USER_ID%
-      - PGID=%DOCKER_GROUP_ID%
-      - TZ=%TIMEZONE%

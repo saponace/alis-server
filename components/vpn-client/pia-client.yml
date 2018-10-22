@@ -1,7 +1,8 @@
-  # VPN
+  # VPN client
   pia_client:
     image: openvpn-client
     container_name: pia_client
+    restart: always
     cap_add:
         - NET_ADMIN
     devices:
@@ -13,4 +14,3 @@
         - /pia-credentials:/config/credentials
     environment:
         - REGION=France
-    restart: always

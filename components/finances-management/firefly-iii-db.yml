@@ -1,13 +1,13 @@
   # Firefly iii database
   firefly_iii_db:
-    image: mariadb:latest
     container_name: firefly_iii_db
+    image: mariadb:latest
+    networks:
+      - firefly_iii_net
+    volumes:
+      - %FIREFLY_DATA%/db:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=%DB_NAME%
       - MYSQL_USER=%DB_USERNAME%
       - MYSQL_PASSWORD=%DB_PWD%
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
-    networks:
-      - firefly_iii_net
-    volumes:
-      - %FIREFLY_DATA%/db:/var/lib/mysql

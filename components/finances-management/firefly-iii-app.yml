@@ -1,7 +1,14 @@
   # Finances management
   firefly_iii_app:
-    image: jc5x/firefly-iii
     container_name: firefly_iii_app
+    image: jc5x/firefly-iii
+    links:
+      - firefly_iii_db
+    networks:
+      - firefly_iii_net
+    volumes:
+      - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
+      - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
     environment:
       - FF_DB_HOST=firefly_iii_db
       - FF_DB_NAME=%DB_NAME%
@@ -10,13 +17,6 @@
       - FF_APP_KEY=%APP_KEY%
       - FF_APP_ENV=local
       - TZ=%TIMEZONE%
-    links:
-      - firefly_iii_db
-    networks:
-      - firefly_iii_net
-    volumes:
-      - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
-      - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
     labels:
       - traefik.enable=true
       - traefik.backend=fireflyiii

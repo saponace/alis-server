@@ -1,20 +1,20 @@
   # Torrent trackers proxy
   jackett:
-    image: linuxserver/jackett
     container_name: jackett
+    image: linuxserver/jackett
+    restart: always
+    network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/jackett:/config
       - %TORRENTS_BLACKHOLE_DIR%:/downloads
       - /etc/localtime:/etc/localtime:ro
       - %DOCKER_SHARED_DIR%:/shared
-    restart: always
-    network_mode: service:pia_client
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
       - traefik.backend=jackett
       - traefik.frontend.rule=Host:jackett.%DOMAIN_NAME%
       - traefik.port=9117
-    environment:
-      - PUID=%DOCKER_USER_ID%
-      - PGID=%DOCKER_GROUP_ID%
-      - TZ=%TIMEZONE%

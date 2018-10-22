@@ -1,8 +1,8 @@
   # Provides lots of statistics on plex
   tautulli:
     container_name: tautulli
-    restart: always
     image: tautulli/tautulli
+    restart: always
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/tautulli:/config

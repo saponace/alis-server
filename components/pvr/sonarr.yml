@@ -1,21 +1,21 @@
   # TV shows PVR
   sonarr:
-    image: linuxserver/sonarr
     container_name: sonarr
+    image: linuxserver/sonarr
+    restart: always
+    network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/sonarr:/config
       - %TORRENTS_DOWNLOADS_COMPLETE_DIR%:/downloads
       - %TV_DIR%:/tv
       - /etc/localtime:/etc/localtime:ro
       - %DOCKER_SHARED_DIR%:/shared
-    restart: always
-    network_mode: service:pia_client
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
       - traefik.backend=sonarr
       - traefik.frontend.rule=Host:sonarr.%DOMAIN_NAME%
       - traefik.port=8989
-    environment:
-      - PUID=%DOCKER_USER_ID%
-      - PGID=%DOCKER_GROUP_ID%
-      - TZ=%TIMEZONE%
