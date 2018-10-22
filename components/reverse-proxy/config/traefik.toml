@@ -1,9 +1,11 @@
 logLevel = "INFO" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 defaultEntryPoints = ["http", "https"]
 
-# WEB UI of Traefik
+
+# Traefik web UI
 [web]
 address = ":8080"
+
 
 [entryPoints]
   [entryPoints.http]
@@ -14,9 +16,6 @@ address = ":8080"
   address = ":443"
     [entryPoints.https.tls]
 
-[file]
-  watch = true
-  filename = "/etc/traefik/rules.toml"
 
 # Let's encrypt configuration
 [acme]
@@ -31,6 +30,7 @@ caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 
 [[acme.domains]]
    main = "*.%DOMAIN_NAME%"
+
 
 # Connection to docker host system (docker.sock)
 [docker]
