@@ -25,9 +25,9 @@ sudo su -c "echo '
 # Enable the service
     sudo systemctl enable nfs-server.service
 
-    # Whitelist NFS port in the firewall (and make sure the firewall is installed)
+# Whitelist NFS port in the firewall (and make sure the firewall is installed)
     ${INSTALL} ufw
-    sudo ufw allow 2049
+    sudo ufw allow NFS
 
 
 # Client mount command (as root):

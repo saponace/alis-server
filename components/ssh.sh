@@ -28,8 +28,9 @@ function add_sshd_config(){
     add_sshd_config "Subsystem sftp /usr/lib/ssh/sftp-server"
 
 # Security
-    # Whitelist SSH port on the firewall
-        sudo ufw allow 22
+    # Whitelist SSH port in the firewall (and make sure the firewall is installed)
+        ${INSTALL} ufw
+        sudo ufw allow SSH
     # Disable ssh connection to root account
         add_sshd_config "PermitRootLogin no"
     # Disable authentication via password, require ssh key

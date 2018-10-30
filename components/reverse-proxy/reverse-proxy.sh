@@ -21,3 +21,8 @@
         )
     fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/traefik.toml /tmp/traefik.toml "$(declare -p traefik_config_mappings)"
     sudo mv /tmp/traefik.toml ${CONTAINERS_DATA_DIR}/traefik/traefik.toml
+
+
+# Whitelist HTTP and HTTPS port in the firewall (and make sure the firewall is installed)
+    ${INSTALL} ufw
+    sudo ufw allow "WWW FULL"
