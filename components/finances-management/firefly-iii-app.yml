@@ -19,6 +19,6 @@
       - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
-      - traefik.backend=fireflyiii
-      - traefik.frontend.rule=Host:fireflyiii.%DOMAIN_NAME%
+      - traefik.backend=firefly
+      - traefik.frontend.rule=Host:firefly.%DOMAIN_NAME%
       - traefik.port=80
