@@ -31,6 +31,16 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
 
 # Create/update the database
     sudo systemctl start docker
+    # Start the temporary databse container
+        sudo docker run -d \
+        --name firefly_iii_db \
+        -v ${data_dir}/db:/var/lib/mysql \
+        -e MYSQL_DATABASE=${db_name} \
+        -e MYSQL_USER=${db_username} \
+        -e MYSQL_PASSWORD=${db_pwd} \
+        -e MYSQL_RANDOM_ROOT_PASSWORD=yes \
+        mariadb:${mariadb_version}
+
     # Start the temporary application container
         sudo docker run -d \
         --name firefly_iii_app \
@@ -46,15 +56,8 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
         -p 80:80 \
         jc5x/firefly-iii:${firefly_iii_version}
 
-    # Start the temporary databse container
-        sudo docker run -d \
-        --name firefly_iii_db \
-        -v ${data_dir}/db:/var/lib/mysql \
-        -e MYSQL_DATABASE=${db_name} \
-        -e MYSQL_USER=${db_username} \
-        -e MYSQL_PASSWORD=${db_pwd} \
-        -e MYSQL_RANDOM_ROOT_PASSWORD=yes \
-        mariadb:${mariadb_version}
+        # Wait for a while to make sure both containers are started
+        sleep 10
 
     # Execute the databse creation/migration commands
         sudo docker exec -it firefly_iii_app php artisan migrate --seed
