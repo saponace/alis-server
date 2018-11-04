@@ -67,4 +67,6 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
 
     # Stop the temporary containers
         sudo docker container stop firefly_iii_app
+        sudo docker rm firefly_iii_app
         sudo docker container stop firefly_iii_db
+        sudo docker rm firefly_iii_db
