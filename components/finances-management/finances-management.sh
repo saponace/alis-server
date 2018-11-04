@@ -60,6 +60,7 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
         sleep 10
 
     # Execute the databse creation/migration commands
+    # Calling a HTTP GET on __FIREFLY_URL__/install should be enough, but it does not seem to work
         sudo docker exec -it firefly_iii_app php artisan migrate --seed
         sudo docker exec -it firefly_iii_app php artisan firefly:upgrade-database
         sudo docker exec -it firefly_iii_app php artisan firefly:verify
