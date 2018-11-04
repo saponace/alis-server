@@ -6,6 +6,7 @@
       - firefly_iii_db
     networks:
       - firefly_iii_net
+      - default
     volumes:
       - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
       - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
@@ -17,6 +18,7 @@
       - FF_APP_KEY=%APP_KEY%
       - FF_APP_ENV=local
       - TZ=%TIMEZONE%
+      - TRUSTED_PROXIES=**
     labels:
       - traefik.enable=true
       - traefik.backend=firefly
