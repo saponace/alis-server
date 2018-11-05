@@ -7,7 +7,10 @@ INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"
-ADDITIONAL_CONFIG_FILES_DIR="files-to-deploy/additional-config-files"
+
+HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
+ADDITIONAL_CONFIG_FILES_DIR_SOURCE="files-to-deploy/additional-config-files"
+HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
 
 
 # Prevent sudo timeout
