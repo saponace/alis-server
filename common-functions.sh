@@ -30,7 +30,7 @@ function clone_permission_and_ownership(){
     sudo chmod --reference="$1" "$2"
 }
 
-# Link a file and make sur the directory of the link exists
+# Link a file and make sure the directory of the link exists
 # $1: The source file
 # $2: The target directory
 function create_link (){
