@@ -61,10 +61,12 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
 
     # Execute the databse creation/migration commands
     # Calling a HTTP GET on __FIREFLY_URL__/install should be enough, but it does not seem to work
+        echo "Executing database creation/migration ..."
         sudo docker exec -it firefly_iii_app php artisan migrate --seed
         sudo docker exec -it firefly_iii_app php artisan firefly:upgrade-database
         sudo docker exec -it firefly_iii_app php artisan firefly:verify
         sudo docker exec -it firefly_iii_app php artisan passport:install > /dev/null
+        echo "Database creation/migration executed !"
 
     # Stop the temporary containers
         sudo docker container stop firefly_iii_app
