@@ -19,7 +19,7 @@
     ${INSTALL} neovim
     ${INSTALL} python-neovim
     # Ctags, tags index generating. Used by nvim plugin Tagbar
-        ${INSTALL} tagbar
+        ${INSTALL} neovim-tagbar
     # Link config files
         create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${HOMEDIR_DOTFILES_DESTINATION}/.config/
     # Install nvim plugins
