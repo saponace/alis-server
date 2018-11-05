@@ -34,8 +34,8 @@ function clone_permission_and_ownership(){
 # $1: The source file
 # $2: The target directory
 function create_link (){
-    sudo mkdir -p $2
-    sudo ln -snf $(readlink -f "$1") $2
+    mkdir -p $2
+    ln -snf $(readlink -f "$1") $2
 }
 
 # Fill a template file from a variables mapping
