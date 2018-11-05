@@ -8,9 +8,6 @@ COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"
 
-HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
-HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
-
 
 # Prevent sudo timeout
 sudo -v
@@ -34,6 +31,10 @@ then
   echo "Error: you are not ${username} as defined in the config file. Please execute this script as ${username}."
   exit 1
 fi
+
+HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
+HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
+
 
 
 # Execute a component file
