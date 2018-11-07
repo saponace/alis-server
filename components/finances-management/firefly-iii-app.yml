@@ -1,7 +1,7 @@
   # Finances management
   firefly_iii_app:
     container_name: firefly_iii_app
-    image: jc5x/firefly-iii:release-4.7.8
+    image: jc5x/firefly-iii:%VERSION%
     links:
       - firefly_iii_db
     networks:
