@@ -7,10 +7,6 @@ ${INSTALL} docker docker-compose
 sudo systemctl enable docker
 
 
-# Watchtower: Watch containers for new versions and seamlessly update
-    declare -A  watchtower_docker_compose_template_mappings=(
-    )
-    process_docker_compose_service docker/watchtower "$(declare -p watchtower_docker_compose_template_mappings)"
 
 # Portainer: Docker containers management via Web UI
     declare -A  portainer_docker_compose_template_mappings=(

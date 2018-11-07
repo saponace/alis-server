@@ -1,7 +1,7 @@
   # Bookmarks manager
   organizr:
     container_name: organizr
-    image: lsiocommunity/organizr
+    image: lsiocommunity/organizr:115
     restart: always
     volumes:
       - %CONTAINERS_CONFIG_DIR%/organizr:/config

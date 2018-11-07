@@ -1,7 +1,7 @@
   # TV shows PVR
   sonarr:
     container_name: sonarr
-    image: linuxserver/sonarr
+    image: linuxserver/sonarr:162
     restart: always
     network_mode: service:pia_client
     volumes:

@@ -1,7 +1,7 @@
   # Smart home hub
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant
+    image: homeassistant/home-assistant:0.81.6
     restart: always
     privileged: true
     volumes:

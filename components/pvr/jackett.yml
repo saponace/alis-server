@@ -1,7 +1,7 @@
   # Torrent trackers proxy
   jackett:
     container_name: jackett
-    image: linuxserver/jackett
+    image: linuxserver/jackett:317
     restart: always
     network_mode: service:pia_client
     volumes:

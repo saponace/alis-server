@@ -1,7 +1,7 @@
   # Manage docker conainers via a web UI
   portainer:
     container_name: portainer
-    image: portainer/portainer
+    image: portainer/portainer:1.19.2
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

@@ -1,7 +1,7 @@
   # Media center
   emby:
     container_name: emby
-    image: emby/embyserver
+    image: emby/embyserver:3.6.0.61
     restart: always
     network_mode: service:pia_client
     volumes:

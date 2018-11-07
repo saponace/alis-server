@@ -1,7 +1,7 @@
   # Movies PVR
   radarr:
     container_name: radarr
-    image: linuxserver/radarr
+    image: linuxserver/radarr:137
     restart: always
     network_mode: service:pia_client
     volumes:

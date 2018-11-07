@@ -1,7 +1,7 @@
   # Firefly iii database
   firefly_iii_db:
     container_name: firefly_iii_db
-    image: mariadb:latest
+    image: mariadb:10.3.10
     networks:
       - firefly_iii_net
     volumes:
