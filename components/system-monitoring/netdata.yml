@@ -1,7 +1,7 @@
   # Server monitoring
   netdata:
     container_name: netdata
-    image: netdata/netdatav1.11.0
+    image: netdata/netdata:v1.11.0
     restart: always
     security_opt:
       - apparmor:unconfined
