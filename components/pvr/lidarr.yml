@@ -6,8 +6,10 @@
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/lidarr:/config
-      - %TORRENTS_DOWNLOADS_COMPLETE_DIR%:/downloads
+      - %TORRENTS_DOWNLOADS_DIR%:/downloads
       - %MUSIC_DIR%:/music
+      - /etc/localtime:/etc/localtime:ro
+      - %DOCKER_SHARED_DIR%:/shared
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

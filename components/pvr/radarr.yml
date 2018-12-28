@@ -6,7 +6,7 @@
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/radarr:/config
-      - %TORRENTS_DOWNLOADS_COMPLETE_DIR%:/downloads
+      - %TORRENTS_DOWNLOADS_DIR%:/downloads
       - %MOVIES_DIR%:/movies
       - /etc/localtime:/etc/localtime:ro
       - %DOCKER_SHARED_DIR%:/shared

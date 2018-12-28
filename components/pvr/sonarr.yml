@@ -6,7 +6,7 @@
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/sonarr:/config
-      - %TORRENTS_DOWNLOADS_COMPLETE_DIR%:/downloads
+      - %TORRENTS_DOWNLOADS_DIR%:/downloads
       - %TV_DIR%:/tv
       - /etc/localtime:/etc/localtime:ro
       - %DOCKER_SHARED_DIR%:/shared
