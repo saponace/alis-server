@@ -1,4 +1,4 @@
-  # PiHole
+  # Pi-hole
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
