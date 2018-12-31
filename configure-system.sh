@@ -96,6 +96,7 @@ install_component system-monitoring
 install_component pvr
 install_component bookmarks-manager
 install_component finances-management
+install_component pihole
 install_component docker
 
 sync
