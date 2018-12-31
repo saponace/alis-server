@@ -16,6 +16,9 @@ Gateway=${lan_gateway_ip_address}
 DNS=${dns_server_ip_address}
 ' > /etc/systemd/network/10-static-interface.network"
 
+# Prevent systemd-resolved from binding to port 53 (or else, it prevents pihole from starting)
+sudo su -c "echo 'DNSStubListener=no' >> /etc/systemd/resolved.conf"
+
 # Enabble networking and resolving daemons
     sudo systemctl enable systemd-networkd
     sudo systemctl start systemd-networkd

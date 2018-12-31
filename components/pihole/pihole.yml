@@ -1,0 +1,34 @@
+  # PiHole
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    restart: always
+    domainname: %DOMAIN_NAME%
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    ports:
+      - 0.0.0.0:53:53/tcp
+      - 0.0.0.0:53:53/udp
+      - 0.0.0.0:67:67/udp
+      - 0.0.0.0:8053:80/tcp
+    volumes:
+      - %PIHOLE_HOME%/pihole.log:/var/log/pihole.log
+      - %PIHOLE_HOME%/etc-pihole/:/etc/pihole/
+      - %PIHOLE_HOME%/etc-dnsmasqd/:/etc/dnsmasq.d/
+    environment:
+      ServerIP: %SERVER_IP%
+      PROXY_LOCATION: pihole
+      VIRTUAL_HOST: pihole.%DOMAIN_NAME%
+      VIRTUAL_PORT: 80
+      PUID: %DOCKER_USER_ID%
+      PGID: %DOCKER_GROUP_ID%
+      TZ: %TIMEZONE%
+      WEBPASSWORD: %WEBSERVER_PASSWD%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=pihole
+      - traefik.frontend.rule=Host:pihole.%DOMAIN_NAME%
+      - traefik.port=80
+      - traefik.frontend.priority=1
+
