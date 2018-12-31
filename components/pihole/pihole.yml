@@ -13,9 +13,9 @@
       - 0.0.0.0:67:67/udp
       - 0.0.0.0:8053:80/tcp
     volumes:
-      - %PIHOLE_HOME%/pihole.log:/var/log/pihole.log
-      - %PIHOLE_HOME%/etc-pihole/:/etc/pihole/
-      - %PIHOLE_HOME%/etc-dnsmasqd/:/etc/dnsmasq.d/
+      - %HOMEDIR%/pihole.log:/var/log/pihole.log
+      - %HOMEDIR%/etc-pihole/:/etc/pihole/
+      - %HOMEDIR%/etc-dnsmasqd/:/etc/dnsmasq.d/
     environment:
       ServerIP: %SERVER_IP%
       PROXY_LOCATION: pihole
