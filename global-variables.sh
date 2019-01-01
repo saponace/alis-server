@@ -24,5 +24,7 @@ declare -A COMMON_TEMPLATES_MAPPING=(
     ["DOCKER_SHARED_DIR"]="${DOCKER_SHARED_DIR}"
     ["TORRENTS_DOWNLOADS_DIR"]="/mnt/torrents"
     ["TORRENTS_BLACKHOLE_DIR"]="/torrents-blackhole"
-    ["HT_PASSWD"]="${username}:$(openssl passwd -apr1 ${webserver_passwd} | sed -e s/\\$/\\$\\$/g)"
+    # Escape $ with double $, because else it is interpretted by docker-compose, escaped $ with \ because else the
+    # double $ is interpreted by the script that injects the mappings in the files as $$ (pid of script)
+    ["HT_PASSWD"]="${username}:$(openssl passwd -apr1 ${webserver_passwd} | sed -e s/\\\\$/\\$\\\\$/g)"
 )
