@@ -21,3 +21,4 @@
       - traefik.backend=traefik
       - traefik.frontend.rule=Host:traefik.%DOMAIN_NAME%
       - traefik.port=8080
+      - traefik.frontend.auth.basic=%HT_PASSWD%

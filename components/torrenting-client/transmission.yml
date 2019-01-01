@@ -18,3 +18,4 @@
       - traefik.backend=transmission
       - traefik.frontend.rule=Host:transmission.%DOMAIN_NAME%
       - traefik.port=9091
+      - traefik.frontend.auth.basic=%HT_PASSWD%

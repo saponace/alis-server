@@ -24,7 +24,7 @@
       PUID: %DOCKER_USER_ID%
       PGID: %DOCKER_GROUP_ID%
       TZ: %TIMEZONE%
-      WEBPASSWORD: %WEBSERVER_PASSWD%
+      WEBPASSWORD: ""
     labels:
       - traefik.enable=true
       - traefik.backend=pihole

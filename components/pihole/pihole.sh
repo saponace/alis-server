@@ -12,6 +12,5 @@ sudo touch ${pihole_home}/pihole.log
 declare -A  docker_compose_template_mappings=(
     ["SERVER_IP"]=${static_ip_address}
     ["HOMEDIR"]=${pihole_home}
-    ["WEBSERVER_PASSWD"]=${webserver_passwd}
 )
 process_docker_compose_service pihole/pihole "$(declare -p docker_compose_template_mappings)"

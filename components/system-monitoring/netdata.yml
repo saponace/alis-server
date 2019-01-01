@@ -18,3 +18,4 @@
       - traefik.backend=netdata
       - traefik.frontend.rule=Host:netdata.%DOMAIN_NAME%
       - traefik.port=19999
+      - traefik.frontend.auth.basic=%HT_PASSWD%

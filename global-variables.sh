@@ -24,4 +24,5 @@ declare -A COMMON_TEMPLATES_MAPPING=(
     ["DOCKER_SHARED_DIR"]="${DOCKER_SHARED_DIR}"
     ["TORRENTS_DOWNLOADS_DIR"]="/mnt/torrents"
     ["TORRENTS_BLACKHOLE_DIR"]="/torrents-blackhole"
+    ["HT_PASSWD"]="${username}:$(openssl passwd -apr1 ${webserver_passwd} | sed -e s/\\$/\\$\\$/g)"
 )

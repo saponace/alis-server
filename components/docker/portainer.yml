@@ -2,6 +2,7 @@
   portainer:
     container_name: portainer
     image: portainer/portainer:1.19.2
+    command: --no-auth
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -14,3 +15,4 @@
       - traefik.backend=portainer
       - traefik.frontend.rule=Host:portainer.%DOMAIN_NAME%
       - traefik.port=9000
+      - traefik.frontend.auth.basic=%HT_PASSWD%
