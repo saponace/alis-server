@@ -14,3 +14,5 @@
     sudo systemctl enable ntpd.service
 # Hard drives management
     ${INSTALL} hdparm
+# Hard drives management
+    ${INSTALL} btrfs-progs
