@@ -13,3 +13,5 @@
     ${INSTALL} lsof
 # Delete duplicates files
     ${INSTALL} rmlint
+# Rsync
+    ${INSTALL} rsync
