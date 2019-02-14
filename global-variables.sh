@@ -7,8 +7,6 @@ TEMP_DOCKER_COMPOSE_PARTS_DIR="/tmp/docker-compose-parts"
 CONTAINERS_CONFIG_DIR="/mnt/persistent-configs"
 CONTAINERS_DATA_DIR="/mnt/data"
 COMPONENTS_DIR="components"
-mkdir -p ${TEMP_DOCKER_COMPOSE_PARTS_DIR}
-
 declare -A COMMON_TEMPLATES_MAPPING=(
     ["USER_DIR"]="/home/${USER}"
     ["DOCKER_USER_ID"]="$(id -u ${USER})"
