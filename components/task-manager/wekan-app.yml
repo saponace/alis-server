@@ -9,7 +9,7 @@
       - wekan_net
       - default
     environment:
-      - MONGO_URL=mongodb://wekandb:27017/wekan
+      - MONGO_URL=mongodb://wekan_db:27017/wekan
       - ROOT_URL=https://wekan.%DOMAIN_NAME%
       # - MAIL_URL=
       # - MAIL_FROM=
@@ -20,4 +20,3 @@
       - traefik.backend=wekan
       - traefik.frontend.rule=Host:wekan.%DOMAIN_NAME%
       - traefik.port=8080
-      - traefik.frontend.auth.basic=%HT_PASSWD%
