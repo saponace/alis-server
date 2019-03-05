@@ -1,0 +1,13 @@
+  # Wekan database
+  wekandb:
+    image: mongo:%VERSION%
+    container_name: wekan-db
+    restart: always
+    command: mongod --smallfiles --oplogSize 128
+    networks:
+      - wekan_net
+    expose:
+      - 27017
+    volumes:
+      - %WEKAN_DATA%/db:/var/lib/mysql
+      - %WEKAN_DATA%/dump:/dump

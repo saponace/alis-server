@@ -1,0 +1,17 @@
+  # Task manager
+  wekan:
+    container_name: wekan_app
+    image: quay.io/wekan/wekan:%VERSION%
+    restart: always
+    depends_on:
+      - wekan_db
+    networks:
+      - wekan_net
+      - default
+    environment:
+      - MONGO_URL=mongodb://wekandb:27017/wekan
+      - ROOT_URL=https://wekan.%DOMAIN_NAME%
+      # - MAIL_URL=
+      # - MAIL_FROM=
+      - WITH_API=true
+      - BROWSER_POLICY_ENABLED=true
