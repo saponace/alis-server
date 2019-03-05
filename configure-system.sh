@@ -74,12 +74,13 @@ function enable_networking (){
 }
 
 
+source ./global-variables.sh
+source ./common-functions.sh
+
 # Create directory for temporary files during docker compose files build
   mkdir -p ${TEMP_DOCKER_COMPOSE_PARTS_DIR}
 
 enable_networking
-source ./global-variables.sh
-source ./common-functions.sh
 install_component aur-helper
 install_component networking
 install_component utils
