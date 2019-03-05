@@ -15,3 +15,9 @@
       # - MAIL_FROM=
       - WITH_API=true
       - BROWSER_POLICY_ENABLED=true
+    labels:
+      - traefik.enable=true
+      - traefik.backend=wekan
+      - traefik.frontend.rule=Host:wekan.%DOMAIN_NAME%
+      - traefik.port=8080
+      - traefik.frontend.auth.basic=%HT_PASSWD%
