@@ -25,4 +25,3 @@
       - traefik.backend=firefly
       - traefik.frontend.rule=Host:firefly.%DOMAIN_NAME%
       - traefik.port=80
-      - traefik.frontend.auth.basic=%HT_PASSWD%
