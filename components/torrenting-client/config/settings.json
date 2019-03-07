@@ -2,7 +2,7 @@
     "dht-enabled": true,
     "download-dir": "/downloads/complete",
     "download-queue-enabled": true,
-    "download-queue-size": 10,
+    "download-queue-size": 100,
     "incomplete-dir": "/downloads/incomplete",
     "incomplete-dir-enabled": true,
     "peer-port": 51413,
