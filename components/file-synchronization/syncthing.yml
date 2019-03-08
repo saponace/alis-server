@@ -11,9 +11,6 @@
       PGID: %DOCKER_GROUP_ID%
       TZ: %TIMEZONE%
       UMASK_SET: 022
-    # ports:
-    #   - 22000:22000
-    #   - 21027:21027/udp
     labels:
       - traefik.enable=true
       - traefik.backend=syncthing
