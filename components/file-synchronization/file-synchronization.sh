@@ -6,7 +6,7 @@
 
 # Create files and direcetories needed by pihole
 syncthing_data_dir="${CONTAINERS_DATA_DIR}/syncthing"
-sudo mkdir ${pihole_home}
+sudo mkdir ${syncthing_data_dir}
 sudo chown ${username}:${username} ${syncthing_data_dir}
 
 # Create docker compose component
