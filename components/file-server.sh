@@ -31,4 +31,4 @@ sudo su -c "echo '
 
 
 # Client mount command (as root):
-# mount -t nfs4 -o vers=4 __SERVER_IP__:/srv/nfs/data __CLIENT_MOUNT_DIR__
+    # mount -t nfs4 -o vers=4 __SERVER_IP__:/srv/nfs/data __CLIENT_MOUNT_DIR__
