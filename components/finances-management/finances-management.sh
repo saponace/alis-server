@@ -56,8 +56,15 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
         -p 80:80 \
         jc5x/firefly-iii:${firefly_iii_version}
 
+
+        # Stop and restart both containers
+          sudo docker container stop firefly_iii_app
+          sudo docker container stop firefly_iii_db
+          sudo docker container start firefly_iii_db
+          sudo docker container start firefly_iii_app
         # Wait for a while to make sure both containers are started
-        sleep 10
+          sleep 10
+
 
     # Execute the databse creation/migration commands
     # Calling a HTTP GET on __FIREFLY_URL__/install should be enough, but it does not seem to work
