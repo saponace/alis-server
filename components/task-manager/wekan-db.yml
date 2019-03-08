@@ -9,5 +9,5 @@
     expose:
       - 27017
     volumes:
-      - %WEKAN_DATA%/db:/var/lib/mysql
-      - %WEKAN_DATA%/dump:/dump
+      - %DATA_DIR%/db:/var/lib/mysql
+      - %DATA_DIR%/dump:/dump

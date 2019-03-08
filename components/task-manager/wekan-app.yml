@@ -11,8 +11,6 @@
     environment:
       - MONGO_URL=mongodb://wekan_db:27017/wekan
       - ROOT_URL=https://wekan.%DOMAIN_NAME%
-      # - MAIL_URL=
-      # - MAIL_FROM=
       - WITH_API=true
       - BROWSER_POLICY_ENABLED=true
     labels:

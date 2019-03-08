@@ -6,7 +6,7 @@ db_name="firefly_db"
 db_username="firefly_db"
 db_pwd="firefly_db_secret"
 app_key=$( cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 )
-data_dir="/firefly-iii"
+data_dir="${CONTAINERS_DATA_DIR}/firefly-iii"
 firefly_iii_version="release-4.7.15"
 mariadb_version="10.3.10"
 
