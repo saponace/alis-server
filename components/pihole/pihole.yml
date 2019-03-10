@@ -30,5 +30,4 @@
       - traefik.backend=pihole
       - traefik.frontend.rule=Host:pihole.%DOMAIN_NAME%
       - traefik.port=80
-      - traefik.frontend.priority=1
       - traefik.frontend.auth.basic=%HT_PASSWD%
