@@ -16,3 +16,4 @@
       - traefik.backend=syncthing
       - traefik.frontend.rule=Host:syncthing.saponace.com
       - traefik.port=8384
+      - traefik.frontend.auth.basic=%HT_PASSWD%
