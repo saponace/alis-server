@@ -27,6 +27,9 @@ sudo systemctl enable docker
       cat ${part} >> ${docker_compose_file}
    done
 
+# Pull docker images
+sudo su -c "cd ${docker_compose_dir}; docker-compose pull"
+
 
 
 # Create systemd unit file and start docker-compose at bootup
