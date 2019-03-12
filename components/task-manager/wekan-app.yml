@@ -1,5 +1,5 @@
   # Task manager
-  wekan:
+  wekan_app:
     container_name: wekan_app
     image: quay.io/wekan/wekan:%VERSION%
     restart: always
