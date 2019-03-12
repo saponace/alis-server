@@ -6,8 +6,10 @@
 # Shell
     ${INSTALL} zsh
     # Link config files
-        create_link ${HOMEDIR_DOTFILES_SOURCE}/.zsh ${HOMEDIR_DOTFILES_DESTINATION}
-        create_link ${HOMEDIR_DOTFILES_SOURCE}/.zshrc ${HOMEDIR_DOTFILES_DESTINATION}
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.zsh ${USER_HOMEDIR_DOTFILES_DESTINATION}
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.zsh ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.zshrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.zshrc ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
     # Set default shell
         # For the user
             sudo chsh -s /bin/zsh ${username}
@@ -17,7 +19,8 @@
 # Terminal multiplexer
     ${INSTALL} tmux
     # Link config file
-        create_link ${HOMEDIR_DOTFILES_SOURCE}/.tmux.conf ${HOMEDIR_DOTFILES_DESTINATION}
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.tmux.conf ${USER_HOMEDIR_DOTFILES_DESTINATION}
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.tmux.conf ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
 # Text editor
     ${INSTALL} vim
 # Neovim, improved version of vim
@@ -26,7 +29,8 @@
     # Ctags, tags index generating. Used by nvim plugin Tagbar
         ${INSTALL} neovim-tagbar
     # Link config files
-        create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${HOMEDIR_DOTFILES_DESTINATION}/.config/
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config/
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/nvim ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config/
     # Install nvim plugins
         echo "Installling neovim plugins ..."
         nvim -E +PlugInstall +qall > /dev/null
