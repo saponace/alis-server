@@ -34,6 +34,7 @@ fi
 
 HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
 HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
+SCRIPTS_DIR="files-to-deploy/scripts"
 
 
 
@@ -104,5 +105,9 @@ install_component task-manager
 install_component file-synchronization
 install_component docker
 
+sudo ln -s ${SCRIPTS_DIR}/startup /bin/
+sudo ln -s ${SCRIPTS_DIR}/manage_disks /bin/
+
+
 sync
-# sudo reboot
+sudo reboot
