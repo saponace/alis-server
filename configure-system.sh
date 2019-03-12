@@ -33,7 +33,8 @@ then
 fi
 
 HOMEDIR_DOTFILES_SOURCE="files-to-deploy/config-files/homedir"
-HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
+USER_HOMEDIR_DOTFILES_DESTINATION="/home/${username}"
+ROOT_HOMEDIR_DOTFILES_DESTINATION="/root"
 SCRIPTS_DIR="files-to-deploy/scripts"
 
 
