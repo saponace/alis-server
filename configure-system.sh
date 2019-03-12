@@ -107,7 +107,7 @@ install_component file-synchronization
 install_component docker
 
 sudo ln -s $(readlink -f ${SCRIPTS_DIR}/startup) /bin/
-sudo ln -s $(readlink -f ${SCRIPTS_DIR}/manage_disks) /bin/
+sudo ln -s $(readlink -f ${SCRIPTS_DIR}/manage-disks) /bin/
 
 
 sync
