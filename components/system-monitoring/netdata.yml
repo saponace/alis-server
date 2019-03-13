@@ -2,7 +2,7 @@
   netdata:
     container_name: netdata
     image: netdata/netdata:v1.12.2
-    restart: always
+    restart: on-failure
     security_opt:
       - apparmor:unconfined
     cap_add:

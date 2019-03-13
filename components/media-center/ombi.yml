@@ -2,7 +2,7 @@
   ombi:
     container_name: ombi
     image: linuxserver/ombi:3.0.4287-ls10
-    restart: always
+    restart: on-failure
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/ombi:/config

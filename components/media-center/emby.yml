@@ -2,7 +2,7 @@
   emby:
     container_name: emby
     image: emby/embyserver:4.1.0.12
-    restart: always
+    restart: on-failure
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/emby:/config

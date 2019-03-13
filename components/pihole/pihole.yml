@@ -2,7 +2,7 @@
   pihole:
     container_name: pihole
     image: pihole/pihole:4.2.2-1
-    restart: always
+    restart: on-failure
     domainname: %DOMAIN_NAME%
     dns:
       - 127.0.0.1

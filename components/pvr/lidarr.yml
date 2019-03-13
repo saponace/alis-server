@@ -2,7 +2,7 @@
   lidarr:
     container_name: lidarr
     image: linuxserver/lidarr:0.5.0.664-ls6
-    restart: always
+    restart: on-failure
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/lidarr:/config

@@ -2,7 +2,7 @@
   radarr:
     container_name: radarr
     image: linuxserver/radarr:v0.2.0.1293-ls4
-    restart: always
+    restart: on-failure
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/radarr:/config

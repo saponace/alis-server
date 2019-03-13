@@ -3,7 +3,7 @@
     container_name: portainer
     image: portainer/portainer:1.20.2
     command: --no-auth
-    restart: always
+    restart: on-failure
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - %CONTAINERS_CONFIG_DIR%/portainer/data:/data
