@@ -2,7 +2,7 @@
   firefly_iii_db:
     container_name: firefly_iii_db
     image: mariadb:%VERSION%
-    restart: always
+    restart: on-failure
     networks:
       - firefly_iii_net
     volumes:

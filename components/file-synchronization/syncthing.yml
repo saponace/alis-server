@@ -2,7 +2,7 @@
   syncthing:
     container_name: syncthing
     image: linuxserver/syncthing:v1.1.0-ls5
-    restart: always
+    restart: on-failure
     volumes:
       - %CONTAINERS_CONFIG_DIR%/syncthing:/config
       - %SYNCTHING_DATA_DIR%:/data
