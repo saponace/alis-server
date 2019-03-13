@@ -51,3 +51,5 @@ You can then call the following script to start the server:
 - All the configs are stored in the editable file ./alis-erver.config
 - The first execution of the startup script is (very) slow because it will download all the docker images from the
   internet
+- There will be config files generated in /mnt. If it is the first install, you might want to copy these files to the
+  device that will be mounted to /mnt. If it is a reinstall, you can delete these files
