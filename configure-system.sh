@@ -106,8 +106,9 @@ install_component task-manager
 install_component file-synchronization
 install_component docker
 
-sudo ln -s $(readlink -f ${SCRIPTS_DIR}/startup) /bin/
-sudo ln -s $(readlink -f ${SCRIPTS_DIR}/manage-disks) /bin/
+
+sudo_create_link ${SCRIPTS_DIR}/startup /bin
+sudo_create_link ${SCRIPTS_DIR}/manage-disks /bin
 
 
 sync
