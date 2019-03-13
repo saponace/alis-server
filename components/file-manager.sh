@@ -7,7 +7,7 @@
     ${INSTALL} ranger
     # Link config file
         create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/ranger ${USER_HOMEDIR_DOTFILES_DESTINATION}/.config
-        create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/ranger ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
+        sudo_create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/ranger ${ROOT_HOMEDIR_DOTFILES_DESTINATION}/.config
     # Install ranger dependencies
         ${INSTALL} libcaca  # ASCII image preview
         ${INSTALL} highlight  # Syntax highlight in preview

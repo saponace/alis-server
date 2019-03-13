@@ -38,6 +38,14 @@ function create_link (){
     ln -snf $(readlink -f "$1") $2
 }
 
+# Link a file as root and make sure the directory of the link exists (create it as root if it does not exist)
+# $1: The source file
+# $2: The target directory
+function sudo_create_link (){
+    sudo mkdir -p $2
+    sudo ln -snf $(readlink -f "$1") $2
+}
+
 # Fill a template file from a variables mapping
 # First replaces specific mappings, then mappings contained in COMMON_TEMPLATES_MAPPING
 # specific mappings will override global templates
