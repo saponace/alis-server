@@ -13,8 +13,8 @@ sudo su -c "echo '
 
 sudo mkdir -p /srv/nfs/data
 sudo su -c "echo '
-/srv/nfs        192.168.0.0/24(rw,sync,crossmnt,fsid=0)
-/srv/nfs/data   192.168.0.0/24(rw,sync,nohide)
+/srv/nfs        192.168.0.0/24(rw,sync,no_subtree_check,crossmnt,fsid=0)
+/srv/nfs/data   192.168.0.0/24(rw,sync,no_subtree_check,nohide)
 ' >> /etc/exports"
 
 sudo su -c "echo '
@@ -31,4 +31,4 @@ sudo su -c "echo '
 
 
 # Client mount command (as root):
-    # mount -t nfs4 -o vers=4 __SERVER_IP__:/srv/nfs/data __CLIENT_MOUNT_DIR__
+    # mount -t nfs4 -o vers=4 __SERVER_IP__:/data __CLIENT_MOUNT_DIR__
