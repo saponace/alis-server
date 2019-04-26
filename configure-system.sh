@@ -96,6 +96,7 @@ install_component ssh
 ####
 install_component vpn-client
 install_component reverse-proxy
+install_component dns-updater
 install_component torrenting-client
 install_component media-center
 install_component home-assistant
