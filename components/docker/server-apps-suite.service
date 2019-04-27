@@ -1,0 +1,16 @@
+[Unit]
+Description=Server apps suite (docker-compose) Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+WorkingDirectory=${docker_compose_dir}
+ExecStart=$(which docker-compose) up
+ExecStop=$(which docker-compose) down
+TimeoutStartSec=0
+Restart=on-failure
+StartLimitInterval=60
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
