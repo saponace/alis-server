@@ -6,8 +6,8 @@
 # Shell
     ${INSTALL} zsh
     # Link config files
-        create_link ${HOMEDIR_DOTFILES_SOURCE}/.zsh ${USER_HOMEDIR_DOTFILES_DESTINATION}
-        sudo_create_link ${HOMEDIR_DOTFILES_SOURCE}/.zsh ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
+        create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/zsh ${USER_HOMEDIR_DOTFILES_DESTINATION}
+        sudo_create_link ${HOMEDIR_DOTFILES_SOURCE}/.config/zsh ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
         create_link ${HOMEDIR_DOTFILES_SOURCE}/.zshrc ${USER_HOMEDIR_DOTFILES_DESTINATION}
         sudo_create_link ${HOMEDIR_DOTFILES_SOURCE}/.zshrc ${ROOT_HOMEDIR_DOTFILES_DESTINATION}
     # Set default shell
