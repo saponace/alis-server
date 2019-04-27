@@ -33,20 +33,4 @@ sudo su -c "cd ${docker_compose_dir}; docker-compose pull"
 
 
 # Create systemd unit file and start docker-compose at bootup
-sudo su -c " echo '[Unit]
-Description=Server apps suite (docker-compose) Service
-Requires=docker.service
-After=docker.service
-
-[Service]
-WorkingDirectory=${docker_compose_dir}
-ExecStart=$(which docker-compose) up
-ExecStop=$(which docker-compose) down
-TimeoutStartSec=0
-Restart=on-failure
-StartLimitInterval=60
-StartLimitBurst=3
-
-[Install]
-WantedBy=multi-user.target
-' > /etc/systemd/system/server-apps-suite.service"
+   sudo_create_link components/docker/server-apps-suite.service /etc/systemd/system/
