@@ -1,25 +1,29 @@
 #! /bin/bash
 
 
+# DATA RAID1 MDADM device UUID
 TV_DEVICE_UUID="c31f1a91-1c8b-44e8-b922-832465c3d2e9"
+# MOVIES disk UUID
 MOVIES_DEVICE_UUID="0edd1cec-c43c-4cda-9e95-f453305c27c6"
-DATA1_DEVICE_UUID="a07e8965-6b0b-4fec-85de-649378c01651"
-DATA2_DEVICE_UUID="f8639cdf-53c2-4ebb-afaf-9d114aa972c9"
+# TV disk UUID
+DATA_MDADM_DEVICE_UUID="e370aeb9-d4b1-4e50-a554-cb999630e443"
+# Disk that acts as a buffer for downloaded files.
+# Used to prevent useless writes on other disks
 DOWNLOAD_PROXY_DEVICE_UUID="782582e2-21a8-4582-b395-efce5c413e8d"
 
 
 # Prevent sudo timeout
 sudo -v
 while true; do
-  sudo -nv; sleep 1m
-  kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
+    sudo -nv; sleep 1m
+    kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
 done &
 
 
 # Check if a device is available
 # $1 Device name
 # $2 Device UUID
-function check_disk_available() {
+function check_device_available() {
     sentence_beginning="$1 device is"
     if [ -e "/dev/disk/by-uuid/$2" ] ;
     then
@@ -33,18 +37,15 @@ function check_disk_available() {
 
 
 function check_all_disks_are_available(){
-    check_disk_available "TV" ${MOVIES_DEVICE_UUID}
-    check_tv_status=$?
-    check_disk_available "Movies" ${TV_DEVICE_UUID}
-    check_movies_status=$?
-    check_disk_available "Data n°1" ${DATA1_DEVICE_UUID}
-    check_data1_status=$?
-    check_disk_available "Data n°2" ${DATA2_DEVICE_UUID}
-    check_data2_status=$?
-    if [ ${check_tv_status} -eq 0 ] && \
-        [ ${check_movies_status} -eq 0 ] && \
-        [ ${check_data1_status} -eq 0 ] && \
-        [ ${check_data2_status} -eq 0 ] ;
+    check_device_available "Data" ${DATA_MDADM_DEVICE_UUID}
+    data_status=$?
+    check_device_available "TV" ${MOVIES_DEVICE_UUID}
+    tv_status=$?
+    check_device_available "Movies" ${TV_DEVICE_UUID}
+    movies_status=$?
+    if [ ${data_status} -eq 0 ] && \
+        [ ${tv_status} -eq 0 ] && \
+        [ ${movies_status} -eq 0 ] ;
     then
         return 0
     else
@@ -53,13 +54,30 @@ function check_all_disks_are_available(){
 }
 
 
-# Print logs before and after mountfunction execution
+# Print logs before and after any processing function execution
+# $1: Action applied to the device
+# $2: Name of the device that is being processed
+# $3: Processing function and parameters
+function process_device_decorator(){
+    printf "$1 $2 device... "
+    ${@:3}
+    printf "Done !\n"
+}
+
+
+# Print logs before and after mount function execution
 # $1: Name of the device that is being mounted
 # $2: Mount function and parameters
 function mount_device_decorator(){
-    printf "Mounting $1 device... "
-    ${@:2}
-    printf "Done !\n"
+    process_device_decorator "Mounting" $1 ${@:2}
+}
+
+
+# Print logs before and after umount function execution
+# $1: Name of the device that is being umounted
+# $2: Umount function and parameters
+function umount_device_decorator(){
+    process_device_decorator "Umounting" $1 ${@:2}
 }
 
 
@@ -81,22 +99,16 @@ function get_luks_passwd(){
 # $1: device UUID
 # $2: LUKS mapper name
 # $3: Mount point
-function mount_single_device(){
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$1 $2 -d -
+function mount_luks_device(){
+    printf ${LUKS_PASSWD} | sudo cryptsetup open /dev/disk/by-uuid/$1 $2 -d -
     sudo mount /dev/mapper/$2 $3
 }
 
 
-# $1: device 1 UUID
-# $2: device 2 UUID
-# $3: LUKS mapper 1 name
-# $4: LUKS mapper 2 name
-# $5: Mount point
-# $6: Mount options
-function mount_btrfs_raid1_device(){
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$1 $3 -d -
-    printf ${LUKS_PASSWD} | sudo cryptsetup luksOpen /dev/disk/by-uuid/$2 $4 -d -
-    sudo mount -t btrfs -o $6 /dev/mapper/$3 $5
+# $1: LUKS mapper name
+function umount_luks_device(){
+    sudo umount /dev/mapper/$1
+    sudo cryptsetup close /dev/mapper/$1
 }
 
 
@@ -104,30 +116,40 @@ function mount_all_disks(){
     if check_all_disks_are_available ;
     then
         # Prompt LUKS passphrases and check validity
-        get_luks_passwd ${TV_DEVICE_UUID}
+        get_luks_passwd ${DATA_MDADM_DEVICE_UUID}
 
-        # Mount DATA RAID1
-        mount_device_decorator "DATA" mount_btrfs_raid1_device ${DATA1_DEVICE_UUID} ${DATA2_DEVICE_UUID} "data1-luks-mapper" "data2-luks-mapper" /mnt "autodefrag"
-        # Mount MOVIES disk
-        mount_device_decorator "MOVIES" mount_single_device ${MOVIES_DEVICE_UUID} movies-luks-mapper /mnt/media/movies
-        # Mount TV disk
-        mount_device_decorator "TV" mount_single_device ${TV_DEVICE_UUID} tv-luks-mapper /mnt/media/tv
+        mount_device_decorator "DATA" mount_luks_device ${DATA_MDADM_DEVICE_UUID} data-luks-mapper /mnt
+        mount_device_decorator "MOVIES" mount_luks_device ${MOVIES_DEVICE_UUID} movies-luks-mapper /mnt/media/movies
+        mount_device_decorator "TV" mount_luks_device ${TV_DEVICE_UUID} tv-luks-mapper /mnt/media/tv
 
         # Unset password and remove it from memroy
         unset LUKS_PASSWD
 
-        # Disk that acts as a buffer / proxy for downloaded files. Used to prevent from useless writes on other disks
-        mount_device_decorator "download proxy" sudo mount --uuid ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
+        mount_device_decorator "download_proxy" sudo mount --uuid ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
     else
         echo "Error, please make sure all drives are available and try again"
         exit 1
-    fi
+   fi
+}
+
+function umount_all_disks(){
+    if check_all_disks_are_available ;
+    then
+      umount_device_decorator "download_proxy" sudo umount /dev/disk/by-uuid/${DOWNLOAD_PROXY_DEVICE_UUID}
+      umount_device_decorator "TV" umount_luks_device tv-luks-mapper
+      umount_device_decorator "MOVIES" umount_luks_device movies-luks-mapper
+      umount_device_decorator "DATA" umount_luks_device data-luks-mapper
+    else
+        echo "Error, please make sure all drives are available and try again"
+        exit 1
+   fi
 }
 
 
 function show_usage(){
     echo "Usage: $0 -c, --check : Check which disks are available"
     echo "       $0 -m, --mount : Mount all disks (interactive)"
+    echo "       $0 -u, --umount : Umount all disks (interactive)"
     echo "       $0 -h, --help : Display this help"
 }
 
@@ -139,6 +161,9 @@ case $1 in
     ;;
     -m|--mount)
         mount_all_disks
+    ;;
+    -u|--umount)
+        umount_all_disks
     ;;
     -h|--help|*)
         show_usage
