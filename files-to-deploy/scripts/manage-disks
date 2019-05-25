@@ -36,6 +36,14 @@ function check_device_available() {
 }
 
 
+function display_error_message_devices_not_available() {
+    echo ""
+    echo "Error. Please make sure all drives are available and try again"
+    echo "If it is the first time you run this script and haven't assembled the data RAID1 MDADM array, please run the following command and retry (where \"/dev/sdX\" and \"/dev/sdY\" are the two disks composing the array): "
+    echo "    \"sudo mdadm --assemble --scan --verbose /dev/md0 /dev/sdX /dev/sdY\""
+}
+
+
 function check_all_disks_are_available(){
     check_device_available "Data" ${DATA_MDADM_DEVICE_UUID}
     data_status=$?
@@ -127,7 +135,7 @@ function mount_all_disks(){
 
         mount_device_decorator "download_proxy" sudo mount --uuid ${DOWNLOAD_PROXY_DEVICE_UUID} /mnt/torrents
     else
-        echo "Error, please make sure all drives are available and try again"
+        display_error_message_devices_not_available
         exit 1
    fi
 }
@@ -140,7 +148,7 @@ function umount_all_disks(){
       umount_device_decorator "MOVIES" umount_luks_device movies-luks-mapper
       umount_device_decorator "DATA" umount_luks_device data-luks-mapper
     else
-        echo "Error, please make sure all drives are available and try again"
+        display_error_message_devices_not_available
         exit 1
    fi
 }
