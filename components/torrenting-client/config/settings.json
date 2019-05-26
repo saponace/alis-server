@@ -7,6 +7,7 @@
     "incomplete-dir-enabled": true,
     "peer-port": 51413,
     "port-forwarding-enabled": false,
+    "blocklist-url":  "http://john.bitsurge.net/public/biglist.p2p.gz",
     "preallocation": 1,
     "ratio-limit": 0,
     "ratio-limit-enabled": true,
