@@ -1,0 +1,19 @@
+  # Smart home hub
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant:0.88.2
+    restart: on-failure
+    privileged: true
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      - %DOCKER_SHARED_DIR%:/shared
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=homeassistant
+      - traefik.frontend.rule=Host:homeassistant.%DOMAIN_NAME%
+      - traefik.port=8123

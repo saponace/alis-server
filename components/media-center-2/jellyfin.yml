@@ -1,0 +1,18 @@
+  # Second media center
+  jellyfin-2:
+    container_name: jellyfin-2
+    image: jellyfin/jellyfin:10.3.5
+    restart: on-failure
+    network_mode: service:pia_client
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/jellyfin-2:/config
+      - %CONTAINERS_DATA_DIR%/jellyfin-2:/cache
+      - %ALTERNATE_MEDIA_DIR%:/media
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=jellyfin-2
+      - traefik.frontend.rule=Host:jellyfin-2.%DOMAIN_NAME%
+      - traefik.port=8096

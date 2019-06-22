@@ -1,0 +1,18 @@
+  # Manage docker conainers via a web UI
+  portainer:
+    container_name: portainer
+    image: portainer/portainer:1.20.2
+    command: --no-auth
+    restart: on-failure
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - %CONTAINERS_CONFIG_DIR%/portainer/data:/data
+      - %DOCKER_SHARED_DIR%:/shared
+    environment:
+      - TZ=%TIMEZONE%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=portainer
+      - traefik.frontend.rule=Host:portainer.%DOMAIN_NAME%
+      - traefik.port=9000
+      - traefik.frontend.auth.basic=%HT_PASSWD%

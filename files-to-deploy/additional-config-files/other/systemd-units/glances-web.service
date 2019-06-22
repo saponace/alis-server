@@ -1,9 +1,0 @@
-[Unit]
-Description=Glances
-
-[Service]
-ExecStart=/bin/glances --webserver
-Restart=on-abort
-
-[Install]
-WantedBy=multi-user.target

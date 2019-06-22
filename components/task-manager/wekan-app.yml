@@ -1,0 +1,20 @@
+  # Task manager
+  wekan_app:
+    container_name: wekan_app
+    image: quay.io/wekan/wekan:%VERSION%
+    restart: on-failure
+    depends_on:
+      - wekan_db
+    networks:
+      - wekan_net
+      - default
+    environment:
+      - MONGO_URL=mongodb://wekan_db:27017/wekan
+      - ROOT_URL=https://wekan.%DOMAIN_NAME%
+      - WITH_API=true
+      - BROWSER_POLICY_ENABLED=true
+    labels:
+      - traefik.enable=true
+      - traefik.backend=wekan
+      - traefik.frontend.rule=Host:wekan.%DOMAIN_NAME%
+      - traefik.port=8080

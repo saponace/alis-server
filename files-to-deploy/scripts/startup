@@ -9,15 +9,6 @@ while true; do
 done &
 
 
-# Start services that depend on config dirs located on mounted drives after these drives are mounted
-# Start a service
-# $1: Service name
-function start_service() {
-  printf "Starting $1... "
-  sudo systemctl start $1
-  printf "Done !\n"
-}
-
 echo "Mounting drives..."
 if manage-disks -m ;
 then
@@ -27,9 +18,4 @@ else
   exit 1
 fi
 
-start_service transmission
-start_service nginx
-start_service kodi
-start_service jackett
-start_service sonarr
-start_service radarr
+sudo systemctl start server-apps-suite.service

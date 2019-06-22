@@ -1,0 +1,27 @@
+  # Finances management
+  firefly_iii_app:
+    container_name: firefly_iii_app
+    image: jc5x/firefly-iii:%VERSION%
+    restart: on-failure
+    links:
+      - firefly_iii_db
+    networks:
+      - firefly_iii_net
+      - default
+    volumes:
+      - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
+      - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
+    environment:
+      - FF_DB_HOST=firefly_iii_db
+      - FF_DB_NAME=%DB_NAME%
+      - FF_DB_USER=%DB_USERNAME%
+      - FF_DB_PASSWORD=%DB_PWD%
+      - FF_APP_KEY=%APP_KEY%
+      - FF_APP_ENV=local
+      - TZ=%TIMEZONE%
+      - TRUSTED_PROXIES=**
+    labels:
+      - traefik.enable=true
+      - traefik.backend=firefly
+      - traefik.frontend.rule=Host:firefly.%DOMAIN_NAME%
+      - traefik.port=80

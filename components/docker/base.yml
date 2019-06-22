@@ -1,0 +1,8 @@
+version: "3"
+networks:
+  wekan_net:
+  vpn_client_net:
+  firefly_iii_net:
+  default:
+    driver: bridge
+services:

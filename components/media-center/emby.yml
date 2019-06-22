@@ -1,0 +1,18 @@
+  # Media center
+  emby:
+    container_name: emby
+    image: emby/embyserver:4.1.0.12
+    restart: on-failure
+    network_mode: service:pia_client
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/emby:/config
+      - %MEDIA_DIR%:/mnt/share1
+      - %DOCKER_SHARED_DIR%:/shared
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=emby
+      - traefik.frontend.rule=Host:emby.%DOMAIN_NAME%
+      - traefik.port=8096

@@ -1,0 +1,19 @@
+  # Syncthing
+  syncthing:
+    container_name: syncthing
+    image: linuxserver/syncthing:v1.1.0-ls5
+    restart: on-failure
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/syncthing:/config
+      - %SYNCTHING_DATA_DIR%:/data
+    environment:
+      PUID: %DOCKER_USER_ID%
+      PGID: %DOCKER_GROUP_ID%
+      TZ: %TIMEZONE%
+      UMASK_SET: 022
+    labels:
+      - traefik.enable=true
+      - traefik.backend=syncthing
+      - traefik.frontend.rule=Host:syncthing.%DOMAIN_NAME%
+      - traefik.port=8384
+      - traefik.frontend.auth.basic=%HT_PASSWD%

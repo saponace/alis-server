@@ -1,0 +1,21 @@
+  # Music PVR
+  lidarr:
+    container_name: lidarr
+    image: linuxserver/lidarr:0.5.0.664-ls6
+    restart: on-failure
+    network_mode: service:pia_client
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/lidarr:/config
+      - %TORRENTS_DOWNLOADS_DIR%:/downloads
+      - %MUSIC_DIR%:/music
+      - /etc/localtime:/etc/localtime:ro
+      - %DOCKER_SHARED_DIR%:/shared
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=lidarr
+      - traefik.frontend.rule=Host:lidarr.%DOMAIN_NAME%
+      - traefik.port=8686

@@ -1,0 +1,24 @@
+  # Reverse proxy
+  traefik:
+    container_name: traefik
+    image: traefik:1.7.9
+    restart: on-failure
+    networks:
+      - default
+      - vpn_client_net
+    domainname: %DOMAIN_NAME%
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - %CONTAINERS_DATA_DIR%/traefik:/etc/traefik
+    environment:
+      - CLOUDFLARE_EMAIL=%CLOUDFLARE_EMAIL%
+      - CLOUDFLARE_API_KEY=%CLOUDFLARE_API_KEY%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=traefik
+      - traefik.frontend.rule=Host:traefik.%DOMAIN_NAME%
+      - traefik.port=8080
+      - traefik.frontend.auth.basic=%HT_PASSWD%
