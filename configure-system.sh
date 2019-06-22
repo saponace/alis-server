@@ -99,6 +99,7 @@ install_component reverse-proxy
 install_component dns-updater
 install_component torrenting-client
 install_component media-center
+install_component media-center-2
 install_component home-assistant
 install_component system-monitoring
 install_component pvr
