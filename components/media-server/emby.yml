@@ -1,4 +1,4 @@
-  # Media center
+  # Media server
   emby:
     container_name: emby
     image: emby/embyserver:4.1.0.12
