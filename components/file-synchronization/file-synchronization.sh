@@ -4,7 +4,7 @@
 #-------------------------------------------------
 
 
-# Create files and direcetories needed by pihole
+# Create files and direcetories needed by syncthing
 syncthing_data_dir="${CONTAINERS_DATA_DIR}/syncthing"
 sudo mkdir ${syncthing_data_dir}
 sudo chown ${username}:${username} ${syncthing_data_dir}
