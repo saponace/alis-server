@@ -1,7 +1,7 @@
   # Handle media content requests
   ombi:
     container_name: ombi
-    image: linuxserver/ombi:3.0.4287-ls10
+    image: linuxserver/ombi:3.0.4727-ls58
     restart: on-failure
     network_mode: service:pia_client
     volumes:

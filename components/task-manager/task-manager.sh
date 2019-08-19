@@ -3,8 +3,8 @@
 #-------------------------------------------------
 
 data_dir="${CONTAINERS_DATA_DIR}/wekan"
-wekan_version="v2.37"
-mongo_version="3.2.21"
+wekan_version="v3.21"
+mongo_version="4.2.0"
 
 declare -A  wekan_app_docker_compose_template_mappings=(
     ["VERSION"]=${wekan_version}

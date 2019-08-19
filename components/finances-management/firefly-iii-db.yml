@@ -1,14 +1,12 @@
   # Firefly iii database
   firefly_iii_db:
     container_name: firefly_iii_db
-    image: mariadb:%VERSION%
+    image: postgres:%VERSION%
     restart: on-failure
     networks:
       - firefly_iii_net
     volumes:
-      - %FIREFLY_DATA%/db:/var/lib/mysql
+      - %FIREFLY_DATA%/db:/var/lib/postgresql/data
     environment:
-      - MYSQL_DATABASE=%DB_NAME%
-      - MYSQL_USER=%DB_USERNAME%
-      - MYSQL_PASSWORD=%DB_PWD%
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - POSTGRES_USER=%DB_USERNAME%
+      - POSTGRES_PASSWORD=%DB_PWD%
