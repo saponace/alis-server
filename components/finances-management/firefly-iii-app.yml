@@ -12,12 +12,13 @@
       - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
       - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
     environment:
-      - FF_DB_HOST=firefly_iii_db
-      - FF_DB_NAME=%DB_NAME%
-      - FF_DB_USER=%DB_USERNAME%
-      - FF_DB_PASSWORD=%DB_PWD%
-      - FF_APP_KEY=%APP_KEY%
-      - FF_APP_ENV=local
+      - DB_HOST=firefly_iii_db
+      - DB_CONNECTION=pgsql
+      - DB_DATABASE=%DB_NAME%
+      - DB_USERNAME=%DB_USERNAME%
+      - DB_PASSWORD=%DB_PWD%
+      - APP_KEY=%APP_KEY%
+      - APP_ENV=local
       - TZ=%TIMEZONE%
       - TRUSTED_PROXIES=**
     labels:

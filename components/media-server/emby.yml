@@ -1,7 +1,7 @@
   # Media server
   emby:
     container_name: emby
-    image: emby/embyserver:4.1.0.12
+    image: emby/embyserver:4.3.0.4
     restart: on-failure
     network_mode: service:pia_client
     volumes:
