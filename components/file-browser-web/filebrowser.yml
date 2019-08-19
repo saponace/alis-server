@@ -5,6 +5,7 @@
     restart: on-failure
     volumes:
       - /mnt:/srv
+      - %CONTAINERS_DATA_DIR%/filebrowser/database.db:/database.db
     labels:
       - traefik.enable=true
       - traefik.backend=syncthing
