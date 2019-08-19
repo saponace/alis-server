@@ -1,7 +1,7 @@
   # DNS entry updater
   ddclient:
     container_name: ddclient
-    image: linuxserver/ddclient:3.9.0-ls5
+    image: linuxserver/ddclient:3.9.0-ls12
     restart: on-failure
     environment:
       - PUID=%DOCKER_USER_ID%

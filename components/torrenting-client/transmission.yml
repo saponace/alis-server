@@ -1,7 +1,7 @@
   # Torrenting client
   transmission:
     container_name: transmission
-    image: linuxserver/transmission:2.94-r1-ls5
+    image: linuxserver/transmission:2.94-r1-ls22
     restart: on-failure
     network_mode: service:pia_client
     volumes:

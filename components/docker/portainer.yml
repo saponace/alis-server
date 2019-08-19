@@ -1,7 +1,7 @@
   # Manage docker conainers via a web UI
   portainer:
     container_name: portainer
-    image: portainer/portainer:1.20.2
+    image: portainer/portainer:1.22.0
     command: --no-auth
     restart: on-failure
     volumes:

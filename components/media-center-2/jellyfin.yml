@@ -1,7 +1,7 @@
   # Second media center
   jellyfin-2:
     container_name: jellyfin-2
-    image: jellyfin/jellyfin:10.3.5
+    image: jellyfin/jellyfin:10.3.7
     restart: on-failure
     network_mode: service:pia_client
     volumes:

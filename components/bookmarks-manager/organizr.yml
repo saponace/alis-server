@@ -1,7 +1,7 @@
   # Bookmarks manager
   organizr:
     container_name: organizr
-    image: organizrtools/organizr-v2@sha256:cedc9c2376503d7c9a71a078bdc2d252b3552053c02e430b95be21d074f8df7b
+    image: organizrtools/organizr-v2@sha256:dad73af81d28ed7402ae6ec37c4ecdbe80fa946d103c4ea1f165afeef3a13f41
     restart: on-failure
     volumes:
       - %CONTAINERS_CONFIG_DIR%/organizr:/config
