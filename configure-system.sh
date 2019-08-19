@@ -109,6 +109,7 @@ install_component pihole
 install_component task-manager
 install_component file-server
 install_component file-synchronization
+install_component file-browser-web
 install_component docker
 
 
