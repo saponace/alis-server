@@ -1,4 +1,4 @@
-  # Syncthing
+  # Filebrowser
   filebrowser:
     container_name: filebrowser
     image: filebrowser/filebrowser:v2.0.12
