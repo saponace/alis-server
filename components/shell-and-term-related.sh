@@ -16,6 +16,8 @@
         # For root
             sudo chsh -s /bin/zsh root
 
+# ls improved
+    ${INSTALL} lsd
 # Terminal multiplexer
     ${INSTALL} tmux
     # Link config file
