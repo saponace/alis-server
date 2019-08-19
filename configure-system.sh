@@ -113,8 +113,8 @@ install_component file-browser-web
 install_component docker
 
 
-sudo_create_link ${SCRIPTS_DIR}/startup /bin
-sudo_create_link ${SCRIPTS_DIR}/manage-disks /bin
+sudo_create_link ${SCRIPTS_DIR}/startup /bin/startup
+sudo_create_link ${SCRIPTS_DIR}/manage-disks /bin/manage-disks
 
 
 sync
