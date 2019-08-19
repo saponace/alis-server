@@ -1,0 +1,12 @@
+  # Syncthing
+  filebrowser:
+    container_name: filebrowser
+    image: filebrowser/filebrowser:v2.0.12
+    restart: on-failure
+    volumes:
+      - /mnt:/srv
+    labels:
+      - traefik.enable=true
+      - traefik.backend=syncthing
+      - traefik.frontend.rule=Host:filebrowser.%DOMAIN_NAME%
+      - traefik.port=80
