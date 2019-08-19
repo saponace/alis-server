@@ -32,7 +32,7 @@
     sudo_create_link ${COMPONENTS_DIR}/pvr/config/yt-dl-archive-channels.conf ${CONTAINERS_CONFIG_DIR}/yt-dl-archive-channels/
     sudo chown -R ${username}:${username} ${CONTAINERS_CONFIG_DIR}/yt-dl-archive-channels/
 
-    sudo mkdir /mnt/media/youtube-videos
+    sudo mkdir -p /mnt/media/youtube-videos
     sudo chown -R ${username}:${username} /mnt/media/youtube-videos
 
     declare -A  yt_dl_archive_channels_compose_template_mappings=(

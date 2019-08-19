@@ -6,7 +6,7 @@
 
 # Create files and direcetories needed by syncthing
 syncthing_data_dir="${CONTAINERS_DATA_DIR}/syncthing"
-sudo mkdir ${syncthing_data_dir}
+sudo mkdir -p ${syncthing_data_dir}
 sudo chown ${username}:${username} ${syncthing_data_dir}
 
 # Create docker compose component

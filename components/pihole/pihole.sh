@@ -5,7 +5,7 @@
 
 # Create files and direcetories needed by pihole
 pihole_home="${CONTAINERS_DATA_DIR}/pihole"
-sudo mkdir ${pihole_home}
+sudo mkdir -p ${pihole_home}
 sudo touch ${pihole_home}/pihole.log
 
 # Create docker compose component
