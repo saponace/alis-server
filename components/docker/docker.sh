@@ -28,7 +28,8 @@ sudo systemctl enable docker
    done
 
 # Pull docker images
-sudo su -c "cd ${docker_compose_dir}; docker-compose pull"
+   sudo systemctl start docker
+   sudo su -c "cd ${docker_compose_dir}; docker-compose pull"
 
 
 
