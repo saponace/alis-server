@@ -1,0 +1,19 @@
+  # TV and movies subtitles download
+  bazarr:
+    container_name: bazarr
+    image: linuxserver/bazarr:9a7372c8-ls45
+    restart: on-failure
+    network_mode: service:pia_client
+    volumes:
+      - %CONTAINERS_CONFIG_DIR%/bazarr:/config
+      - %MOVIES_DIR%:/movies
+      - %TV_DIR%:/tv
+    environment:
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
+    labels:
+      - traefik.enable=true
+      - traefik.backend=bazarr
+      - traefik.frontend.rule=Host:bazarr.%DOMAIN_NAME%
+      - traefik.port=6767

@@ -12,6 +12,11 @@
     )
     process_docker_compose_service pvr/radarr "$(declare -p radarr_docker_compose_template_mappings)"
 
+# Bazarr: automated TV and movies subtitles download
+    declare -A  bazarr_docker_compose_template_mappings=(
+    )
+    process_docker_compose_service pvr/bazarr "$(declare -p bazarr_docker_compose_template_mappings)"
+
 # Lidarr: automated music download
 # I know, music is not video (as in PVR), but I thought it fits well here
     declare -A  lidarr_docker_compose_template_mappings=(
