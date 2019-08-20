@@ -1,0 +1,17 @@
+  # Bitwarden
+  bitwarden:
+      container_name: bitwarden
+      image: bitwardenrs/server:1.9.1
+      restart: on-failure
+      volumes:
+        - %CONTAINERS_DATA_DIR%/bitwarden:/config
+      environment:
+        WEBSOCKET_ENABLED: "true"
+        SIGNUPS_ALLOWED: "false"
+      labels:
+        - traefik.enable=true
+        - traefik.web.frontend.rule=Host:bitwarden.%DOMAIN_NAME%
+        - traefik.web.port=80
+        - traefik.hub.frontend.rule=Host:bitwarden.%DOMAIN_NAME%;Path:/notifications/hub
+        - traefik.hub.port=3012
+        - traefik.hub.protocol=ws
