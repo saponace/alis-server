@@ -4,7 +4,7 @@
       image: bitwardenrs/server:1.9.1
       restart: on-failure
       volumes:
-        - %CONTAINERS_DATA_DIR%/bitwarden:/config
+        - %CONTAINERS_DATA_DIR%/bitwarden:/data
       environment:
         WEBSOCKET_ENABLED: "true"
         SIGNUPS_ALLOWED: "false"
