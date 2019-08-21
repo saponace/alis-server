@@ -114,8 +114,8 @@ install_component password-manager
 install_component docker
 
 
-sudo ln -snf ${SCRIPTS_DIR}/startup /bin/startup
-sudo ln -snf ${SCRIPTS_DIR}/manage-disks /bin/manage-disks
+sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/startup) /bin/startup
+sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/manage-disks) /bin/manage-disks
 
 
 sync
