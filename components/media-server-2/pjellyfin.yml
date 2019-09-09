@@ -2,7 +2,7 @@
   pjellyfin:
     container_name: pjellyfin
     image: jellyfin/jellyfin:10.3.7
-    restart: on-failure
+    restart: unless-stopped
     volumes:
       - %CONTAINERS_CONFIG_DIR%/pjellyfin:/config
       - %CONTAINERS_DATA_DIR%/pjellyfin:/cache

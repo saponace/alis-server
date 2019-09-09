@@ -2,7 +2,7 @@
   pia_client:
     image: saponace/pia-client:release-1.0
     container_name: pia_client
-    restart: on-failure
+    restart: unless-stopped
     cap_add:
         - NET_ADMIN
     devices:

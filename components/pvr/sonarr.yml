@@ -2,7 +2,7 @@
   sonarr:
     container_name: sonarr
     image: linuxserver/sonarr:3.0.2.587-ls123
-    restart: on-failure
+    restart: unless-stopped
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/sonarr:/config

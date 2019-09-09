@@ -2,7 +2,7 @@
   wekan_db:
     container_name: wekan_db
     image: mongo:%VERSION%
-    restart: on-failure
+    restart: unless-stopped
     command: mongod --oplogSize 128
     networks:
       - wekan_net

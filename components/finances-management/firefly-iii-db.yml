@@ -2,7 +2,7 @@
   firefly_iii_db:
     container_name: firefly_iii_db
     image: postgres:%VERSION%
-    restart: on-failure
+    restart: unless-stopped
     networks:
       - firefly_iii_net
     volumes:

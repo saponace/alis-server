@@ -2,7 +2,7 @@
   ddclient:
     container_name: ddclient
     image: linuxserver/ddclient:3.9.0-ls12
-    restart: on-failure
+    restart: unless-stopped
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

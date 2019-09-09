@@ -2,7 +2,7 @@
   homeassistant:
     container_name: homeassistant
     image: homeassistant/home-assistant:0.97.2
-    restart: on-failure
+    restart: unless-stopped
     privileged: true
     volumes:
       - %CONTAINERS_CONFIG_DIR%/homeassistant:/config

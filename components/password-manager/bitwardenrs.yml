@@ -2,7 +2,7 @@
   bitwarden:
       container_name: bitwarden
       image: bitwardenrs/server:1.9.1
-      restart: on-failure
+      restart: unless-stopped
       volumes:
         - %CONTAINERS_DATA_DIR%/bitwarden:/data
       environment:

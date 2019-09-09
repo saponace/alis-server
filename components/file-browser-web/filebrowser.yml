@@ -2,7 +2,7 @@
   filebrowser:
     container_name: filebrowser
     image: filebrowser/filebrowser:v2.0.12
-    restart: on-failure
+    restart: unless-stopped
     volumes:
       - /mnt:/srv
       - %CONTAINERS_DATA_DIR%/filebrowser/database.db:/database.db

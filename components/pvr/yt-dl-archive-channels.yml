@@ -2,7 +2,7 @@
   yt-dl-archive-channels:
     image: saponace/yt-dl-archive-channels:release-1.0
     container_name: yt_dl_archive_channels
-    restart: on-failure
+    restart: unless-stopped
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/yt-dl-archive-channels/yt-dl-archive-channels.conf:/config/yt-dl-archive-channels.conf

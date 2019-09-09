@@ -2,7 +2,7 @@
   organizr:
     container_name: organizr
     image: organizrtools/organizr-v2@sha256:dad73af81d28ed7402ae6ec37c4ecdbe80fa946d103c4ea1f165afeef3a13f41
-    restart: on-failure
+    restart: unless-stopped
     volumes:
       - %CONTAINERS_CONFIG_DIR%/organizr:/config
       - %DOCKER_SHARED_DIR%:/shared

@@ -2,7 +2,7 @@
   bazarr:
     container_name: bazarr
     image: linuxserver/bazarr:9a7372c8-ls45
-    restart: on-failure
+    restart: unless-stopped
     network_mode: service:pia_client
     volumes:
       - %CONTAINERS_CONFIG_DIR%/bazarr:/config
