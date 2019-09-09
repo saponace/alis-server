@@ -4,8 +4,8 @@
     container_name: yt_dl_archive_channels
     restart: unless-stopped
     network_mode: service:pia_client
+    user: "%DOCKER_USER_ID%:%DOCKER_GROUP_ID%"
     volumes:
       - %CONTAINERS_CONFIG_DIR%/yt-dl-archive-channels/yt-dl-archive-channels.conf:/config/yt-dl-archive-channels.conf
       - %CONTAINERS_DATA_DIR%/yt-dl-archive-channels/archive.txt:/data/archive.txt
       - %DOWNLOADS_DIR%:/downloads
-    user: "%DOCKER_USER_ID%:%DOCKER_GROUP_ID%"
