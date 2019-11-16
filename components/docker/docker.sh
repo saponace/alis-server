@@ -34,4 +34,14 @@ sudo systemctl enable docker
 
 
 # Create systemd unit file and start docker-compose at bootup
-   sudo_create_link components/docker/server-apps-suite.service /etc/systemd/system/
+   input_service_file=${COMPONENTS_DIR}/docker/server-apps-suite.service
+   temp_output_service_file=/tmp/server-apps-suite.service
+   output_service_file=/etc/systemd/system/server-apps-suite.service
+
+   declare -A  service_mappings=(
+      ["DOCKER_COMPOSE_BIN_PATH"]="$(which docker-compose)"
+      ["DOCKER_COMPOSE_DIR"]="${docker_compose_dir}"
+   )
+
+   fill_template_file ${input_service_file} ${temp_output_service_file} "$(declare -p service_mappings)"
+   sudo mv ${temp_output_service_file} ${output_service_file}

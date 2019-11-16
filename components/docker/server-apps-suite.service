@@ -4,9 +4,9 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-WorkingDirectory=${docker_compose_dir}
-ExecStart=$(which docker-compose) up
-ExecStop=$(which docker-compose) down
+WorkingDirectory=%DOCKER_COMPOSE_DIR%
+ExecStart=%DOCKER_COMPOSE_BIN_PATH% up
+ExecStop=%DOCKER_COMPOSE_BIN_PATH% down
 TimeoutStartSec=0
 Restart=on-failure
 StartLimitInterval=60
