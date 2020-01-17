@@ -106,7 +106,6 @@ install_component pvr
 install_component bookmarks-manager
 install_component finances-management
 install_component pihole
-install_component task-manager
 install_component file-server
 install_component file-synchronization
 install_component file-browser-web
