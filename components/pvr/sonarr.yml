@@ -16,6 +16,6 @@
       - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
-      - traefik.backend=sonarr
-      - traefik.frontend.rule=Host:sonarr.%DOMAIN_NAME%
-      - traefik.port=8989
+      - traefik.http.routers.sonarr.rule=Host(`sonarr.%DOMAIN_NAME%`)
+      - traefik.http.services.sonarr.loadbalancer.server.port=8989
+      - traefik.http.routers.sonarr.tls.certresolver=le

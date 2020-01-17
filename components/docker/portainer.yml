@@ -11,6 +11,6 @@
       - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
-      - traefik.backend=portainer
-      - traefik.frontend.rule=Host:portainer.%DOMAIN_NAME%
-      - traefik.port=9000
+      - traefik.http.routers.portainer.rule=Host(`portainer.%DOMAIN_NAME%`)
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
+      - traefik.http.routers.portainer.tls.certresolver=le

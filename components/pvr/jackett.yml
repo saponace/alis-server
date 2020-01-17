@@ -15,6 +15,6 @@
       - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
-      - traefik.backend=jackett
-      - traefik.frontend.rule=Host:jackett.%DOMAIN_NAME%
-      - traefik.port=9117
+      - traefik.http.routers.jackett.rule=Host(`jackett.%DOMAIN_NAME%`)
+      - traefik.http.services.jackett.loadbalancer.server.port=9117
+      - traefik.http.routers.jackett.tls.certresolver=le

@@ -23,6 +23,6 @@
       - TRUSTED_PROXIES=**
     labels:
       - traefik.enable=true
-      - traefik.backend=firefly
-      - traefik.frontend.rule=Host:firefly.%DOMAIN_NAME%
-      - traefik.port=80
+      - traefik.http.routers.firefly.rule=Host(`firefly.%DOMAIN_NAME%`)
+      - traefik.http.services.firefly.loadbalancer.server.port=80
+      - traefik.http.routers.firefly.tls.certresolver=le

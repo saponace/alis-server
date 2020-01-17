@@ -1,0 +1,35 @@
+http:
+  routers:
+    catchall:
+      entryPoints:
+        - http
+        - https
+      middlewares:
+        - https-redirect
+      # Activate the router on any host requested
+      rule: "HostRegexp(`{host:.+}`)"
+      service: noop
+      # tls:
+      #   certresolver: le
+      #   domains:
+      #     - main: "%DOMAIN_NAME%"
+      #       sans: ["*.%DOMAIN_NAME%"]
+
+
+  middlewares:
+    basic-auth:
+      basicAuth:
+        users:
+          - "%HT_PASSWD%"
+
+    https-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+
+  services:
+    noop:
+      loadBalancer:
+        servers:
+          - url: localhost

@@ -15,6 +15,6 @@
       - BROWSER_POLICY_ENABLED=true
     labels:
       - traefik.enable=true
-      - traefik.backend=wekan
-      - traefik.frontend.rule=Host:wekan.%DOMAIN_NAME%
-      - traefik.port=8080
+      - traefik.http.routers.wekan.rule=Host(`wekan.%DOMAIN_NAME%`)
+      - traefik.http.services.wekan.loadbalancer.server.port=8080
+      - traefik.http.routers.wekan.tls.certresolver=le

@@ -14,6 +14,6 @@
       - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
-      - traefik.backend=bazarr
-      - traefik.frontend.rule=Host:bazarr.%DOMAIN_NAME%
-      - traefik.port=6767
+      - traefik.http.routers.bazarr.rule=Host(`bazarr.%DOMAIN_NAME%`)
+      - traefik.http.services.bazarr.loadbalancer.server.port=6767
+      - traefik.http.routers.bazarr.tls.certresolver=le

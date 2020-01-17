@@ -13,6 +13,6 @@
       - PGID=%DOCKER_GROUP_ID%
     labels:
       - traefik.enable=true
-      - traefik.backend=jellyfin
-      - traefik.frontend.rule=Host:jellyfin.%DOMAIN_NAME%
-      - traefik.port=8096
+      - traefik.http.routers.jellyfin.rule=Host(`jellyfin.%DOMAIN_NAME%`)
+      - traefik.http.services.jellyfin.loadbalancer.server.port=8096
+      - traefik.http.routers.jellyfin.tls.certresolver=le

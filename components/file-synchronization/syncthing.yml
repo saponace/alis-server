@@ -13,7 +13,7 @@
       UMASK_SET: 022
     labels:
       - traefik.enable=true
-      - traefik.backend=syncthing
-      - traefik.frontend.rule=Host:syncthing.%DOMAIN_NAME%
-      - traefik.port=8384
-      - traefik.frontend.auth.basic=%HT_PASSWD%
+      - traefik.http.routers.syncthing.rule=Host(`syncthing.%DOMAIN_NAME%`)
+      - traefik.http.services.syncthing.loadbalancer.server.port=8384
+      - traefik.http.routers.syncthing.middlewares=basic-auth@file
+      - traefik.http.routers.syncthing.tls.certresolver=le

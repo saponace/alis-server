@@ -1,0 +1,31 @@
+log:
+  level: INFO #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+accessLog: {}
+
+entryPoints:
+  http:
+    address: ":80"
+  https:
+    address: ":443"
+
+api:
+  dashboard: true
+
+certificatesResolvers:
+  le:
+    acme:
+      dnsChallenge:
+        provider: cloudflare
+        delayBeforeCheck: 0
+      email: "%LETS_ENCRYPT_EMAIL%"
+      storage: "acme.json"
+      # Uncomment to use Let's Encrypt Staging (for testing only)
+      # caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+
+
+providers:
+  docker:
+    exposedByDefault: false
+  file:
+    filename: /dynamic-conf.yml
+    watch: true

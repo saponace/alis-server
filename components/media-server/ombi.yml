@@ -12,6 +12,6 @@
       - TZ=%TIMEZONE%
     labels:
       - traefik.enable=true
-      - traefik.backend=ombi
-      - traefik.frontend.rule=Host:ombi.%DOMAIN_NAME%
-      - traefik.port=3579
+      - traefik.http.routers.ombi.rule=Host(`ombi.%DOMAIN_NAME%`)
+      - traefik.http.services.ombi.loadbalancer.server.port=3579
+      - traefik.http.routers.ombi.tls.certresolver=le
