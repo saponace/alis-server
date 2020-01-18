@@ -11,11 +11,12 @@
       - 80:80
       - 443:443
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - %CONTAINERS_CONFIG_DIR%/traefik/traefik.yml:/traefik.yml
       - %CONTAINERS_CONFIG_DIR%/traefik/dynamic-conf.yml:/dynamic-conf.yml
       - %CONTAINERS_DATA_DIR%/traefik/acme.json:/acme.json
+      - /var/log/traefik:/var/log   # Used by Fail2ban
       - /var/run/docker.sock:/var/run/docker.sock:ro
-
     environment:
       - CF_API_EMAIL=%CLOUDFLARE_EMAIL%
       - CF_API_KEY=%CLOUDFLARE_API_KEY%

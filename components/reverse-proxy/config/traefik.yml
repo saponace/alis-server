@@ -1,6 +1,20 @@
 log:
   level: INFO #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
-accessLog: {}
+
+accessLog:
+  filePath: "/var/log/access.log"
+  format: json
+  filters:
+    statusCodes:
+      - "400-499"
+  fields:
+    defaultMode: keep
+    headers:
+      defaultMode: keep
+      names:
+        CF-Connecting-IP: keep
+
+
 
 entryPoints:
   http:
