@@ -4,7 +4,8 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-RuntimeMaxSec=259200 # Service stops (and then restarts) every 3*24*3600 seconds. This is a workaround for the issue that disconnects the VPN container from the internet
+ # Service stops (and then restarts) every 3*24*3600 seconds. This is a workaround for the issue that disconnects the VPN container from the internet
+RuntimeMaxSec=259200
 WorkingDirectory=%DOCKER_COMPOSE_DIR%
 ExecStart=%DOCKER_COMPOSE_BIN_PATH% up
 ExecStop=%DOCKER_COMPOSE_BIN_PATH% down
