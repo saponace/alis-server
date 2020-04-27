@@ -110,6 +110,7 @@ install_component file-server
 install_component file-synchronization
 install_component file-browser-web
 install_component password-manager
+install_component notifications
 install_component docker
 
 
