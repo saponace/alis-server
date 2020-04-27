@@ -7,11 +7,17 @@ ${INSTALL} docker docker-compose
 sudo systemctl enable docker
 
 
-
 # Portainer: Docker containers management via Web UI
     declare -A  portainer_docker_compose_template_mappings=(
     )
     process_docker_compose_service docker/portainer "$(declare -p portainer_docker_compose_template_mappings)"
+
+
+# Watchtower: Auto-update docker containers
+    declare -A  watchtower_docker_compose_template_mappings=(
+       ["GOTIFY_WATCHTOWER_API_TOKEN"]="${gotify_watchtower_api_token}"
+    )
+    process_docker_compose_service docker/watchtower "$(declare -p watchtower_docker_compose_template_mappings)"
 
 
 

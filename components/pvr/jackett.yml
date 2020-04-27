@@ -1,7 +1,7 @@
   # Torrent trackers proxy
   jackett:
     container_name: jackett
-    image: linuxserver/jackett:v0.11.626-ls22
+    image: linuxserver/jackett:latest
     restart: unless-stopped
     network_mode: service:pia_client
     volumes:
@@ -18,3 +18,4 @@
       - traefik.http.routers.jackett.rule=Host(`jackett.%DOMAIN_NAME%`)
       - traefik.http.services.jackett.loadbalancer.server.port=9117
       - traefik.http.routers.jackett.tls.certresolver=le
+      - com.centurylinklabs.watchtower.enable=true  # Jackett needs to be up to date to be able to keep fetching data from trackers

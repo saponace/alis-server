@@ -1,0 +1,13 @@
+  # Auto-update docker containers (pulls latest image and restart container)
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower:0.3.11
+    restart: unless-stopped
+    command: --cleanup --label-enable --interval 3600
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=%TIMEZONE%
+      - WATCHTOWER_NOTIFICATIONS=gotify
+      - WATCHTOWER_NOTIFICATION_GOTIFY_URL=https://gotify.%DOMAIN_NAME%
+      - WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN=%GOTIFY_WATCHTOWER_API_TOKEN%
