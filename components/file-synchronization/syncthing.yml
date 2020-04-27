@@ -7,10 +7,10 @@
       - %CONTAINERS_CONFIG_DIR%/syncthing:/config
       - %SYNCTHING_DATA_DIR%:/data
     environment:
-      PUID: %DOCKER_USER_ID%
-      PGID: %DOCKER_GROUP_ID%
-      TZ: %TIMEZONE%
-      UMASK_SET: 022
+      - PUID=%DOCKER_USER_ID%
+      - PGID=%DOCKER_GROUP_ID%
+      - TZ=%TIMEZONE%
+      - UMASK_SET=022
     labels:
       - traefik.enable=true
       - traefik.http.routers.syncthing.rule=Host(`syncthing.%DOMAIN_NAME%`)
