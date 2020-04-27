@@ -1,7 +1,7 @@
   # Archive youtube channels
   yt-dl-archive-channels:
-    image: saponace/yt-dl-archive-channels:release-1.0
     container_name: yt_dl_archive_channels
+    image: saponace/yt-dl-archive-channels:release-1.0
     restart: unless-stopped
     network_mode: service:pia_client
     user: "%DOCKER_USER_ID%:%DOCKER_GROUP_ID%"
