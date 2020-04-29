@@ -4,6 +4,10 @@
     image: linuxserver/bazarr:9a7372c8-ls45
     restart: unless-stopped
     network_mode: service:pia_client
+    depends_on:
+      - sonarr
+      - radarr
+      - gotify
     volumes:
       - %CONTAINERS_CONFIG_DIR%/bazarr:/config
       - %MOVIES_DIR%:/movies

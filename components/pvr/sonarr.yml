@@ -4,6 +4,10 @@
     image: linuxserver/sonarr:3.0.2.587-ls123
     restart: unless-stopped
     network_mode: service:pia_client
+    depends_on:
+      - jackett
+      - transmission
+      - gotify
     volumes:
       - %CONTAINERS_CONFIG_DIR%/sonarr:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads

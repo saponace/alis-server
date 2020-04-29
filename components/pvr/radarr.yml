@@ -4,6 +4,10 @@
     image: linuxserver/radarr:2.0.0.2051-ls23
     restart: unless-stopped
     network_mode: service:pia_client
+    depends_on:
+      - jackett
+      - transmission
+      - gotify
     volumes:
       - %CONTAINERS_CONFIG_DIR%/radarr:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads

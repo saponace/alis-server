@@ -4,6 +4,12 @@
     image: linuxserver/ombi:3.0.4727-ls58
     restart: unless-stopped
     network_mode: service:pia_client
+    depends_on:
+      - jellyfin
+      - sonarr
+      - radarr
+      - lidarr
+      - gotify
     volumes:
       - %CONTAINERS_CONFIG_DIR%/ombi:/config
     environment:

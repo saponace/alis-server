@@ -4,6 +4,10 @@
     image: linuxserver/lidarr:0.6.2.1121-ls33
     restart: unless-stopped
     network_mode: service:pia_client
+    depends_on:
+      - jackett
+      - transmission
+      - gotify
     volumes:
       - %CONTAINERS_CONFIG_DIR%/lidarr:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads

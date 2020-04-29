@@ -4,6 +4,8 @@
     image: jellyfin/jellyfin:10.4.1
     restart: unless-stopped
     network_mode: service:pia_client
+    depends_on:
+      - gotify
     volumes:
       - %CONTAINERS_CONFIG_DIR%/jellyfin/config:/config
       - %CONTAINERS_DATA_DIR%/jellyfin/cache:/cache
