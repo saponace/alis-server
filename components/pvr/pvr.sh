@@ -28,19 +28,7 @@
     )
     process_docker_compose_service pvr/jackett "$(declare -p jackett_docker_compose_template_mappings)"
 
-# Youtube video archiver: daily download of all videos in the selected channels
-    sudo mkdir -p ${CONTAINERS_DATA_DIR}/yt-dl-archive-channels/
-    sudo touch ${CONTAINERS_DATA_DIR}/yt-dl-archive-channels/archive.txt
-    sudo chown -R ${username}:${username} ${CONTAINERS_DATA_DIR}/yt-dl-archive-channels/
-
-    sudo mkdir -p ${CONTAINERS_CONFIG_DIR}/yt-dl-archive-channels/
-    sudo_create_link ${COMPONENTS_DIR}/pvr/config/yt-dl-archive-channels.conf ${CONTAINERS_CONFIG_DIR}/yt-dl-archive-channels/
-    sudo chown -R ${username}:${username} ${CONTAINERS_CONFIG_DIR}/yt-dl-archive-channels/
-
-    sudo mkdir -p /mnt/media/youtube-videos
-    sudo chown -R ${username}:${username} /mnt/media/youtube-videos
-
-    declare -A  yt_dl_archive_channels_compose_template_mappings=(
-        ["DOWNLOADS_DIR"]=/mnt/media/youtube-videos
+# Youtube-dl: Download Youtube videos/channels/playlists (can extract audio)
+    declare -A  youtube_dl_compose_template_mappings=(
     )
-    process_docker_compose_service pvr/yt-dl-archive-channels "$(declare -p yt_dl_archive_channels_compose_template_mappings)"
+    process_docker_compose_service pvr/youtube-dl "$(declare -p youtube_dl_compose_template_mappings)"

@@ -1,0 +1,18 @@
+  # Download Youtube videos/channels/playlists (can extract audio)
+  youtube-dl:
+    container_name: youtube_dl
+    image: tzahi12345/youtubedl-material:4.0
+    restart: unless-stopped
+    network_mode: service:pia_client
+    volumes:
+      - %MEDIA_DIR%/youtube/video:/app/video
+      - %MEDIA_DIR%/youtube/subscriptions:/app/subscriptions
+      - %MUSIC_DIR%/youtube/:/app/audio
+      - %CONTAINERS_CONFIG_DIR%/youtube-dl:/app/appdata
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.youtubedl.rule=Host(`youtubedl.%DOMAIN_NAME%`)
+      - traefik.http.services.youtubedl.loadbalancer.server.port=17442
+      - traefik.http.routers.youtubedl.middlewares=basic-auth@file
+      - traefik.http.routers.youtubedl.tls.certresolver=le
+
