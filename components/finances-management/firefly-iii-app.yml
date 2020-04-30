@@ -3,8 +3,6 @@
     container_name: firefly_iii_app
     image: jc5x/firefly-iii:%VERSION%
     restart: unless-stopped
-    links:
-      - firefly_iii_db
     networks:
       - firefly_iii_net
       - default
