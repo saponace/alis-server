@@ -1,7 +1,18 @@
 version: "3"
+
 networks:
   vpn_client_net:
   firefly_iii_net:
+  elk_net:
   default:
     driver: bridge
+
+volumes:
+  elastic_vol:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/mnt/data/elasticsearch'
+
 services:

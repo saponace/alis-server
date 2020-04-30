@@ -1,0 +1,15 @@
+  # Send docker containers logs to logstash
+  logspout:
+    container_name: logspout
+    image: bekt/logspout-logstash:ignore-v3.2.6
+    restart: always # When logspout starts before logstash, it fails. It hence needs to be automatically restarted
+    networks:
+      - elk_net
+    depends_on:
+      - elasticsearch
+      - logstash
+      - kibana
+    volumes:
+      - '/var/run/docker.sock:/tmp/docker.sock'
+    environment:
+      - ROUTE_URIS=logstash+tcp://logstash:5000

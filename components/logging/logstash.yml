@@ -1,0 +1,13 @@
+# Centralise logs and send them to elasticsearch
+  logstash:
+    container_name: logstash
+    image: logstash:%VERSION%
+    restart: unless-stopped
+    command: 'logstash -e "input { tcp { port => 5000 codec => json } } output { elasticsearch { hosts => elasticsearch } }"'
+    networks:
+      - elk_net
+    depends_on:
+      - elasticsearch
+      - kibana
+    environment:
+      - STDOUT=true

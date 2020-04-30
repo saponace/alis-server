@@ -1,0 +1,11 @@
+# Search engine
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:%VERSION%
+    restart: unless-stopped
+    networks:
+      - elk_net
+    volumes:
+      - elastic_vol:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
