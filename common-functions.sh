@@ -78,3 +78,17 @@ function process_docker_compose_service (){
     mkdir -p ${TEMP_DOCKER_COMPOSE_PARTS_DIR}
     fill_template_file ${source_file} ${dest_file} "$2"
 }
+
+# Add a docker network
+# Indentation should be input in the parameter as if you were writing the yaml compose file straight
+# $1: Definition of the network
+function add_docker_network (){
+    echo "$1" >> ${TEMP_DOCKER_PART_NETWORKS}
+}
+
+# Add a docker named volume
+# Indentation should be input in the parameter as if you were writing the yaml compose file straight
+# $1: Definition of the named volume
+function add_docker_volume (){
+    echo "$1" >> ${TEMP_DOCKER_PART_VOLUMES}
+}

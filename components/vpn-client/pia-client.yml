@@ -10,7 +10,7 @@
     networks:
         - vpn_client_net
     volumes:
-        - /tmp/docker-volumes/pia_port:/var/run/pia/
+        - /tmp/pia:/var/run/pia/
         - /pia-credentials:/config/credentials
     environment:
         - REGION=France

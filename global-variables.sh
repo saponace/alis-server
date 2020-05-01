@@ -4,6 +4,8 @@
 
 DOCKER_SHARED_DIR="/docker-shared"
 TEMP_DOCKER_COMPOSE_PARTS_DIR="/tmp/docker-compose-parts"
+TEMP_DOCKER_PART_NETWORKS="/tmp/docker-networks"
+TEMP_DOCKER_PART_VOLUMES="/tmp/docker-volumes"
 CONTAINERS_CONFIG_DIR="/mnt/persistent-configs"
 CONTAINERS_DATA_DIR="/mnt/data"
 COMPONENTS_DIR="components"

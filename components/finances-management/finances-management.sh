@@ -10,6 +10,9 @@ data_dir="${CONTAINERS_DATA_DIR}/firefly-iii"
 firefly_iii_version="release-4.8.0.2"
 postgres_version="12"
 
+
+add_docker_network "  firefly_iii_net:"
+
 declare -A  firefly_iii_app_docker_compose_template_mappings=(
     ["FIREFLY_DATA"]=${data_dir}
     ["DB_NAME"]=${db_name}

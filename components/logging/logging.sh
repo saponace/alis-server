@@ -3,6 +3,15 @@
 #-------------------------------------------------
 
 
+add_docker_network "  elk_net:"
+add_docker_volume "  elastic_vol:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/mnt/data/elasticsearch'
+"
+
 # Increase vm allocated memory. Required by elasticsearch (actually does not seem required when elasticsearch is in
 # single-node mode)
 # sudo sysctl -w vm.max_map_count=262144

@@ -3,6 +3,8 @@
 #-------------------------------------------------
 
 
+add_docker_network "  vpn_client_net:"
+
 # Build docker-compose definition
     declare -A  docker_compose_template_mappings=(
     )
