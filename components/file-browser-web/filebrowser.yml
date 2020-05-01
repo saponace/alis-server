@@ -1,11 +1,11 @@
   # Filebrowser
   filebrowser:
     container_name: filebrowser
-    image: filebrowser/filebrowser:v2.0.12
+    image: filebrowser/filebrowser:%VERSION%
     restart: unless-stopped
     volumes:
-      - /mnt:/srv
-      - %CONTAINERS_DATA_DIR%/filebrowser/database.db:/database.db
+      - %MNT_DIR%:/srv
+      - %DATA_DIR%/database.db:/database.db
     labels:
       - traefik.enable=true
       - traefik.http.routers.filebrowser.rule=Host(`filebrowser.%DOMAIN_NAME%`)
