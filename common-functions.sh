@@ -92,3 +92,10 @@ function add_docker_network (){
 function add_docker_volume (){
     echo "$1" >> ${TEMP_DOCKER_PART_VOLUMES}
 }
+
+# Add a docker secret
+# Indentation should be input in the parameter as if you were writing the yaml compose file straight
+# $1: Definition of the secret
+function add_docker_secret (){
+    echo "$1" >> ${TEMP_DOCKER_PART_SECRETS}
+}

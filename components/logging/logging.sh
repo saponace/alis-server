@@ -9,8 +9,7 @@ add_docker_volume "  elastic_vol:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/mnt/data/elasticsearch'
-"
+      device: '/mnt/data/elasticsearch'"
 
 # Increase vm allocated memory. Required by elasticsearch (actually does not seem required when elasticsearch is in
 # single-node mode)

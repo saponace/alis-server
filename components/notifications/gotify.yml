@@ -3,6 +3,8 @@
     container_name: gotify
     image: gotify/server:2.0.15
     restart: unless-stopped
+    networks:
+      - default
     volumes:
       - %GOTIFY_DATA_DIR%:/app/data
     environment:

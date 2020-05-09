@@ -112,6 +112,7 @@ install_component file-browser-web
 install_component password-manager
 install_component notifications
 install_component logging
+install_component auth
 install_component docker
 
 

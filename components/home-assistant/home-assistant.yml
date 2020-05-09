@@ -17,3 +17,4 @@
       - traefik.http.routers.homeassistant.rule=Host(`homeassistant.%DOMAIN_NAME%`)
       - traefik.http.services.homeassistant.loadbalancer.server.port=8123
       - traefik.http.routers.homeassistant.tls.certresolver=le
+      - traefik.http.routers.homeassistant.middlewares=auth@file

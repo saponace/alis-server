@@ -3,6 +3,7 @@
     container_name: portainer
     image: portainer/portainer:1.22.0
     restart: unless-stopped
+    command: --no-auth
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - %CONTAINERS_CONFIG_DIR%/portainer/data:/data
@@ -13,4 +14,5 @@
       - traefik.enable=true
       - traefik.http.routers.portainer.rule=Host(`portainer.%DOMAIN_NAME%`)
       - traefik.http.services.portainer.loadbalancer.server.port=9000
+      - traefik.http.routers.portainer.middlewares=auth@file
       - traefik.http.routers.portainer.tls.certresolver=le

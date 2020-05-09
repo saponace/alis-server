@@ -20,4 +20,5 @@
       - traefik.enable=true
       - traefik.http.routers.bazarr.rule=Host(`bazarr.%DOMAIN_NAME%`)
       - traefik.http.services.bazarr.loadbalancer.server.port=6767
+      - traefik.http.routers.bazarr.middlewares=auth@file
       - traefik.http.routers.bazarr.tls.certresolver=le

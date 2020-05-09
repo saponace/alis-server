@@ -17,10 +17,13 @@ http:
 
 
   middlewares:
-    basic-auth:
-      basicAuth:
-        users:
-          - "%HT_PASSWD%"
+    auth:
+      forwardAuth:
+        address: "http://auth:9091/api/verify?rd=https://auth.%DOMAIN_NAME%/"
+        trustForwardHeader: true
+        uthResponseHeaders:
+          - "Remote-User"
+          - "Remote-Groups"
 
     https-redirect:
       redirectScheme:

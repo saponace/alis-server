@@ -23,11 +23,7 @@
     sudo mv /tmp/traefik.yml ${CONTAINERS_CONFIG_DIR}/traefik/traefik.yml
 
 
-    # Escape $ with \ because else the "$" is interpreted by the script that injects the mappings in the
-    # files and the password is truncated at the first "$" occurence
-    htpasswd=$(openssl passwd -apr1 ${webserver_passwd} | sed -e s/\\$/\\\\$/g)
     declare -A  dynamic_config_mappings=(
-        ["HT_PASSWD"]="${username}:${htpasswd}"
     )
     fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/dynamic-conf.yml /tmp/dynamic-conf.yml "$(declare -p dynamic_config_mappings)"
     sudo mv /tmp/dynamic-conf.yml ${CONTAINERS_CONFIG_DIR}/traefik/dynamic-conf.yml

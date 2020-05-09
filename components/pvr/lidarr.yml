@@ -22,4 +22,5 @@
       - traefik.enable=true
       - traefik.http.routers.lidarr.rule=Host(`lidarr.%DOMAIN_NAME%`)
       - traefik.http.services.lidarr.loadbalancer.server.port=8686
+      - traefik.http.routers.lidarr.middlewares=auth@file
       - traefik.http.routers.lidarr.tls.certresolver=le

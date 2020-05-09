@@ -13,7 +13,7 @@ sudo mkdir -p ${DOCKER_SHARED_DIR}
 ${INSTALL} docker docker-compose
 sudo systemctl enable docker
 
-docker_compose_version=3
+docker_compose_version=3.8
 
 
 # Portainer: Docker containers management via Web UI
@@ -55,9 +55,15 @@ docker_compose_version=3
        append_to_docker_compose_file ""
     fi
 
-    if [ -f ${TEMP_DOCKER_PART_VOLUMES} ]; then
-       append_to_docker_compose_file "volumes:"
-       cat ${TEMP_DOCKER_PART_VOLUMES} >> ${docker_compose_file}
+   if [ -f ${TEMP_DOCKER_PART_VOLUMES} ]; then
+      append_to_docker_compose_file "volumes:"
+      cat ${TEMP_DOCKER_PART_VOLUMES} >> ${docker_compose_file}
+      append_to_docker_compose_file ""
+   fi
+
+    if [ -f ${TEMP_DOCKER_PART_SECRETS} ]; then
+       append_to_docker_compose_file "secrets:"
+       cat ${TEMP_DOCKER_PART_SECRETS} >> ${docker_compose_file}
        append_to_docker_compose_file ""
     fi
 

@@ -15,5 +15,5 @@
       - traefik.enable=true
       - traefik.http.routers.syncthing.rule=Host(`syncthing.%DOMAIN_NAME%`)
       - traefik.http.services.syncthing.loadbalancer.server.port=8384
-      - traefik.http.routers.syncthing.middlewares=basic-auth@file
+      - traefik.http.routers.syncthing.middlewares=auth@file
       - traefik.http.routers.syncthing.tls.certresolver=le
