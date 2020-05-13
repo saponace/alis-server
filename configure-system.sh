@@ -42,23 +42,16 @@ SCRIPTS_DIR="files-to-deploy/scripts"
 # Execute a component file
 # $1: The name of the component (without the ending ".sh")
 function install_component (){
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  echo "Starting installation of component $1" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  # Case components/core/core.sh
+  echo "# Installing component \"$1\" ..." 2>&1 | tee -a ${LOG_FILE}
+  # Case components/xxx/xxx.sh
   if [ -f "${COMPONENTS_PATH}/$1/$1.sh" ]; then
       source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}
-  # Case components/core.sh
+  # Case components/xxx.sh
   elif [ -f "${COMPONENTS_PATH}/$1.sh" ]; then
     source "${COMPONENTS_PATH}/$1.sh" 2>&1 | tee -a ${LOG_FILE}
   else
     echo "Error: Component $1 not found"
   fi
-  echo "" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  echo "Finished installing component $1" 2>&1 | tee -a ${LOG_FILE}
-  echo "========================================" 2>&1 | tee -a ${LOG_FILE}
-  echo "" 2>&1 | tee -a ${LOG_FILE}
 }
 
 function enable_networking (){
