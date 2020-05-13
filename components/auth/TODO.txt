@@ -1,0 +1,36 @@
+Add to documentation:
+
+Create an root level entry of type "Generic: Organisation Unit" called "groups"
+Create an root level entry of type "Generic: Organisation Unit" called "users"
+
+To create a user:
+  * from OU=users
+  * create an entry of type "Default"
+  * ObjectClasses: "inetOrgPerson"
+  * RDN: "cn (cn)"
+  * cn: [login]
+  * sn: [Ful user name]
+  * password: password
+
+Create a group:
+  * from OU=groups
+  * create an entry of type "Default"
+  * ObjectClasses: "groupOfNames"
+  * RDN: "cn (cn)"
+  * cn: [group name]
+  * member: any CN or OU
+
+
+create group "basic-users" with member "ou=users"
+
+Usefull resource on how to create basic LDAP groups/users: http://adminstuffs.blogspot.com/2017/01/creating-users-and-groups-in-openldap.html
+
+=========================
+
+* Connect Jellyfin to LDAP
+* Connect Firefly-iii to LDAP
+* Connect authelia to LDAP
+* Write proper documentation on how to manage users with LDAP
+  - Update list of services and their authentication mean
+* leave db.yml (with obfuscated pwd) and commented-out file-db config in case of LDAP breaking
+* Remove hardcoded values from configs and compose parts

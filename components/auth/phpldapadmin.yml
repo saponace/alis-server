@@ -1,0 +1,26 @@
+  # OpenLDAP admin web interface
+  phpldapadmin:
+    image: osixia/phpldapadmin:0.9.0
+    container_name: phpldapadmin
+    restart: unless-stopped
+    hostname: ldapadmin.EXAMPLE.TLD # TODO: var
+    networks:
+      - default
+    environment:
+      # TODO: use yaml array instead
+      PHPLDAPADMIN_HTTPS: "false"
+      # TODO: var
+      PHPLDAPADMIN_LDAP_HOSTS: "#PYTHON2BASH:[
+          {'openldap': [
+          {'server': [{'tls': False}]},
+          {'login': [
+            {'bind_id': 'cn=ADMIN,dc=EXAMPLE,dc=TLD'},
+          {'bind_pass': 'ADMINPWD'},
+          {'attr': 'cn'}
+          ]
+          }]}]"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.phpldapadmin.rule=Host(`ldapadmin.EXAMPLE.TLD`) # TODO: var
+      - traefik.http.services.phpldapadmin.loadbalancer.server.port=80
+      - traefik.http.routers.phpldapadmin.tls.certresolver=le

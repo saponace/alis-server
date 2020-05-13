@@ -19,6 +19,29 @@
       - APP_ENV=local
       - TZ=%TIMEZONE%
       - TRUSTED_PROXIES=**
+      - APP_DEBUG=true
+      - APP_LOG_LEVEL=debug
+      - LOGIN_PROVIDER=ldap
+      - ADLDAP_CONNECTION_SCHEME=OpenLDAP
+      - ADLDAP_AUTO_CONNECT=true
+      - ADLDAP_CONTROLLERS=openldap
+      - ADLDAP_PORT=389
+      - ADLDAP_TIMEOUT=5
+      - ADLDAP_BASEDN="dc=EXAMPLE,dc=TLD" # TODO: var
+      - ADLDAP_FOLLOW_REFFERALS=false
+      - ADLDAP_USE_SSL=false
+      - ADLDAP_USE_TLS=false
+      - ADLDAP_ADMIN_USERNAME="cn=ADMIN,dc=EXAMPLE,dc=TLD" # TODO: var
+      - ADLDAP_ADMIN_PASSWORD=ADMINPWD # TODO: var
+      - ADLDAP_ACCOUNT_PREFIX="cn="
+      - ADLDAP_ACCOUNT_SUFFIX=",ou=users,dc=domain,dc=com" # TODO: var
+      # Setting the following two fields to true sync the LDAP passwords to Firefly III database to allow connection to
+      # Firefly III when the LDAP server is down
+      - ADLDAP_PASSWORD_SYNC=false
+      - ADLDAP_LOGIN_FALLBACK=false
+      - ADLDAP_DISCOVER_FIELD=cn
+      - ADLDAP_AUTH_FIELD=cn
+      - ADLDAP_SYNC_FIELD=cn
     labels:
       - traefik.enable=true
       - traefik.http.routers.firefly.rule=Host(`firefly.%DOMAIN_NAME%`)

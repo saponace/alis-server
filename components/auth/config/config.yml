@@ -10,8 +10,31 @@ totp:
   issuer: authelia.com
 
 authentication_backend:
-  file:
-    path: /etc/authelia/users_database.yml
+  ldap:
+    url: ldap://ldap
+    skip_verify: false
+    # TODO: replace with dynamic splitting of ${DOMAIN_NAME}
+    base_dn: dc=EXAMPLE,dc=TLD
+
+    username_attribute: uid
+
+    additional_users_dn: ou=users
+
+    users_filter: (&({username_attribute}={input})(objectClass=person))
+
+    additional_groups_dn: ou=groups
+
+    groups_filter: (&(member={dn})(objectclass=groupOfNames))
+
+    group_name_attribute: cn
+
+    mail_attribute: mail
+
+    # The username and password of the admin user.
+    # TODO: replace with dynamic username and domain name
+    user: cn=ADMIN,dc=EXAMPLE,dc=TLD
+    # Use a docker secret
+    password: ADMINPWD
 
 access_control:
   default_policy: deny

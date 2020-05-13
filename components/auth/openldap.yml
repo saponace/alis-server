@@ -1,0 +1,29 @@
+  # Light Directory Acess Protocol server
+  openldap:
+    image: osixia/openldap:1.3.0
+    container_name: openldap
+    restart: unless-stopped
+    environment:
+      - LDAP_RFC2307BIS_SCHEMA=true
+      - LDAP_ORGANISATION=TODO # TODO: var
+      - LDAP_DOMAIN=EXAMPLE.TLD # TODO: var
+      - LDAP_ADMIN_PASSWORD=ADMINPWD # TODO: var
+      - LDAP_CONFIG_PASSWORD=ADMINPWD # TODO: var
+      - LDAP_BASE_DN=dc=EXAMPLE,dc=TLD
+      - LDAP_READONLY_USER=true # TODO: what value to assign here ?
+      - LDAP_READONLY_USER_USERNAME=readonly # TODO: var ?
+      - LDAP_READONLY_USER_PASSWORD=READONLYUSERPWD # TODO: var ?
+      - LDAP_TLS_ENFORCE=false
+      - TZ=%TIMEZONE% # TODO: var
+    volumes:
+      - /opt/server-apps-suite/openldap/:/container/service/slapd/assets/config/bootstrap/ldif/custom
+      - /opt/server-apps-suite/openldap/db:/var/lib/ldap
+      - /opt/server-apps-suite/openldap/config:/etc/ldap/slapd.d
+    # TODO: see if can remove port 636 (LDAP with TLS)
+    ports:
+      - "389:389"
+      - "636:636"
+    networks:
+      - default
+    command: --copy-service
+
