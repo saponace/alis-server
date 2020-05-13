@@ -33,10 +33,9 @@ docker_compose_version=3.8
 
 
 # Merge all docker-compose parts into final docker-compose.yml
-    mkdir -p /opt
     docker_compose_dir="/opt/server-apps-suite"
     docker_compose_file="${docker_compose_dir}/docker-compose.yml"
-    sudo mkdir ${docker_compose_dir}
+    sudo mkdir -p ${docker_compose_dir}
     sudo chown ${username}:${username} ${docker_compose_dir}
 
 
