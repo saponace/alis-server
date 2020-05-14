@@ -42,7 +42,11 @@ SCRIPTS_DIR="files-to-deploy/scripts"
 # Execute a component file
 # $1: The name of the component (without the ending ".sh")
 function install_component (){
-  echo "# Installing component \"$1\" ..." 2>&1 | tee -a ${LOG_FILE}
+  COLORED='\033[0;34m'
+  UNDERLINE='\e[4m'
+  NORMAL='\033[0m'
+
+  echo -e "${COLORED}# Installing component \"${UNDERLINE}$1${NORMAL}${COLORED}\" ...${NORMAL}" 2>&1 | tee -a ${LOG_FILE}
   # Case components/xxx/xxx.sh
   if [ -f "${COMPONENTS_PATH}/$1/$1.sh" ]; then
       source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}
