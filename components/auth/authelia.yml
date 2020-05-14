@@ -8,10 +8,10 @@
       - %CONTAINERS_CONFIG_DIR%/authelia/config.yml:/etc/authelia/configuration.yml:ro
       - %CONTAINERS_CONFIG_DIR%/authelia/db.yml:/etc/authelia/users_database.yml
     secrets:
-      - jwt
+      - authelia_jwt
     environment:
       - TZ=%TIMEZONE%
-      - AUTHELIA_JWT_SECRET_FILE=/run/secrets/jwt
+      - AUTHELIA_JWT_SECRET_FILE=/run/secrets/authelia_jwt
     labels:
       - traefik.enable=true
       - traefik.http.routers.authelia.rule=Host(`auth.%DOMAIN_NAME%`)

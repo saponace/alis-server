@@ -32,7 +32,7 @@
 
     jwt_secret_file=${authelia_secrets_dir}/jwt
 
-    add_docker_secret "  jwt:
+    add_docker_secret "  authelia_jwt:
     file: ${jwt_secret_file}"
 
     sudo su -c "echo \"${authelia_jwt_secret}\" > ${jwt_secret_file}"
