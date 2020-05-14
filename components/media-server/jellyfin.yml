@@ -1,4 +1,4 @@
-  # Alternate media server
+  # Media server
   jellyfin:
     container_name: jellyfin
     image: jellyfin/jellyfin:10.4.1

@@ -2,6 +2,11 @@
 # Personal video recording
 #-------------------------------------------------
 
+# Ombi: PVR frontend
+    declare -A ombi_docker_compose_template_mappings=(
+    )
+    process_docker_compose_service pvr/ombi "$(declare -p ombi_docker_compose_template_mappings)"
+
 # Sonarr: automated TV shows download
     declare -A  sonarr_docker_compose_template_mappings=(
     )

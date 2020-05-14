@@ -1,4 +1,4 @@
-  # Alternate media server
+  # Private media server
   pellyfin:
     container_name: pellyfin
     image: jellyfin/jellyfin:10.4.1
@@ -6,7 +6,7 @@
     volumes:
       - %CONTAINERS_CONFIG_DIR%/pellyfin/config:/config
       - %CONTAINERS_DATA_DIR%/pellyfin/cache:/cache
-      - %ALTERNATE_MEDIA_DIR%:/media
+      - %PRIVATE_MEDIA_DIR%:/media
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

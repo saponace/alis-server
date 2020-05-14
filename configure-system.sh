@@ -96,7 +96,6 @@ install_component reverse-proxy
 install_component dns-updater
 install_component torrenting-client
 install_component media-server
-install_component media-server-2
 # install_component smart-home  # Disabled because unused
 install_component system-monitoring
 install_component pvr
