@@ -1,5 +1,5 @@
 log:
-  level: INFO #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+  level: INFO
 
 accessLog:
   filePath: "/var/log/access.log"
