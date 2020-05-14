@@ -14,9 +14,6 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.jackett.rule=Host(`jackett.%DOMAIN_NAME%`)
-      - traefik.http.services.jackett.loadbalancer.server.port=9117
-      - traefik.http.routers.jackett.tls.certresolver=le
-      - traefik.http.routers.jackett.middlewares=auth@file
       - com.centurylinklabs.watchtower.enable=true  # Jackett needs to be up to date to be able to keep fetching data from trackers
+      - traefik.http.routers.jackett.middlewares=auth@file
+      - traefik.http.services.jackett.loadbalancer.server.port=9117

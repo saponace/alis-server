@@ -9,7 +9,5 @@
       - %MNT_DIR%:/srv
       - %DATA_DIR%/database.db:/database.db
     labels:
-      - traefik.enable=true
       - traefik.http.routers.filebrowser_public.rule=Host(`share.%DOMAIN_NAME%`)
       - traefik.http.services.filebrowser_public.loadbalancer.server.port=80
-      - traefik.http.routers.filebrowser_public.tls.certresolver=le

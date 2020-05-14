@@ -1,4 +1,4 @@
-  # Manage docker conainers via a web UI
+  # Docker conainers admin interface
   portainer:
     container_name: portainer
     image: portainer/portainer:1.22.0
@@ -13,8 +13,5 @@
     environment:
       - TZ=%TIMEZONE%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.portainer.rule=Host(`portainer.%DOMAIN_NAME%`)
-      - traefik.http.services.portainer.loadbalancer.server.port=9000
       - traefik.http.routers.portainer.middlewares=auth@file
-      - traefik.http.routers.portainer.tls.certresolver=le
+      - traefik.http.services.portainer.loadbalancer.server.port=9000

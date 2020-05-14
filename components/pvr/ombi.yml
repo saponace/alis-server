@@ -9,7 +9,7 @@
       - sonarr
       - radarr
       - lidarr
-      - gotify
+      - notifications
     volumes:
       - %CONTAINERS_CONFIG_DIR%/ombi:/config
     environment:
@@ -17,7 +17,4 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.ombi.rule=Host(`ombi.%DOMAIN_NAME%`)
       - traefik.http.services.ombi.loadbalancer.server.port=3579
-      - traefik.http.routers.ombi.tls.certresolver=le

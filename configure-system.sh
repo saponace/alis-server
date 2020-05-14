@@ -99,7 +99,7 @@ install_component media-server
 # install_component smart-home  # Disabled because unused
 install_component system-monitoring
 install_component pvr
-install_component bookmarks-manager
+install_component dashboard
 install_component finances-management
 install_component dns-server
 install_component file-server

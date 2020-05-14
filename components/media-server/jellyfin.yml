@@ -5,7 +5,7 @@
     restart: unless-stopped
     network_mode: service:pia_client
     depends_on:
-      - gotify
+      - notifications
     volumes:
       - %CONTAINERS_CONFIG_DIR%/jellyfin/config:/config
       - %CONTAINERS_DATA_DIR%/jellyfin/cache:/cache
@@ -14,7 +14,4 @@
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.jellyfin.rule=Host(`jellyfin.%DOMAIN_NAME%`)
       - traefik.http.services.jellyfin.loadbalancer.server.port=8096
-      - traefik.http.routers.jellyfin.tls.certresolver=le

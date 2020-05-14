@@ -1,4 +1,4 @@
-# Web UI for analysing elastic search content
+  # Web UI for analysing elastic search content
   kibana:
     container_name: kibana
     image: kibana:%VERSION%
@@ -11,9 +11,5 @@
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.kibana.rule=Host(`kibana.%DOMAIN_NAME%`)
-      - traefik.http.services.kibana.loadbalancer.server.port=5601
       - traefik.http.routers.kibana.middlewares=auth@file
-      - traefik.http.routers.kibana.tls.certresolver=le
-      - traefik.docker.network=web
+      - traefik.http.services.kibana.loadbalancer.server.port=5601

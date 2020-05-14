@@ -10,3 +10,5 @@
     environment:
       - POSTGRES_USER=%DB_USERNAME%
       - POSTGRES_PASSWORD=%DB_PWD%
+    labels:
+      - traefik.enable=false

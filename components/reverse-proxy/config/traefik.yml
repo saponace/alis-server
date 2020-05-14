@@ -17,16 +17,28 @@ accessLog:
 
 
 entryPoints:
-  http:
+  web:
     address: ":80"
-  https:
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
     address: ":443"
+    http:
+      tls:
+        certresolver: "cloudflare"
+        domains:
+          - main: "%DOMAIN_NAME%"
+            sans: ["*.%DOMAIN_NAME%"]
+
 
 api:
   dashboard: true
 
 certificatesResolvers:
-  le:
+  cloudflare:
     acme:
       dnsChallenge:
         provider: cloudflare
@@ -39,7 +51,13 @@ certificatesResolvers:
 
 providers:
   docker:
-    exposedByDefault: false
+    network: "web"
+    # Services without the label "traefik.enable=false" will be exposed
+    exposedByDefault: true
+    # Services without explicit router rule will be accessible at [SERVICE_NAME].[DOMAIN_NAME]
+    defaultRule: 'Host(`{{ index .Labels "com.docker.compose.service" }}.%DOMAIN_NAME%`)'
+
+
   file:
     filename: /dynamic-conf.yml
     watch: true

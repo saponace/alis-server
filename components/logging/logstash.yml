@@ -11,3 +11,5 @@
       - kibana
     environment:
       - STDOUT=true
+    labels:
+      - traefik.enable=false

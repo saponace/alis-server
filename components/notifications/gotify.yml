@@ -1,5 +1,5 @@
   # Gotify
-  gotify:
+  notifications:
     container_name: gotify
     image: gotify/server:2.0.15
     restart: unless-stopped
@@ -11,8 +11,4 @@
     environment:
       - TZ=%TIMEZONE%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.gotify.rule=Host(`gotify.%DOMAIN_NAME%`)
       - traefik.http.services.gotify.loadbalancer.server.port=80
-      - traefik.http.routers.gotify.tls.certresolver=le
-      - traefik.docker.network=web

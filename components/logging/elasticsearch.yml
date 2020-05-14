@@ -9,3 +9,5 @@
       - elasticsearch:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+    labels:
+      - traefik.enable=false

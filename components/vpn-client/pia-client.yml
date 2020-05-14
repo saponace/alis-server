@@ -14,7 +14,7 @@
       # see: https://github.com/containous/traefik/issues/2700#issuecomment-357233926
       web:
         # Provide aliases to make clearer internal components connectivity
-        # e.g. sonarr accesses transmission with transmission:9091 instead of pia_client:9091 or localhost:9091
+        # e.g. ombi accesses jellyfin with jellyfin:8096 instead of pia_client:8096 or localhost:8096
         aliases:
           - jellyfin
           - ombi

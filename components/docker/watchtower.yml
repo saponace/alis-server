@@ -13,3 +13,5 @@
       - WATCHTOWER_NOTIFICATIONS=gotify
       - WATCHTOWER_NOTIFICATION_GOTIFY_URL=http://gotify:80
       - WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN=%GOTIFY_WATCHTOWER_API_TOKEN%
+    labels:
+      - traefik.enable=false

@@ -1,5 +1,5 @@
-  # Bookmarks manager
-  organizr:
+  # Dashboard / homepage
+  homepage:
     container_name: organizr
     image: organizrtools/organizr-v2@sha256:dad73af81d28ed7402ae6ec37c4ecdbe80fa946d103c4ea1f165afeef3a13f41
     restart: unless-stopped
@@ -20,7 +20,5 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-      - traefik.enable=true
       - traefik.http.routers.organizr.rule=Host(`%DOMAIN_NAME%`)
       - traefik.http.services.organizr.loadbalancer.server.port=80
-      - traefik.http.routers.organizr.tls.certresolver=le

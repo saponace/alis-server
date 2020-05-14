@@ -7,7 +7,7 @@
     depends_on:
       - sonarr
       - radarr
-      - gotify
+      - notifications
     volumes:
       - %CONTAINERS_CONFIG_DIR%/bazarr:/config
       - %MOVIES_DIR%:/movies
@@ -17,8 +17,5 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.bazarr.rule=Host(`bazarr.%DOMAIN_NAME%`)
-      - traefik.http.services.bazarr.loadbalancer.server.port=6767
       - traefik.http.routers.bazarr.middlewares=auth@file
-      - traefik.http.routers.bazarr.tls.certresolver=le
+      - traefik.http.services.bazarr.loadbalancer.server.port=6767

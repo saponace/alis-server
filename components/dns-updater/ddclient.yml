@@ -9,3 +9,5 @@
       - TZ=%TIMEZONE%
     volumes:
       - %CONTAINERS_DATA_DIR%/ddclient:/config
+    labels:
+      - traefik.enable=false

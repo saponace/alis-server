@@ -1,12 +1,11 @@
   # Single sign on
   auth:
-    container_name: auth
+    container_name: authelia
     image: authelia/authelia:4.18.0
     restart: unless-stopped
     networks:
       - web
     volumes:
-      # - %CONTAINERS_CONFIG_DIR%/authelia/authelia:/var/lib/authelia
       - %CONTAINERS_CONFIG_DIR%/authelia/config.yml:/etc/authelia/configuration.yml:ro
       - %CONTAINERS_CONFIG_DIR%/authelia/db.yml:/etc/authelia/users_database.yml
     secrets:
@@ -15,8 +14,5 @@
       - TZ=%TIMEZONE%
       - AUTHELIA_JWT_SECRET_FILE=/run/secrets/authelia_jwt
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.authelia.rule=Host(`auth.%DOMAIN_NAME%`)
       - traefik.http.services.authelia.loadbalancer.server.port=9091
-      - traefik.http.routers.authelia.tls.certresolver=le
 

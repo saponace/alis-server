@@ -11,12 +11,9 @@
       WEBSOCKET_ENABLED: "true"
       SIGNUPS_ALLOWED: "false"
     labels:
-      - traefik.enable=true
       - traefik.http.routers.bitwarden-ui.rule=Host(`bitwarden.%DOMAIN_NAME%`)
       - traefik.http.routers.bitwarden-ui.service=bitwarden-ui
       - traefik.http.services.bitwarden-ui.loadbalancer.server.port=80
-      - traefik.http.routers.bitwarden-ui.tls.certresolver=le
       - traefik.http.routers.bitwarden-websocket.rule=Host(`bitwarden.%DOMAIN_NAME%`) && Path(`/notifications/hub`)
       - traefik.http.routers.bitwarden-websocket.service=bitwarden-websocket
       - traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012
-      - traefik.http.routers.bitwarden-websocket.tls.certresolver=le

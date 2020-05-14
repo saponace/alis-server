@@ -10,6 +10,8 @@
       - logstash
       - kibana
     volumes:
-      - '/var/run/docker.sock:/tmp/docker.sock'
+      - /var/run/docker.sock:/tmp/docker.sock
     environment:
       - ROUTE_URIS=logstash+tcp://logstash:5000
+    labels:
+      - traefik.enable=false

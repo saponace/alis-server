@@ -1,7 +1,7 @@
   # Reverse proxy
   traefik:
     container_name: traefik
-    image: traefik:2.1.2
+    image: traefik:2.2.1
     restart: unless-stopped
     networks:
       - web
@@ -22,8 +22,5 @@
       - CF_API_EMAIL=%CLOUDFLARE_EMAIL%
       - CF_API_KEY_FILE=/run/secrets/traefik_cf_api_key
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.traefik.rule=Host(`traefik.%DOMAIN_NAME%`)
-      - traefik.http.routers.traefik.service=api@internal
       - traefik.http.routers.traefik.middlewares=auth@file
-      - traefik.http.routers.traefik.tls.certresolver=le
+      - traefik.http.routers.traefik.service=api@internal

@@ -13,7 +13,4 @@
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.pellyfin.rule=Host(`pellyfin.%DOMAIN_NAME%`)
       - traefik.http.services.pellyfin.loadbalancer.server.port=8096
-      - traefik.http.routers.pellyfin.tls.certresolver=le

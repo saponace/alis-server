@@ -14,8 +14,5 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.transmission.rule=Host(`transmission.%DOMAIN_NAME%`)
-      - traefik.http.services.transmission.loadbalancer.server.port=9091
       - traefik.http.routers.transmission.middlewares=auth@file
-      - traefik.http.routers.transmission.tls.certresolver=le
+      - traefik.http.services.transmission.loadbalancer.server.port=9091
