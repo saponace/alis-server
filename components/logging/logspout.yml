@@ -4,7 +4,7 @@
     image: bekt/logspout-logstash:ignore-v3.2.6
     restart: always # When logspout starts before logstash, it fails. It hence needs to be automatically restarted
     networks:
-      - elk_net
+      - elk
     depends_on:
       - elasticsearch
       - logstash

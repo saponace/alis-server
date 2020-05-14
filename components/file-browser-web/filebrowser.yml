@@ -3,6 +3,8 @@
     container_name: filebrowser
     image: filebrowser/filebrowser:%VERSION%
     restart: unless-stopped
+    networks:
+      - web
     volumes:
       - %MNT_DIR%:/srv
       - %DATA_DIR%/database.db:/database.db

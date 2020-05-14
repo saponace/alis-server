@@ -11,7 +11,7 @@ firefly_iii_version="release-5.2.5"
 postgres_version="12"
 
 
-add_docker_network "  firefly_iii_net:"
+add_docker_network "  firefly_iii:"
 
 declare -A  firefly_iii_app_docker_compose_template_mappings=(
     ["FIREFLY_DATA"]=${data_dir}

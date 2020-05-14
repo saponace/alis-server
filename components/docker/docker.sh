@@ -39,11 +39,8 @@ docker_compose_version=3.8
     sudo chown ${username}:${username} ${docker_compose_dir}
 
 
-    add_docker_network "  default:
-    driver: bridge"
-
     # Make sure destination compose file is empty
-    : > ${docker_compose_file}
+      : > ${docker_compose_file}
 
     append_to_docker_compose_file "version: \"${docker_compose_version}\""
     append_to_docker_compose_file ""

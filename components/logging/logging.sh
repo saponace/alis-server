@@ -3,8 +3,8 @@
 #-------------------------------------------------
 
 
-add_docker_network "  elk_net:"
-add_docker_volume "  elastic_vol:
+add_docker_network "  elk:"
+add_docker_volume "  elasticsearch:
     driver: local
     driver_opts:
       type: 'none'

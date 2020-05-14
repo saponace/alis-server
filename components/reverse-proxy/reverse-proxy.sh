@@ -15,6 +15,12 @@
     sudo chmod 600 ${CONTAINERS_DATA_DIR}/traefik/acme.json
 
 
+# Create docker network
+    add_docker_network "  web:
+    driver: bridge
+    name: web"
+
+
 # Create traefik configuration files
     declare -A  traefik_config_mappings=(
         ["LETS_ENCRYPT_EMAIL"]="${lets_encrypt_email}"

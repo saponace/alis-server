@@ -3,6 +3,8 @@
     container_name: portainer
     image: portainer/portainer:1.22.0
     restart: unless-stopped
+    networks:
+      - web
     command: --no-auth
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

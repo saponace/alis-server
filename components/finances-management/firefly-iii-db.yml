@@ -4,7 +4,7 @@
     image: postgres:%VERSION%
     restart: unless-stopped
     networks:
-      - firefly_iii_net
+      - firefly_iii
     volumes:
       - %FIREFLY_DATA%/db:/var/lib/postgresql/data
     environment:

@@ -3,6 +3,8 @@
     container_name: pellyfin
     image: jellyfin/jellyfin:10.4.1
     restart: unless-stopped
+    networks:
+      - web
     volumes:
       - %CONTAINERS_CONFIG_DIR%/pellyfin/config:/config
       - %CONTAINERS_DATA_DIR%/pellyfin/cache:/cache

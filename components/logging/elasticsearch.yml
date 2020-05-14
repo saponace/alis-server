@@ -4,8 +4,8 @@
     image: elasticsearch:%VERSION%
     restart: unless-stopped
     networks:
-      - elk_net
+      - elk
     volumes:
-      - elastic_vol:/usr/share/elasticsearch/data
+      - elasticsearch:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node

@@ -4,8 +4,8 @@
     image: jc5x/firefly-iii:%VERSION%
     restart: unless-stopped
     networks:
-      - firefly_iii_net
-      - default
+      - firefly_iii
+      - web
     volumes:
       - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
       - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
@@ -26,3 +26,4 @@
       - traefik.http.routers.firefly.rule=Host(`firefly.%DOMAIN_NAME%`)
       - traefik.http.services.firefly.loadbalancer.server.port=80
       - traefik.http.routers.firefly.tls.certresolver=le
+      - traefik.docker.network=web

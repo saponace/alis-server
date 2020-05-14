@@ -8,11 +8,11 @@
     devices:
         - /dev/net/tun
     networks:
-      # This container should be in the web proxy network and its own dedicated network, in which all these aliases
+      # This container should be in the "web" network and its own dedicated network, in which all these aliases
       # are defined. I just can't manage to make the services join the right network in order to make them discoverable
       # by traefik, since these networks are in "network_mode: service[...]"
       # see: https://github.com/containous/traefik/issues/2700#issuecomment-357233926
-      default:
+      web:
         # Provide aliases to make clearer internal components connectivity
         # e.g. sonarr accesses transmission with transmission:9091 instead of pia_client:9091 or localhost:9091
         aliases:

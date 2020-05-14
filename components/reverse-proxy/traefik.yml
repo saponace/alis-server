@@ -4,7 +4,7 @@
     image: traefik:2.1.2
     restart: unless-stopped
     networks:
-      - default
+      - web
     domainname: %DOMAIN_NAME%
     ports:
       - 80:80

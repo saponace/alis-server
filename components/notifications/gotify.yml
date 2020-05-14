@@ -4,7 +4,8 @@
     image: gotify/server:2.0.15
     restart: unless-stopped
     networks:
-      - default
+      - web
+      - notifications
     volumes:
       - %GOTIFY_DATA_DIR%:/app/data
     environment:
@@ -14,3 +15,4 @@
       - traefik.http.routers.gotify.rule=Host(`gotify.%DOMAIN_NAME%`)
       - traefik.http.services.gotify.loadbalancer.server.port=80
       - traefik.http.routers.gotify.tls.certresolver=le
+      - traefik.docker.network=web

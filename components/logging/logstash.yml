@@ -5,7 +5,7 @@
     restart: unless-stopped
     command: 'logstash -e "input { tcp { port => 5000 codec => json } } output { elasticsearch { hosts => elasticsearch } }"'
     networks:
-      - elk_net
+      - elk
     depends_on:
       - elasticsearch
       - kibana
