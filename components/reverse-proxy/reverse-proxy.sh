@@ -5,7 +5,6 @@
 # Create docker-compose definition
     declare -A  reverse_proxy_docker_compose_template_mappings=(
         ["CLOUDFLARE_EMAIL"]="${cloudflare_email}"
-        ["CLOUDFLARE_API_KEY"]="${cloudflare_api_key}"
     )
     process_docker_compose_service reverse-proxy/traefik "$(declare -p reverse_proxy_docker_compose_template_mappings)"
 
@@ -14,6 +13,7 @@
     sudo mkdir -p ${CONTAINERS_DATA_DIR}/traefik
     sudo touch ${CONTAINERS_DATA_DIR}/traefik/acme.json
     sudo chmod 600 ${CONTAINERS_DATA_DIR}/traefik/acme.json
+
 
 # Create traefik configuration files
     declare -A  traefik_config_mappings=(
@@ -27,6 +27,18 @@
     )
     fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/dynamic-conf.yml /tmp/dynamic-conf.yml "$(declare -p dynamic_config_mappings)"
     sudo mv /tmp/dynamic-conf.yml ${CONTAINERS_CONFIG_DIR}/traefik/dynamic-conf.yml
+
+
+# Create Cloudflare api key secret file
+    traefik_secrets_dir=${CONTAINERS_CONFIG_DIR}/traefik/secrets
+    cf_api_key_secret_file=${traefik_secrets_dir}/cf_api_key
+    sudo mkdir -p ${traefik_secrets_dir}
+
+    add_docker_secret "  traefik_cf_api_key:
+    file: ${cf_api_key_secret_file}"
+
+    sudo su -c "echo \"${cloudflare_api_key}\" > ${cf_api_key_secret_file}"
+    sudo chmod 600 ${cf_api_key_secret_file}
 
 
 # Whitelist HTTP and HTTPS port in the firewall (and make sure the firewall is installed)

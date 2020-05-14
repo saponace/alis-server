@@ -28,9 +28,8 @@
 
 # Create secret file
     authelia_secrets_dir=${CONTAINERS_CONFIG_DIR}/authelia/secrets
-    sudo mkdir -p ${authelia_secrets_dir}
-
     jwt_secret_file=${authelia_secrets_dir}/jwt
+    sudo mkdir -p ${authelia_secrets_dir}
 
     add_docker_secret "  authelia_jwt:
     file: ${jwt_secret_file}"

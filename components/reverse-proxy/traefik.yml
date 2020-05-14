@@ -16,9 +16,11 @@
       - %CONTAINERS_DATA_DIR%/traefik/acme.json:/acme.json
       - /var/log/traefik:/var/log   # Used by Fail2ban
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    secrets:
+      - traefik_cf_api_key
     environment:
       - CF_API_EMAIL=%CLOUDFLARE_EMAIL%
-      - CF_API_KEY=%CLOUDFLARE_API_KEY%
+      - CF_API_KEY_FILE=/run/secrets/traefik_cf_api_key
     labels:
       - traefik.enable=true
       - traefik.http.routers.traefik.rule=Host(`traefik.%DOMAIN_NAME%`)

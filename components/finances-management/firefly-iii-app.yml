@@ -9,13 +9,15 @@
     volumes:
       - %FIREFLY_DATA%/export:/var/www/firefly-iii/storage/export
       - %FIREFLY_DATA%/upload:/var/www/firefly-iii/storage/upload
+    secrets:
+      - firefly_iii_app_key
     environment:
       - DB_HOST=firefly_iii_db
       - DB_CONNECTION=pgsql
       - DB_DATABASE=%DB_NAME%
       - DB_USERNAME=%DB_USERNAME%
       - DB_PASSWORD=%DB_PWD%
-      - APP_KEY=%APP_KEY%
+      - APP_KEY_FILE=/run/secrets/firefly_iii_app_key
       - APP_ENV=local
       - TZ=%TIMEZONE%
       - TRUSTED_PROXIES=**
