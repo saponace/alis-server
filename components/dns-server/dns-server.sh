@@ -13,4 +13,4 @@ declare -A  docker_compose_template_mappings=(
     ["SERVER_IP"]=${static_ip_address}
     ["HOMEDIR"]=${pihole_home}
 )
-process_docker_compose_service pihole/pihole "$(declare -p docker_compose_template_mappings)"
+process_docker_compose_service dns-server/pihole "$(declare -p docker_compose_template_mappings)"

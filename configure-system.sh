@@ -97,12 +97,12 @@ install_component dns-updater
 install_component torrenting-client
 install_component media-server
 install_component media-server-2
-# install_component home-assistant  # Disabled because unused
+# install_component smart-home  # Disabled because unused
 install_component system-monitoring
 install_component pvr
 install_component bookmarks-manager
 install_component finances-management
-install_component pihole
+install_component dns-server
 install_component file-server
 install_component file-synchronization
 install_component file-browser-web
