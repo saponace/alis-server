@@ -43,7 +43,7 @@ docker_compose_version=3.8
     driver: bridge"
 
     # Make sure destination compose file is empty
-    echo "" > ${docker_compose_file}
+    : > ${docker_compose_file}
 
     append_to_docker_compose_file "version: \"${docker_compose_version}\""
     append_to_docker_compose_file ""
