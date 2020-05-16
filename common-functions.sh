@@ -69,12 +69,13 @@ function fill_template_file (){
 }
 
 # Process a docker compose service file
-# $1: component and docker-compose service names. Like <service>/<docker-compose service>
+# $1: component and docker-compose service names. Like <component>/<docker-compose service>
 # $2: The mapping array definition
 function process_docker_compose_service (){
     source_file=${COMPONENTS_DIR}"/"$1".yml"
+    component_name=$(echo "$1" | sed -e 's/\/.*//g')
     service_name=$(echo "$1" | sed -e 's/.*\///g')
-    dest_file=${TEMP_DOCKER_COMPOSE_PARTS_DIR}/${service_name}".yml"
+    dest_file="${TEMP_DOCKER_COMPOSE_PARTS_DIR}/${component_name}-${service_name}.yml"
     mkdir -p ${TEMP_DOCKER_COMPOSE_PARTS_DIR}
     fill_template_file ${source_file} ${dest_file} "$2"
 }
