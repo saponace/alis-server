@@ -3,7 +3,7 @@
     container_name: lidarr
     image: linuxserver/lidarr:0.6.2.1121-ls33
     restart: unless-stopped
-    network_mode: service:pia_client
+    network_mode: service:vpn_client_gateway
     depends_on:
       - jackett
       - transmission

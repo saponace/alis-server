@@ -1,5 +1,5 @@
   # VPN client
-  pia_client:
+  vpn_client_gateway:
     image: saponace/pia-client:release-1.0
     container_name: pia_client
     restart: unless-stopped
@@ -14,7 +14,7 @@
       # see: https://github.com/containous/traefik/issues/2700#issuecomment-357233926
       web:
         # Provide aliases to make clearer internal components connectivity
-        # e.g. ombi accesses jellyfin with jellyfin:8096 instead of pia_client:8096 or localhost:8096
+        # e.g. ombi accesses jellyfin with jellyfin:8096 instead of vpn_client_gateway:8096 or localhost:8096
         aliases:
           - jellyfin
           - ombi
@@ -25,7 +25,7 @@
           - jackett
           - transmission
     volumes:
-        - /tmp/pia:/var/run/pia/
-        - /pia-credentials:/config/credentials
+      - /tmp/pia:/var/run/pia/
+      - /pia-credentials:/config/credentials
     environment:
-        - REGION=France
+      - REGION=France

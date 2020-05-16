@@ -3,7 +3,7 @@
     container_name: youtube_dl
     image: tzahi12345/youtubedl-material:4.0
     restart: unless-stopped
-    network_mode: service:pia_client
+    network_mode: service:vpn_client_gateway
     volumes:
       - %MEDIA_DIR%/youtube/video:/app/video
       - %MEDIA_DIR%/youtube/subscriptions:/app/subscriptions

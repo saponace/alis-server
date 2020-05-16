@@ -3,7 +3,7 @@
     container_name: transmission
     image: linuxserver/transmission:2.94-r1-ls22
     restart: unless-stopped
-    network_mode: service:pia_client
+    network_mode: service:vpn_client_gateway
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - %CONTAINERS_CONFIG_DIR%/transmission:/config

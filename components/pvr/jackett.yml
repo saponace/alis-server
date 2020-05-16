@@ -3,7 +3,7 @@
     container_name: jackett
     image: linuxserver/jackett:latest
     restart: always  # Always is required to enable watchtower to restart it
-    network_mode: service:pia_client
+    network_mode: service:vpn_client_gateway
     volumes:
       - %CONTAINERS_CONFIG_DIR%/jackett:/config
       - %TORRENTS_BLACKHOLE_DIR%:/downloads

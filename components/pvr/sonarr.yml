@@ -3,7 +3,7 @@
     container_name: sonarr
     image: linuxserver/sonarr:3.0.2.587-ls123
     restart: unless-stopped
-    network_mode: service:pia_client
+    network_mode: service:vpn_client_gateway
     depends_on:
       - jackett
       - transmission
