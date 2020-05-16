@@ -14,5 +14,5 @@
       - TZ=%TIMEZONE%
       - UMASK_SET=022
     labels:
-      - traefik.http.routers.syncthing.middlewares=auth@file
+      - traefik.http.routers.syncthing.middlewares=auth@file,allowFrames@file
       - traefik.http.services.syncthing.loadbalancer.server.port=8384

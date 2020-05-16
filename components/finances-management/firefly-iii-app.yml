@@ -21,6 +21,7 @@
       - APP_ENV=local
       - TZ=%TIMEZONE%
       - TRUSTED_PROXIES=**
+      - DISABLE_FRAME_HEADER=true
     labels:
       - traefik.http.routers.firefly.rule=Host(`firefly.%DOMAIN_NAME%`)
       - traefik.http.services.firefly.loadbalancer.server.port=80
