@@ -8,8 +8,8 @@
     volumes:
       - %CONTAINERS_DATA_DIR%/bitwarden:/data
     environment:
-      WEBSOCKET_ENABLED: "true"
-      SIGNUPS_ALLOWED: "false"
+      - WEBSOCKET_ENABLED=true
+      - SIGNUPS_ALLOWED=false
     labels:
       - traefik.http.routers.bitwarden-ui.rule=Host(`bitwarden.%DOMAIN_NAME%`)
       - traefik.http.routers.bitwarden-ui.service=bitwarden-ui
