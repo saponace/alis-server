@@ -1,0 +1,30 @@
+# Setup Sonarr
+- Media management:
+  - Rename episodes: yes
+  - Replace illegal characters: yes
+  - Renaming patterns:
+    - Standard Episode Format: {Series Title} - S{season:00}E{episode:00} - {Episode Title} - {Quality Full}
+    - Daily Episode Format: {Series Title} - {Air-Date} - {Episode Title} - {Quality Full}
+    - Anime Episode Format: {Series Title} - S{season:00}E{episode:00} - {Episode Title} - {Quality Full}
+    - Season Folder Format: Season {season}
+  - Import extra files: yes (srt)
+  - Importing
+    - Use Hardlinks instead of Copy: false
+- Indexers:
+  - Add relevent indexers created in jackett (local URL: "http://jackett:9117/[...]")
+- Download client: transmission
+  - Host: transmission
+  - Port: 9091
+  - Use SSL: false
+  - Complete downloading handling: remove: yes
+- Metadata: enable XBMC (Kodi) / Emby
+- Connect:
+  - Gotify
+    - Name: Gotify
+    - Gotify server: http://gotify:80
+    - App token
+    - Priority: Normal
+- Download path: /tv/
+- General
+  - Security
+    - Authentication: None

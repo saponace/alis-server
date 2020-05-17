@@ -45,6 +45,8 @@ You can then call the following script to start the server:
 ```
 /bin/startup
 ```
+Once the services have started, you can manually configure the services that requires manual configuration. Follow
+instructions detailed [here](documentation/services-and-setup-instructions.md).
 
 
 ### Note

@@ -1,0 +1,58 @@
+# Setup Bazarr
+- General:
+  - Base URL: BLANK
+  - Path Mappings for shows
+    - Path for Sonarr: /tv
+    - Path for Bazarr: /tv
+  - Path Mappings for movies
+    - Path for Sonarr: /movies
+    - Path for Bazarr: /movies
+- Subtitles:
+  - Subtitles options
+    - Subtitle folder: "Alongside media file"
+    - Use embedded subtitles: true
+  - Subtitles providers
+    - Addic7ed
+    - BetaSeries
+    - OpenSubtitles
+    - Podnapisi
+    - Subscene
+    - Subcenter
+    - Supersubtitles
+    - Titlovi (require anti-captcha)
+    - TVSubtitles
+  - Subtitles languages
+    - Enabled languages: "English", "French"
+    - Series default settings:
+      - Defaults enabled: true
+      - Languages: "English", "French"
+      - Forced: false
+    - Movies default settings:
+      - Defaults enabled: true
+      - Languages: "English", "French"
+      - Forced: false
+- Sonarr
+  - Use Sonarr: true
+  - Hostname or IP address: sonarr
+  - Listening port: 8989
+  - Base URL: empty
+  - SSL enabled: false
+  - API key
+  - Download only monitored: false
+- Radarr
+  - Use Sonarr: true
+  - hostname or IP address: radarr
+  - Listening port: 7878
+  - Base URL: empty
+  - SSL enabled: false
+  - API key
+  - Download only monitored: false
+- Settings
+  - Enable chmod: true
+    - Set subtitle file permissions to: 0644
+  - General
+    - Authentication: None
+  - Notifications
+    - Gotify
+      - Enable
+      - URL: gotify://gotify:80/[TOKEN]?priority=normal (where [TOKEN] is the actual token created in Gotify)

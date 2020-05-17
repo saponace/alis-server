@@ -1,0 +1,15 @@
+# Setup Gotify
+- Log in with credentials:
+  - User: admin
+  - Password: admin
+- Users tab
+  - Edit admin user: change username and password
+- Apps tabs:
+  - Creat token for (and set an app icon for each, can get icons from organizr):
+    - Sonarr
+    - Radarr
+    - Lidarr
+    - Bazarr
+    - Jellyfin
+    - Ombi
+    - Watchtower

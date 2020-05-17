@@ -1,0 +1,53 @@
+# Setup Ombi
+- Create an account
+- Configuration:
+  - User importer:
+    - Import Emby/Jellyfin users: true
+    - Click submit
+    - Click run importer (after setup emby)  // TODO: check if can periodically run user importer
+- Media server: Emby/Jellyfin
+  - Enable: true
+  - Add server
+    - Name: Jellyfin
+    - Hostname: http://jellyfin
+    - Port: 8096
+    - SSL: false
+    - API Key
+- TV:
+  - Sonarr:
+    - Enable: true
+    - V3: true
+    - Hostname: http://sonarr
+    - Port: 8989
+    - API Key
+    - SSL: false
+    - Quality profiles: HD - 720p
+    - Default root folders: /tv/
+    - Enable season folders: true
+- Movies:
+  - Radarr:
+    - Enable: true
+    - Hostname: http://radarr
+    - Port: 7878
+    - API Key
+    - Ssl: false
+    - Quality profiles: HD - 720p
+    - Default root folders: /movies/
+    - Default minimum availability: Physical / Web
+- Music:
+  - Lidarr:
+    - Enable: true
+    - Hostname: http://lidarr
+    - Port: 8686
+    - API Key
+    - SSL: false
+    - Default root folders: /music/
+    - Quality profiles: Lossless
+    - Metadata profile: standard
+    - Album folder: true
+- Notifications:
+  - Gotify
+    - Enabled: true
+    - Base URL: http://gotify:80
+    - Application token
+    - Priority: Normal

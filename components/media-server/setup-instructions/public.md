@@ -1,0 +1,72 @@
+# Setup Jellyfin
+- Setup steps:
+  - Create local account // TODO: LDAP migration
+  - Add media library:
+    - Movies:
+      - Folders:
+        - /media/movies
+      - Prefered download language: english
+      - Counrty: United States
+      - Metadata downloaders: TheMovieDb, The Open Movie Database
+      - Metadata savers: Nfo
+      - Save artwork into media folders: true
+      - Subtitle downloads: English, French
+    - TV:
+      - Folders:
+        - /media/tv
+      - Prefered download language: english
+      - Counrty: United States
+      - Series metadata downloaders: TheTVDB, TheMovieDb, The Open Movie Database
+      - Season metadata downloaders: TheMovieDb
+      - Episode metadata downloaders: TheTVDB, TheMovieDb, The Open Movie Database
+      - Metadata savers: Nfo
+      - Save artwork into media folders: true
+      - Subtitle downloads: English, French
+    - Music:
+      - Folders:
+        - /media/music
+      - Prefered download language: english
+      - Counrty: United States
+      - MusicAlbum metadata downloaders: MusicBrainz, TheAudioDB
+      - MusicArtist metadata downloaders: MusicBrainz, TheAudioDB
+      - MusicVideo metadata downloaders: TheMovieDb
+      - Metadata savers: Nfo
+      - Save artwork into media folders: true
+    - Youtube
+      - Folders:
+        - /media/youtube
+      - Content type: Home videos and photos
+      - Video Image Fetchers
+        - Screen Grabber: false
+      - Display photos: false
+      - Save artwork into media folders: false
+      - Prefer embeded titles over filename: true
+  - Accept the terms and agreement
+- Settings:
+  - Automatic Updates: false
+- Advanced
+  - Security:
+    - Generate API Keys for:
+      - Organizr
+      - Ombi
+- Plugins:
+  - Kodi companion
+  - Trakt
+    - Configure with your Trakt user
+    - Set authentication PIN
+    - Check "Update Trakt watched history during Scheduled Task" and "Sync Collection during Scheduled Task"
+  - TMDB box sets
+  - Gotify
+    - Fo: [The current user you are creating]
+    - Enabled: true
+    - Url: http://gotify:80
+    - Token
+    - Priority: 4 (Normal)
+- Scheduled tasks
+  - Sync library to trakt.tv
+    - Add daily trigger at 7:15 AM
+  - Import playstates from Trakt.tv
+      - Add daily trigger at 7:30 AM
+- Account settings
+  - Profile
+    - Set password

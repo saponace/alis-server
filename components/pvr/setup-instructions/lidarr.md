@@ -1,0 +1,26 @@
+# Setup Lidarr
+- Media management:
+  - Rename tracks: yes
+  - Replace or remove illegal characters
+  - Renaming patterns:
+    - Standard track format: {track:00} - {Track Title}
+  - Importing
+    - Use Hardlinks instead of Copy: false
+- Indexers:
+  - Add relevent indexers created in jackett (local URL: "http://jackett:9117/[...]")
+- Download client: transmission
+  - Host: transmission
+  - Port: 9001
+  - Use SSL: false
+  - Complete downloading handling: remove: yes
+- Metadata: enable XBMC (Kodi) / Emby
+- Connect:
+  - Gotify
+    - Name: Gotify
+    - Gotify server: http://gotify:80
+    - App token
+    - Priority: Normal
+- Download path: /music/
+- general
+  - Security
+    - Authentication: None

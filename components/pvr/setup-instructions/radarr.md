@@ -1,0 +1,29 @@
+# Setup Radarr
+- Media management:
+  - Rename movies: yes
+  - Replace illegal characters: yes
+  - Renaming patterns
+    - Colon replacement format: Delete
+    - Standard Movie Format: {Movie Title} ({Release Year}) {Quality Full}
+    - Movie Folder Format: {Movie Title} ({Release Year})
+  - Import extra files: yes (srt)
+  - Importing
+    - Use Hardlinks instead of Copy: false
+- Indexers:
+  - Add relevent indexers created in jackett (local URL: "http://jackett:9117/[...]")
+- Download client: transmission
+  - Host: transmission
+  - Port: 9091
+  - Use SSL: false
+  - Complete downloading handling: remove: yes
+- Metadata: enable XBMC (Kodi) / Emby
+- Connect:
+  - Gotify
+    - Name: Gotify
+    - Gotify server: http://gotify:80
+    - App token
+    - Priority: Normal
+- Download path: /movies/
+- General
+  - Security
+    - Authentication: None
