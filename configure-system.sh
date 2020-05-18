@@ -94,7 +94,7 @@ install_component ssh
 install_component vpn-client
 install_component reverse-proxy
 install_component dns-updater
-install_component torrenting-client
+install_component torrenting
 install_component media-server
 # install_component smart-home  # Disabled because unused
 install_component system-monitoring

@@ -20,7 +20,7 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |           Media server          |    jellyfin.DOMAIN   |            [Jellyfin](https://github.com/jellyfin/jellyfin)            |    [instructions](../components/media-server/setup-instructions/public.md)   |
 |       Private media server      |    pellyfin.DOMAIN   |            [Jellyfin](https://github.com/jellyfin/jellyfin)            |   [instructions](../components/media-server/setup-instructions/private.md)   |
 
-## PVR / automated downloads
+## PVR
 |             Service             |      Access Url      |                       Implementation service name                      |                        Post-install setup instructions                       |
 |:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
 |     Media request interface     |      ombi.DOMAIN     |                [Ombi](https://github.com/tidusjar/Ombi)                |         [instructions](../components/pvr/setup-instructions/ombi.md)         |
@@ -29,7 +29,11 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |    Subtitles auto-downloader    |     bazarr.DOMAIN    |            [Bazarr](https://github.com/morpheus65535/bazarr)           |        [instructions](../components/pvr/setup-instructions/bazarr.md)        |
 |            Music PVR            |     lidarr.DOMAIN    |               [Lidarr](https://github.com/lidarr/Lidarr)               |        [instructions](../components/pvr/setup-instructions/lidarr.md)        |
 |        Youtube videos PVR       |   youtubedl.DOMAIN   | [YoutubeDL-Material](https://github.com/Tzahi12345/YoutubeDL-Material) |       [instructions](../components/pvr/setup-instructions/youtubedl.md)      |
-|   Torrents tackers aggregator   |    jackett.DOMAIN    |              [Jackett](https://github.com/Jackett/Jackett)             |        [instructions](../components/pvr/setup-instructions/jackett.md)       |
+
+## Automated downloads / torrenting
+|             Service             |      Access Url      |                       Implementation service name                      |                        Post-install setup instructions                       |
+|:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
+|   Torrents tackers aggregator   |    jackett.DOMAIN    |              [Jackett](https://github.com/Jackett/Jackett)             |    [instructions](../components/torrenting/setup-instructions/jackett.md)    |
 |        Torrenting client        |  transmission.DOMAIN |      [Transmission](https://github.com/transmission/transmission)      |                             Nothing to configure                             |
 
 

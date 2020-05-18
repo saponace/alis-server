@@ -28,11 +28,6 @@
     )
     process_docker_compose_service pvr/lidarr "$(declare -p lidarr_docker_compose_template_mappings)"
 
-# Jackett: tracker proxy for sonarr and radarr
-    declare -A  jackett_docker_compose_template_mappings=(
-    )
-    process_docker_compose_service pvr/jackett "$(declare -p jackett_docker_compose_template_mappings)"
-
 # Youtube-dl: Download Youtube videos/channels/playlists (can extract audio)
     declare -A  youtube_dl_compose_template_mappings=(
     )
