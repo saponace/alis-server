@@ -5,7 +5,7 @@
 - Users tab
   - Edit admin user: change username and password
 - Apps tabs:
-  - Creat token for (and set an app icon for each, can get icons from organizr):
+  - Creat token for (and set an app icon for each, you can find icons [here](icons/)):
     - Sonarr
     - Radarr
     - Lidarr
