@@ -29,9 +29,7 @@
     sudo mv /tmp/traefik.yml ${CONTAINERS_CONFIG_DIR}/traefik/traefik.yml
 
 
-    declare -A  dynamic_config_mappings=(
-    )
-    fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/dynamic-conf.yml /tmp/dynamic-conf.yml "$(declare -p dynamic_config_mappings)"
+    fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/dynamic-conf.yml /tmp/dynamic-conf.yml ""
     sudo mv /tmp/dynamic-conf.yml ${CONTAINERS_CONFIG_DIR}/traefik/dynamic-conf.yml
 
 

@@ -3,17 +3,13 @@
 #-------------------------------------------------
 
 # Create docker-compose definition
-    declare -A  docker_compose_template_mappings=(
-    )
-    process_docker_compose_service auth/authelia "$(declare docker_compose_template_mappings)"
+    process_docker_compose_service auth/authelia ""
 
 # Create traefik data files
     sudo mkdir -p ${CONTAINERS_CONFIG_DIR}/authelia
 
 # Create configuration files
-    declare -A  config_mappings=(
-    )
-    fill_template_file ${COMPONENTS_DIR}/auth/config/config.yml /tmp/auth-config.yml "$(declare -p config_mappings)"
+    fill_template_file ${COMPONENTS_DIR}/auth/config/config.yml /tmp/auth-config.yml ""
     sudo mv /tmp/auth-config.yml ${CONTAINERS_CONFIG_DIR}/authelia/config.yml
 
 

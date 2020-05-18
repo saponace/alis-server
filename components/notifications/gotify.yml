@@ -7,7 +7,7 @@
       - web
       - notifications
     volumes:
-      - %GOTIFY_DATA_DIR%:/app/data
+      - %CONTAINERS_DATA_DIR%/gotify:/app/data
     environment:
       - TZ=%TIMEZONE%
     labels:

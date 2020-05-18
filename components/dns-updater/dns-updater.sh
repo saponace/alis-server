@@ -3,9 +3,7 @@
 #-------------------------------------------------
 
 # Create docker-compose definition
-    declare -A  docker_compose_template_mappings=(
-        )
-    process_docker_compose_service dns-updater/ddclient "$(declare -p docker_compose_template_mappings)"
+    process_docker_compose_service dns-updater/ddclient ""
 
 # Create ddclient configuration files
     sudo mkdir -p ${CONTAINERS_DATA_DIR}/ddclient

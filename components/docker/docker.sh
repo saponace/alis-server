@@ -17,9 +17,7 @@ docker_compose_version=3.8
 
 
 # Portainer: Docker containers management via Web UI
-    declare -A  portainer_docker_compose_template_mappings=(
-    )
-    process_docker_compose_service docker/portainer "$(declare -p portainer_docker_compose_template_mappings)"
+    process_docker_compose_service docker/portainer ""
 
 
 # Watchtower: Auto-update docker containers

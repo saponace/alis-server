@@ -22,9 +22,7 @@ sudo mkdir -p ${elasticsearch_data_dir}
 elk_version=7.6.2
 
 # Logspout: Send docker containers logs to logstash
-    declare -A  logspout_docker_compose_template_mappings=(
-    )
-    process_docker_compose_service logging/logspout "$(declare -p logspout_docker_compose_template_mappings)"
+    process_docker_compose_service logging/logspout ""
 
 
 # Logstash: Centralise logs and send them to elasticsearch
