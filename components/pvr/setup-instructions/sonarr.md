@@ -28,3 +28,5 @@
 - General
   - Security
     - Authentication: None
+  - Analytics:
+    - Send Anonymous Usage Data: false
