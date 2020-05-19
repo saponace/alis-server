@@ -5,10 +5,10 @@
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     volumes:
+      - %SERVICES_DATA_DIR%/youtube-dl:/app/appdata
       - %MEDIA_DIR%/youtube/video:/app/video
       - %MEDIA_DIR%/youtube/subscriptions:/app/subscriptions
       - %MUSIC_DIR%/youtube/:/app/audio
-      - %CONTAINERS_CONFIG_DIR%/youtube-dl:/app/appdata
     labels:
       - traefik.http.routers.youtubedl.middlewares=auth@file
       - traefik.http.services.youtubedl.loadbalancer.server.port=17442

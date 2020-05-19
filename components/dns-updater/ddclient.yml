@@ -8,6 +8,6 @@
       - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     volumes:
-      - %CONTAINERS_DATA_DIR%/ddclient:/config
+      - %SERVICES_GENERATED_CONFIG_DIR%/ddclient:/config
     labels:
       - traefik.enable=false

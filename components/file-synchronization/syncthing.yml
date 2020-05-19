@@ -6,8 +6,8 @@
     networks:
       - web
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/syncthing:/config
-      - %SYNCTHING_DATA_DIR%:/data
+      - %SERVICES_DATA_DIR%/syncthing/config:/config
+      - %SERVICES_DATA_DIR%/syncthing/data:/data1
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

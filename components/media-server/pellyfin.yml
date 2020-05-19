@@ -6,8 +6,8 @@
     networks:
       - web
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/pellyfin/config:/config
-      - %CONTAINERS_DATA_DIR%/pellyfin/cache:/cache
+      - %SERVICES_DATA_DIR%/pellyfin/config:/config
+      - %SERVICES_DATA_DIR%/pellyfin/cache:/cache
       - %PRIVATE_MEDIA_DIR%:/media
     environment:
       - PUID=%DOCKER_USER_ID%

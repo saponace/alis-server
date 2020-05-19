@@ -9,11 +9,10 @@
       - transmission
       - notifications
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/radarr:/config
+      - %SERVICES_DATA_DIR%/radarr:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads
       - %MOVIES_DIR%:/movies
       - /etc/localtime:/etc/localtime:ro
-      - %DOCKER_SHARED_DIR%:/shared
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

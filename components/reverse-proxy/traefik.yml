@@ -11,9 +11,9 @@
       - 443:443
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - %CONTAINERS_CONFIG_DIR%/traefik/traefik.yml:/traefik.yml
-      - %CONTAINERS_CONFIG_DIR%/traefik/dynamic-conf.yml:/dynamic-conf.yml
-      - %CONTAINERS_DATA_DIR%/traefik/acme.json:/acme.json
+      - %SERVICES_GENERATED_CONFIG_DIR%/traefik/traefik.yml:/traefik.yml
+      - %SERVICES_GENERATED_CONFIG_DIR%/traefik/dynamic-conf.yml:/dynamic-conf.yml
+      - %SERVICES_DATA_DIR%/traefik/acme.json:/acme.json
       - /var/log/traefik:/var/log   # Used by Fail2ban
       - /var/run/docker.sock:/var/run/docker.sock:ro
     secrets:

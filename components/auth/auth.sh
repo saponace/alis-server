@@ -6,11 +6,11 @@
     process_docker_compose_service auth/authelia ""
 
 # Create traefik data files
-    sudo mkdir -p ${CONTAINERS_CONFIG_DIR}/authelia
+    sudo mkdir -p ${SERVICES_GENERATED_CONFIG_DIR}/authelia
 
 # Create configuration files
     fill_template_file ${COMPONENTS_DIR}/auth/config/config.yml /tmp/auth-config.yml ""
-    sudo mv /tmp/auth-config.yml ${CONTAINERS_CONFIG_DIR}/authelia/config.yml
+    sudo mv /tmp/auth-config.yml ${SERVICES_GENERATED_CONFIG_DIR}/authelia/config.yml
 
 
     hashed_pwd=$(sudo docker run authelia/authelia authelia hash-password "${admin_pwd}" | sed 's/Password hash: //g')
@@ -20,10 +20,10 @@
         ["HASHED_PWD"]='${hashed_pwd}'
     )
     fill_template_file ${COMPONENTS_DIR}/auth/config/db.yml /tmp/auth-db.yml "$(declare -p db_mappings)"
-    sudo mv /tmp/auth-db.yml ${CONTAINERS_CONFIG_DIR}/authelia/db.yml
+    sudo mv /tmp/auth-db.yml ${SERVICES_GENERATED_CONFIG_DIR}/authelia/db.yml
 
 # Create secret file
-    authelia_secrets_dir=${CONTAINERS_CONFIG_DIR}/authelia/secrets
+    authelia_secrets_dir=${SERVICES_GENERATED_CONFIG_DIR}/authelia/secrets
     jwt_secret_file=${authelia_secrets_dir}/jwt
     sudo mkdir -p ${authelia_secrets_dir}
 

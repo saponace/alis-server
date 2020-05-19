@@ -6,7 +6,7 @@
     network_mode: service:vpn_client_gateway
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - %CONTAINERS_CONFIG_DIR%/transmission:/config
+      - %SERVICES_GENERATED_CONFIG_DIR%/transmission:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads
       - %TORRENTS_BLACKHOLE_DIR%:/watch
     environment:

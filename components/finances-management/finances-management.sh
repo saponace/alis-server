@@ -6,7 +6,7 @@ db_name="firefly_db"
 db_username="firefly_db"
 db_pwd="firefly_db_secret"
 app_key=$( cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 )
-data_dir="${CONTAINERS_DATA_DIR}/firefly-iii"
+data_dir="${SERVICES_DATA_DIR}/firefly-iii"
 firefly_iii_version="release-5.2.5"
 postgres_version="12"
 
@@ -30,7 +30,7 @@ declare -A  firefly_iii_db_docker_compose_template_mappings=(
 process_docker_compose_service finances-management/firefly-iii-db "$(declare -p firefly_iii_db_docker_compose_template_mappings)"
 
 # Create APP_KEY secret file
-    firefly_iii_secrets_dir=${CONTAINERS_CONFIG_DIR}/firefly_iii/secrets
+    firefly_iii_secrets_dir=${SERVICES_GENERATED_CONFIG_DIR}/firefly_iii/secrets
     app_key_secret_file=${firefly_iii_secrets_dir}/app_key
     sudo mkdir -p ${firefly_iii_secrets_dir}
 

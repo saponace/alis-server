@@ -9,7 +9,7 @@
       - radarr
       - notifications
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/bazarr:/config
+      - %SERVICES_DATA_DIR%/bazarr:/config
       - %MOVIES_DIR%:/movies
       - %TV_DIR%:/tv
     environment:

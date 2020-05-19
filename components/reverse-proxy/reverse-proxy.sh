@@ -9,10 +9,10 @@
     process_docker_compose_service reverse-proxy/traefik "$(declare -p reverse_proxy_docker_compose_template_mappings)"
 
 # Create traefik data files
-    sudo mkdir -p ${CONTAINERS_CONFIG_DIR}/traefik
-    sudo mkdir -p ${CONTAINERS_DATA_DIR}/traefik
-    sudo touch ${CONTAINERS_DATA_DIR}/traefik/acme.json
-    sudo chmod 600 ${CONTAINERS_DATA_DIR}/traefik/acme.json
+    sudo mkdir -p ${SERVICES_GENERATED_CONFIG_DIR}/traefik
+    sudo mkdir -p ${SERVICES_DATA_DIR}/traefik
+    sudo touch ${SERVICES_DATA_DIR}/traefik/acme.json
+    sudo chmod 600 ${SERVICES_DATA_DIR}/traefik/acme.json
 
 
 # Create docker network
@@ -26,15 +26,15 @@
         ["LETS_ENCRYPT_EMAIL"]="${lets_encrypt_email}"
     )
     fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/traefik.yml /tmp/traefik.yml "$(declare -p traefik_config_mappings)"
-    sudo mv /tmp/traefik.yml ${CONTAINERS_CONFIG_DIR}/traefik/traefik.yml
+    sudo mv /tmp/traefik.yml ${SERVICES_GENERATED_CONFIG_DIR}/traefik/traefik.yml
 
 
     fill_template_file ${COMPONENTS_DIR}/reverse-proxy/config/dynamic-conf.yml /tmp/dynamic-conf.yml ""
-    sudo mv /tmp/dynamic-conf.yml ${CONTAINERS_CONFIG_DIR}/traefik/dynamic-conf.yml
+    sudo mv /tmp/dynamic-conf.yml ${SERVICES_GENERATED_CONFIG_DIR}/traefik/dynamic-conf.yml
 
 
 # Create Cloudflare api key secret file
-    traefik_secrets_dir=${CONTAINERS_CONFIG_DIR}/traefik/secrets
+    traefik_secrets_dir=${SERVICES_GENERATED_CONFIG_DIR}/traefik/secrets
     cf_api_key_secret_file=${traefik_secrets_dir}/cf_api_key
     sudo mkdir -p ${traefik_secrets_dir}
 

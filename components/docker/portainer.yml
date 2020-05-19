@@ -8,8 +8,7 @@
     command: --no-auth
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - %CONTAINERS_CONFIG_DIR%/portainer/data:/data
-      - %DOCKER_SHARED_DIR%:/shared
+      - %SERVICES_DATA_DIR%/portainer/data:/data
     environment:
       - TZ=%TIMEZONE%
     labels:

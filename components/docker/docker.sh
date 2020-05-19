@@ -9,7 +9,6 @@ function append_to_docker_compose_file (){
 }
 
 
-sudo mkdir -p ${DOCKER_SHARED_DIR}
 ${INSTALL} docker docker-compose
 sudo systemctl enable docker
 

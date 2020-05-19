@@ -5,7 +5,7 @@
 filebrowser_version="v2.0.12"
 
 # Private filebrowser instance
-    filebrowser_data_dir=${CONTAINERS_DATA_DIR}/filebrowser
+    filebrowser_data_dir=${SERVICES_DATA_DIR}/filebrowser
 
     declare -A  filebrowser_private_docker_compose_template_mappings=(
         ["MNT_DIR"]="/mnt"
@@ -19,7 +19,7 @@ filebrowser_version="v2.0.12"
         sudo touch ${filebrowser_data_dir}/database.db
 
 # Public filebrowser instance
-    filebrowser_public_data_dir=${CONTAINERS_DATA_DIR}/filebrowser-public
+    filebrowser_public_data_dir=${SERVICES_DATA_DIR}/filebrowser-public
 
     declare -A  filebrowser_public_docker_compose_template_mappings=(
         ["MNT_DIR"]="/mnt/public"

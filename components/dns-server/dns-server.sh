@@ -4,7 +4,7 @@
 
 
 # Create files and direcetories needed by pihole
-pihole_home="${CONTAINERS_DATA_DIR}/pihole"
+pihole_home="${SERVICES_DATA_DIR}/pihole"
 sudo mkdir -p ${pihole_home}
 sudo touch ${pihole_home}/pihole.log
 

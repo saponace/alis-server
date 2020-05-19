@@ -7,8 +7,8 @@
     depends_on:
       - notifications
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/jellyfin/config:/config
-      - %CONTAINERS_DATA_DIR%/jellyfin/cache:/cache
+      - %SERVICES_DATA_DIR%/jellyfin/config:/config
+      - %SERVICES_DATA_DIR%/jellyfin/cache:/cache
       - %MEDIA_DIR%:/media
     environment:
       - PUID=%DOCKER_USER_ID%

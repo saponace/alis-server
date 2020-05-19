@@ -5,9 +5,8 @@
     restart: unless-stopped
     privileged: true
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/homeassistant:/config
+      - %SERVICES_DATA_DIR%/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
-      - %DOCKER_SHARED_DIR%:/shared
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

@@ -9,11 +9,10 @@
       - transmission
       - notifications
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/lidarr:/config
+      - %SERVICES_DATA_DIR%/lidarr:/config
       - %TORRENTS_DOWNLOADS_DIR%:/downloads
       - %MUSIC_DIR%:/music
       - /etc/localtime:/etc/localtime:ro
-      - %DOCKER_SHARED_DIR%:/shared
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

@@ -2,14 +2,16 @@
 # Global variables
 #-------------------------------------------------
 
-DOCKER_SHARED_DIR="/docker-shared"
 TEMP_DOCKER_COMPOSE_PARTS_DIR="/tmp/docker-compose-parts"
 TEMP_DOCKER_PART_NETWORKS="/tmp/docker-networks"
 TEMP_DOCKER_PART_VOLUMES="/tmp/docker-volumes"
 TEMP_DOCKER_PART_SECRETS="/tmp/docker-secrets"
-CONTAINERS_CONFIG_DIR="/mnt/persistent-configs"
-CONTAINERS_DATA_DIR="/mnt/data"
+
+SERVICES_GENERATED_CONFIG_DIR="/mnt/services/generated-configs"
+SERVICES_DATA_DIR="/mnt/services/data"
+
 COMPONENTS_DIR="components"
+
 declare -A COMMON_TEMPLATES_MAPPING=(
     ["USER_DIR"]="/home/${USER}"
     ["DOCKER_USER_ID"]="$(id -u ${USER})"
@@ -20,9 +22,8 @@ declare -A COMMON_TEMPLATES_MAPPING=(
     ["MOVIES_DIR"]="/mnt/media/movies"
     ["MUSIC_DIR"]="/mnt/media/music"
     ["MEDIA_DIR"]="/mnt/media"
-    ["CONTAINERS_CONFIG_DIR"]="${CONTAINERS_CONFIG_DIR}"
-    ["CONTAINERS_DATA_DIR"]="${CONTAINERS_DATA_DIR}"
-    ["DOCKER_SHARED_DIR"]="${DOCKER_SHARED_DIR}"
+    ["SERVICES_GENERATED_CONFIG_DIR"]="${SERVICES_GENERATED_CONFIG_DIR}"
+    ["SERVICES_DATA_DIR"]="${SERVICES_DATA_DIR}"
     ["TORRENTS_DOWNLOADS_DIR"]="/mnt/torrents"
     ["TORRENTS_BLACKHOLE_DIR"]="/torrents-blackhole"
 )

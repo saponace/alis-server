@@ -75,7 +75,7 @@ function enable_networking (){
 }
 
 
-source ./global-variables.sh
+source ./common-variables.sh
 source ./common-functions.sh
 
 # Create directory for temporary files during docker compose files build

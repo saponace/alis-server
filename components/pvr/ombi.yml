@@ -11,7 +11,7 @@
       - lidarr
       - notifications
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/ombi:/config
+      - %SERVICES_DATA_DIR%/ombi:/config
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

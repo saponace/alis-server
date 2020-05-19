@@ -6,8 +6,8 @@
     networks:
       - web
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/authelia/config.yml:/etc/authelia/configuration.yml:ro
-      - %CONTAINERS_CONFIG_DIR%/authelia/db.yml:/etc/authelia/users_database.yml
+      - %SERVICES_GENERATED_CONFIG_DIR%/authelia/config.yml:/etc/authelia/configuration.yml:ro
+      - %SERVICES_GENERATED_CONFIG_DIR%/authelia/db.yml:/etc/authelia/users_database.yml
     secrets:
       - authelia_jwt
     environment:

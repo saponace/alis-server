@@ -13,8 +13,7 @@
       - lidarr
       - transmission
     volumes:
-      - %CONTAINERS_CONFIG_DIR%/organizr:/config
-      - %DOCKER_SHARED_DIR%:/shared
+      - %SERVICES_DATA_DIR%/organizr:/config
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%

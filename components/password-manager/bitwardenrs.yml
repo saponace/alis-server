@@ -6,7 +6,7 @@
     networks:
       - web
     volumes:
-      - %CONTAINERS_DATA_DIR%/bitwarden:/data
+      - %SERVICES_DATA_DIR%/bitwarden:/data
     environment:
       - WEBSOCKET_ENABLED=true
       - SIGNUPS_ALLOWED=false
