@@ -29,3 +29,5 @@
       - /pia-credentials:/config/credentials
     environment:
       - REGION=France
+    labels:
+      - traefik.enable=false

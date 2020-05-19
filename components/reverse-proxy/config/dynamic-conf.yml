@@ -16,3 +16,22 @@ http:
         stsIncludeSubdomains: true
         frameDeny: false
 
+    # Enforce secure headers
+    # Not used. I need to find a way to apply this middleware to all routers without having to specify it to all routers one by one
+    securityHeaders:
+      headers:
+        accessControlAllowMethods: ["GET", "OPTIONS", "PUT"]
+        accessControlMaxAge: 100
+        hostsProxyHeaders: ["X-Forwarded-Host"]
+        sslRedirect: true
+        stsSeconds: 63072000 # Two years
+        stsIncludeSubdomains: true
+        stsPreload: true
+        forceSTSHeader: true
+        contentTypeNosniff: true
+        browserXssFilter: true
+        referrerPolicy: "same-origin"
+        featurePolicy: "camera 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none';"
+        customResponseHeaders:
+          X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex,"
+          server: ""
