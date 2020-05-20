@@ -1,18 +1,15 @@
   # Syncthing
   syncthing:
     container_name: syncthing
-    image: linuxserver/syncthing:v1.2.1-ls16
+    image: syncthing/syncthing:1.5.0
     restart: unless-stopped
     networks:
       - web
     volumes:
-      - %SERVICES_DATA_DIR%/syncthing/config:/config
-      - %SERVICES_DATA_DIR%/syncthing/data:/data1
+      - %SERVICES_DATA_DIR%/syncthing/data:/var/syncthing
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
-      - TZ=%TIMEZONE%
-      - UMASK_SET=022
     labels:
       - traefik.http.routers.syncthing.middlewares=auth@file,allowFrames@file
       - traefik.http.services.syncthing.loadbalancer.server.port=8384
