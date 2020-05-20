@@ -1,7 +1,7 @@
   # Handle media content requests
   ombi:
     container_name: ombi
-    image: linuxserver/ombi:3.0.4727-ls58
+    image: linuxserver/ombi:v4.0.337-ls3
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     depends_on:

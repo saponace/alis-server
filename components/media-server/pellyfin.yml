@@ -1,7 +1,7 @@
   # Private media server
   pellyfin:
     container_name: pellyfin
-    image: jellyfin/jellyfin:10.4.1
+    image: jellyfin/jellyfin:%VERSION%
     restart: unless-stopped
     networks:
       - web

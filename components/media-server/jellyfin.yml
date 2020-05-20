@@ -1,7 +1,7 @@
   # Media server
   jellyfin:
     container_name: jellyfin
-    image: jellyfin/jellyfin:10.4.1
+    image: jellyfin/jellyfin:%VERSION%
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     depends_on:

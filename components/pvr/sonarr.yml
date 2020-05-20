@@ -1,7 +1,7 @@
   # TV shows PVR
   sonarr:
     container_name: sonarr
-    image: linuxserver/sonarr:3.0.2.587-ls123
+    image: linuxserver/sonarr:3.0.3.825-ls8
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     depends_on:

@@ -1,7 +1,7 @@
   # DNS server
   pihole:
     container_name: pihole
-    image: pihole/pihole:4.3.1-4
+    image: pihole/pihole:v5.0
     restart: unless-stopped
     networks:
       - web

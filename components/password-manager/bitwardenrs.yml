@@ -1,7 +1,7 @@
   # Bitwarden
   bitwarden:
     container_name: bitwarden
-    image: bitwardenrs/server:1.9.1
+    image: bitwardenrs/server:1.14.2
     restart: unless-stopped
     networks:
       - web

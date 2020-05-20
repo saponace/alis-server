@@ -1,7 +1,7 @@
   # TV and movies subtitles download
   bazarr:
     container_name: bazarr
-    image: linuxserver/bazarr:9a7372c8-ls45
+    image: linuxserver/bazarr:v0.8.4.3-ls78
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     depends_on:

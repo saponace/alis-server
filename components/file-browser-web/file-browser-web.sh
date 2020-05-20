@@ -2,7 +2,7 @@
 # File browser with web interface ala Google drive
 #-------------------------------------------------
 
-filebrowser_version="v2.0.12"
+filebrowser_version="v2.1.0"
 
 # Private filebrowser instance
     filebrowser_data_dir=${SERVICES_DATA_DIR}/filebrowser

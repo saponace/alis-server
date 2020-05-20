@@ -1,7 +1,7 @@
   # Gotify
   notifications:
     container_name: gotify
-    image: gotify/server:2.0.15
+    image: gotify/server:2.0.16
     restart: unless-stopped
     networks:
       - web

@@ -20,7 +20,7 @@ add_docker_volume "  elasticsearch:
       device: '${elasticsearch_data_dir}'"
 
 
-elk_version=7.6.2
+elk_version=7.7.0
 
 # Logspout: Send docker containers logs to logstash
     process_docker_compose_service logging/logspout ""

@@ -1,46 +1,49 @@
 # Setup Ombi
-- Create an account
-- Configuration:
-  - User importer:
-    - Import Emby/Jellyfin users: true
-    - Click submit
-    - Click run importer (after setup emby)  // TODO: check if can periodically run user importer
+- Wizard:
+  - Create admin user
+- Ombi:
+  - Allow us to collect anonymous analytical data: true
 - Media server: Emby/Jellyfin
   - Enable: true
   - Add server
-    - Name: Jellyfin
+    - Server Name: Jellyfin
     - Hostname: http://jellyfin
     - Port: 8096
     - SSL: false
     - API Key
+    - Externally facing hostname: https://jellyfin.DOMAIN
 - TV:
   - Sonarr:
     - Enable: true
     - V3: true
+    - SSL: false
     - Hostname: http://sonarr
     - Port: 8989
     - API Key
-    - SSL: false
+    - Base URL: [empty]
     - Quality profiles: HD - 720p
     - Default root folders: /tv/
+    - Language profiles: [YOUR lANGUAGE]
     - Enable season folders: true
 - Movies:
   - Radarr:
     - Enable: true
+    - Ssl: false
     - Hostname: http://radarr
     - Port: 7878
     - API Key
-    - Ssl: false
+    - Base URL: [empty]
     - Quality profiles: HD - 720p
     - Default root folders: /movies/
     - Default minimum availability: Physical / Web
 - Music:
   - Lidarr:
     - Enable: true
+    - SSL: false
     - Hostname: http://lidarr
     - Port: 8686
     - API Key
-    - SSL: false
+    - Base URL: [empty]
     - Default root folders: /music/
     - Quality profiles: Lossless
     - Metadata profile: standard
@@ -51,3 +54,12 @@
     - Base URL: http://gotify:80
     - Application token
     - Priority: Normal
+- Configuration:
+  - User Management:
+    - Import Emby users: true
+    - Default roles:
+        - Request Movies
+        - Request TV
+        - Request Music
+    - Click submit
+    - Click run importer (after setup emby)  // TODO: check if can periodically run user importer

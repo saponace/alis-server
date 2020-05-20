@@ -1,7 +1,7 @@
   # Movies PVR
   radarr:
     container_name: radarr
-    image: linuxserver/radarr:2.0.0.2051-ls23
+    image: linuxserver/radarr:3.0.0.2973-ls7
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     depends_on:

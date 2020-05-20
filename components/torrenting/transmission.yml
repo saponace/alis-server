@@ -1,7 +1,7 @@
   # Torrenting client
   transmission:
     container_name: transmission
-    image: linuxserver/transmission:2.94-r1-ls22
+    image: linuxserver/transmission:2.94-r3-ls53
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     volumes:

@@ -1,7 +1,7 @@
   # Docker conainers admin interface
   portainer:
     container_name: portainer
-    image: portainer/portainer:1.22.0
+    image: portainer/portainer:1.23.2
     restart: unless-stopped
     networks:
       - web

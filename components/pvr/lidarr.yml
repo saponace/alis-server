@@ -1,7 +1,7 @@
   # Music PVR
   lidarr:
     container_name: lidarr
-    image: linuxserver/lidarr:0.6.2.1121-ls33
+    image: linuxserver/lidarr:0.7.1.1693-ls5
     restart: unless-stopped
     network_mode: service:vpn_client_gateway
     depends_on:
