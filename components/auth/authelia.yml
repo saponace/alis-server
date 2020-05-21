@@ -15,4 +15,3 @@
       - AUTHELIA_JWT_SECRET_FILE=/run/secrets/authelia_jwt
     labels:
       - traefik.http.services.authelia.loadbalancer.server.port=9091
-
