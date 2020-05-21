@@ -2,6 +2,9 @@
 # Ad-blocking DNS server
 #-------------------------------------------------
 
+# WARNING: PiHole data is not persisted on the host's storage for simplicity reasons.
+# To persist configurations and data, please map appropriate volumes to the host's storage
+
 
 # Create files and direcetories needed by pihole
 pihole_home="${SERVICES_DATA_DIR}/pihole"
