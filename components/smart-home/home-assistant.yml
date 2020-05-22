@@ -3,13 +3,12 @@
     container_name: homeassistant
     image: homeassistant/home-assistant:0.110.0
     restart: unless-stopped
-    privileged: true
+    networks:
+      - web
     volumes:
       - %SERVICES_DATA_DIR%/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - PUID=%DOCKER_USER_ID%
-      - PGID=%DOCKER_GROUP_ID%
       - TZ=%TIMEZONE%
     labels:
       - traefik.http.routers.homeassistant.middlewares=auth@file
