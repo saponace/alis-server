@@ -10,3 +10,5 @@ The following table represents the authentication means for all services:
 |      Jellyfin      |                                                               |                                   |                    |
 |      Pellyfin      |                                                               |                                   |                    |
 |       Firefly      |                                                               |                                   |                    |
+
+The services that expose a web-UI and are not mentionned in this table require authentication with Authelia

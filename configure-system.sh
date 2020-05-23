@@ -109,6 +109,7 @@ install_component password-manager
 install_component notifications
 install_component logging
 install_component auth
+install_component data-manipulation
 install_component docker
 
 

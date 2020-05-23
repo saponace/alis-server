@@ -1,0 +1,11 @@
+  # Data manipulation toolbox
+  cyberchef:
+    container_name: cyberchef
+    image: mpepping/cyberchef:v8.8.5
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - traefik.http.routers.cyberchef.middlewares=auth@file
+      - traefik.http.services.cyberchef.loadbalancer.server.port=8000
+

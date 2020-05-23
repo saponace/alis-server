@@ -20,6 +20,7 @@
     - Firefly iii: https://firefly.DOMAIN_NAME https://www.firefly-iii.org/favicon-32x32.png
     - Netdata: https://netdata.DOMAIN_NAME plugins/images/tabs/netdata.png
     - Syncthing: https://syncthing.DOMAIN_NAME plugins/images/tabs/syncthing.png
+    - Cyberchef: https://cyberchef.DOMAIN_NAME materialize::wrench
     - Notifications: https://notifications.DOMAIN_NAME https://gotify.net/img/logo.png
     - Auth https://auth.DOMAIN_NAME materialize::key (new window)
     - Filebrowser: https://filebrowser.DOMAIN_NAME plugins/images/tabs/filebrowser.png
