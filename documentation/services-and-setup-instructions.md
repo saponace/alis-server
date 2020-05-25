@@ -4,7 +4,7 @@ Bellow is the list of instaled services and their manual configurations (if requ
 ## Misc
 |             Service             |      Access Url      |                       Implementation service name                      |                        Post-install setup instructions                       |
 |:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
-|            Dashboard            |        DOMAIN        |             [Organizr](https://github.com/causefx/Organizr)            |         [Instructions](../components/dashboard/setup-instructions.md)        |
+|            Dashboard            |        DOMAIN        |        [Dashmachine](https://github.com/rmountjoy92/DashMachine)       |                             Nothing to configure                             |
 |       Finances management       |    firefly.DOMAIN    |        [Firefly-iii](https://github.com/firefly-iii/firefly-iii)       |    [Instructions](../components/finances-management/setup-instructions.md)   |
 |          Smart home hub         | homeassistant.DOMAIN |        [Home assistant](https://github.com/home-assistant/core)        |        [Instructions](../components/smart-home/setup-instructions.md)        |
 |        Passwords manager        |   bitwarden.DOMAIN   |       [Bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs)      |     [Instructions](../components/password-manager/setup-instructions.md)     |

@@ -81,6 +81,10 @@ source ./common-functions.sh
 # Create directory for temporary files during docker compose files build
   mkdir -p ${TEMP_DOCKER_COMPOSE_PARTS_DIR}
 
+# Create services data and config dirs
+    mkdir -p ${SERVICES_GENERATED_CONFIG_DIR}
+    mkdir -p ${SERVICES_DATA_DIR}
+
 enable_networking
 install_component aur-helper
 install_component networking
