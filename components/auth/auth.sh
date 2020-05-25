@@ -32,3 +32,7 @@
 
     sudo su -c "echo \"${authelia_jwt_secret}\" > ${jwt_secret_file}"
     sudo chmod 600 ${jwt_secret_file}
+
+
+# Create a dashboard entry
+    add_dashboard_entry Authentication auth authelia "Central authentication with Signle Sign On" new_tab "Technical services"

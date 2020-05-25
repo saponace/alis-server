@@ -16,3 +16,7 @@ declare -A jellyfin_docker_compose_template_mappings=(
     ["PRIVATE_MEDIA_DIR"]=/mnt/media/private
   )
   process_docker_compose_service media-server/pellyfin "$(declare -p pellyfin_docker_compose_template_mappings)"
+
+
+# Create a dashboard entry
+    add_dashboard_entry Jellyfin jellyfin jellyfin "Media server" iframe Media

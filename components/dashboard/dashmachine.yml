@@ -1,0 +1,19 @@
+  # Dashboard / homepage
+  dashboard:
+    container_name: dashmachine
+    image: rmountjoy/dashmachine:v0.5-4
+    restart: unless-stopped
+    networks:
+      - web
+    depends_on:
+      - jellyfin
+      - ombi
+      - sonarr
+      - radarr
+      - lidarr
+      - transmission
+    volumes:
+      - %SERVICES_GENERATED_CONFIG_DIR%/dashmachine/config.ini:/dashmachine/dashmachine/user_data/config.ini
+    labels:
+      - traefik.http.routers.dashmachine.middlewares=auth@file
+      - traefik.http.services.dashmachine.loadbalancer.server.port=5000

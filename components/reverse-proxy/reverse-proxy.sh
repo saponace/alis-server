@@ -48,3 +48,6 @@
 # Whitelist HTTP and HTTPS port in the firewall (and make sure the firewall is installed)
     ${INSTALL} ufw
     sudo ufw allow "WWW FULL"
+
+# Create a dashboard entry
+    add_dashboard_entry "Traefik admin dashboard" traefik traefik "Reverse proxy admin dashboard" iframe "Maintenance / monitoring"

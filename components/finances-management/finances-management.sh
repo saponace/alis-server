@@ -39,3 +39,7 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
 
     sudo su -c "echo \"${app_key}\" > ${app_key_secret_file}"
     sudo chmod 600 ${app_key_secret_file}
+
+
+# Create a dashboard entry
+    add_dashboard_entry "Firefly iii" firefly firefly_iii "Finances management" iframe "Misc apps / tools"
