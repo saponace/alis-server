@@ -117,4 +117,5 @@ function add_dashboard_entry() {
     echo "description=$3" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "open_in = $4" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "tags = $5" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo ""
 }
