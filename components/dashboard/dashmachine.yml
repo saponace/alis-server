@@ -15,6 +15,5 @@
     volumes:
       - %SERVICES_GENERATED_CONFIG_DIR%/dashmachine/config.ini:/dashmachine/dashmachine/user_data/config.ini
     labels:
-      - traefik.http.routers.dashmachine.rule=Host(`dashboard.%DOMAIN_NAME%`, `%DOMAIN_NAME%`)
       - traefik.http.routers.dashmachine.middlewares=auth@file
       - traefik.http.services.dashmachine.loadbalancer.server.port=5000
