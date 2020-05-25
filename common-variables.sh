@@ -7,6 +7,8 @@ TEMP_DOCKER_PART_NETWORKS="/tmp/docker-networks"
 TEMP_DOCKER_PART_VOLUMES="/tmp/docker-volumes"
 TEMP_DOCKER_PART_SECRETS="/tmp/docker-secrets"
 
+TEMP_DASHBOARD_ENTRIES="/tmp/dashboard-entries"
+
 SERVICES_GENERATED_CONFIG_DIR="/mnt/services/generated-configs"
 SERVICES_DATA_DIR="/mnt/services/data"
 

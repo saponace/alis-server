@@ -100,3 +100,21 @@ function add_docker_volume (){
 function add_docker_secret (){
     echo "$1" >> ${TEMP_DOCKER_PART_SECRETS}
 }
+
+
+# Add a dashboard entry (app)
+# $1: App name (name must be the subdomain name)
+# $2: Icon name (icons are retrieved from a dashmachine directory). cf. dashmachine documentation
+# $3: App description
+# $4: How should the app be opened (one of "this_tab", "iframe", "new-tab"). Not used for now
+# $5: Tags (categories, coimma separated)
+function add_dashboard_entry() {
+    echo "[$1]" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "prefix = https://" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "url = $1.saponace.com" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "icon = static/images/apps/$2.png" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "sidebar = static/images/apps/$2.png" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "description=$3" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "open_in = $4" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "tags = $5" >> ${TEMP_DASHBOARD_ENTRIES}
+}
