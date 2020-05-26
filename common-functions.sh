@@ -119,5 +119,5 @@ function add_dashboard_entry() {
     # echo "open_in = $5" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "open_in = new_tab" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "tags = $6" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo ""
+    echo "" >> ${TEMP_DASHBOARD_ENTRIES}
 }
