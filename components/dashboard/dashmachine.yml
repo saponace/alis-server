@@ -1,8 +1,7 @@
   # Dashboard / homepage
   dashboard:
     container_name: dashmachine
-    # image: rmountjoy/dashmachine:v0.5-4
-    image: rmountjoy/dashmachine:develop
+    image: rmountjoy/dashmachine:v0.5-4
     restart: unless-stopped
     networks:
       - web
