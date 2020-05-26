@@ -49,4 +49,4 @@ elk_version=7.7.0
 
 
 # Create a dashboard entry for Kibana
-    add_dashboard_entry Kibana kibana kibana "Visualize Elasticsearch data and navigate the Elastic Stack" iframe Monitoring
+    add_dashboard_entry Kibana kibana kibana "Visualize apps logs and extract statistics and reports" iframe Monitoring

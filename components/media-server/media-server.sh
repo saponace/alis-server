@@ -19,4 +19,4 @@ declare -A jellyfin_docker_compose_template_mappings=(
 
 
 # Create a dashboard entry
-    add_dashboard_entry Jellyfin jellyfin jellyfin "Media center" iframe Media
+    add_dashboard_entry Jellyfin jellyfin jellyfin "Media server" iframe Media

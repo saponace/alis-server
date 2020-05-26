@@ -26,6 +26,6 @@
     add_dashboard_entry Ombi ombi ombi "Media content requests handler" iframe "PVR"
     add_dashboard_entry Sonarr sonarr sonarr "TV shows PVR" iframe "PVR"
     add_dashboard_entry Radarr radarr radarr "Movies PVR" iframe "PVR"
-    add_dashboard_entry Lidarr Liddarr lidarr "Music PVR" iframe "PVR"
+    add_dashboard_entry Lidarr lidarr lidarr "Music PVR" iframe "PVR"
     add_dashboard_entry Bazarr bazarr bazarr "Automaticall download subtitles for movies and TV shows" iframe "PVR"
     add_dashboard_entry "Youtube-DL" youtubedl "youtube-dl_material" "Download Youtube videos, channels and playlists" iframe "PVR"

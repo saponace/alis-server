@@ -16,4 +16,4 @@
 
 # Create a dashboard entries
     add_dashboard_entry Transmission transmission transmission "Torrent Client" iframe "Automated downloads"
-    add_dashboard_entry Jackett jackett jackett "Torrents tracker proxy" iframe "Automated downloads"
+    add_dashboard_entry Jackett jackett jackett "Torrents trackers proxy" iframe "Automated downloads"
