@@ -1,4 +1,4 @@
-#-------------------------------------------------
+    #-------------------------------------------------
 # Common functions
 #-------------------------------------------------
 
@@ -117,7 +117,7 @@ function add_dashboard_entry() {
     echo "sidebar = static/images/apps/$3.png" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "description=$4" >> ${TEMP_DASHBOARD_ENTRIES}
     # echo "open_in = $5" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo "open_in = new_tab" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "open_in = this_tab" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "tags = $6" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "" >> ${TEMP_DASHBOARD_ENTRIES}
 }
