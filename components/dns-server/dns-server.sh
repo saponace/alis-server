@@ -17,3 +17,7 @@ declare -A  docker_compose_template_mappings=(
     ["HOMEDIR"]=${pihole_home}
 )
 process_docker_compose_service dns-server/pihole "$(declare -p docker_compose_template_mappings)"
+
+
+# Create a dashboard entry
+    add_dashboard_entry Pi-Hole pihole pihole "Admin interface for the DNS server with intergated adds blocker" new_tab "Technical services"

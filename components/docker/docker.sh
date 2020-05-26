@@ -85,3 +85,5 @@ docker_compose_version=3.8
     fill_template_file ${input_service_file} ${temp_output_service_file} "$(declare -p service_mappings)"
     sudo mv ${temp_output_service_file} ${output_service_file}
 
+# Create a dashboard entry for Portainer
+   add_dashboard_entry Portainer portainer portainer "Docker admin dashboard" iframe Maintenance

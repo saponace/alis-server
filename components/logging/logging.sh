@@ -46,3 +46,7 @@ elk_version=7.7.0
         ["VERSION"]=${elk_version}
     )
     process_docker_compose_service logging/kibana "$(declare -p kibana_docker_compose_template_mappings)"
+
+
+# Create a dashboard entry for Kibana
+    add_dashboard_entry Kibana kibana kibana "Visualize Elasticsearch data and navigate the Elastic Stack" iframe Monitoring

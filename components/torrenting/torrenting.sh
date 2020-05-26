@@ -12,3 +12,8 @@
 
 # Jackett: tracker proxy for sonarr and radarr
     process_docker_compose_service torrenting/jackett ""
+
+
+# Create a dashboard entries
+    add_dashboard_entry Transmission transmission transmission "Torrent Client" iframe "Automated downloads"
+    add_dashboard_entry Jackett jackett jackett "Torrents tracker proxy" iframe "Automated downloads"

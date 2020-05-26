@@ -2,8 +2,6 @@
 # Bookmarks manager
 #-------------------------------------------------
 
-# Test
-add_dashboard_entry radarr radarr "description of radarr" iframe pvr
 
 # Build config file
     config_file=${SERVICES_GENERATED_CONFIG_DIR}/dashmachine/config.ini

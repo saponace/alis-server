@@ -15,7 +15,7 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |    Data manipulation toolbox    |   cyberchef.DOMAIN   |             [Cyberchef](https://github.com/gchq/CyberChef)             |                             Nothing to configure                             |
 
 
-## Media serving
+## Media
 |             Service             |      Access Url      |                       Implementation service name                      |                        Post-install setup instructions                       |
 |:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
 |           Media server          |    jellyfin.DOMAIN   |            [Jellyfin](https://github.com/jellyfin/jellyfin)            |    [Instructions](../components/media-server/setup-instructions/public.md)   |

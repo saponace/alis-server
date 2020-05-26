@@ -6,7 +6,7 @@ The following table represents the authentication means for all services:
 |:------------------:|:-------------------------------------------------------------:|:---------------------------------:|:------------------:|
 |       Gotify       |                              Ombi                             |           Homeassistant           | All other services |
 |      Bitwarden     |                                                               |            Filebrowser            |                    |
-| Filebrowser-public |                                                               |                                   |                    |
+| Filebrowser-public |                                                               |            Dashmachine            |                    |
 |      Jellyfin      |                                                               |                                   |                    |
 |      Pellyfin      |                                                               |                                   |                    |
 |       Firefly      |                                                               |                                   |                    |

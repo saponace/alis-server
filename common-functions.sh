@@ -103,19 +103,21 @@ function add_docker_secret (){
 
 
 # Add a dashboard entry (app)
-# $1: App name (name must be the subdomain name)
-# $2: Icon name (icons are retrieved from a dashmachine directory). cf. dashmachine documentation
-# $3: App description
-# $4: How should the app be opened (one of "this_tab", "iframe", "new-tab"). Not used for now
-# $5: Tags (categories, coimma separated)
+# $1: App name
+# $2: Subdomain
+# $3: Icon name (icons are retrieved from a dashmachine directory). cf. dashmachine documentation
+# $4: App description
+# $5: How should the app be opened (one of "this_tab", "iframe", "new_tab"). Not used for now
+# $6: Tags (categories, coimma separated)
 function add_dashboard_entry() {
     echo "[$1]" >> ${TEMP_DASHBOARD_ENTRIES}
     echo "prefix = https://" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo "url = $1.saponace.com" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo "icon = static/images/apps/$2.png" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo "sidebar = static/images/apps/$2.png" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo "description=$3" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo "open_in = $4" >> ${TEMP_DASHBOARD_ENTRIES}
-    echo "tags = $5" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "url = $2.saponace.com" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "icon = static/images/apps/$3.png" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "sidebar = static/images/apps/$3.png" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "description=$4" >> ${TEMP_DASHBOARD_ENTRIES}
+    # echo "open_in = $5" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "open_in = new_tab" >> ${TEMP_DASHBOARD_ENTRIES}
+    echo "tags = $6" >> ${TEMP_DASHBOARD_ENTRIES}
     echo ""
 }
