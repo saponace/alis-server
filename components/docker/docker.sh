@@ -15,4 +15,4 @@
 
 
 # Create a dashboard entry for Portainer
-   add_dashboard_entry "Portainer admin interface" portainer portainer "Docker admin dashboard" iframe Maintenance
+   add_dashboard_entry "Portainer admin interface" portainer portainer "Docker admin dashboard" iframe "Maintenance / monitoring"

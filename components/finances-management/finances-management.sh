@@ -42,4 +42,4 @@ process_docker_compose_service finances-management/firefly-iii-db "$(declare -p 
 
 
 # Create a dashboard entry
-    add_dashboard_entry "Firefly iii" firefly firefly_iii "Finances management" iframe Misc
+    add_dashboard_entry "Firefly iii" firefly firefly_iii "Finances management" iframe "Misc apps / tools"

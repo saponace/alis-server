@@ -50,4 +50,4 @@
     sudo ufw allow "WWW FULL"
 
 # Create a dashboard entry
-    add_dashboard_entry "Traefik admin dashboard" traefik traefik "Reverse proxy admin dashboard" iframe Maintenance
+    add_dashboard_entry "Traefik admin dashboard" traefik traefik "Reverse proxy admin dashboard" iframe "Maintenance / monitoring"

@@ -14,4 +14,4 @@
     process_docker_compose_service system-monitoring/netdata "$(declare -p netdata_docker_compose_template_mappings)"
 
 # Create a dashboard entry
-    add_dashboard_entry Netdata netdata netdata "Real time system monitoring tool" iframe Maintenance
+    add_dashboard_entry Netdata netdata netdata "Real time system monitoring tool" iframe "Maintenance / monitoring"

@@ -1,17 +1,16 @@
 Bellow is the list of instaled services and their manual configurations (if required).
 
 
-## Misc
+## Misc apps / tools
 |             Service             |      Access Url      |                       Implementation service name                      |                        Post-install setup instructions                       |
 |:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
-|            Dashboard            |   dashboard.DOMAIN   |        [Dashmachine](https://github.com/rmountjoy92/DashMachine)       |                             Nothing to configure                             |
+|            Dashboard            |   dashboard.DOMAIN   |        [Dashmachine](https://github.com/rmountjoy92/DashMachine)       |         Nothing to configure (embeded credentials are "admin/admin")         |
 |       Finances management       |    firefly.DOMAIN    |        [Firefly-iii](https://github.com/firefly-iii/firefly-iii)       |    [Instructions](../components/finances-management/setup-instructions.md)   |
 |          Smart home hub         | homeassistant.DOMAIN |        [Home assistant](https://github.com/home-assistant/core)        |        [Instructions](../components/smart-home/setup-instructions.md)        |
 |        Passwords manager        |   bitwarden.DOMAIN   |       [Bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs)      |     [Instructions](../components/password-manager/setup-instructions.md)     |
 |    Web file browser (private)   |  filebrowser.DOMAIN  |        [Filebrowser](https://github.com/filebrowser/filebrowser)       | [Instructions](../components/file-browser-web/setup-instructions/private.md) |
 |    Web file browser (public)    |     share.DOMAIN     |        [Filebrowser](https://github.com/filebrowser/filebrowser)       |  [Instructions](../components/file-browser-web/setup-instructions/public.md) |
 |   Files synchronisation/backup  |   syncthing.DOMAIN   |           [Syncthing](https://github.com/syncthing/syncthing)          |                             Nothing to configure                             |
-|   (adds blocking) DNS Servier   |     pihole.DOMAIN    |              [Pi-hole](https://github.com/pi-hole/pi-hole)             |                             Nothing to configure                             |
 |    Data manipulation toolbox    |   cyberchef.DOMAIN   |             [Cyberchef](https://github.com/gchq/CyberChef)             |                             Nothing to configure                             |
 
 
@@ -31,7 +30,7 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |            Music PVR            |     lidarr.DOMAIN    |               [Lidarr](https://github.com/lidarr/Lidarr)               |        [Instructions](../components/pvr/setup-instructions/lidarr.md)        |
 |        Youtube videos PVR       |   youtubedl.DOMAIN   | [YoutubeDL-Material](https://github.com/Tzahi12345/YoutubeDL-Material) |       [Instructions](../components/pvr/setup-instructions/youtubedl.md)      |
 
-## Automated downloads / torrenting
+## Automated downloads
 |             Service             |      Access Url      |                       Implementation service name                      |                        Post-install setup instructions                       |
 |:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
 |   Torrents tackers aggregator   |    jackett.DOMAIN    |              [Jackett](https://github.com/Jackett/Jackett)             |    [Instructions](../components/torrenting/setup-instructions/jackett.md)    |
@@ -43,6 +42,7 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
 |      Authentication gateway     |      auth.DOMAIN     |            [Authelia](https://github.com/authelia/authelia)            |                             Nothing to configure                             |
 |       Notifications server      | notifications.DOMAIN |               [Gotify](https://github.com/gotify/server)               |       [Instructions](../components/notifications/setup-instructions.md)      |
+|   (adds blocking) DNS Servier   |     pihole.DOMAIN    |              [Pi-hole](https://github.com/pi-hole/pi-hole)             |                             Nothing to configure                             |
 
 
 ## Monitoring / maintenance

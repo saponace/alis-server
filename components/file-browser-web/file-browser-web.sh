@@ -34,5 +34,5 @@ filebrowser_version="v2.1.0"
 
 
 # Create a dashboard entries
-    add_dashboard_entry Filebrowser filebrowser filebrowser "Web File Browser" iframe Misc
-    add_dashboard_entry "Filebrowser (public)" share filebrowser "Web File Browser (public)" iframe Misc
+    add_dashboard_entry Filebrowser filebrowser filebrowser "Web File Browser" iframe "Misc apps / tools"
+    add_dashboard_entry "Filebrowser (public)" share filebrowser "Web File Browser (public)" iframe "Misc apps / tools"
