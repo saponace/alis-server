@@ -117,6 +117,9 @@ install_component data-manipulation
 install_component docker
 
 
+source "${COMPONENTS_PATH}/dashboard/configure-entries.sh" 2>&1 | tee -a ${LOG_FILE}
+source "${COMPONENTS_PATH}/docker/build-docker-compose-definition.sh" 2>&1 | tee -a ${LOG_FILE}
+
 sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/startup) /bin/startup
 sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/manage-disks) /bin/manage-disks
 
