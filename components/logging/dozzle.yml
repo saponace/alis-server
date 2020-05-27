@@ -1,0 +1,12 @@
+  # Web interface to get docker containers logs
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:v1.26.0
+    restart: unless-stopped
+    networks:
+      - web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.http.routers.dozzle.middlewares=auth@file
+      - traefik.http.services.dozzle.loadbalancer.server.port=8080

@@ -48,7 +48,8 @@ Bellow is the list of instaled services and their manual configurations (if requ
 ## Monitoring / maintenance
 |             Service             |      Access Url      |                       Implementation service name                      |                        Post-install setup instructions                       |
 |:-------------------------------:|:--------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
-|         Logs aggregation        |     kibana.DOMAIN    |       [Elastic stack (formerly ELK)](https://github.com/elastic)       |          [Instructions](../components/logging/setup-instructions.md)         |
+| Logs aggregation & manipulation |     kibana.DOMAIN    |       [Elastic stack (formerly ELK)](https://github.com/elastic)       |  [Instructions](../components/logging/elastic-stack/setup-instructions.md)   |
+|  Docker containers logs viewer  |     dozzle.DOMAIN    |               [Dozzle](https://github.com/amir20/dozzle)               |                             Nothing to configure                             |
 |  Docker containers maintenance  |   portainer.DOMAIN   |           [Portainer](https://github.com/portainer/portainer)          |     [Instructions](../components/docker/setup-instructions/portainer.md)     |
 |        System monitoring        |    netdata.DOMAIN    |              [Netdata](https://github.com/netdata/netdata)             |                             Nothing to configure                             |
 |          Reverse proxy          |    traefik.DOMAIN    |            [Traefik](https://github.com/containous/traefik)            |                             Nothing to configure                             |
