@@ -1,4 +1,4 @@
-# Search engine
+  # Search engine
   elasticsearch:
     container_name: elasticsearch
     image: elasticsearch:%VERSION%
