@@ -47,7 +47,6 @@
 - Advanced
   - Security:
     - Generate API Keys for:
-      - Organizr
       - Ombi
 - Plugins:
   - Kodi companion
