@@ -1,0 +1,10 @@
+  # Privacy friendly Google metasearch engine
+  whoogle:
+    container_name: whoogle
+    image: benbusby/whoogle-search:0.1.2
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - traefik.http.routers.whoogle.middlewares=auth@file
+      - traefik.http.services.whoogle.loadbalancer.server.port=5000

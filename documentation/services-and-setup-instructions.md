@@ -12,6 +12,7 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |    Web file browser (public)    |     share.DOMAIN     |        [Filebrowser](https://github.com/filebrowser/filebrowser)       |  [Instructions](../components/file-browser-web/setup-instructions/public.md) |
 |   Files synchronisation/backup  |   syncthing.DOMAIN   |           [Syncthing](https://github.com/syncthing/syncthing)          |                             Nothing to configure                             |
 |    Data manipulation toolbox    |   cyberchef.DOMAIN   |             [Cyberchef](https://github.com/gchq/CyberChef)             |                             Nothing to configure                             |
+|  Privacy friendly search engine |   whoogle.DOMAIN     |      [Whoogle-search](https://github.com/benbusby/whoogle-search)      |                             Nothing to configure                             |
 
 
 ## Media

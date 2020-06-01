@@ -115,8 +115,10 @@ install_component logging
 install_component auth
 install_component data-manipulation
 install_component docker
+install_component search-engine
 
 
+# These scripts should be sourced after every call to "install_component"
 source "${COMPONENTS_PATH}/dashboard/configure-entries.sh" 2>&1 | tee -a ${LOG_FILE}
 source "${COMPONENTS_PATH}/docker/build-docker-compose-definition.sh" 2>&1 | tee -a ${LOG_FILE}
 
