@@ -10,7 +10,7 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |        Passwords manager        |   bitwarden.DOMAIN   |       [Bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs)      |     [Instructions](../components/password-manager/setup-instructions.md)     |
 |    Web file browser (private)   |  filebrowser.DOMAIN  |        [Filebrowser](https://github.com/filebrowser/filebrowser)       | [Instructions](../components/file-browser-web/setup-instructions/private.md) |
 |    Web file browser (public)    |     share.DOMAIN     |        [Filebrowser](https://github.com/filebrowser/filebrowser)       |  [Instructions](../components/file-browser-web/setup-instructions/public.md) |
-|   Files synchronisation/backup  |   syncthing.DOMAIN   |           [Syncthing](https://github.com/syncthing/syncthing)          |                             Nothing to configure                             |
+|   Files synchronisation/backup  |   syncthing.DOMAIN   |           [Syncthing](https://github.com/syncthing/syncthing)          |   [Instructions](../components/file-synchronization/setup-instructions.md)   |
 |    Data manipulation toolbox    |   cyberchef.DOMAIN   |             [Cyberchef](https://github.com/gchq/CyberChef)             |                             Nothing to configure                             |
 |  Privacy friendly search engine |   whoogle.DOMAIN     |      [Whoogle-search](https://github.com/benbusby/whoogle-search)      |                             Nothing to configure                             |
 
@@ -54,5 +54,6 @@ Bellow is the list of instaled services and their manual configurations (if requ
 |  Docker containers maintenance  |   portainer.DOMAIN   |           [Portainer](https://github.com/portainer/portainer)          |     [Instructions](../components/docker/setup-instructions/portainer.md)     |
 |        System monitoring        |    netdata.DOMAIN    |              [Netdata](https://github.com/netdata/netdata)             |                             Nothing to configure                             |
 |          Reverse proxy          |    traefik.DOMAIN    |            [Traefik](https://github.com/containous/traefik)            |                             Nothing to configure                             |
+|  Remote backups of server data  |   duplicati.DOMAIN   |          [Duplicati](https://github.com/duplicati/duplicati)           |      [Instructions](../components/remote-backups/setup-instructions.md)      |
 
 - Some docker images will be automatically updated by [Watchtower](https://github.com/containrrr/watchtower). It does not have a web interface, but you can find setup instructions [here](../components/docker/setup-instructions/watchtower.md).

@@ -116,6 +116,7 @@ install_component auth
 install_component data-manipulation
 install_component docker
 install_component search-engine
+install_component remote-backups
 
 
 # These scripts should be sourced after every call to "install_component"

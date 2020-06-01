@@ -1,0 +1,22 @@
+  # Encrypted and versioned remote backups of the server
+  duplicati:
+    container_name: duplicati
+    # Linuxserver image because official image does not seem to work
+    image: linuxserver/duplicati:v2.0.5.1-2.0.5.1_beta_2020-01-18-ls61
+    restart: unless-stopped
+    networks:
+      - web
+    environment:
+      - PUID=0  # Root UID because we want duplicati to be able to read every file on the system
+      - PGID=0  # Same for GID
+      - TZ=%TIMEZONE%
+      - CLI_ARGS=
+    volumes:
+      - %SERVICES_DATA_DIR%/duplicati:/config
+      - /mnt/misc-data/duplicati-backups:/backups
+      - /mnt/services:/source/services-data
+      - /mnt/misc-data/important:/source/important
+      - /mnt/misc-data/syncthing-data:/source/syncthing-data
+    labels:
+      - traefik.http.routers.duplicati.middlewares=auth@file
+      - traefik.http.services.duplicati.loadbalancer.server.port=8200
