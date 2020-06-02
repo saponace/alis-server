@@ -16,7 +16,7 @@
       - /mnt/misc-data/duplicati-backups:/backups
       - /mnt/services:/source/services-data
       - /mnt/misc-data/important:/source/important
-      - /mnt/misc-data/syncthing-data:/source/syncthing-data
+      - /mnt/misc-data/syncthing:/source/syncthing-data
     labels:
       - traefik.http.routers.duplicati.middlewares=auth@file
       - traefik.http.services.duplicati.loadbalancer.server.port=8200

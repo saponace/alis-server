@@ -1,4 +1,4 @@
-  # Syncthing
+# Syncthing: P2P file syncrhonization
   syncthing:
     container_name: syncthing
     image: syncthing/syncthing:1.5.0
@@ -6,7 +6,8 @@
     networks:
       - web
     volumes:
-      - %SERVICES_DATA_DIR%/syncthing/data:/var/syncthing
+      - %SERVICES_DATA_DIR%/syncthing:/var/syncthing/config
+      - /mnt/misc-data/syncthing:/var/syncthing/peers-data  # Sync folders
     environment:
       - PUID=%DOCKER_USER_ID%
       - PGID=%DOCKER_GROUP_ID%
