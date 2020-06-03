@@ -63,6 +63,31 @@ is protected via SSO)
 Backups are executed daily. If you wish to create a backup before the next scheduled backup, click on "Home", go to the
 location you want to add a backup to, and click _Run now_
 #### Restore
-To restore a backup click on "Home", go to the location you want to add a backup to, and click _Restore file_.
+You will need:
+  - Backup passphrase
+  - file hosting account pcredentials
+
+1. If the reverse proxy is not available (ex: drives holding traefik config crashed, etc.), add the following to the
+duplicati docker-compose definitions:
+```
+  ports:
+    - 8200:8200
+```
+2. Navigate either to duplicati.DOMAIN, or SERVER_LOCAL_IP:8200
+
+3. If the duplicati configuration is intact (backups configurations saved):
+Menu "Home", go to the location you want to add a backup to, and click _Restore file_.
 Choose the version you want to restore and the files/folders that should be restored and follow the prompted
 instructions
+
+4. Else:
+  - Menu "Restore"
+  - "Direct restore from backup files"
+  - Backup location
+    - Storage type: Select where the backup has been saved (ex: mega.nz)
+  - Encryption
+    - Input backup passphrase
+  - Select files
+    - Choose files / folders to restore
+  - Restore options
+    - Where do you want to restore the files to? "/source/"
