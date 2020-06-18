@@ -1,5 +1,5 @@
 #-------------------------------------------------
-# Ad-blocking DNS server
+# Ad-blocking DNS server. Only accessible from local network for now
 #-------------------------------------------------
 
 # WARNING: PiHole data is not persisted on the host's storage for simplicity reasons.

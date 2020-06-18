@@ -12,8 +12,6 @@
     ports:
       - 0.0.0.0:53:53/tcp
       - 0.0.0.0:53:53/udp
-      - 0.0.0.0:67:67/udp
-      - 0.0.0.0:8053:80/tcp
     environment:
       - ServerIP=%SERVER_IP%
       - PROXY_LOCATION=pihole
