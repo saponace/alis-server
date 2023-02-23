@@ -24,32 +24,33 @@ root_partition="${install_disk}3"
 # Set the hostname
     echo  ${hostname} > /etc/hostname
 
-# Set le locales and the keymap
-    # Configure locales
+# COnfigure locales and keymap
         echo -e "\n${locales_to_enable}" >> /etc/locale.gen
         locale-gen
         locale_zone_path="/usr/share/zoneinfo/${timezone}"
         ln -sf ${locale_zone_path} /etc/localtime
-        echo "KEYMAP=${keymap}" > /etc/vconsole.conf
+        if [ -n keymap ]
+        then
+            echo "KEYMAP=${keymap}" > /etc/vconsole.conf
+        fi
 
 # Set the clock
     hwclock --systohc --localtime
 
 
 # Create ramdisk
-    # Configure mkinitcpio
     mkinitcpio -p linux
 
 
 # Install and configure boot loader
-# mount boot partition to /boot
-    bootctl --path=/boot install
-# Create menu entry
-    echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
-# Configure entry
-   root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
-    echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
-    echo -e "options root=UUID=${root_partition_uuid} rw" >> /boot/loader/entries/arch.conf
+    # mount boot partition to /boot
+        bootctl --path=/boot install
+    # Create menu entry
+        echo -e "timeout=3\ndefault=arch" > /boot/loader/loader.conf
+    # Configure entry
+    root_partition_uuid=$(blkid ${root_partition} | cut -f2 -d\")
+        echo -e "title  arch\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img" > /boot/loader/entries/arch.conf
+        echo -e "options root=UUID=${root_partition_uuid} rw" >> /boot/loader/entries/arch.conf
 
 
 # Set root password
