@@ -1,21 +1,9 @@
-
 # Follow these steps to install a new arch linux server
-
-### Set the keyboard layout to French
-```
-# loadkeys fr
-```
-
-
-### Remount archiso with more space to be able to download and install git
-```
-# mount -o remount,size=2G /run/archiso/cowspace
-```
 
 ### Install git and clone this repo
 ```
 # pacman -Syy git
-# git clone --recursive https://github.com/saponace/alis-server.git
+# git clone --recursive https://github.com/saponace/alis-server
 ```
 
 ### Install the new system
@@ -50,8 +38,8 @@ instructions detailed [here](documentation/services-and-setup-instructions.md).
 
 
 ### Note
-- All the configs are stored in the editable file ./alis-erver.config
-- The first execution of the startup script is (very) slow because it will download all the docker images from the
+- All configs are stored in the editable file ./alis-erver.config
+- The first execution of the startup script is (very) slow because it will download all required docker images from the
   internet
 - There will be config files generated in /mnt. If it is the first install, you might want to copy these files to the
   device that will be mounted to /mnt. If it is a reinstall, you can delete these files
