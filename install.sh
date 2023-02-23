@@ -68,7 +68,7 @@ chroot_script_to_call="install-core-after-chroot.sh"
     pacman-key --refresh-key
 
 # Install base components into new system
-    pacstrap /mnt base base-devel
+    pacstrap -K /mnt base linux linux-firmware
 
 # Generate fstab of new system to automatically mount all the devices at bootup
     genfstab -U -p /mnt >> /mnt/etc/fstab
