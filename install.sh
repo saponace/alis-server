@@ -64,7 +64,7 @@ chroot_script_to_call="install-core-after-chroot.sh"
 
 
 # Install base components into new system
-    pacstrap -K /mnt base linux linux-firmware
+    pacstrap -K /mnt base base-devel linux linux-firmware
 
 
 # Generate fstab of new system to automatically mount all the devices at bootup
