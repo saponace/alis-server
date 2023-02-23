@@ -54,16 +54,14 @@ root_partition="${install_disk}3"
 
 
 # Set root password
-    echo Enter root password:
-    passwd root
+    echo "root:${root_pwd}" | chpasswd
 
 
 # Create the user and add him to wheel group (sudoers)
     useradd -m -G wheel -s /bin/bash ${username}
     sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
     # Set user password
-        echo Enter ${username} password:
-        passwd ${username}
+        echo "${username}:${user_pwd}" | chpasswd
 
 
 # Move the git repo into the user's home directory
