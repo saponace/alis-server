@@ -59,7 +59,7 @@ root_partition="${install_disk}3"
 
 # Create the user and add him to wheel group (sudoers)
     useradd -m -G wheel -s /bin/bash ${username}
-    sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g" /etc/sudoers
+    echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
     # Set user password
         echo "${username}:${user_pwd}" | chpasswd
 
