@@ -7,6 +7,7 @@
     pushd `dirname $0` > /dev/null
     git_repo_path=`pwd`
     popd > /dev/null
+    git_repo_dir_name=$(basename ${git_repo_path})
 
 
 CONFIG_FILE_PATH="${git_repo_path}/alis-server.config"
@@ -68,5 +69,6 @@ root_partition="${install_disk}3"
     mv ${git_repo_path} /home/${username}
     chown -R ${username}:${username} /home/${username}/
 
-# Exit chroot
-    exit
+# Configure system
+    cd /home/${username}/${git_repo_dir_name}
+    sudo -s --user=${username} ./configure-system.sh

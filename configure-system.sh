@@ -9,14 +9,6 @@ CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"
 
 
-# Prevent sudo timeout
-sudo -v
-while true; do
-  sudo -nv; sleep 1m
-  kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
-done &
-
-
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
 then
@@ -24,6 +16,15 @@ then
   exit 1
 fi
 source ${CONFIG_FILE_PATH}
+
+
+# Prevent sudo timeout
+echo ${user_pwd} | sudo --stdin --validate
+while true; do
+  sudo -nv; sleep 1m
+  kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
+done &
+
 
 # Check if the user that calls this script is the same user as defined in the config file
 if [[ ${username} != ${USER} ]];

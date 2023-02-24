@@ -11,16 +11,7 @@
 # cd alis-server
 # ./install.sh
 ```
-The system will reboot
-
-
-### Configure the new system
-Log in as the user, and
-```
-# cd alis-server
-# ./configure-system.sh
-```
-The system will reboot into the fresh install.
+The system will reboot into a fresh install.
 
 You can then call the following script to start the server:
 ```
