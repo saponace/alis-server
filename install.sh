@@ -75,5 +75,11 @@ chroot_script_to_call="install-core-after-chroot.sh"
     mv ${git_repo_path} /mnt/root/
 
 
-# Chroot into the new system
+# Chroot into the new partition to install system
     arch-chroot /mnt /root/${git_repo_dir_name}/${chroot_script_to_call}
+
+# Reboot
+    umount ${boot_partition}
+    umount ${root_partition}
+    swapoff ${swap_partition}
+    reboot

@@ -11,15 +11,8 @@
 # cd alis-server
 # ./install.sh
 ```
+The system will reboot
 
-### Reboot
-```
-# exit
-```
-Umount and swapoff partitions
-```
-# reboot
-```
 
 ### Configure the new system
 Log in as the user, and

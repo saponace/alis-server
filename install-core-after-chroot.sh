@@ -68,3 +68,5 @@ root_partition="${install_disk}3"
     mv ${git_repo_path} /home/${username}
     chown -R ${username}:${username} /home/${username}/
 
+# Exit chroot
+    exit
