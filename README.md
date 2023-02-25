@@ -23,8 +23,6 @@ instructions detailed [here](documentation/services-and-setup-instructions.md).
 
 ### Note
 - All configs are stored in the editable file ./alis-erver.config
-- The first execution of the startup script is (very) slow because it will download all required docker images from the
-  internet
 - There will be config files generated in /mnt. If it is the first install, you might want to copy these files to the
   device that will be mounted to /mnt. If it is a reinstall, you can delete these files
 - Further documentation (technical and functionnal) can be found [here](documentation/)
