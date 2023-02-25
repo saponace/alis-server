@@ -117,8 +117,9 @@ install_component remote-backups
   source "${COMPONENTS_PATH}/dashboard/configure-entries.sh" 2>&1 | tee -a ${LOG_FILE}
   source "${COMPONENTS_PATH}/docker/build-docker-compose-definition.sh" 2>&1 | tee -a ${LOG_FILE}
 
-sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/startup) /bin/startup
-sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/manage-disks) /bin/manage-disks
+# Link scripts
+  sudo create_link ${SCRIPTS_DIR}/startup /user/local/bin/
+  sudo create_link ${SCRIPTS_DIR}/manage-disks /usr/local/bin/
 
 
 # Disable auto-exec of this script at startup
