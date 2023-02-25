@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+# Prevent script from being stopped by Ctrl-C
+  trap 'echo received SIGINT' SIGINT
+
+
 # Get the current directory
 # Leave this block of code at the very beginning of the script (some
 # commands may change the current directory later in this script)

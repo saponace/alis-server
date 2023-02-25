@@ -3,6 +3,8 @@
 # Main script. Calls all the subscripts
 #-------------------------------------------------
 
+# Prevent script from being stopped by Ctrl-C
+  trap 'echo received SIGINT' SIGINT
 
 INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
@@ -129,6 +131,7 @@ install_component remote-backups
   # Un-deploy systemd unit file
     sudo systemctl disable configure-system.service
     sudo rm /etc/systemd/system/configure-system.service
+
 
 sync
 sudo reboot
