@@ -50,7 +50,7 @@ docker_compose_version=3.8
 
 # Pull docker images
     sudo systemctl start docker
-    sudo su -c "cd ${docker_compose_dir}; docker-compose pull"
+    sudo su -c "cd ${docker_compose_dir}; docker-compose pull --quiet"
 
 
 
