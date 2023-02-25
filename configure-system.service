@@ -1,0 +1,19 @@
+[Unit]
+Description=Script starter
+After=getty.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/saponace/alis-server
+ExecStart=/home/saponace/alis-server/2configure-system.sh
+User=saponace
+Group=saponace
+StandardInput=tty-force
+StandardOutput=inherit
+StandardError=inherit
+
+[Install]
+WantedBy=graphical.target
+# Requires=network-online.target

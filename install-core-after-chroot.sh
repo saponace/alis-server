@@ -68,7 +68,3 @@ root_partition="${install_disk}3"
 # Move the git repo into the user's home directory
     mv ${git_repo_path} /home/${username}
     chown -R ${username}:${username} /home/${username}/
-
-# Configure system
-    cd /home/${username}/${git_repo_dir_name}
-    sudo -s --user=${username} ./configure-system.sh
