@@ -9,6 +9,9 @@
     popd > /dev/null
     git_repo_dir_name=$(basename ${git_repo_path})
 
+# Make sure to cd in script dir
+    cd ${git_repo_path}
+
 
 source ./common-functions.sh
 

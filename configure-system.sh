@@ -3,6 +3,18 @@
 # Main script. Calls all the subscripts
 #-------------------------------------------------
 
+
+# Get the current directory
+# Leave this block of code at the very beginning of the script (some
+# commands may change the current directory later in this script)
+    pushd `dirname $0` > /dev/null
+    git_repo_path=`pwd`
+    popd > /dev/null
+
+# Make sure to cd in script dir
+    cd ${git_repo_path}
+
+
 # Prevent script from being stopped by Ctrl-C
   trap 'echo received SIGINT' SIGINT
 
