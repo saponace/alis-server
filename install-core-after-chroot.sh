@@ -10,6 +10,8 @@
     git_repo_dir_name=$(basename ${git_repo_path})
 
 
+source ./common-functions.sh
+
 CONFIG_FILE_PATH="${git_repo_path}/alis-server.config"
 
 if [ ! -f "${CONFIG_FILE_PATH}" ]
@@ -21,6 +23,8 @@ source ${CONFIG_FILE_PATH}
 
 
 root_partition="${install_disk}3"
+
+
 
 # Set the hostname
     echo  ${hostname} > /etc/hostname
@@ -68,3 +72,14 @@ root_partition="${install_disk}3"
 # Move the git repo into the user's home directory
     mv ${git_repo_path} /home/${username}
     chown -R ${username}:${username} /home/${username}/
+
+# Prepare environment to execute "configure-system.sh" script at next startup
+    # Allow passwordless `sudo`. This will be disabled after system is fully configured
+        echo "${username} ALL=NOPASSWD: ALL" >> /etc/sudoers
+        echo "Defaults lecture = \"never\"" >> /etc/sudoers.d/privacy
+    # Deploy systemd unit file that will be executed at next startup
+        declare -A  configure_system_mappings=(
+            ["USERNAME"]="${username}"
+        )
+        fill_template_file configure-system.service /etc/systemd/system/configure-system.service "$(declare -p configure_system_mappings)"
+        systemctl enable configure-system.service

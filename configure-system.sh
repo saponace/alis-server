@@ -19,14 +19,6 @@ fi
 source ${CONFIG_FILE_PATH}
 
 
-# Prevent sudo timeout
-echo ${user_pwd} | sudo --stdin --validate
-while true; do
-  sudo -nv; sleep 1m
-  kill -0 $$ 2>/dev/null || exit   # Exit when the parent process is not running any more
-done &
-
-
 # Check if the user that calls this script is the same user as defined in the config file
 if [[ ${username} != ${USER} ]];
 then
@@ -122,12 +114,20 @@ install_component remote-backups
 
 
 # These scripts should be sourced after every call to "install_component"
-source "${COMPONENTS_PATH}/dashboard/configure-entries.sh" 2>&1 | tee -a ${LOG_FILE}
-source "${COMPONENTS_PATH}/docker/build-docker-compose-definition.sh" 2>&1 | tee -a ${LOG_FILE}
+  source "${COMPONENTS_PATH}/dashboard/configure-entries.sh" 2>&1 | tee -a ${LOG_FILE}
+  source "${COMPONENTS_PATH}/docker/build-docker-compose-definition.sh" 2>&1 | tee -a ${LOG_FILE}
 
 sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/startup) /bin/startup
 sudo ln -snf $(readlink -f ${SCRIPTS_DIR}/manage-disks) /bin/manage-disks
 
+
+# Disable auto-exec of this script at startup
+  # Remove no password exception for sudo calls
+    sudo su -c "head -n -2 /etc/sudoers > /tmp/sudoers"
+    sudo mv /tmp/sudoers /etc/sudoers
+  # Un-deploy systemd unit file
+    sudo systemctl disable configure-system.service
+    sudo rm /etc/systemd/system/configure-system.service
 
 sync
 sudo reboot
