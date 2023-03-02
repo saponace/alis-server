@@ -140,8 +140,8 @@ install_component remote-backups
 
 
 # Disable auto-exec of this script at startup
-  # Remove no password exception for sudo calls
-    sudo su -c "head -n -2 /etc/sudoers > /tmp/sudoers"
+# Remove 'no password exception' for sudo calls (last line of the sudoers file, added in chroot)
+    sudo su -c "head -n -1 /etc/sudoers > /tmp/sudoers"
     sudo mv /tmp/sudoers /etc/sudoers
   # Un-deploy systemd unit file
     sudo systemctl disable configure-system.service
