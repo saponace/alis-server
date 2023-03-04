@@ -21,8 +21,8 @@ Once the services have started, you can manually configure the services that req
 instructions detailed [here](documentation/services-and-setup-instructions.md).
 
 
-### Note
-- All configs are stored in the editable file ./alis-erver.config
+### Notes
+- All configs are stored in the editable file ./alis-server.config
 - There will be config files generated in /mnt. If it is the first install, you might want to copy these files to the
   device that will be mounted to /mnt. If it is a reinstall, you can delete these files
 - Further documentation (technical and functionnal) can be found [here](documentation/)
