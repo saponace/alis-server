@@ -28,7 +28,7 @@ boot_partition="${install_disk}1"
 swap_partition="${install_disk}2"
 root_partition="${install_disk}3"
 
-chroot_script_to_call="install-core-after-chroot.sh"
+chroot_script_to_call="install-scripts/install-core-in-chroot.sh"
 
 
 

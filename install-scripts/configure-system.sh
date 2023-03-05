@@ -8,7 +8,7 @@
 # Leave this block of code at the very beginning of the script (some
 # commands may change the current directory later in this script)
     pushd `dirname $0` > /dev/null
-    git_repo_path=`pwd`
+    git_repo_path=$(dirname $(pwd))
     popd > /dev/null
 
 # Make sure to cd in script dir
@@ -83,8 +83,8 @@ function enable_networking (){
 }
 
 
-source ./common-variables.sh
-source ./common-functions.sh
+source install-scripts/common-variables.sh
+source install-scripts/common-functions.sh
 
 
 sudo chown ${username}:${username} /mnt

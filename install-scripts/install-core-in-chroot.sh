@@ -5,15 +5,14 @@
 # Leave this block of code at the very beginning of the script (some
 # commands may change the current directory later in this script)
     pushd `dirname $0` > /dev/null
-    git_repo_path=`pwd`
+    git_repo_path=$(dirname $(pwd))
     popd > /dev/null
-    git_repo_dir_name=$(basename ${git_repo_path})
 
 # Make sure to cd in script dir
     cd ${git_repo_path}
 
 
-source ./common-functions.sh
+source install-scripts/common-functions.sh
 
 CONFIG_FILE_PATH="${git_repo_path}/alis-server.config"
 
@@ -84,5 +83,5 @@ root_partition="${install_disk}3"
         declare -A  configure_system_mappings=(
             ["USERNAME"]="${username}"
         )
-        fill_template_file configure-system.service /etc/systemd/system/configure-system.service "$(declare -p configure_system_mappings)"
+        fill_template_file install-scripts/configure-system.service /etc/systemd/system/configure-system.service "$(declare -p configure_system_mappings)"
         systemctl enable configure-system.service
