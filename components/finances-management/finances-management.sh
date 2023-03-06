@@ -7,7 +7,7 @@ db_username="firefly_db"
 db_pwd="firefly_db_secret"
 app_key=$( cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 )
 data_dir="${SERVICES_DATA_DIR}/firefly-iii"
-firefly_iii_version="release-5.2.5"
+firefly_iii_version="version-6.0"
 postgres_version="12.3"
 
 
