@@ -3,6 +3,9 @@
 #-------------------------------------------------
 
 
+# Enable service
+   sudo systemctl enable docker
+
 # Portainer: Docker containers management via Web UI
     process_docker_compose_service docker/portainer ""
 

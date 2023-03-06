@@ -6,7 +6,6 @@ function append_to_docker_compose_file (){
 
 
 install_package docker docker-compose
-sudo systemctl enable docker
 
 docker_compose_version=3.8
 
