@@ -13,6 +13,7 @@
     sudo mv /tmp/auth-config.yml ${SERVICES_GENERATED_CONFIG_DIR}/authelia/config.yml
 
 
+    sudo systemctl start docker
     hashed_pwd=$(sudo docker run authelia/authelia authelia hash-password "${admin_pwd}" | sed 's/Password hash: //g')
     declare -A  db_mappings=(
         ["USERNAME"]="${username}"
