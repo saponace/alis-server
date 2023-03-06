@@ -2,6 +2,14 @@
 # Common functions
 #-------------------------------------------------
 
+
+# Install one or multiple package(s)
+# $@ package(s) to install
+function install_package(){
+    echo "Installing package(s): $@"
+    yay -S --noconfirm --needed $@
+}
+
 # Create a symlink of a directory
 # $1: The source directory
 # $2: The symlink to create

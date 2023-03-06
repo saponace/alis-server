@@ -3,15 +3,15 @@
 #-------------------------------------------------
 
 # Git
-    ${INSTALL} git
+    install_package git
 # Zip
-    ${INSTALL} unzip
-    ${INSTALL} zip
+    install_package unzip
+    install_package zip
 # Downloads from the web
-    ${INSTALL} wget
+    install_package wget
 # List open files by given process
-    ${INSTALL} lsof
+    install_package lsof
 # Delete duplicates files
-    ${INSTALL} rmlint
+    install_package rmlint
 # Rsync
-    ${INSTALL} rsync
+    install_package rsync

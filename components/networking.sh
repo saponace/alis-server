@@ -5,7 +5,7 @@
 
 
 # Utils package. Notably includes `hostname` tool
-    ${INSTALL} inetutils
+    install_package inetutils
 
 # Link system resolv.cponf to systemd's resolv.conf
     sudo rm /etc/resolv.conf

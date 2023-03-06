@@ -15,7 +15,7 @@ function add_sshd_config(){
 
 
 # Install SSH client and daemon
-    ${INSTALL} openssh
+    install_package openssh
 
 # Enable SSH daemon
     sudo systemctl enable sshd.service
@@ -29,7 +29,7 @@ function add_sshd_config(){
 
 # Security
     # Whitelist SSH port in the firewall (and make sure the firewall is installed)
-        ${INSTALL} ufw
+        install_package ufw
         sudo ufw allow SSH
     # Disable ssh connection to root account
         add_sshd_config "PermitRootLogin no"

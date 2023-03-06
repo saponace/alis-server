@@ -4,7 +4,7 @@
 
 
 # Install NFS (Network FileSystem)
-    ${INSTALL} nfs-utils
+    install_package nfs-utils
 
 # NFS configuration
 sudo su -c "echo '
@@ -26,7 +26,7 @@ sudo su -c "echo '
     sudo systemctl enable nfs-server.service
 
 # Whitelist NFS port in the firewall (and make sure the firewall is installed)
-    ${INSTALL} ufw
+    install_package ufw
     sudo ufw allow NFS
 
 

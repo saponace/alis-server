@@ -18,7 +18,6 @@
 # Prevent script from being stopped by Ctrl-C
   trap 'echo received SIGINT' SIGINT
 
-INSTALL="yay -S --noconfirm --needed"
 COMPONENTS_PATH="./components"
 CONFIG_FILE_PATH="./alis-server.config"
 LOG_FILE="./alis-server.log"
@@ -54,7 +53,7 @@ function install_component (){
   UNDERLINE='\e[4m'
   NORMAL='\033[0m'
 
-  echo -e "${COLORED}# Installing component \"${UNDERLINE}$1${NORMAL}${COLORED}\" ...${NORMAL}" 2>&1 | tee -a ${LOG_FILE}
+  echo -e "${COLORED}# Installing component \"${UNDERLINE}$1${NORMAL}${COLORED}\"${NORMAL}" 2>&1 | tee -a ${LOG_FILE}
   # Case components/xxx/xxx.sh
   if [ -f "${COMPONENTS_PATH}/$1/$1.sh" ]; then
       source "${COMPONENTS_PATH}/$1/$1.sh" 2>&1 | tee -a ${LOG_FILE}

@@ -46,7 +46,7 @@
 
 
 # Whitelist HTTP and HTTPS port in the firewall (and make sure the firewall is installed)
-    ${INSTALL} ufw
+    install_package ufw
     sudo ufw allow "WWW FULL"
 
 # Create a dashboard entry
