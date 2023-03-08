@@ -65,3 +65,4 @@ docker_compose_version=3.8
 
     fill_template_file ${input_service_file} ${temp_output_service_file} "$(declare -p service_mappings)"
     sudo mv ${temp_output_service_file} ${output_service_file}
+    sudo systemctl enable server-apps-suite

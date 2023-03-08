@@ -13,10 +13,8 @@
 ```
 The system will reboot into a fresh install.
 
-You can then call the following script to start the server:
-```
-/bin/startup
-```
+Systemd service `server-apps-suite` handles startup of all components. It is enabled
+
 Once the services have started, you can manually configure the services that requires manual configuration. Follow
 instructions detailed [here](documentation/services-and-setup-instructions.md).
 

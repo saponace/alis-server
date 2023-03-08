@@ -133,10 +133,6 @@ install_component remote-backups
   source "${COMPONENTS_PATH}/dashboard/configure-entries.sh" 2>&1 | tee -a ${LOG_FILE}
   source "${COMPONENTS_PATH}/docker/build-docker-compose-definition.sh" 2>&1 | tee -a ${LOG_FILE}
 
-# Link scripts
-  sudo_create_link ${SCRIPTS_DIR}/startup /user/local/bin/
-  sudo_create_link ${SCRIPTS_DIR}/manage-disks /usr/local/bin/
-
 
 # Disable auto-exec of this script at startup
   # Un-deploy systemd unit file
