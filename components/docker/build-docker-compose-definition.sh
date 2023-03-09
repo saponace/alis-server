@@ -49,7 +49,9 @@ docker_compose_version=3.8
 
 # Pull docker images
     sudo systemctl start docker
+    echo "Downlaoding docker images. This might take a while"
     sudo su -c "cd ${docker_compose_dir}; docker-compose pull --quiet"
+    echo "Docker images downloaded !"
 
 
 
